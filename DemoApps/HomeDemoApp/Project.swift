@@ -19,9 +19,9 @@ let project = Project(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .project(target: "Home", path: "../../../Projects/Home"),
-                .project(target: "Domain", path: "../../../Projects/Domain"),
-                .project(target: "Data", path: "../../../Projects/Data")
+                .project(target: "Home", path: "../../Projects/Home"),
+                .project(target: "Domain", path: "../../Projects/Domain"),
+                .project(target: "Data", path: "../../Projects/Data")
             ]
         ),
         .target(
