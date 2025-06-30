@@ -1,0 +1,22 @@
+name: "♻️ Refactoring Template"
+description: "Refactoring-related tasks"
+labels: ["refactor"]
+body:
+  - type: textarea
+    attributes:
+      label: 📄 Refactoring Target
+      description: Describe the code or module to refactor and why.
+      placeholder: What are the goals of this refactoring?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: ✅ Checklist
+      description: List the steps or tasks needed for this refactoring.
+      placeholder: Break it down step-by-step.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 💡 Expected Outcome
+      description: Describe the expected improvement or benefit.
