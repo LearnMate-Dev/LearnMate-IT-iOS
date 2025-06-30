@@ -1,0 +1,22 @@
+name: "✨ Feature Template"
+description: "Add a new feature"
+labels: ["feature"]
+body:
+  - type: textarea
+    attributes:
+      label: 📄 Description
+      description: Describe the new feature.
+      placeholder: The more detailed, the better!
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: ✅ Tasks
+      description: List the tasks in checkbox format.
+      placeholder: Break down the tasks as much as possible!
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 🙋🏻 References
+      description: If there are any references, please include them here.
