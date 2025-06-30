@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00181A63BD5A4E32A1794E47 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328D6D1BA0FA2636FA0155B8 /* Domain.framework */; };
+		4E4C583D5CAC9D03C7EB7F42 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3315666B7BD56F485B8A9 /* SnapKit.framework */; };
+		5FECAF90D2F533678E72BE33 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C10B46B4182DF961CF26CC /* RxSwift.framework */; };
 		94B961B5E2FDEBC84B982CCF /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2AAFED786D950F229E6BA2 /* Diary.framework */; };
 		D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEC8F153FC27AECC51B0518 /* CommonUI.framework */; };
+		D95F10BE4FEEEF094BE37E04 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB32AAE1BAD4767CE6D9F22 /* Then.framework */; };
 		F27D20B38412A2CC20E1D2ED /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D059F0C6958E2D203AB416 /* Common.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,10 +50,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02C10B46B4182DF961CF26CC /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08A3315666B7BD56F485B8A9 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5E6C004DBA4F94DDF0B5ED /* DiaryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DiaryTests-Info.plist"; sourceTree = "<group>"; };
 		2BEC8F153FC27AECC51B0518 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		328D6D1BA0FA2636FA0155B8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB32AAE1BAD4767CE6D9F22 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2AAFED786D950F229E6BA2 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57A12A246065D220B5FF7D4 /* Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Diary-Info.plist"; sourceTree = "<group>"; };
 		E9D059F0C6958E2D203AB416 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +78,9 @@
 				F27D20B38412A2CC20E1D2ED /* Common.framework in Frameworks */,
 				D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */,
 				00181A63BD5A4E32A1794E47 /* Domain.framework in Frameworks */,
+				5FECAF90D2F533678E72BE33 /* RxSwift.framework in Frameworks */,
+				4E4C583D5CAC9D03C7EB7F42 /* SnapKit.framework in Frameworks */,
+				D95F10BE4FEEEF094BE37E04 /* Then.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +119,9 @@
 				8C2AAFED786D950F229E6BA2 /* Diary.framework */,
 				474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */,
 				328D6D1BA0FA2636FA0155B8 /* Domain.framework */,
+				02C10B46B4182DF961CF26CC /* RxSwift.framework */,
+				08A3315666B7BD56F485B8A9 /* SnapKit.framework */,
+				4DB32AAE1BAD4767CE6D9F22 /* Then.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";

@@ -12,7 +12,10 @@ let project = Project(
             dependencies: [
                 .project(target: "Domain", path: "../Domain"),
                 .project(target: "Common", path: "../Common"),
-                .project(target: "CommonUI", path: "../CommonUI")
+                .project(target: "CommonUI", path: "../CommonUI"),
+                .external(name: "SnapKit"),
+                .external(name: "Then"),
+                .external(name: "RxSwift")
             ]
         ),
         .target(

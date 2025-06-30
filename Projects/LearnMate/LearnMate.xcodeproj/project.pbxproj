@@ -6,6 +6,11 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1078FC5AAE00358FF429974D /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE77FC6A5C33846C3A0F4938 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A18DE5FF456CC8DA967405FE /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE77FC6A5C33846C3A0F4938 /* Swinject.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		09159751759C885BE543A460 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,6 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1078FC5AAE00358FF429974D /* Swinject.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +49,7 @@
 		596AE34B2413431CA8E09857 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
 		775DFA54CE473464C0AC8D57 /* LearnMateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMateTests-Info.plist"; sourceTree = "<group>"; };
 		8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE77FC6A5C33846C3A0F4938 /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEDBA80EA1ED90619C5A4B16 /* LearnMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A18DE5FF456CC8DA967405FE /* Swinject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,7 @@
 			children = (
 				FEDBA80EA1ED90619C5A4B16 /* LearnMate.app */,
 				8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */,
+				AE77FC6A5C33846C3A0F4938 /* Swinject.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
