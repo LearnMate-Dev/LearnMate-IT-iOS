@@ -1,0 +1,27 @@
+name: "🐞 Bug Template"
+description: "Reporting a bug"
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: 📄 Bug Description
+      description: Please describe the bug in detail.
+      placeholder: What happened? What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 🧪 Steps to Reproduce
+      description: Please provide step-by-step instructions to reproduce the issue.
+      placeholder: 1. Go to '...'\n2. Click on '...'\n3. See error
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 💻 Environment
+      description: OS, browser, app version, etc.
+      placeholder: e.g., macOS 14 / Chrome 124 / App v1.0.0
+  - type: textarea
+    attributes:
+      label: 📎 Additional Context
+      description: Add any other context, screenshots, or logs here.
