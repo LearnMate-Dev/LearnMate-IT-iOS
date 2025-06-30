@@ -1,0 +1,19 @@
+name: "🎨 Design Template"
+description: "UI design additions or changes"
+labels: ["design"]
+body:
+  - type: textarea
+    attributes:
+      label: 📄 Design Request
+      description: Describe what needs to be designed or changed.
+      placeholder: Be as detailed as possible.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 🧩 Components Affected
+      description: List any components, pages, or elements related to this design.
+  - type: textarea
+    attributes:
+      label: 🙋🏻 References
+      description: Include design references or inspirations if available (e.g. Figma link).
