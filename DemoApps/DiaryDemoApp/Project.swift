@@ -21,7 +21,8 @@ let project = Project(
             dependencies: [
                 .project(target: "Diary", path: "../../Projects/Diary"),
                 .project(target: "Domain", path: "../../Projects/Domain"),
-                .project(target: "Data", path: "../../Projects/Data")
+                .project(target: "Data", path: "../../Projects/Data"),
+                .external(name: "Swinject")
             ]
         ),
         .target(

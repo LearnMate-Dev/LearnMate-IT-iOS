@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		0192E5BE9896A757A81E7DE2 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7579A88F3AC0085A06914600 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08944429DCD15795C979D7D0 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B2075015546CD45436B524A1 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1FCAB980C9EC50CD43A87F0F /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7352FC8289A593C3B9B100E2 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2D517669ACA581922E2D2CA9 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA88F5AE0CA024AD87D582 /* Swinject.framework */; };
+		358D76DD857B77482ACFBF50 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC8FC9CC6A1D45A801B8F47C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6AA78D1F7B386C7A12791744 /* Home.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14313FD2D33D61B697DA3AA /* Home.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DC939C9BC6310F466AFF1A8 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7579A88F3AC0085A06914600 /* Domain.framework */; };
 		8FFA7E2640C5055F4B3FD68D /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCA69A1D22F30D64F7E3D8E /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A054B527B2ECB8FE8D95836E /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA422F828A57ACBDE354537B /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9EBC03F9B3DAF0B849EDC43 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA88F5AE0CA024AD87D582 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA4B6A61A6008EE4A2AA35F6 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA422F828A57ACBDE354537B /* Data.framework */; };
+		CF916F1F86644C52F0B04C4C /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF939C42329B60C3ECD2A23D /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E857B370B5CEA6550DC807F8 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AAB4CE4B93E53FF04FD48D6 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F0F01917F1F8F2F25B9198D3 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14313FD2D33D61B697DA3AA /* Home.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,11 +50,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				358D76DD857B77482ACFBF50 /* Alamofire.framework in Embed Frameworks */,
 				8FFA7E2640C5055F4B3FD68D /* Common.framework in Embed Frameworks */,
 				08944429DCD15795C979D7D0 /* CommonUI.framework in Embed Frameworks */,
 				A054B527B2ECB8FE8D95836E /* Data.framework in Embed Frameworks */,
 				0192E5BE9896A757A81E7DE2 /* Domain.framework in Embed Frameworks */,
 				6AA78D1F7B386C7A12791744 /* Home.framework in Embed Frameworks */,
+				CF916F1F86644C52F0B04C4C /* RxSwift.framework in Embed Frameworks */,
+				E857B370B5CEA6550DC807F8 /* SnapKit.framework in Embed Frameworks */,
+				B9EBC03F9B3DAF0B849EDC43 /* Swinject.framework in Embed Frameworks */,
+				1FCAB980C9EC50CD43A87F0F /* Then.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,14 +68,19 @@
 
 /* Begin PBXFileReference section */
 		0CCA69A1D22F30D64F7E3D8E /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AAB4CE4B93E53FF04FD48D6 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FA88F5AE0CA024AD87D582 /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D6DA1F533681CF3B87924D /* HomeDemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "HomeDemoApp-Info.plist"; sourceTree = "<group>"; };
 		2A5529C1A5D3062072AAC3CF /* HomeDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7352FC8289A593C3B9B100E2 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7579A88F3AC0085A06914600 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14313FD2D33D61B697DA3AA /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2075015546CD45436B524A1 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA422F828A57ACBDE354537B /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8CC226F66A07FAE9417FB6 /* HomeDemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeDemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB0D5CCC929A609DFF79B1C0 /* HomeDemoAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "HomeDemoAppTests-Info.plist"; sourceTree = "<group>"; };
+		DC8FC9CC6A1D45A801B8F47C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF939C42329B60C3ECD2A23D /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +91,7 @@
 				CA4B6A61A6008EE4A2AA35F6 /* Data.framework in Frameworks */,
 				7DC939C9BC6310F466AFF1A8 /* Domain.framework in Frameworks */,
 				F0F01917F1F8F2F25B9198D3 /* Home.framework in Frameworks */,
+				2D517669ACA581922E2D2CA9 /* Swinject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +108,7 @@
 		7054A9F4EEBB05ACF20B7360 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				DC8FC9CC6A1D45A801B8F47C /* Alamofire.framework */,
 				0CCA69A1D22F30D64F7E3D8E /* Common.framework */,
 				B2075015546CD45436B524A1 /* CommonUI.framework */,
 				CA422F828A57ACBDE354537B /* Data.framework */,
@@ -98,6 +116,10 @@
 				A14313FD2D33D61B697DA3AA /* Home.framework */,
 				2A5529C1A5D3062072AAC3CF /* HomeDemoApp.app */,
 				CB8CC226F66A07FAE9417FB6 /* HomeDemoAppTests.xctest */,
+				FF939C42329B60C3ECD2A23D /* RxSwift.framework */,
+				1AAB4CE4B93E53FF04FD48D6 /* SnapKit.framework */,
+				22FA88F5AE0CA024AD87D582 /* Swinject.framework */,
+				7352FC8289A593C3B9B100E2 /* Then.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";

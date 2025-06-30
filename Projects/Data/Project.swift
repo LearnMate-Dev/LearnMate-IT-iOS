@@ -9,7 +9,9 @@ let project = Project(
             product: .framework,
             bundleId: "io.tuist.Data",
             sources: ["Sources/**"],
-            dependencies: []
+            dependencies: [
+                .external(name: "Alamofire")
+            ]
         )
     ]
 )

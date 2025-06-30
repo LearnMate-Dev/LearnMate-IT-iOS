@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		2D796E0FE4B6DD9952726366 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D72047241E839F3629A513B8 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		317540C194CB138E13ADEB87 /* Chat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85C7CC58F53F4D5CBE74BD69 /* Chat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		31E0946C449F943895EC0255 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3BE4981FAC3EC5DB80D22A7E /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5BB592481A6F2AE5014282B4 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0369923B3D752EB9913AB747 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5F3B5533DE0C1741432FA429 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11730397A9A0D9E627BBBFFC /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		64FC450F43167B47D752E2CC /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38297B23F9213768C2CE4FD8 /* Swinject.framework */; };
+		82B062B32861BA8863FF1D05 /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C6F6CB4B5D31D525532FD15 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E6E243B4CF6D1082E441F6F /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06FE821B54CA11D1C552CFAB /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		98EA5E6881D0EB060C02370B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11730397A9A0D9E627BBBFFC /* Domain.framework */; };
 		AD9DB0FA55D0D3797CB0577A /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60912D456D672F7DC17856C1 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF7D2A9F650C17529ABCC2D9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FE821B54CA11D1C552CFAB /* Data.framework */; };
+		C42E09C4A8E24064409BB999 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 38297B23F9213768C2CE4FD8 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C62AD91846AC77F15D73E140 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05F172B9530AB6495160B953 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D96168DBA090636BE069A44B /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C7CC58F53F4D5CBE74BD69 /* Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,11 +50,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				31E0946C449F943895EC0255 /* Alamofire.framework in Embed Frameworks */,
 				317540C194CB138E13ADEB87 /* Chat.framework in Embed Frameworks */,
 				AD9DB0FA55D0D3797CB0577A /* Common.framework in Embed Frameworks */,
 				2D796E0FE4B6DD9952726366 /* CommonUI.framework in Embed Frameworks */,
 				8E6E243B4CF6D1082E441F6F /* Data.framework in Embed Frameworks */,
 				5F3B5533DE0C1741432FA429 /* Domain.framework in Embed Frameworks */,
+				5BB592481A6F2AE5014282B4 /* RxSwift.framework in Embed Frameworks */,
+				C62AD91846AC77F15D73E140 /* SnapKit.framework in Embed Frameworks */,
+				C42E09C4A8E24064409BB999 /* Swinject.framework in Embed Frameworks */,
+				82B062B32861BA8863FF1D05 /* Then.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,9 +67,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0369923B3D752EB9913AB747 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05F172B9530AB6495160B953 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FE821B54CA11D1C552CFAB /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C6F6CB4B5D31D525532FD15 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		11730397A9A0D9E627BBBFFC /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1355E4916863CB7046101325 /* ChatDemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatDemoApp-Info.plist"; sourceTree = "<group>"; };
+		38297B23F9213768C2CE4FD8 /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BE4981FAC3EC5DB80D22A7E /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60912D456D672F7DC17856C1 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85C7CC58F53F4D5CBE74BD69 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B431C319736E558E7E8262D7 /* ChatDemoAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatDemoAppTests-Info.plist"; sourceTree = "<group>"; };
@@ -75,6 +91,7 @@
 				D96168DBA090636BE069A44B /* Chat.framework in Frameworks */,
 				BF7D2A9F650C17529ABCC2D9 /* Data.framework in Frameworks */,
 				98EA5E6881D0EB060C02370B /* Domain.framework in Frameworks */,
+				64FC450F43167B47D752E2CC /* Swinject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +117,7 @@
 		423D59DF1CFDFB3EF3C45878 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				3BE4981FAC3EC5DB80D22A7E /* Alamofire.framework */,
 				85C7CC58F53F4D5CBE74BD69 /* Chat.framework */,
 				C988C3E47C0B00829EFA688A /* ChatDemoApp.app */,
 				C9264DACEDBC785D4E79AAE5 /* ChatDemoAppTests.xctest */,
@@ -107,6 +125,10 @@
 				D72047241E839F3629A513B8 /* CommonUI.framework */,
 				06FE821B54CA11D1C552CFAB /* Data.framework */,
 				11730397A9A0D9E627BBBFFC /* Domain.framework */,
+				0369923B3D752EB9913AB747 /* RxSwift.framework */,
+				05F172B9530AB6495160B953 /* SnapKit.framework */,
+				38297B23F9213768C2CE4FD8 /* Swinject.framework */,
+				0C6F6CB4B5D31D525532FD15 /* Then.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";

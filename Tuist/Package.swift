@@ -2,21 +2,28 @@
 import PackageDescription
 
 #if TUIST
-    import struct ProjectDescription.PackageSettings
+    import ProjectDescription
 
     let packageSettings = PackageSettings(
-        // Customize the product types for specific package product
-        // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,]
-        productTypes: [:]
+        productTypes: [
+            "Swinject": .framework,
+            "RxSwift": .framework,
+            "ReactorKit": .framework,
+            "SnapKit": .framework,
+            "Then": .framework,
+            "Alamofire": .framework
+        ]
     )
 #endif
 
 let package = Package(
-    name: "LearnMate",
+    name: "PackageName",
     dependencies: [
-        // Add your own dependencies here:
-        // .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0"),
-        // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
+        .package(url: "https://github.com/Swinject/Swinject.git", .upToNextMajor(from: "2.8.0")),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMinor(from: "6.5.0")),
+        .package(url: "https://github.com/ReactorKit/ReactorKit.git", .upToNextMajor(from: "3.0.0")),
+        .package(url: "https://github.com/SnapKit/SnapKit", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/devxoul/Then", .upToNextMajor(from: "3.0.0")),
+        .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: "5.0.0"))
     ]
 )
