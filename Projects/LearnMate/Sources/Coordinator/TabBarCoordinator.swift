@@ -62,7 +62,28 @@ final class DefaultTabBarController: TabBarCoordinator {
 
     /// 각 탭바 아이템 설정
     private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-        return UITabBarItem(title: page.rawValue, image: nil, tag: page.pageOrderNumber())
+        switch page {
+        case .home:
+            return UITabBarItem(title: page.rawValue,
+                                image: UIImage(systemName: "house.fill"),
+                                tag: page.pageOrderNumber())
+        case .chat:
+            return UITabBarItem(title: page.rawValue,
+                                image: UIImage(systemName: "house.fill"),
+                                tag: page.pageOrderNumber())
+        case .diary:
+            return UITabBarItem(title: page.rawValue,
+                                image: UIImage(systemName: "house.fill"),
+                                tag: page.pageOrderNumber())
+        case .stats:
+            return UITabBarItem(title: page.rawValue,
+                                image: UIImage(systemName: "house.fill"),
+                                tag: page.pageOrderNumber())
+        case .myPage:
+            return UITabBarItem(title: page.rawValue,
+                                image: UIImage(systemName: "house.fill"),
+                                tag: page.pageOrderNumber())
+        }
     }
     
     /// 각 탭 flow 시작
