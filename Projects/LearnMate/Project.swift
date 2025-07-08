@@ -19,6 +19,12 @@ let project = Project(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
+                .project(target: "Domain", path: "../Domain"),
+                .project(target: "Data", path: "../Data"),
+                .project(target: "Home", path: "../Home"),
+                .project(target: "Chat", path: "../Chat"),
+                .project(target: "Diary", path: "../Diary"),
+                .project(target: "MyPage", path: "../MyPage"),
                 .external(name: "Swinject")
             ]
         ),

@@ -6,6 +6,10 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		576FA09B3D66AA386FA5A14A /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A3765D4303475813BD78D /* gitkeep.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		2050D9179AF2A95620543DFA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A3A3765D4303475813BD78D /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
 		3354DE7E2B4F1877FECB508B /* Common-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Common-Info.plist"; sourceTree = "<group>"; };
 		3DA77FB5518DC2177F7CDB4F /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -35,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		414CC905DAA5F4BA01D19B1D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1A3A3765D4303475813BD78D /* gitkeep.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		46B7570B57064E55A860C478 /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				DDFBA71553F6521B749B026F /* Derived */,
+				414CC905DAA5F4BA01D19B1D /* Sources */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -141,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576FA09B3D66AA386FA5A14A /* gitkeep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

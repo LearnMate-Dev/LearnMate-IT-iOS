@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D54447E8741D1A3F36725 /* gitkeep.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		918D54447E8741D1A3F36725 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -74,10 +76,19 @@
 			path = Derived;
 			sourceTree = "<group>";
 		};
+		C590795A2658F92D49B27E8D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				918D54447E8741D1A3F36725 /* gitkeep.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		EF3121301A12FEB266E0B923 /* Project */ = {
 			isa = PBXGroup;
 			children = (
 				C25E2D135BFBAC1019949D62 /* Derived */,
+				C590795A2658F92D49B27E8D /* Sources */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -148,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
