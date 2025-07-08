@@ -11,6 +11,7 @@ public final class CommonUIBundleHelper {}
 
 public enum CommonUIAssets {
     /// image
+    /// * tab icon
     public static let tabIconHome = image(named: "tab_icon_home")
     public static let tabIconHomeSelected = image(named: "tab_icon_home_selected")
     public static let tabIconChat = image(named: "tab_icon_chat")
@@ -22,10 +23,17 @@ public enum CommonUIAssets {
     public static let tabIconMypage = image(named: "tab_icon_mypage")
     public static let tabIconMypageSelected = image(named: "tab_icon_mypage_selected")
 
+    /// * logo
+    public static let smallLogo = image(named: "small_logo")
+
     /// color
     public static let LMOrange1 = color(named: "LMOrange01")
-    public static let LMOrange2 = color(named: "LMOrange02")
-    
+    public static let LMOrange3 = color(named: "LMOrange03")
+    public static let LMOrange4 = color(named: "LMOrange04")
+    public static let LMWhite = color(named: "LMWhite")
+    public static let LMBlack = color(named: "LMBlack")
+    public static let LMGray1 = color(named: "LMGray01")
+    public static let LMGray5 = color(named: "LMGray05")
 }
 
 private func image(named name: String) -> UIImage? {
