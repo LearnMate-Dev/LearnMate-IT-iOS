@@ -3,11 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473C96577A92DD6F71241A76 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266801EFBA6178C5B70C641 /* MyPageView.swift */; };
+		959AFC642E152AAA006F9875 /* CommonUIAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFC632E152AA9006F9875 /* CommonUIAssets.swift */; };
 		BE81B1F3E60D37D75A058D2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCDC15081A22BAED6318E3E /* SnapKit.framework */; };
+		C9831384B25F6DE9A630F6FC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69BB6AD88A246EE5D437C3 /* HomeView.swift */; };
+		E0865F2849CCB89CC83D3B77 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E2803575B1ED3D999440C1 /* Coordinator.swift */; };
+		F3DA12FF4D18AE405F2F6B08 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C3D5AB996D321B353C1255 /* BaseViewController.swift */; };
+		F7673E4248628D67F3542848 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDD10D8389EBB23B42C54F /* ChatView.swift */; };
+		FB3FE0AB8AE6868B6D5E241C /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FE6392E1612667826E5C5 /* DiaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +31,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09C3D5AB996D321B353C1255 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		27E2803575B1ED3D999440C1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3EBDD10D8389EBB23B42C54F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		9266801EFBA6178C5B70C641 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		959AFC632E152AA9006F9875 /* CommonUIAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIAssets.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C28FE6392E1612667826E5C5 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		CDBD62030B65AE3A6A7F34D6 /* CommonUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CommonUI-Info.plist"; sourceTree = "<group>"; };
+		DD69BB6AD88A246EE5D437C3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F0F7A08F911F04FE3F6FE36B /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -49,12 +63,48 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
+		532B9EC7299244FE28190921 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				27E2803575B1ED3D999440C1 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		6C37E0F3E17EB24142CC8AA4 /* Project */ = {
 			isa = PBXGroup;
 			children = (
 				ED0A8ABB0829010226C84076 /* Derived */,
+				BADD047B94176A526A5B7FB2 /* Sources */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		88FA467F361B11350139B775 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				09C3D5AB996D321B353C1255 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		959AFC622E151FC3006F9875 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				959AFC632E152AA9006F9875 /* CommonUIAssets.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		9786E1056828B1E6D5EDAB7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
+				C28FE6392E1612667826E5C5 /* DiaryView.swift */,
+				DD69BB6AD88A246EE5D437C3 /* HomeView.swift */,
+				9266801EFBA6178C5B70C641 /* MyPageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B7342C91FB26C6BB1D507B58 = {
@@ -63,6 +113,17 @@
 				6C37E0F3E17EB24142CC8AA4 /* Project */,
 				E9599493962ACA9F628F96AD /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		BADD047B94176A526A5B7FB2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				959AFC622E151FC3006F9875 /* Enum */,
+				88FA467F361B11350139B775 /* Base */,
+				532B9EC7299244FE28190921 /* Coordinator */,
+				9786E1056828B1E6D5EDAB7C /* View */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		E9599493962ACA9F628F96AD /* Products */ = {
@@ -112,8 +173,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 26B57D5F96290632B0503228 /* Build configuration list for PBXProject "CommonUI" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -148,6 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DA12FF4D18AE405F2F6B08 /* BaseViewController.swift in Sources */,
+				E0865F2849CCB89CC83D3B77 /* Coordinator.swift in Sources */,
+				F7673E4248628D67F3542848 /* ChatView.swift in Sources */,
+				FB3FE0AB8AE6868B6D5E241C /* DiaryView.swift in Sources */,
+				C9831384B25F6DE9A630F6FC /* HomeView.swift in Sources */,
+				473C96577A92DD6F71241A76 /* MyPageView.swift in Sources */,
+				959AFC642E152AAA006F9875 /* CommonUIAssets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +328,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
