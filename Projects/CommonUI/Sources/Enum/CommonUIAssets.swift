@@ -23,11 +23,17 @@ public enum CommonUIAssets {
     public static let tabIconMypageSelected = image(named: "tab_icon_mypage_selected")
 
     /// color
-    public static let searchViewTitleBackGroundColor = UIColor(red: 225/255, green: 225/255, blue: 245/255, alpha: 0.7)
+    public static let LMOrange1 = color(named: "LMOrange01")
+    public static let LMOrange2 = color(named: "LMOrange02")
+    
 }
 
 private func image(named name: String) -> UIImage? {
     return UIImage(named: name, in: Bundle(for: CommonUIBundleHelper.self), compatibleWith: nil)
+}
+
+private func color(named name: String) -> UIColor? {
+    return UIColor(named: name, in: Bundle(for: CommonUIBundleHelper.self), compatibleWith: nil)
 }
 
 extension UIImage {
