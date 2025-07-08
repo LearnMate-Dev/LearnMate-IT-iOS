@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		473C96577A92DD6F71241A76 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9266801EFBA6178C5B70C641 /* MyPageView.swift */; };
 		959AFC642E152AAA006F9875 /* CommonUIAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFC632E152AA9006F9875 /* CommonUIAssets.swift */; };
+		959AFC862E1CABDD006F9875 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFC852E1CABDB006F9875 /* gitkeep.swift */; };
+		959AFC8B2E1CABF5006F9875 /* CommonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFC8A2E1CABF0006F9875 /* CommonUITests.swift */; };
 		BE81B1F3E60D37D75A058D2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCDC15081A22BAED6318E3E /* SnapKit.framework */; };
 		C9831384B25F6DE9A630F6FC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD69BB6AD88A246EE5D437C3 /* HomeView.swift */; };
 		E0865F2849CCB89CC83D3B77 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E2803575B1ED3D999440C1 /* Coordinator.swift */; };
@@ -36,6 +38,8 @@
 		3EBDD10D8389EBB23B42C54F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		9266801EFBA6178C5B70C641 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		959AFC632E152AA9006F9875 /* CommonUIAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIAssets.swift; sourceTree = "<group>"; };
+		959AFC852E1CABDB006F9875 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
+		959AFC8A2E1CABF0006F9875 /* CommonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUITests.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28FE6392E1612667826E5C5 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
 		CDBD62030B65AE3A6A7F34D6 /* CommonUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CommonUI-Info.plist"; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		6C37E0F3E17EB24142CC8AA4 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				959AFC892E1CABEC006F9875 /* Tests */,
+				959AFC842E1CABD1006F9875 /* Resources */,
 				ED0A8ABB0829010226C84076 /* Derived */,
 				BADD047B94176A526A5B7FB2 /* Sources */,
 			);
@@ -94,6 +100,22 @@
 				959AFC632E152AA9006F9875 /* CommonUIAssets.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		959AFC842E1CABD1006F9875 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				959AFC852E1CABDB006F9875 /* gitkeep.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		959AFC892E1CABEC006F9875 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				959AFC8A2E1CABF0006F9875 /* CommonUITests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		9786E1056828B1E6D5EDAB7C /* View */ = {
@@ -208,11 +230,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3DA12FF4D18AE405F2F6B08 /* BaseViewController.swift in Sources */,
+				959AFC862E1CABDD006F9875 /* gitkeep.swift in Sources */,
 				E0865F2849CCB89CC83D3B77 /* Coordinator.swift in Sources */,
 				F7673E4248628D67F3542848 /* ChatView.swift in Sources */,
 				FB3FE0AB8AE6868B6D5E241C /* DiaryView.swift in Sources */,
 				C9831384B25F6DE9A630F6FC /* HomeView.swift in Sources */,
 				473C96577A92DD6F71241A76 /* MyPageView.swift in Sources */,
+				959AFC8B2E1CABF5006F9875 /* CommonUITests.swift in Sources */,
 				959AFC642E152AAA006F9875 /* CommonUIAssets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
