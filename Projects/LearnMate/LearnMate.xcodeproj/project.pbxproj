@@ -101,7 +101,6 @@
 		69B232119647519D26142C64 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7459B5071C1C3E12A6519672 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AF6F9390E20101F1F4BFB3 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
-		775DFA54CE473464C0AC8D57 /* LearnMateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMateTests-Info.plist"; sourceTree = "<group>"; };
 		7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F58ED76FC4C0973305766F /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +109,7 @@
 		A4DC536F09A4A8284AA20CE7 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77FC6A5C33846C3A0F4938 /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25294FAE7464C63791082A4 /* MyPageAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageAssembly.swift; sourceTree = "<group>"; };
+		E7792C9340E2B053D136A839 /* LearnMateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMateTests-Info.plist"; sourceTree = "<group>"; };
 		EEAA29E105D3AB0BAD502401 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
 		F39319B32F0C0DD673EA6D68 /* ChatAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAssembly.swift; sourceTree = "<group>"; };
 		F59511B963866C713AAADAF5 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,30 +156,14 @@
 			isa = PBXGroup;
 			children = (
 				75AF6F9390E20101F1F4BFB3 /* LearnMate-Info.plist */,
+				E7792C9340E2B053D136A839 /* LearnMateTests-Info.plist */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		2CE74D9D55F5B62BE83D0A4B /* InfoPlists */ = {
-			isa = PBXGroup;
-			children = (
-				775DFA54CE473464C0AC8D57 /* LearnMateTests-Info.plist */,
-			);
-			path = InfoPlists;
-			sourceTree = "<group>";
-		};
-		3A71D5C5E07EF937467BAF41 /* Derived */ = {
-			isa = PBXGroup;
-			children = (
-				2CE74D9D55F5B62BE83D0A4B /* InfoPlists */,
-			);
-			path = Derived;
 			sourceTree = "<group>";
 		};
 		B074F9F8E730729626040CA5 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				3A71D5C5E07EF937467BAF41 /* Derived */,
 				02DEB0AB87622688EABA33D7 /* Sources */,
 				1E95FEDCBD464D7BF64D5488 /* Support */,
 			);
@@ -497,7 +481,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Derived/InfoPlists/LearnMateTests-Info.plist";
+				INFOPLIST_FILE = "Support/LearnMateTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,7 +511,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Derived/InfoPlists/LearnMateTests-Info.plist";
+				INFOPLIST_FILE = "Support/LearnMateTests-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
