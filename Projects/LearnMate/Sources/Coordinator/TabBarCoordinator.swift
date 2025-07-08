@@ -62,28 +62,27 @@ final class DefaultTabBarController: TabBarCoordinator {
 
     /// 각 탭바 아이템 설정
     private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-
         switch page {
         case .home:
             return UITabBarItem(title: page.rawValue,
                                 image: CommonUIAssets.tabIconHome,
-                                tag: page.pageOrderNumber())
+                                selectedImage: CommonUIAssets.tabIconHomeSelected?.original)
         case .chat:
             return UITabBarItem(title: page.rawValue,
                                 image: CommonUIAssets.tabIconChat,
-                                tag: page.pageOrderNumber())
+                                selectedImage: CommonUIAssets.tabIconChatSelected?.original)
         case .diary:
             return UITabBarItem(title: page.rawValue,
                                 image: CommonUIAssets.tabIconDiary,
-                                tag: page.pageOrderNumber())
+                                selectedImage: CommonUIAssets.tabIconDiarySelected?.original)
         case .stats:
             return UITabBarItem(title: page.rawValue,
                                 image: CommonUIAssets.tabIconStats,
-                                tag: page.pageOrderNumber())
+                                selectedImage: CommonUIAssets.tabIconStatsSelected?.original)
         case .myPage:
             return UITabBarItem(title: page.rawValue,
                                 image: CommonUIAssets.tabIconMypage,
-                                tag: page.pageOrderNumber())
+                                selectedImage: CommonUIAssets.tabIconMypageSelected?.original)
         }
     }
     

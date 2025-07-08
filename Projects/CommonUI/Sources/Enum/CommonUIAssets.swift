@@ -29,3 +29,9 @@ public enum CommonUIAssets {
 private func image(named name: String) -> UIImage? {
     return UIImage(named: name, in: Bundle(for: CommonUIBundleHelper.self), compatibleWith: nil)
 }
+
+extension UIImage {
+    public var original: UIImage {
+        return self.withRenderingMode(.alwaysOriginal)
+    }
+}
