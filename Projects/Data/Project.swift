@@ -10,6 +10,7 @@ let project = Project(
             bundleId: "io.tuist.Data",
             sources: ["Sources/**"],
             dependencies: [
+                .project(target: "Domain", path: "../Domain"),
                 .external(name: "Alamofire")
             ]
         )

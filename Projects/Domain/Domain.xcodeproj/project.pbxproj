@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0BCC97781DA6EE874B081DBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2E30672E510822AAF38EAD /* RxSwift.framework */; };
-		959AFCCE2E1CC643006F9875 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCCD2E1CC640006F9875 /* String+Extension.swift */; };
-		959AFCD02E1CC6A5006F9875 /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCCF2E1CC6A2006F9875 /* CourseRepository.swift */; };
-		959AFCD22E1CC6E2006F9875 /* CourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCD12E1CC6E0006F9875 /* CourseUseCase.swift */; };
-		959AFCD52E1CC700006F9875 /* CourseVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCD42E1CC6FC006F9875 /* CourseVO.swift */; };
+		5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747DBBCAB797E5E0A82177F2 /* CourseVO.swift */; };
+		69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */; };
+		BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */; };
+		D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,12 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		959AFCCD2E1CC640006F9875 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		959AFCCF2E1CC6A2006F9875 /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
-		959AFCD12E1CC6E0006F9875 /* CourseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseUseCase.swift; sourceTree = "<group>"; };
-		959AFCD42E1CC6FC006F9875 /* CourseVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVO.swift; sourceTree = "<group>"; };
+		2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		747DBBCAB797E5E0A82177F2 /* CourseVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVO.swift; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
+		DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
+		F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseUseCase.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,13 +66,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		266DBF54466AF3D041290301 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		28B694539E22431DAF52B883 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				959AFCCA2E1CC632006F9875 /* Extension */,
+				266DBF54466AF3D041290301 /* Extension */,
 				BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */,
 				2BE278B80FDD95404961E580 /* UseCase */,
-				959AFCD32E1CC6F3006F9875 /* VO */,
+				9C17CEB3595F4C3FA69C5BAF /* VO */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -80,7 +88,7 @@
 		2BE278B80FDD95404961E580 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				959AFCD12E1CC6E0006F9875 /* CourseUseCase.swift */,
+				F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -102,18 +110,10 @@
 			name = Project;
 			sourceTree = "<group>";
 		};
-		959AFCCA2E1CC632006F9875 /* Extension */ = {
+		9C17CEB3595F4C3FA69C5BAF /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				959AFCCD2E1CC640006F9875 /* String+Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		959AFCD32E1CC6F3006F9875 /* VO */ = {
-			isa = PBXGroup;
-			children = (
-				959AFCD42E1CC6FC006F9875 /* CourseVO.swift */,
+				747DBBCAB797E5E0A82177F2 /* CourseVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				959AFCCF2E1CC6A2006F9875 /* CourseRepository.swift */,
+				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -164,6 +164,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -198,10 +200,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				959AFCD22E1CC6E2006F9875 /* CourseUseCase.swift in Sources */,
-				959AFCD52E1CC700006F9875 /* CourseVO.swift in Sources */,
-				959AFCCE2E1CC643006F9875 /* String+Extension.swift in Sources */,
-				959AFCD02E1CC6A5006F9875 /* CourseRepository.swift in Sources */,
+				69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */,
+				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
+				BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */,
+				5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +377,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

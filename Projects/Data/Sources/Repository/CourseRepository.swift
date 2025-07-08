@@ -12,30 +12,46 @@ import Alamofire
 public class DefaultCourseRepository: CourseRepository {
     public init() {}
 
-    public func getCourses() -> Single<CourseAPI> {
-        return Single.create { single in
-            let parameters: Parameters = [
-                "lat": NetworkConfiguration.defaultLat,
-                "lon": NetworkConfiguration.defaultLng,
-                "appid": NetworkConfiguration.appID
-            ]
-            
-            let request = AF.request(
-                "\(NetworkConfiguration.baseUrl)/courses",
-                method: .get,
-                parameters: parameters
+    public func getCourses() -> Single<CourseVO> {
+        return request(
+            endpoint: NetworkConfiguration.baseUrl,
+            id: 4,
+            responseType: CourseDTO.self
+        )
+        .map { dto in
+            return CourseVO(
+                courseLv: 1,
+                courseDescription: "courseDescription",
+                stepLv: 1,
+                stepTitle: "stepTitle",
+                stepDescription: "stepDescription",
+                stepStatus: "SOLVED"
             )
-            .validate()
-            .responseDecodable(of: CourseDTO.self) { response in
-                switch response.result {
-                case .success(let dto):
-                    single(.success(dto))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-
-            return Disposables.create { request.cancel() }
         }
     }
-}
+
+    private func request<T: Decodable>(endpoint: String, id: Int, responseType: T.Type) -> Single<T> {
+            return Single.create { single in
+                let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
+                let parameters: Parameters = [
+                    "id": id
+                ]
+
+                let request = AF.request(url,
+                                         method: .get,
+                                         parameters: parameters,
+                                         encoding: URLEncoding.queryString)
+                    .validate()
+                    .responseDecodable(of: responseType) { response in
+                        switch response.result {
+                        case .success(let value):
+                            single(.success(value))
+                        case .failure(let error):
+                            single(.failure(error))
+                        }
+                    }
+
+                return Disposables.create { request.cancel() }
+            }
+        }
+    }
