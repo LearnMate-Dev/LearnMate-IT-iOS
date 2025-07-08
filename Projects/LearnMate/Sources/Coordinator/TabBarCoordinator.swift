@@ -56,13 +56,34 @@ final class DefaultTabBarController: TabBarCoordinator {
         self.tabBarController.selectedIndex = TabBarPage.home.pageOrderNumber()
         self.tabBarController.view.backgroundColor = .white
         self.tabBarController.tabBar.backgroundColor = .white
-        self.tabBarController.tabBar.tintColor = .black
+        self.tabBarController.tabBar.tintColor = CommonUIAssets.LMOrange1
         self.navigationController.pushViewController(self.tabBarController, animated: true)
     }
 
     /// 각 탭바 아이템 설정
     private func configureTabBarItem(of page: TabBarPage) -> UITabBarItem {
-        return UITabBarItem(title: page.rawValue, image: nil, tag: page.pageOrderNumber())
+        switch page {
+        case .home:
+            return UITabBarItem(title: page.tabIconName(),
+                                image: CommonUIAssets.tabIconHome?.original,
+                                selectedImage: CommonUIAssets.tabIconHomeSelected?.original)
+        case .chat:
+            return UITabBarItem(title: page.tabIconName(),
+                                image: CommonUIAssets.tabIconChat?.original,
+                                selectedImage: CommonUIAssets.tabIconChatSelected?.original)
+        case .diary:
+            return UITabBarItem(title: page.tabIconName(),
+                                image: CommonUIAssets.tabIconDiary?.original,
+                                selectedImage: CommonUIAssets.tabIconDiarySelected?.original)
+        case .stats:
+            return UITabBarItem(title: page.tabIconName(),
+                                image: CommonUIAssets.tabIconStats?.original,
+                                selectedImage: CommonUIAssets.tabIconStatsSelected?.original)
+        case .myPage:
+            return UITabBarItem(title: page.tabIconName(),
+                                image: CommonUIAssets.tabIconMypage?.original,
+                                selectedImage: CommonUIAssets.tabIconMypageSelected?.original)
+        }
     }
     
     /// 각 탭 flow 시작
@@ -93,7 +114,7 @@ enum TabBarPage: String, CaseIterable {
         default: return nil
         }
     }
-    
+
     func pageOrderNumber() -> Int {
         switch self {
         case .home: return 0
@@ -103,8 +124,14 @@ enum TabBarPage: String, CaseIterable {
         case .myPage: return 4
         }
     }
-    
+
     func tabIconName() -> String {
-        return self.rawValue
+        switch self {
+        case .home: return "홈"
+        case .chat: return "대화"
+        case .diary: return "일기"
+        case .stats: return "통계"
+        case .myPage: return "마이페이지"
+        }
     }
 }

@@ -26,7 +26,7 @@ let project = Project(
             destinations: .iOS,
             product: .unitTests,
             bundleId: "io.tuist.LearnMateTests",
-            infoPlist: .default,
+            infoPlist: .file(path: "Support/LearnMateTests-Info.plist"),
             sources: ["Tests/**"],
             resources: [],
             dependencies: [.target(name: "LearnMate")]
