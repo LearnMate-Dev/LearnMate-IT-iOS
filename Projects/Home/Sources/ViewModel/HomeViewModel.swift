@@ -5,8 +5,27 @@
 //  Created by 박지윤 on 7/1/25.
 //
 
-import Foundation
+import Domain
+import RxSwift
 
-public class HomeViewModel {
-    public init() {}
+protocol HomeViewModelProtocol {
+    func getCourses()
+}
+
+public class HomeViewModel: HomeViewModelProtocol {
+    private let disposeBag = DisposeBag()
+    private let courseUseCase: CourseUseCase
+    public init(courseUseCase: CourseUseCase) {
+        self.courseUseCase = courseUseCase
+        getCourses()
+    }
+    
+    func getCourses() {
+        courseUseCase.getCourses()
+            .subscribe(onSuccess: { response in
+                print(response)
+            }, onFailure: { _ in
+                
+            }).disposed(by: disposeBag)
+    }
 }

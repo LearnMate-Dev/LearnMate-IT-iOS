@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D54447E8741D1A3F36725 /* gitkeep.swift */; };
+		43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */; };
+		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
+		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
+		E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0730BC3657E24BCEA511A3C /* CourseRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,9 +29,12 @@
 
 /* Begin PBXFileReference section */
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
+		06FAA1459D11CCE724C34195 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		918D54447E8741D1A3F36725 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
+		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDTO.swift; sourceTree = "<group>"; };
+		B0730BC3657E24BCEA511A3C /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */,
+				901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,8 +55,25 @@
 			children = (
 				A3B0D3D8C7049B6856791C1D /* Alamofire.framework */,
 				4E75197C294DE74F5162FAA7 /* Data.framework */,
+				06FAA1459D11CCE724C34195 /* Domain.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		647255CD65221C9CD4A43DED /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		73F3ED55BFDC2EF15878F5B6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				B0730BC3657E24BCEA511A3C /* CourseRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		8A6D38DA6706D1F4DD8A055B = {
@@ -58,6 +82,14 @@
 				EF3121301A12FEB266E0B923 /* Project */,
 				20629251A4CAB947CD938921 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A46DA33BCE1E2288153B2AC3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		AABE3A120DFAA5B30C74694C /* InfoPlists */ = {
@@ -79,7 +111,9 @@
 		C590795A2658F92D49B27E8D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				918D54447E8741D1A3F36725 /* gitkeep.swift */,
+				647255CD65221C9CD4A43DED /* DTO */,
+				A46DA33BCE1E2288153B2AC3 /* Network */,
+				73F3ED55BFDC2EF15878F5B6 /* Repository */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -159,7 +193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */,
+				43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */,
+				684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */,
+				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

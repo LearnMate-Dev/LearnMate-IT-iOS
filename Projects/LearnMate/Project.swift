@@ -8,14 +8,7 @@ let project = Project(
             destinations: .iOS,
             product: .app,
             bundleId: "io.tuist.LearnMate",
-            infoPlist: .extendingDefault(
-                with: [
-                    "UILaunchScreen": [
-                        "UIColorName": "",
-                        "UIImageName": "",
-                    ],
-                ]
-            ),
+            infoPlist: .file(path: "Support/LearnMate-Info.plist"),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [

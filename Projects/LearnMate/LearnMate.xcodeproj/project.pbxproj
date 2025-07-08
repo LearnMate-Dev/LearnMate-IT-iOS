@@ -97,10 +97,10 @@
 		42CABF80B6D6BC7DECCE8094 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4827AE49C7B9592C6AA4F708 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		50486214C077FA786A3BE37D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		596AE34B2413431CA8E09857 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
 		626AE29E08BEF53B78AA9179 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B232119647519D26142C64 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7459B5071C1C3E12A6519672 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75AF6F9390E20101F1F4BFB3 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
 		775DFA54CE473464C0AC8D57 /* LearnMateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMateTests-Info.plist"; sourceTree = "<group>"; };
 		7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F58ED76FC4C0973305766F /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
@@ -152,10 +152,17 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		1E95FEDCBD464D7BF64D5488 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				75AF6F9390E20101F1F4BFB3 /* LearnMate-Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		2CE74D9D55F5B62BE83D0A4B /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
-				596AE34B2413431CA8E09857 /* LearnMate-Info.plist */,
 				775DFA54CE473464C0AC8D57 /* LearnMateTests-Info.plist */,
 			);
 			path = InfoPlists;
@@ -174,6 +181,7 @@
 			children = (
 				3A71D5C5E07EF937467BAF41 /* Derived */,
 				02DEB0AB87622688EABA33D7 /* Sources */,
+				1E95FEDCBD464D7BF64D5488 /* Support */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -378,7 +386,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Derived/InfoPlists/LearnMate-Info.plist";
+				INFOPLIST_FILE = "Support/LearnMate-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,7 +411,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Derived/InfoPlists/LearnMate-Info.plist";
+				INFOPLIST_FILE = "Support/LearnMate-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
