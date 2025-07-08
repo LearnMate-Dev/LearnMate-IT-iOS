@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23B07B74AE21259E11F577C6 /* CourseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651A2A59B8B17047F1B50374 /* CourseAPI.swift */; };
 		43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */; };
 		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
 		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
@@ -33,7 +32,6 @@
 		06FAA1459D11CCE724C34195 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
-		651A2A59B8B17047F1B50374 /* CourseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAPI.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDTO.swift; sourceTree = "<group>"; };
 		B0730BC3657E24BCEA511A3C /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 		A46DA33BCE1E2288153B2AC3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				651A2A59B8B17047F1B50374 /* CourseAPI.swift */,
 				5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */,
 			);
 			path = Network;
@@ -160,8 +157,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -197,7 +192,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */,
-				23B07B74AE21259E11F577C6 /* CourseAPI.swift in Sources */,
 				684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */,
 				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
 			);
@@ -229,10 +223,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
