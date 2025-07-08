@@ -109,8 +109,6 @@
 		959AFC6E2E152C30006F9875 /* DataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
 		959AFC702E152C37006F9875 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		959AFC722E152C62006F9875 /* DomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainAssembly.swift; sourceTree = "<group>"; };
-		959AFC792E1CA7FC006F9875 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
-		959AFC7A2E1CA7FC006F9875 /* LearnMateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LearnMateTests-Info.plist"; sourceTree = "<group>"; };
 		9ACFF0B3105009DD7646173E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DC536F09A4A8284AA20CE7 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE77FC6A5C33846C3A0F4938 /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,23 +190,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		959AFC7B2E1CA7FC006F9875 /* InfoPlists */ = {
-			isa = PBXGroup;
-			children = (
-				959AFC792E1CA7FC006F9875 /* LearnMate-Info.plist */,
-				959AFC7A2E1CA7FC006F9875 /* LearnMateTests-Info.plist */,
-			);
-			path = InfoPlists;
-			sourceTree = "<group>";
-		};
-		959AFC7C2E1CA7FC006F9875 /* Derived */ = {
-			isa = PBXGroup;
-			children = (
-				959AFC7B2E1CA7FC006F9875 /* InfoPlists */,
-			);
-			path = Derived;
-			sourceTree = "<group>";
-		};
 		B074F9F8E730729626040CA5 /* Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +221,6 @@
 		E290CD2FA6D313265F045E73 = {
 			isa = PBXGroup;
 			children = (
-				959AFC7C2E1CA7FC006F9875 /* Derived */,
 				B074F9F8E730729626040CA5 /* Project */,
 				ED0EE4EA4327EC4E4D07675E /* Products */,
 			);
