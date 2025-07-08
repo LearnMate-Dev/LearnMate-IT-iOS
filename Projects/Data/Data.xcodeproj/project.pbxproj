@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918D54447E8741D1A3F36725 /* gitkeep.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,9 +27,7 @@
 /* Begin PBXFileReference section */
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		959AFC8D2E1CAC28006F9875 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
-		959AFC8F2E1CAC37006F9875 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
-		959AFC922E1CAC4D006F9875 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		918D54447E8741D1A3F36725 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,30 +60,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		959AFC8C2E1CAC19006F9875 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				959AFC8D2E1CAC28006F9875 /* gitkeep.swift */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		959AFC8E2E1CAC33006F9875 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				959AFC8F2E1CAC37006F9875 /* gitkeep.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		959AFC912E1CAC4B006F9875 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				959AFC922E1CAC4D006F9875 /* DataTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
 		AABE3A120DFAA5B30C74694C /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +76,19 @@
 			path = Derived;
 			sourceTree = "<group>";
 		};
+		C590795A2658F92D49B27E8D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				918D54447E8741D1A3F36725 /* gitkeep.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		EF3121301A12FEB266E0B923 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				959AFC912E1CAC4B006F9875 /* Tests */,
-				959AFC8E2E1CAC33006F9875 /* Sources */,
-				959AFC8C2E1CAC19006F9875 /* Resources */,
 				C25E2D135BFBAC1019949D62 /* Derived */,
+				C590795A2658F92D49B27E8D /* Sources */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -142,6 +123,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -176,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D7C36B11F2F7C3A87B33C09 /* gitkeep.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +189,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

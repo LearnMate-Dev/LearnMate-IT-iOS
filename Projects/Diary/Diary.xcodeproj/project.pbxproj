@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,10 +13,9 @@
 		885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */; };
 		891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */; };
 		94B961B5E2FDEBC84B982CCF /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2AAFED786D950F229E6BA2 /* Diary.framework */; };
-		959AFC9B2E1CACB6006F9875 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFC9A2E1CACB5006F9875 /* gitkeep.swift */; };
-		959AFCB02E1CAD48006F9875 /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCAF2E1CAD45006F9875 /* DiaryTests.swift */; };
 		D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEC8F153FC27AECC51B0518 /* CommonUI.framework */; };
 		D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */; };
+		D8F7B770E4A729F83E48FA58 /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E8068669524427E86AA /* DiaryTests.swift */; };
 		D95F10BE4FEEEF094BE37E04 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB32AAE1BAD4767CE6D9F22 /* Then.framework */; };
 		F27D20B38412A2CC20E1D2ED /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D059F0C6958E2D203AB416 /* Common.framework */; };
 /* End PBXBuildFile section */
@@ -58,14 +57,13 @@
 		02C10B46B4182DF961CF26CC /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A3315666B7BD56F485B8A9 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5E6C004DBA4F94DDF0B5ED /* DiaryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DiaryTests-Info.plist"; sourceTree = "<group>"; };
+		0C2C1E8068669524427E86AA /* DiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTests.swift; sourceTree = "<group>"; };
 		2BEC8F153FC27AECC51B0518 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		328D6D1BA0FA2636FA0155B8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCoordinator.swift; sourceTree = "<group>"; };
 		474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB32AAE1BAD4767CE6D9F22 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2AAFED786D950F229E6BA2 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		959AFC9A2E1CACB5006F9875 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
-		959AFCAF2E1CAD45006F9875 /* DiaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTests.swift; sourceTree = "<group>"; };
 		C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		E57A12A246065D220B5FF7D4 /* Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Diary-Info.plist"; sourceTree = "<group>"; };
@@ -126,10 +124,9 @@
 		7188C6D14966425C58B21061 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				959AFC9E2E1CACD2006F9875 /* Tests */,
-				959AFC992E1CACB1006F9875 /* Resources */,
 				7B877169347762F95BE7CDAB /* Derived */,
 				5EF471472DF71F31AD89DFCB /* Sources */,
+				91BE605006F6B0DC8531E31C /* Tests */,
 			);
 			name = Project;
 			sourceTree = "<group>";
@@ -142,18 +139,10 @@
 			path = Derived;
 			sourceTree = "<group>";
 		};
-		959AFC992E1CACB1006F9875 /* Resources */ = {
+		91BE605006F6B0DC8531E31C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				959AFC9A2E1CACB5006F9875 /* gitkeep.swift */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		959AFC9E2E1CACD2006F9875 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				959AFCAF2E1CAD45006F9875 /* DiaryTests.swift */,
+				0C2C1E8068669524427E86AA /* DiaryTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -249,6 +238,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 21D1B3D84AAE7B6E00AA6ED5 /* Build configuration list for PBXProject "Diary" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -291,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8F7B770E4A729F83E48FA58 /* DiaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */,
-				959AFCB02E1CAD48006F9875 /* DiaryTests.swift in Sources */,
-				959AFC9B2E1CACB6006F9875 /* gitkeep.swift in Sources */,
 				891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */,
 				D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */,
 			);
@@ -364,7 +354,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -390,7 +383,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

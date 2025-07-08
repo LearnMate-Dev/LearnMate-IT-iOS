@@ -3,20 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2A443C4585161240125DD8C7 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F99D6F8F6ADC1D08F0F6ABB /* Domain.framework */; };
 		304B065A8DA2720317ACA30E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE8B83CE2222EF3C23EC04 /* MyPageViewController.swift */; };
-		959AFCAC2E1CAD2F006F9875 /* gitkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCAB2E1CAD2D006F9875 /* gitkeep.swift */; };
-		959AFCAE2E1CAD40006F9875 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AFCAD2E1CAD38006F9875 /* SearchTests.swift */; };
 		A945DE715F1DC2693CA02781 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544912429A76CB35FEBE315 /* MyPageViewModel.swift */; };
 		AB1D465F12680E6BEF24E0A8 /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1EF0F9A7761EB05E9EA21 /* MyPageCoordinator.swift */; };
 		B5B8BB773CB5DD8793A02B9F /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2250E7E4991D615622146F7 /* Then.framework */; };
 		B62099510F3B1CDFB4F01E1C /* MyPage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593BC506F70D9100B69F8D7A /* MyPage.framework */; };
 		C84E1067099CEB0415B956AC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952C77C0D77B9A5A1F4AC653 /* SnapKit.framework */; };
 		CE62FD63351F77276ECA6751 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4C9D2130E70338E16F60DA /* CommonUI.framework */; };
+		D2A6390E4AF06E70FC2941FD /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F267C8BE555E7B87A525E /* SearchTests.swift */; };
 		DE5931B52954ABDC92176E76 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C44573A8E09999B6B14E /* RxSwift.framework */; };
 		FF4FC5961E55CF694F6776C0 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BF7D4A21E2B6B1A4908B69 /* Common.framework */; };
 /* End PBXBuildFile section */
@@ -63,8 +62,7 @@
 		6544912429A76CB35FEBE315 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		9168A8789CFD60F91F2612BD /* MyPageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyPageTests-Info.plist"; sourceTree = "<group>"; };
 		952C77C0D77B9A5A1F4AC653 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		959AFCAB2E1CAD2D006F9875 /* gitkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gitkeep.swift; sourceTree = "<group>"; };
-		959AFCAD2E1CAD38006F9875 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
+		9B7F267C8BE555E7B87A525E /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		C1BF7D4A21E2B6B1A4908B69 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4C9D2130E70338E16F60DA /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2250E7E4991D615622146F7 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,28 +163,11 @@
 		804C1AC5045EA31FAD595792 /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				959AFCAA2E1CAD28006F9875 /* Resources */,
-				959AFCA92E1CAD24006F9875 /* Tests */,
 				11B5D0581091D2C507BAE17D /* Derived */,
 				119EF4EA155B4A0EC8669564 /* Sources */,
+				E6A0232F97A6933F73042FA6 /* Tests */,
 			);
 			name = Project;
-			sourceTree = "<group>";
-		};
-		959AFCA92E1CAD24006F9875 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				959AFCAD2E1CAD38006F9875 /* SearchTests.swift */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		959AFCAA2E1CAD28006F9875 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				959AFCAB2E1CAD2D006F9875 /* gitkeep.swift */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C31ED8662055811AAAF5226D /* InfoPlists */ = {
@@ -196,6 +177,14 @@
 				9168A8789CFD60F91F2612BD /* MyPageTests-Info.plist */,
 			);
 			path = InfoPlists;
+			sourceTree = "<group>";
+		};
+		E6A0232F97A6933F73042FA6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9B7F267C8BE555E7B87A525E /* SearchTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +238,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 17B4189F581EBC17F03338C5 /* Build configuration list for PBXProject "MyPage" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -291,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A6390E4AF06E70FC2941FD /* SearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB1D465F12680E6BEF24E0A8 /* MyPageCoordinator.swift in Sources */,
-				959AFCAC2E1CAD2F006F9875 /* gitkeep.swift in Sources */,
-				959AFCAE2E1CAD40006F9875 /* SearchTests.swift in Sources */,
 				304B065A8DA2720317ACA30E /* MyPageViewController.swift in Sources */,
 				A945DE715F1DC2693CA02781 /* MyPageViewModel.swift in Sources */,
 			);
@@ -341,7 +331,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -534,7 +527,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
