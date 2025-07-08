@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -99,9 +99,9 @@
 		9786E1056828B1E6D5EDAB7C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD69BB6AD88A246EE5D437C3 /* HomeView.swift */,
 				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
 				C28FE6392E1612667826E5C5 /* DiaryView.swift */,
-				DD69BB6AD88A246EE5D437C3 /* HomeView.swift */,
 				9266801EFBA6178C5B70C641 /* MyPageView.swift */,
 			);
 			path = View;
@@ -173,8 +173,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 26B57D5F96290632B0503228 /* Build configuration list for PBXProject "CommonUI" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -330,10 +328,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
