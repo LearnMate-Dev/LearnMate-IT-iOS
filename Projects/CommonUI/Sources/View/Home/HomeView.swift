@@ -59,11 +59,11 @@ open class HomeView: UIView {
 
     func initUI() {
         self.snp.makeConstraints {
-            $0.height.equalTo(228)
+            $0.height.equalTo(156)
         }
 
         [titleLabel, subtitleLabel]
-            .forEach { titleLabelStackView.addSubview($0) }
+            .forEach { titleLabelStackView.addArrangedSubview($0) }
 
         [logoImageView, profileView, titleLabelStackView]
             .forEach { self.addSubview($0) }
@@ -72,7 +72,7 @@ open class HomeView: UIView {
             $0.height.equalTo(34)
             $0.width.equalTo(65)
             $0.leading.equalTo(self.safeAreaInsets).inset(20)
-            $0.top.equalTo(self.safeAreaInsets).inset(77)
+            $0.top.equalTo(self.safeAreaInsets)
         }
 
         profileView.snp.makeConstraints {
@@ -86,14 +86,6 @@ open class HomeView: UIView {
             $0.centerY.equalTo(profileView)
             $0.height.equalTo(49)
             $0.trailing.equalToSuperview().inset(20)
-        }
-
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(2)
-        }
-
-        subtitleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(2)
         }
     }
 

@@ -12,9 +12,11 @@ import RxSwift
 
 public class HomeViewController: BaseViewController {
     let viewModel: HomeViewModel
+    let scrollView = UIScrollView()
+    let contentView = UIView()
     let homeView = HomeView()
     let homeProgressView = HomeProgressView()
-    var courseLabel = UILabel()
+    let homeQuizView = HomeQuizView()
 
     public init(homeViewModel: HomeViewModel) {
         self.viewModel = homeViewModel
@@ -32,37 +34,45 @@ public class HomeViewController: BaseViewController {
     public override func setupViewProperty() {
         view.backgroundColor = CommonUIAssets.LMOrange4
 
-        courseLabel = courseLabel.then {
-            $0.text = "1단계 퀴즈"
-            $0.textColor = CommonUIAssets.LMBlack
-            $0.font = .systemFont(ofSize: 16, weight: .regular)
+        scrollView.do {
+            $0.showsVerticalScrollIndicator = false
+            $0.showsHorizontalScrollIndicator = false
         }
     }
 
     public override func setupHierarchy() {
-        [homeView, homeProgressView, courseLabel].forEach { view.addSubview($0) }
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        [homeView, homeProgressView, homeQuizView].forEach { contentView.addSubview($0) }
     }
 
     public override func setupDelegate() {
     }
 
     public override func setupLayout() {
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+
         homeView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
         }
 
         homeProgressView.snp.makeConstraints {
-            $0.top.equalTo(homeView.snp.bottom).offset(4)
+            $0.top.equalTo(homeView.snp.bottom)
             $0.centerX.equalToSuperview()
         }
 
-        courseLabel.snp.makeConstraints {
+        homeQuizView.snp.makeConstraints {
             $0.top.equalTo(homeProgressView.snp.bottom).offset(30)
-            $0.leading.equalTo(30)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(330)
+            $0.width.bottom.equalToSuperview().inset(20)
         }
-    }
-
-    public override func setupBind() {
-//        courseLabel.text = "" + "단계 퀴즈"
     }
 }

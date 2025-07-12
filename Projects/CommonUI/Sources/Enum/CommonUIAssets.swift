@@ -33,6 +33,7 @@ public enum CommonUIAssets {
     public static let LMWhite = color(named: "LMWhite")
     public static let LMBlack = color(named: "LMBlack")
     public static let LMGray1 = color(named: "LMGray01")
+    public static let LMGray3 = color(named: "LMGray03")
     public static let LMGray5 = color(named: "LMGray05")
 }
 
