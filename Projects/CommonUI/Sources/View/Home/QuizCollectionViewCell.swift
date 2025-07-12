@@ -39,9 +39,20 @@ final class HomeQuizCell: UICollectionViewCell {
         }
 
         startButton = startButton.then {
-            $0.setTitle("시작하기", for: .normal)
-            $0.setTitleColor(CommonUIAssets.LMGray1, for: .normal)
-            $0.titleLabel?.font = .systemFont(ofSize: 11, weight: .regular)
+            var config = UIButton.Configuration.plain()
+            config.image = CommonUIAssets.IconPlay
+            config.imagePlacement = .trailing
+            config.imagePadding = 8
+            config.baseForegroundColor = CommonUIAssets.LMGray1
+            config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10)
+
+            let title = "시작하기"
+            let attributedTitle = AttributedString(title, attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 12, weight: .regular)
+            ]))
+            config.attributedTitle = attributedTitle
+
+            $0.configuration = config
             $0.layer.borderWidth = 1
             $0.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
             $0.layer.cornerRadius = 10
@@ -67,8 +78,8 @@ final class HomeQuizCell: UICollectionViewCell {
         }
         
         startButton.snp.makeConstraints {
-            $0.height.equalTo(30)
-            $0.width.equalTo(80)
+            $0.height.equalTo(35)
+            $0.width.equalTo(90)
             $0.trailing.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
         }

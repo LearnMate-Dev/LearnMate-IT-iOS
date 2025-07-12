@@ -14,6 +14,10 @@ public class HomeViewController: BaseViewController {
     let viewModel: HomeViewModel
     let scrollView = UIScrollView()
     let contentView = UIView()
+    let logoImageView = UIImageView().then {
+        $0.image = CommonUIAssets.smallLogo
+        $0.contentMode = .scaleAspectFit
+    }
     let homeView = HomeView()
     let homeProgressView = HomeProgressView()
     let homeQuizView = HomeQuizView()
@@ -25,6 +29,11 @@ public class HomeViewController: BaseViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     public override func viewDidLoad() {
@@ -41,6 +50,7 @@ public class HomeViewController: BaseViewController {
     }
 
     public override func setupHierarchy() {
+        view.addSubview(logoImageView)
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         [homeView, homeProgressView, homeQuizView].forEach { contentView.addSubview($0) }
@@ -50,8 +60,16 @@ public class HomeViewController: BaseViewController {
     }
 
     public override func setupLayout() {
+        logoImageView.snp.makeConstraints {
+            $0.height.equalTo(34)
+            $0.width.equalTo(65)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview().inset(20)
+        }
+
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(logoImageView.snp.bottom).offset(10)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
 
         contentView.snp.makeConstraints {
@@ -71,8 +89,11 @@ public class HomeViewController: BaseViewController {
         homeQuizView.snp.makeConstraints {
             $0.top.equalTo(homeProgressView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(330)
-            $0.width.bottom.equalToSuperview().inset(20)
+//            $0.height.equalTo(330)
+            $0.height.equalTo(500)
+
+            $0.width.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20)
         }
     }
 }

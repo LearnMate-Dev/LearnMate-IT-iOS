@@ -26,6 +26,9 @@ public enum CommonUIAssets {
     /// * logo
     public static let smallLogo = image(named: "small_logo")
 
+    /// * Icon
+    public static let IconPlay = image(named: "play")
+
     /// color
     public static let LMOrange1 = color(named: "LMOrange01")
     public static let LMOrange3 = color(named: "LMOrange03")
