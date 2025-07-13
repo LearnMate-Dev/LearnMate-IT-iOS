@@ -12,9 +12,15 @@ import RxSwift
 
 public class HomeViewController: BaseViewController {
     let viewModel: HomeViewModel
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    let logoImageView = UIImageView().then {
+        $0.image = CommonUIAssets.smallLogo
+        $0.contentMode = .scaleAspectFit
+    }
     let homeView = HomeView()
     let homeProgressView = HomeProgressView()
-    var courseLabel = UILabel()
+    let homeQuizView = HomeQuizView()
 
     public init(homeViewModel: HomeViewModel) {
         self.viewModel = homeViewModel
@@ -25,44 +31,80 @@ public class HomeViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
+        bindActions()
+        bindTransition()
+    }
+
+    private func bindActions() {
+        
+    }
+
+    private func bindTransition() {
+        homeQuizView.onStartButtonTapped = { [weak self] indexPath in
+            let quizViewController = QuizViewController()
+            quizViewController.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(quizViewController, animated: true)
+        }
     }
 
     public override func setupViewProperty() {
         view.backgroundColor = CommonUIAssets.LMOrange4
 
-        courseLabel = courseLabel.then {
-            $0.text = "1단계 퀴즈"
-            $0.textColor = CommonUIAssets.LMBlack
-            $0.font = .systemFont(ofSize: 16, weight: .regular)
+        scrollView.do {
+            $0.showsVerticalScrollIndicator = false
+            $0.showsHorizontalScrollIndicator = false
         }
     }
 
     public override func setupHierarchy() {
-        [homeView, homeProgressView, courseLabel].forEach { view.addSubview($0) }
+        [logoImageView, scrollView].forEach { view.addSubview($0) }
+        scrollView.addSubview(contentView)
+        [homeView, homeProgressView, homeQuizView].forEach { contentView.addSubview($0) }
     }
 
     public override func setupDelegate() {
     }
 
     public override func setupLayout() {
+        logoImageView.snp.makeConstraints {
+            $0.height.equalTo(34)
+            $0.width.equalTo(65)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview().inset(20)
+        }
+
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(10)
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
+
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+
         homeView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
         }
 
         homeProgressView.snp.makeConstraints {
-            $0.top.equalTo(homeView.snp.bottom).offset(4)
+            $0.top.equalTo(homeView.snp.bottom)
             $0.centerX.equalToSuperview()
         }
 
-        courseLabel.snp.makeConstraints {
+        homeQuizView.snp.makeConstraints {
             $0.top.equalTo(homeProgressView.snp.bottom).offset(30)
-            $0.leading.equalTo(30)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(330)
+            $0.width.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(20)
         }
-    }
-
-    public override func setupBind() {
-//        courseLabel.text = "" + "단계 퀴즈"
     }
 }

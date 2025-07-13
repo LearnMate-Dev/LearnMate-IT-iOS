@@ -8,13 +8,11 @@
 import Domain
 import UIKit
 import SnapKit
+import RxSwift
 import Then
 
 open class HomeView: UIView {
-    let logoImageView = UIImageView().then {
-        $0.image = CommonUIAssets.smallLogo
-        $0.contentMode = .scaleAspectFit
-    }
+    let logoImageView = UIImageView()
     var profileView = UIView()
     var titleLabelStackView = UIStackView()
     var titleLabel = UILabel()
@@ -59,26 +57,19 @@ open class HomeView: UIView {
 
     func initUI() {
         self.snp.makeConstraints {
-            $0.height.equalTo(228)
+            $0.height.equalTo(113)
         }
 
         [titleLabel, subtitleLabel]
-            .forEach { titleLabelStackView.addSubview($0) }
+            .forEach { titleLabelStackView.addArrangedSubview($0) }
 
-        [logoImageView, profileView, titleLabelStackView]
+        [profileView, titleLabelStackView]
             .forEach { self.addSubview($0) }
-
-        logoImageView.snp.makeConstraints {
-            $0.height.equalTo(34)
-            $0.width.equalTo(65)
-            $0.leading.equalTo(self.safeAreaInsets).inset(20)
-            $0.top.equalTo(self.safeAreaInsets).inset(77)
-        }
 
         profileView.snp.makeConstraints {
             $0.height.width.equalTo(56)
             $0.leading.equalTo(self.safeAreaInsets).inset(24)
-            $0.top.equalTo(logoImageView.snp.bottom).offset(34)
+            $0.top.equalToSuperview().inset(25)
         }
 
         titleLabelStackView.snp.makeConstraints {
@@ -86,14 +77,6 @@ open class HomeView: UIView {
             $0.centerY.equalTo(profileView)
             $0.height.equalTo(49)
             $0.trailing.equalToSuperview().inset(20)
-        }
-
-        titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(2)
-        }
-
-        subtitleLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(2)
         }
     }
 

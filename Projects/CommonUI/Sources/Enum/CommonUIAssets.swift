@@ -26,6 +26,10 @@ public enum CommonUIAssets {
     /// * logo
     public static let smallLogo = image(named: "small_logo")
 
+    /// * Icon
+    public static let IconPlay = image(named: "play")
+    public static let IconBack = image(named: "back")
+
     /// color
     public static let LMOrange1 = color(named: "LMOrange01")
     public static let LMOrange3 = color(named: "LMOrange03")
@@ -33,6 +37,7 @@ public enum CommonUIAssets {
     public static let LMWhite = color(named: "LMWhite")
     public static let LMBlack = color(named: "LMBlack")
     public static let LMGray1 = color(named: "LMGray01")
+    public static let LMGray3 = color(named: "LMGray03")
     public static let LMGray5 = color(named: "LMGray05")
 }
 
