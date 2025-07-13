@@ -38,6 +38,20 @@ public class HomeViewController: BaseViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        bindActions()
+        bindTransition()
+    }
+
+    private func bindActions() {
+        
+    }
+
+    private func bindTransition() {
+        homeQuizView.onStartButtonTapped = { [weak self] indexPath in
+            let quizViewController = QuizViewController()
+            quizViewController.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(quizViewController, animated: true)
+        }
     }
 
     public override func setupViewProperty() {
@@ -89,9 +103,7 @@ public class HomeViewController: BaseViewController {
         homeQuizView.snp.makeConstraints {
             $0.top.equalTo(homeProgressView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-//            $0.height.equalTo(330)
-            $0.height.equalTo(500)
-
+            $0.height.equalTo(330)
             $0.width.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(20)
         }

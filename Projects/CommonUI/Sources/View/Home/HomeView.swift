@@ -8,6 +8,7 @@
 import Domain
 import UIKit
 import SnapKit
+import RxSwift
 import Then
 
 open class HomeView: UIView {

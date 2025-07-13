@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import Domain
 
 final class HomeQuizCell: UICollectionViewCell {
@@ -14,10 +16,14 @@ final class HomeQuizCell: UICollectionViewCell {
     var quizSubtitleLabel = UILabel()
     var startButton = UIButton()
 
+    let disposeBag = DisposeBag()
+    let onStartButtonTapped = PublishSubject<Void>()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initAttribute()
         initUI()
+        bindActions()
         quizTitleLabel.text = "처음 보는 사람과 인사하기"
         quizSubtitleLabel.text = "인사와 대화의 첫걸음을 배워요"
     }
@@ -92,5 +98,11 @@ final class HomeQuizCell: UICollectionViewCell {
     func configure(with course: CourseVO) {
         quizTitleLabel.text = "처음 보는 사람과 인사하기"
         quizSubtitleLabel.text = "인사와 대화의 첫걸음을 배워요"
+    }
+
+    func bindActions() {
+        startButton.rx.tap
+            .bind(to: onStartButtonTapped)
+            .disposed(by: disposeBag)
     }
 }

@@ -8,11 +8,14 @@
 import Domain
 import UIKit
 import SnapKit
+import RxSwift
 import Then
 
 open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var courses: [CourseVO] = []
+    var disposeBag = DisposeBag()
+    public var onStartButtonTapped: ((IndexPath) -> Void)?
 
     var courseLabel = UILabel()
     private var quizCollectionView: UICollectionView
@@ -80,7 +83,14 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeQuizCell.identifier, for: indexPath) as? HomeQuizCell else {
             return UICollectionViewCell()
         }
-//        cell.configure(with: courses[indexPath.item])
+        //        cell.configure(with: courses[indexPath.item])
+        cell.onStartButtonTapped
+            .subscribe(onNext: { [weak self] in
+                // indexPath와 함께 이벤트 전달
+                self?.onStartButtonTapped?(indexPath)
+            })
+            .disposed(by: cell.disposeBag)
+        
         return cell
     }
 
