@@ -64,8 +64,7 @@ public class HomeViewController: BaseViewController {
     }
 
     public override func setupHierarchy() {
-        view.addSubview(logoImageView)
-        view.addSubview(scrollView)
+        [logoImageView, scrollView].forEach { view.addSubview($0) }
         scrollView.addSubview(contentView)
         [homeView, homeProgressView, homeQuizView].forEach { contentView.addSubview($0) }
     }

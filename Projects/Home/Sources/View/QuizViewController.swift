@@ -51,7 +51,9 @@ public class QuizViewController: UIViewController {
 
     public func setupViewProperty() {
         view.backgroundColor = CommonUIAssets.LMOrange4
-
+        scrollView.backgroundColor = .yellow
+        contentView.backgroundColor = .red
+        
         scrollView.do {
             $0.showsVerticalScrollIndicator = false
             $0.showsHorizontalScrollIndicator = false
@@ -59,7 +61,8 @@ public class QuizViewController: UIViewController {
     }
 
     public func setupHierarchy() {
-        view.addSubview(navigationBar)
+        [navigationBar, scrollView].forEach { view.addSubview($0) }
+        scrollView.addSubview(contentView)
     }
 
     public func setupDelegate() {
@@ -69,6 +72,16 @@ public class QuizViewController: UIViewController {
         navigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.width.centerX.equalToSuperview()
+        }
+
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
+        }
+
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
         }
     }
 
