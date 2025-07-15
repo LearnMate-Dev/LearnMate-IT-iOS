@@ -1,8 +1,8 @@
 //
-//  QuizView.swift
+//  AnswerView.swift
 //  CommonUI
 //
-//  Created by 박지윤 on 7/13/25.
+//  Created by 박지윤 on 7/15/25.
 //
 
 import Domain
@@ -11,18 +11,18 @@ import SnapKit
 import RxSwift
 import Then
 
-open class QuizView: UIView {
-    var situationView = UIView()
-    var situationLabel = UILabel()
-    var questionView = UIView()
-    var questionLabel = UILabel()
+open class AnswerView: UIView {
+    var correctView = UIView()
+    var correctLabel = UILabel()
+    var wrongView = UIView()
+    var wrongLabel = UILabel()
 
-    public enum ChatType {
-        case situation
-        case question
+    public enum AnswerType {
+        case correct
+        case wrong
     }
 
-    public init(text: String, type: ChatType) {
+    public init(text: String, type: AnswerType) {
         super.init(frame: .zero)
         initAttribute(type: type)
         initUI(type: type)
@@ -32,26 +32,26 @@ open class QuizView: UIView {
     public func bind(course: CourseVO) {
     }
 
-    func bindDatas(text: String, type: ChatType) {
+    public func bindDatas(text: String, type: AnswerType) {
         switch type {
-        case .situation:
-            situationLabel.text = text
-        case .question:
-            questionLabel.text = text
+        case .correct:
+            correctLabel.text = text
+        case .wrong:
+            wrongLabel.text = text
         }
     }
 
-    func initAttribute(type: ChatType) {
+    func initAttribute(type: AnswerType) {
         switch type {
-        case .situation:
-            situationView = situationView.then {
+        case .correct:
+            correctView = correctView.then {
                 $0.layer.borderColor = UIColor.black.cgColor
                 $0.layer.borderWidth = 1
 //                $0.backgroundColor = CommonUIAssets.LMGray6
                 $0.layer.cornerRadius = 12
             }
 
-            situationLabel = situationLabel.then {
+            correctLabel = correctLabel.then {
                 $0.textColor = .black
     //            $0.textColor = CommonUIAssets.LMGray1
                 $0.textAlignment = .center
@@ -60,15 +60,15 @@ open class QuizView: UIView {
                 $0.setContentHuggingPriority(.required, for: .vertical)
                 $0.setContentCompressionResistancePriority(.required, for: .vertical)
             }
-        case .question:
-            questionView = questionView.then {
+        case .wrong:
+            wrongView = wrongView.then {
                 $0.layer.borderColor = UIColor.black.cgColor
                 $0.layer.borderWidth = 1
 //                $0.backgroundColor = CommonUIAssets.LMBlue
                 $0.layer.cornerRadius = 12
             }
 
-            questionLabel = questionLabel.then {
+            wrongLabel = wrongLabel.then {
                 $0.textColor = .black
     //            $0.textColor = CommonUIAssets.LMGray1
                 $0.font = .systemFont(ofSize: 14, weight: .regular)
@@ -79,31 +79,31 @@ open class QuizView: UIView {
         }
     }
 
-    func initUI(type: ChatType) {
+    func initUI(type: AnswerType) {
         switch type {
-        case .situation:
-            self.addSubview(situationView)
-            situationView.addSubview(situationLabel)
+        case .correct:
+            self.addSubview(correctView)
+            correctView.addSubview(correctLabel)
 
-            situationView.snp.makeConstraints {
-                $0.verticalEdges.equalToSuperview()
-                $0.centerX.equalToSuperview()
-            }
-
-            situationLabel.snp.makeConstraints {
-                $0.horizontalEdges.equalToSuperview().inset(20)
-                $0.verticalEdges.equalToSuperview().inset(14)
-            }
-        case .question:
-            self.addSubview(questionView)
-            questionView.addSubview(questionLabel)
-
-            questionView.snp.makeConstraints {
+            correctView.snp.makeConstraints {
                 $0.verticalEdges.equalToSuperview()
                 $0.leading.equalToSuperview().inset(20)
             }
-            
-            questionLabel.snp.makeConstraints {
+
+            correctLabel.snp.makeConstraints {
+                $0.horizontalEdges.equalToSuperview().inset(16)
+                $0.verticalEdges.equalToSuperview().inset(12)
+            }
+        case .wrong:
+            self.addSubview(wrongView)
+            wrongView.addSubview(wrongLabel)
+
+            wrongView.snp.makeConstraints {
+                $0.verticalEdges.equalToSuperview()
+                $0.leading.equalToSuperview().inset(20)
+            }
+
+            wrongLabel.snp.makeConstraints {
                 $0.horizontalEdges.equalToSuperview().inset(16)
                 $0.verticalEdges.equalToSuperview().inset(12)
             }
@@ -114,4 +114,3 @@ open class QuizView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
