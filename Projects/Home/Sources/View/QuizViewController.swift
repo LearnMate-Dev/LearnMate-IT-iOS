@@ -235,12 +235,11 @@ public class QuizViewController: UIViewController {
     }
     
     func showEndMessage() {
-        let endLabel = UILabel().then {
-            $0.text = "퀴즈가 종료되었습니다 🎉"
-            $0.textAlignment = .center
-            $0.font = .boldSystemFont(ofSize: 16)
-        }
-        
-        quizStackView.addArrangedSubview(endLabel)
+        showQuizCompleteAlert()
+    }
+    
+    func showQuizCompleteAlert() {
+        let alertView = QuizCompleteAlertView()
+        alertView.show(in: view)
     }
 }
