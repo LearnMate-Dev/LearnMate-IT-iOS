@@ -14,14 +14,14 @@ protocol LoginViewModelProtocol {
 
 public class LoginViewModel: LoginViewModelProtocol {
     private let disposeBag = DisposeBag()
-    private let courseUseCase: CourseUseCase
-    public init(courseUseCase: CourseUseCase) {
-        self.courseUseCase = courseUseCase
-        getCourses()
+    private let loginUseCase: LoginUseCase
+    public init(loginUseCase: LoginUseCase) {
+        self.loginUseCase = loginUseCase
+        postGoogleLogin()
     }
     
     func postGoogleLogin() {
-        courseUseCase.getCourses()
+        loginUseCase.postGoogleLogin()
             .subscribe(onSuccess: { response in
                 print(response)
             }, onFailure: { _ in

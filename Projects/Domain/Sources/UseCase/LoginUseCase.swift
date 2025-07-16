@@ -13,7 +13,7 @@ public protocol LoginUseCase {
 
 public final class DefaultLoginUseCase: LoginUseCase {
     let repository: LoginRepository
-    
+
     public init(repository: LoginRepository) {
         self.repository = repository
     }

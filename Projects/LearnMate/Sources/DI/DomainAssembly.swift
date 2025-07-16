@@ -14,5 +14,10 @@ public struct DomainAssembly: Assembly {
             let repository = resolver.resolve(CourseRepository.self)!
             return DefaultCourseUseCase(repository: repository)
         }
+
+        container.register(LoginUseCase.self) { resolver in
+            let repository = resolver.resolve(LoginRepository.self)!
+            return DefaultLoginUseCase(repository: repository)
+        }
     }
 }

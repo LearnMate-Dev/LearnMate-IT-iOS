@@ -21,25 +21,37 @@ open class LoginView: UIView {
     var googleLoginButton = UIButton()
     var appleLoginButton = UIButton()
 
+    let disposeBag = DisposeBag()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initAttribute()
         initUI()
+        bindEvents()
     }
 
     public func bind(course: CourseVO) {
     }
 
+    func bindEvents() {
+        googleLoginButton.rx.tap
+            .bind { [weak self] in
+                print("구글 로그인 버튼 클릭됨")
+            }
+            .disposed(by: disposeBag)
+    }
+
     func initAttribute() {
+        self.backgroundColor = .white
+
         googleLoginButton = googleLoginButton.then {
-            $0.backgroundColor = .green
+            $0.backgroundColor = .blue
             $0.layer.cornerRadius = 12
         }
 
         appleLoginButton = appleLoginButton.then {
-            $0.backgroundColor = .blue
+            $0.backgroundColor = .black
             $0.layer.cornerRadius = 12
-
         }
     }
 
@@ -48,7 +60,7 @@ open class LoginView: UIView {
             .forEach { self.addSubview($0) }
 
         logoLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(100)
+            $0.top.equalToSuperview().inset(130)
             $0.centerX.equalToSuperview()
         }
 
@@ -64,7 +76,7 @@ open class LoginView: UIView {
         }
 
         appleLoginButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(50)
+            $0.bottom.equalToSuperview().inset(60)
             $0.height.equalTo(60)
             $0.horizontalEdges.equalToSuperview().inset(20)
         }

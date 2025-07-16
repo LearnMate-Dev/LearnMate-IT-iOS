@@ -8,6 +8,7 @@
 import CommonUI
 import Home
 import UIKit
+import Login
 
 protocol AppCoordinator: Coordinator {
     // func showLoginFlow()
@@ -34,18 +35,20 @@ final class DefaultAppCoordinator: AppCoordinator{
     }
     
     func start() {
-        setNavigationBar()
-        setTabBarCoordinator()
-        showTabbarFlow()
+        let loginViewController = dependency.injector.resolve(LoginViewController.self)
+        self.navigationController.pushViewController(loginViewController, animated: true)
+//        setNavigationBar()
+//        setTabBarCoordinator()
+//        showTabbarFlow()
     }
-    
+
     /// 탭바 컨트롤러 플로우
     func showTabbarFlow() {
         if getChildCoordinator(.tabbar) == nil { setTabBarCoordinator() }
         let tabBarCoordinator = getChildCoordinator(.tabbar) as! TabBarCoordinator
         tabBarCoordinator.start()
     }
-    
+
     /// 탭바 컨트롤러 세팅, 자식 코디네이터로 등록
     func setTabBarCoordinator() {
         let dependency = DefaultTabBarController.Dependency.init(

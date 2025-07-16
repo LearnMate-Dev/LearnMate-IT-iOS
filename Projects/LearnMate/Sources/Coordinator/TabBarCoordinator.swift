@@ -6,6 +6,7 @@
 //
 
 import CommonUI
+import Login
 import Home
 import UIKit
 
@@ -40,7 +41,7 @@ final class DefaultTabBarController: TabBarCoordinator {
         })
         self.configureTabbarController(with: controllers)
     }
-    
+
     /// 각 탭바에 들어갈 네비게이션 컨트롤러 생성
     private func createTabNavigationController(of page: TabBarPage) -> UINavigationController {
         let tabNavigationController = UINavigationController()

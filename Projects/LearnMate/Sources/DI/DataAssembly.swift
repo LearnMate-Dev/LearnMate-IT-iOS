@@ -14,5 +14,9 @@ public struct DataAssembly: Assembly {
         container.register(CourseRepository.self) { _ in
             return DefaultCourseRepository()
         }
+
+        container.register(LoginRepository.self) { _ in
+            return DefaultLoginRepository()
+        }
     }
 }

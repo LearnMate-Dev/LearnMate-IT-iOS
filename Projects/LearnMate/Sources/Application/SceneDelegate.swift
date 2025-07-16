@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         injector.assemble([DataAssembly(),
                            DomainAssembly(),
+                           LoginAssembly(),
                            HomeAssembly()])
         appCoordinator?.start()
     }
