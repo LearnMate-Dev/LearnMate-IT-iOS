@@ -1,13 +1,13 @@
 import ProjectDescription
 
 let project = Project(
-    name: "Stats",
+    name: "Login",
     targets: [
         .target(
-            name: "Stats",
+            name: "Login",
             destinations: .iOS,
             product: .framework,
-            bundleId: "io.tuist.Stats",
+            bundleId: "io.tuist.Login",
             sources: ["Sources/**"],
             dependencies: [
                 .project(target: "Domain", path: "../Domain"),
@@ -15,19 +15,20 @@ let project = Project(
                 .project(target: "CommonUI", path: "../CommonUI"),
                 .external(name: "SnapKit"),
                 .external(name: "Then"),
-                .external(name: "RxSwift")
+                .external(name: "RxSwift"),
+                .external(name: "Alamofire")
             ]
         ),
         .target(
-            name: "StatsTests",
+            name: "LoginTests",
             destinations: .iOS,
             product: .unitTests,
-            bundleId: "io.tuist.StatsTests",
+            bundleId: "io.tuist.LoginTests",
             infoPlist: .default,
             sources: ["Tests/**"],
             resources: [],
             dependencies: [
-                .target(name: "Stats")
+                .target(name: "Login")
             ]
         )
     ]
