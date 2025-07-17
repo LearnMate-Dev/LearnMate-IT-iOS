@@ -38,6 +38,9 @@ public class HomeViewController: BaseViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        // Bundle 디버깅
+        CommonUIBundleHelper.debugBundle()
+        
         bindActions()
         bindTransition()
         bindStepList()

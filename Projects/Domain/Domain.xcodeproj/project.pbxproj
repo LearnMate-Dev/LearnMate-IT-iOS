@@ -3,25 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0BCC97781DA6EE874B081DBE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A2E30672E510822AAF38EAD /* RxSwift.framework */; };
 		0DED9075FE34124C093D9FDF /* LoginVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD08A7186FB9676854B7AEAC /* LoginVO.swift */; };
+		1782D2A1A7FB2BD6FFA1DFEA /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */; };
+		3E835D4F2E5F639557AC7C06 /* TokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */; };
 		5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747DBBCAB797E5E0A82177F2 /* CourseVO.swift */; };
 		69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */; };
+		92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */; };
 		94174705336F0E353686EA83 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E8F32CEB080432AB7EA94 /* LoginUseCase.swift */; };
-		95369A662E2891B9000C893F /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A652E2891B4000C893F /* TokenRepository.swift */; };
-		95369A6A2E2891E3000C893F /* TokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A692E2891DE000C893F /* TokenUseCase.swift */; };
-		95369A6D2E289DB7000C893F /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A6C2E289DB3000C893F /* StepVO.swift */; };
-		95369A702E28A811000C893F /* QuizVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A6F2E28A80E000C893F /* QuizVO.swift */; };
-		95369A732E28A85F000C893F /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A722E28A85C000C893F /* QuizUseCase.swift */; };
-		95369A762E28A880000C893F /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A752E28A87C000C893F /* QuizRepository.swift */; };
-		9562CA132E279BF80038F415 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562CA122E279BF30038F415 /* UIView+Extension.swift */; };
+		A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CFC331192C9FE77F3446A /* StepVO.swift */; };
+		B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */; };
 		BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */; };
+		CFBF3D58082C5F201FCFFD5B /* QuizVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F9958F3DAC8013B440CEEA /* QuizVO.swift */; };
 		D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */; };
 		D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */; };
+		D81C7F2583A1BD30BD7C53DD /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1F66123A81636A913985E6 /* TokenRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,18 +38,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A1F66123A81636A913985E6 /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
+		1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
+		24F9958F3DAC8013B440CEEA /* QuizVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVO.swift; sourceTree = "<group>"; };
 		2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		574E8F32CEB080432AB7EA94 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUseCase.swift; sourceTree = "<group>"; };
 		747DBBCAB797E5E0A82177F2 /* CourseVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVO.swift; sourceTree = "<group>"; };
+		798CFC331192C9FE77F3446A /* StepVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVO.swift; sourceTree = "<group>"; };
 		8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
-		95369A652E2891B4000C893F /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
-		95369A692E2891DE000C893F /* TokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUseCase.swift; sourceTree = "<group>"; };
-		95369A6C2E289DB3000C893F /* StepVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVO.swift; sourceTree = "<group>"; };
-		95369A6F2E28A80E000C893F /* QuizVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVO.swift; sourceTree = "<group>"; };
-		95369A722E28A85C000C893F /* QuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUseCase.swift; sourceTree = "<group>"; };
-		95369A752E28A87C000C893F /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
-		9562CA122E279BF30038F415 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUseCase.swift; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
 		DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
 		F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseUseCase.swift; sourceTree = "<group>"; };
@@ -89,8 +89,8 @@
 		266DBF54466AF3D041290301 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9562CA122E279BF30038F415 /* UIView+Extension.swift */,
 				2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */,
+				32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -109,10 +109,10 @@
 		2BE278B80FDD95404961E580 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				95369A722E28A85C000C893F /* QuizUseCase.swift */,
-				95369A692E2891DE000C893F /* TokenUseCase.swift */,
 				F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */,
 				574E8F32CEB080432AB7EA94 /* LoginUseCase.swift */,
+				6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */,
+				ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -137,10 +137,10 @@
 		9C17CEB3595F4C3FA69C5BAF /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				95369A6F2E28A80E000C893F /* QuizVO.swift */,
-				95369A6C2E289DB3000C893F /* StepVO.swift */,
 				747DBBCAB797E5E0A82177F2 /* CourseVO.swift */,
 				FD08A7186FB9676854B7AEAC /* LoginVO.swift */,
+				24F9958F3DAC8013B440CEEA /* QuizVO.swift */,
+				798CFC331192C9FE77F3446A /* StepVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -148,10 +148,10 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				95369A752E28A87C000C893F /* QuizRepository.swift */,
-				95369A652E2891B4000C893F /* TokenRepository.swift */,
 				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
 				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
+				1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */,
+				1A1F66123A81636A913985E6 /* TokenRepository.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -194,6 +194,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -229,19 +231,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */,
-				95369A702E28A811000C893F /* QuizVO.swift in Sources */,
-				95369A6A2E2891E3000C893F /* TokenUseCase.swift in Sources */,
-				95369A732E28A85F000C893F /* QuizUseCase.swift in Sources */,
+				92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */,
 				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
-				9562CA132E279BF80038F415 /* UIView+Extension.swift in Sources */,
-				95369A662E2891B9000C893F /* TokenRepository.swift in Sources */,
 				D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */,
-				95369A762E28A880000C893F /* QuizRepository.swift in Sources */,
+				1782D2A1A7FB2BD6FFA1DFEA /* QuizRepository.swift in Sources */,
+				D81C7F2583A1BD30BD7C53DD /* TokenRepository.swift in Sources */,
 				BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */,
 				94174705336F0E353686EA83 /* LoginUseCase.swift in Sources */,
-				95369A6D2E289DB7000C893F /* StepVO.swift in Sources */,
+				B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */,
+				3E835D4F2E5F639557AC7C06 /* TokenUseCase.swift in Sources */,
 				5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */,
 				0DED9075FE34124C093D9FDF /* LoginVO.swift in Sources */,
+				CFBF3D58082C5F201FCFFD5B /* QuizVO.swift in Sources */,
+				A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +417,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
