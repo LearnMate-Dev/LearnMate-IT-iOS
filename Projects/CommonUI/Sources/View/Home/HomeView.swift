@@ -25,7 +25,6 @@ open class HomeView: UIView {
     }
 
     public func bind(course: CourseVO) {
-        titleLabel.text = "안녕하세요, " + "" + "님!"
     }
 
     func initAttribute() {
@@ -43,7 +42,7 @@ open class HomeView: UIView {
         }
 
         titleLabel = titleLabel.then {
-            $0.text = "안녕하세요, OO님!"
+            $0.text = "안녕하세요!"
             $0.textColor = CommonUIAssets.LMBlack
             $0.font = .systemFont(ofSize: 19, weight: .semibold)
         }
