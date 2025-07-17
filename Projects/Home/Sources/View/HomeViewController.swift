@@ -62,7 +62,7 @@ public class HomeViewController: BaseViewController {
         viewModel.quizSubject
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] quiz in
-                let quizViewController = QuizViewController()
+                let quizViewController = QuizViewController(quizData: quiz)
                 quizViewController.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(quizViewController, animated: true)
             })
