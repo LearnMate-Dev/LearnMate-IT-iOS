@@ -41,6 +41,7 @@ public class HomeViewController: BaseViewController {
         bindActions()
         bindTransition()
         bindStepList()
+        bindCourseData()
     }
 
     private func bindActions() {
@@ -60,6 +61,15 @@ public class HomeViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] stepList in
                 self?.homeQuizView.setQuizList(stepList)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindCourseData() {
+        viewModel.courseSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] courseList in
+                self?.homeProgressView.setCourseList(courseList)
             })
             .disposed(by: disposeBag)
     }

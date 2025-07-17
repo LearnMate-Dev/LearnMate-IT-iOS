@@ -14,13 +14,14 @@ open class HomeProgressView: UIView {
     var courseLabel = UILabel()
     var progressLabel = UILabel()
     let progressEntireView = UIView().then {
-        $0.backgroundColor = CommonUIAssets.LMGray5
+        $0.backgroundColor = .lightGray
         $0.layer.cornerRadius = 3
     }
     var progressView = UIView()
     var buttonStackView = UIStackView()
     var restartButton = UIButton()
     var continueButton = UIButton()
+    var courseList: CourseVO?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,9 +29,26 @@ open class HomeProgressView: UIView {
         initUI()
     }
 
-    public func bind(course: CourseVO) {
-        courseLabel.text = "한국어 훈련 \(course.courseLv ?? 1)단계"
-        progressLabel.text = "진행률: " + "" + "%"
+    public func setCourseList(_ list: CourseVO) {
+        self.courseList = list
+        courseLabel.text = "한국어 훈련 \(courseList?.courseLv ?? 0)단계"
+        progressLabel.text = "진행률 \(courseList?.progress ?? 0)%"
+        updateProgress(progress: courseList?.progress ?? 0)
+    }
+
+    public func updateProgress(progress: Int) {
+        let progressEntireWidth = 344 - 40
+        let progressWidth = Int(CGFloat(progress)) / 100 * progressEntireWidth
+
+        progressView.snp.updateConstraints { make in
+            make.width.equalTo(progressWidth)
+        }
+
+        if progress >= 100 {
+            progressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        } else {
+            progressView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
     }
 
     func initAttribute() {
@@ -46,13 +64,12 @@ open class HomeProgressView: UIView {
         }
 
         progressLabel = progressLabel.then {
-            $0.text = "진행률: 60%"
             $0.textColor = CommonUIAssets.LMGray1
             $0.font = .systemFont(ofSize: 12, weight: .regular)
         }
 
         progressView = progressView.then {
-            $0.backgroundColor = CommonUIAssets.LMOrange1
+            $0.backgroundColor = .red
             $0.layer.cornerRadius = 3
             $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
             // TODO: 100% 달성 시 모든 corner에 적용

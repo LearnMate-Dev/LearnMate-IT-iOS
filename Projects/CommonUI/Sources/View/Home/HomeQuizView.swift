@@ -34,7 +34,7 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
 
     public func bind(course: CourseVO) {
-        courseLabel.text = "\(course.courseLv ?? 1)단계 퀴즈"
+//        courseLabel.text = "\(course.courseLv ?? 1)단계 퀴즈"
     }
 
     func initAttribute() {
@@ -72,7 +72,6 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
         quizCollectionView.isScrollEnabled = false
     }
 
-    // stepList를 받아서 collectionView를 갱신하는 메서드
     public func setQuizList(_ list: [StepVO]) {
         self.stepList = list
         quizCollectionView.reloadData()
@@ -85,7 +84,7 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return stepList.count
     }
-    
+
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeQuizCell.identifier, for: indexPath) as? HomeQuizCell else {
             return UICollectionViewCell()
