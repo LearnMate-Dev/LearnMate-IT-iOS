@@ -56,10 +56,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            url.path == "/callback" {
             if let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
                let token = components.queryItems?.first(where: { $0.name == "accessToken" })?.value {
-                print("✅ Access Token from SceneDelegate:", token)
-
+                                print("✅ Access Token from SceneDelegate:", token)
+                print("🔑 토큰 길이: \(token.count)")
+                
                 let tokenRepository = injector.resolve(TokenRepository.self)
                 tokenRepository.saveAccessToken(token)
+                
+                // 저장된 토큰 확인
+                if let savedToken = tokenRepository.getAccessToken() {
+                    print("💾 저장된 토큰: \(savedToken)")
+                }
+
+                DispatchQueue.main.async { [weak self] in
+                    self?.appCoordinator?.showTabbarFlow()
+                }
             }
         }
     }

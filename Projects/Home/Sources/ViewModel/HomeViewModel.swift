@@ -16,6 +16,9 @@ public class HomeViewModel: HomeViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let courseUseCase: CourseUseCase
     private let tokenUseCase: TokenUseCase
+    
+    let stepListSubject = PublishSubject<[StepVO]>()
+    
     public init(courseUseCase: CourseUseCase, tokenUseCase: TokenUseCase) {
         self.courseUseCase = courseUseCase
         self.tokenUseCase = tokenUseCase
@@ -24,10 +27,14 @@ public class HomeViewModel: HomeViewModelProtocol {
     
     func getCourses() {
         courseUseCase.getCourses()
-            .subscribe(onSuccess: { response in
-                print(response)
-            }, onFailure: { _ in
-                
+            .subscribe(onSuccess: { [weak self] response in
+                print("✅ 코스 정보: \(response)")
+                // 첫 번째 코스의 stepList 전달
+                if let firstCourse = response.list.first {
+                    self?.stepListSubject.onNext(firstCourse.stepList)
+                }
+            }, onFailure: { error in
+                print("❌ 코스 조회 실패: \(error)")
             }).disposed(by: disposeBag)
     }
 }

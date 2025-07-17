@@ -7,5 +7,5 @@
 
 enum NetworkConfiguration {
     static let appID = ""
-    static let baseUrl = ""
+    static let baseUrl = "https://dev-learnmate.store"
 }

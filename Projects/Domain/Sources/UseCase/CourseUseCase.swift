@@ -8,7 +8,7 @@
 import RxSwift
 
 public protocol CourseUseCase {
-    func getCourses() -> Single<CourseVO>
+    func getCourses() -> Single<HomeCourseVO>
 }
 
 public final class DefaultCourseUseCase: CourseUseCase {
@@ -18,7 +18,7 @@ public final class DefaultCourseUseCase: CourseUseCase {
         self.repository = repository
     }
 
-    public func getCourses() -> Single<CourseVO> {
+    public func getCourses() -> Single<HomeCourseVO> {
         return repository.getCourses()
     }
 }

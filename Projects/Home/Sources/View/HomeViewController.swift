@@ -40,6 +40,7 @@ public class HomeViewController: BaseViewController {
         super.viewDidLoad()
         bindActions()
         bindTransition()
+        bindStepList()
     }
 
     private func bindActions() {
@@ -52,6 +53,15 @@ public class HomeViewController: BaseViewController {
             quizViewController.hidesBottomBarWhenPushed = true
             self?.navigationController?.pushViewController(quizViewController, animated: true)
         }
+    }
+    
+    private func bindStepList() {
+        viewModel.stepListSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] stepList in
+                self?.homeQuizView.setQuizList(stepList)
+            })
+            .disposed(by: disposeBag)
     }
 
     public override func setupViewProperty() {

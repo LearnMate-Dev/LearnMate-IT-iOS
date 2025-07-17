@@ -14,6 +14,7 @@ import Then
 open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var courses: [CourseVO] = []
+    var stepList: [StepVO] = []
     var disposeBag = DisposeBag()
     public var onStartButtonTapped: ((IndexPath) -> Void)?
 
@@ -71,26 +72,32 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
         quizCollectionView.isScrollEnabled = false
     }
 
+    // stepList를 받아서 collectionView를 갱신하는 메서드
+    public func setQuizList(_ list: [StepVO]) {
+        self.stepList = list
+        quizCollectionView.reloadData()
+    }
+
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return stepList.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeQuizCell.identifier, for: indexPath) as? HomeQuizCell else {
             return UICollectionViewCell()
         }
-        //        cell.configure(with: courses[indexPath.item])
+        let step = stepList[indexPath.item]
+        cell.quizTitleLabel.text = step.stepTitle
+        cell.quizSubtitleLabel.text = step.stepDescription
         cell.onStartButtonTapped
             .subscribe(onNext: { [weak self] in
-                // indexPath와 함께 이벤트 전달
                 self?.onStartButtonTapped?(indexPath)
             })
             .disposed(by: cell.disposeBag)
-        
         return cell
     }
 

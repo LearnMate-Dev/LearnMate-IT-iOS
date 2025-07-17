@@ -10,48 +10,53 @@ import RxSwift
 import Alamofire
 
 public class DefaultCourseRepository: CourseRepository {
-    public init() {}
+    private let tokenRepository: TokenRepository
+    
+    public init(tokenRepository: TokenRepository) {
+        self.tokenRepository = tokenRepository
+    }
 
-    public func getCourses() -> Single<CourseVO> {
+    public func getCourses() -> Single<HomeCourseVO> {
         return request(
-            endpoint: NetworkConfiguration.baseUrl,
-            id: 4,
-            responseType: CourseDTO.self
+            endpoint: "/api/courses",
+            responseType: CourseResponseDTO.self
         )
         .map { dto in
-            return CourseVO(
-                courseLv: 1,
-                courseDescription: "courseDescription",
-                stepLv: 1,
-                stepTitle: "stepTitle",
-                stepDescription: "stepDescription",
-                stepStatus: "SOLVED"
-            )
+            return dto.toHome()
         }
     }
 
-    private func request<T: Decodable>(endpoint: String, id: Int, responseType: T.Type) -> Single<T> {
-            return Single.create { single in
-                let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
-                let parameters: Parameters = [
-                    "id": id
-                ]
+    private func request<T: Decodable>(endpoint: String, responseType: T.Type) -> Single<T> {
+        return Single.create { single in
+            let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
+            var headers: HTTPHeaders = [:]
 
-                let request = AF.request(url,
-                                         method: .get,
-                                         parameters: parameters,
-                                         encoding: URLEncoding.queryString)
-                    .validate()
-                    .responseDecodable(of: responseType) { response in
-                        switch response.result {
-                        case .success(let value):
-                            single(.success(value))
-                        case .failure(let error):
-                            single(.failure(error))
-                        }
-                    }
-
-                return Disposables.create { request.cancel() }
+            if let token = self.tokenRepository.getAccessToken() {
+                print("🔑 사용할 토큰: \(token)")
+                headers.add(name: "Authorization", value: "Bearer \(token)")
+            } else {
+                print("❌ 토큰이 없습니다!")
             }
+            print("🌐 API 요청 URL: \(url)")
+            print("🔑 Authorization 헤더: \(headers)")
+            
+            let request = AF.request(url,
+                                     method: .get,
+                                     encoding: URLEncoding.queryString,
+                                     headers: headers)
+                .validate()
+                .responseDecodable(of: responseType) { response in
+                    switch response.result {
+                    case .success(let value):
+                        print("✅ API 응답 성공: \(value)")
+                        single(.success(value))
+                    case .failure(let error):
+                        print("❌ API 응답 실패: \(error)")
+                        single(.failure(error))
+                    }
+                }
+
+            return Disposables.create { request.cancel() }
         }
     }
+}

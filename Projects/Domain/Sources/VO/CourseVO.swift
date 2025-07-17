@@ -14,19 +14,17 @@ public struct HomeCourseVO {
 }
 
 public struct CourseVO {
-    public let courseLv: Int?
-    public let courseDescription: String?
-    public let stepLv: Int?
-    public let stepTitle: String?
-    public let stepDescription: String?
-    public let stepStatus: String?
+    public let courseLv: Int
+    public let courseDescription: String
+    public let stepList: [StepVO]
+    public let progress: Int
+    public let courseStatus: String
 
-    public init(courseLv: Int?, courseDescription: String?, stepLv: Int?, stepTitle: String?, stepDescription: String?, stepStatus: String?) {
+    public init(courseLv: Int, courseDescription: String, stepList: [StepVO], progress: Int, courseStatus: String) {
         self.courseLv = courseLv
         self.courseDescription = courseDescription
-        self.stepLv = stepLv
-        self.stepTitle = stepTitle
-        self.stepDescription = stepDescription
-        self.stepStatus = stepStatus
+        self.stepList = stepList
+        self.progress = progress
+        self.courseStatus = courseStatus
     }
 }
