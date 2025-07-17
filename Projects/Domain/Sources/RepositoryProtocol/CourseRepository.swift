@@ -8,5 +8,5 @@
 import RxSwift
 
 public protocol CourseRepository {
-    func getCourses() -> Single<CourseVO>
+    func getCourses() -> Single<HomeCourseVO>
 }

@@ -7,7 +7,7 @@ let project = Project(
             name: "Stats",
             destinations: .iOS,
             product: .framework,
-            bundleId: "io.tuist.Chat",
+            bundleId: "io.tuist.Stats",
             sources: ["Sources/**"],
             dependencies: [
                 .project(target: "Domain", path: "../Domain"),

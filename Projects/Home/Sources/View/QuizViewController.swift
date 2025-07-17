@@ -5,6 +5,7 @@
 //  Created by 박지윤 on 7/12/25.
 //
 
+import Domain
 import CommonUI
 import UIKit
 import SnapKit
@@ -34,12 +35,13 @@ public class QuizViewController: UIViewController {
     var currentQuestionIndex = 0
     var currentOptionStackView: UIStackView?
     var currentFeedbackText = ""
-    var correctAnswers = [1, 1, 0] // 정답 인덱스
+    var quizData: QuizVO?
+    var currentQuiz: QuizDetailVO?
 
-    //    public init(homeViewModel: HomeViewModel) {
-    //        self.viewModel = homeViewModel
-    //        super.init()
-    //    }
+    public init(quizData: QuizVO) {
+        self.quizData = quizData
+        super.init(nibName: nil, bundle: nil)
+    }
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -60,7 +62,9 @@ public class QuizViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         bindDatas()
-        showSituation(index: 0)
+        if let quizData = quizData {
+            showSituation(index: 0)
+        }
     }
     
     public func setupViewProperty() {
@@ -108,56 +112,42 @@ public class QuizViewController: UIViewController {
     }
     
     func bindDatas() {
-        navigationBar.setupViewProperty(title: "처음 보는 사람과 인사하기")
+        if let quizData = quizData {
+            navigationBar.setupViewProperty(title: quizData.stepTitle)
+        } else {
+            navigationBar.setupViewProperty(title: "처음 보는 사람과 인사하기")
+        }
     }
 
     func showSituation(index: Int) {
-        let situations = [
-            "당신은 체험 첫날, 안내 데스크에 도착했어요.\n직원 한 분이 다가오며 웃으면서 말을 걸어요.",
-            "점심 시간이 가까워지고 있어요.\n주변 사람들이 슬슬 자리를 정리하고 있어요.",
-            "동료가 다가와서 식사에 대해 물어봐요.\n어떤 반응을 할까요?"
-        ]
-
-        guard index < situations.count else {
+        guard let quizData = quizData, index < quizData.quizList.count else {
             showEndMessage()
             return
         }
-
-        let situationView = QuizView(text: situations[index], type: .situation)
-        quizStackView.addArrangedSubview(situationView)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.showQuestion(index: index)
+        currentQuiz = quizData.quizList[index]
+        let situationText = quizData.quizList[index].quizSituation
+        
+        if !situationText.isEmpty {
+            let situationView = QuizView(text: situationText, type: .situation)
+            quizStackView.addArrangedSubview(situationView)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.showQuestion(index: index)
+            }
+        } else {
+            showQuestion(index: index)
         }
     }
     
     func showQuestion(index: Int) {
-        guard index == self.currentQuestionIndex else { return }
+        guard index == self.currentQuestionIndex,
+              let quizData = quizData,
+              index < quizData.quizList.count else { return }
         
-        let questions = [
-            "안녕하세요. 혹시 실습생이신가요?",
-            "오늘 어떤 부서에 배정받으셨나요?",
-            "점심은 보통 몇 시에 먹을까요?"
-        ]
+        let currentQuiz = quizData.quizList[index]
         
-        let options = [
-            ["응. 너는 누구야?", "네, 안녕하세요.", "왜요?"],
-            ["몰라요.", "총무팀이요!", "어디더라?"],
-            ["12시쯤이요.", "저녁이요?", "모르겠어요."]
-        ]
-        
-        let feedbacks = [
-            "처음 본 사람에게 반말은 예의에 어긋나요.",
-            "부서를 정확히 말하는 게 좋아요.",
-            "점심 시간은 보통 12시입니다."
-        ]
-        
-        guard index < questions.count else {
-            self.showEndMessage()
-            return
-        }
-
-        let questionView = QuizView(text: questions[index], type: .question)
+        let questionView = QuizView(text: currentQuiz.quiz, type: .question)
         quizStackView.addArrangedSubview(questionView)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -166,8 +156,8 @@ public class QuizViewController: UIViewController {
                 $0.spacing = 0
             }
 
-            for i in 0..<3 {
-                let optionView = OptionView(text: options[index][i])
+            for (i, option) in currentQuiz.quizOptions.enumerated() {
+                let optionView = OptionView(text: option.answer)
                 optionView.tag = i
                 optionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleOptionTap(_:))))
                 optionView.isUserInteractionEnabled = true
@@ -177,16 +167,18 @@ public class QuizViewController: UIViewController {
             self.quizStackView.addArrangedSubview(optionStack)
             self.currentQuestionIndex = index
             self.currentOptionStackView = optionStack
-            self.currentFeedbackText = feedbacks[index]
         }
     }
     
     @objc func handleOptionTap(_ sender: UITapGestureRecognizer) {
         guard let selectedView = sender.view else { return }
-        guard let optionStack = currentOptionStackView else { return }
+        guard let optionStack = currentOptionStackView,
+              let quizData = quizData,
+              currentQuestionIndex < quizData.quizList.count else { return }
 
         let selectedIndex = selectedView.tag
-        let correctIndex = correctAnswers[currentQuestionIndex]
+        let currentQuiz = quizData.quizList[currentQuestionIndex]
+        let correctIndex = currentQuiz.correctIdx
 
         for view in optionStack.arrangedSubviews {
             if view != selectedView {
@@ -196,7 +188,8 @@ public class QuizViewController: UIViewController {
         }
 
         if selectedIndex == correctIndex {
-            let feedback = AnswerView(text: currentFeedbackText, type: .correct)
+            let feedbackText = currentQuiz.quizOptions[selectedIndex].description
+            let feedback = AnswerView(text: feedbackText, type: .correct)
             quizStackView.addArrangedSubview(feedback)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -209,19 +202,14 @@ public class QuizViewController: UIViewController {
             quizStackView.addArrangedSubview(feedback)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                let options = [
-                    ["응. 너는 누구야?", "네, 안녕하세요.", "왜요?"],
-                    ["몰라요.", "총무팀이요!", "어디더라?"],
-                    ["12시쯤이요.", "저녁이요?", "모르겠어요."]
-                ]
-                let index = self.currentQuestionIndex
+                let currentQuiz = quizData.quizList[self.currentQuestionIndex]
                 let optionStack = UIStackView().then {
                     $0.axis = .vertical
                     $0.spacing = 0
                 }
 
-                for i in 0..<3 {
-                    let optionView = OptionView(text: options[index][i])
+                for (i, option) in currentQuiz.quizOptions.enumerated() {
+                    let optionView = OptionView(text: option.answer)
                     optionView.tag = i
                     optionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.handleOptionTap(_:))))
                     optionView.isUserInteractionEnabled = true

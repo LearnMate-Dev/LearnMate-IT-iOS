@@ -7,7 +7,24 @@
 
 import UIKit
 
-public final class CommonUIBundleHelper {}
+public final class CommonUIBundleHelper {
+    public static func debugBundle() {
+        let bundle = Bundle(for: CommonUIBundleHelper.self)
+        print("🔍 CommonUI Bundle: \(bundle)")
+        print("🔍 Bundle Identifier: \(bundle.bundleIdentifier ?? "nil")")
+        print("🔍 Bundle Path: \(bundle.bundlePath)")
+        
+        if let resourcePath = bundle.resourcePath {
+            print("🔍 Resource Path: \(resourcePath)")
+            do {
+                let contents = try FileManager.default.contentsOfDirectory(atPath: resourcePath)
+                print("🔍 Bundle Contents: \(contents)")
+            } catch {
+                print("❌ Error reading bundle contents: \(error)")
+            }
+        }
+    }
+}
 
 public enum CommonUIAssets {
     /// image
@@ -42,11 +59,13 @@ public enum CommonUIAssets {
 }
 
 private func image(named name: String) -> UIImage? {
-    return UIImage(named: name, in: Bundle(for: CommonUIBundleHelper.self), compatibleWith: nil)
+    let bundle = Bundle(for: CommonUIBundleHelper.self)
+    return UIImage(named: name, in: bundle, compatibleWith: nil)
 }
 
 private func color(named name: String) -> UIColor? {
-    return UIColor(named: name, in: Bundle(for: CommonUIBundleHelper.self), compatibleWith: nil)
+    let bundle = Bundle(for: CommonUIBundleHelper.self)
+    return UIColor(named: name, in: bundle, compatibleWith: nil)
 }
 
 extension UIImage {

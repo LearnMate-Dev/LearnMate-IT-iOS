@@ -14,6 +14,7 @@ let project = Project(
             dependencies: [
                 .project(target: "Domain", path: "../Domain"),
                 .project(target: "Data", path: "../Data"),
+                .project(target: "Login", path: "../Login"),
                 .project(target: "Home", path: "../Home"),
                 .project(target: "Chat", path: "../Chat"),
                 .project(target: "Diary", path: "../Diary"),

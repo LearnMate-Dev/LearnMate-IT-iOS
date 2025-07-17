@@ -9,6 +9,7 @@ let project = Project(
             product: .framework,
             bundleId: "io.tuist.CommonUI",
             sources: ["Sources/**"],
+            resources: ["Sources/Assets/**"],
             dependencies: [
                 .project(target: "Domain", path: "../Domain"),
                 .external(name: "SnapKit"),

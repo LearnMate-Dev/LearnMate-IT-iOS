@@ -305,7 +305,7 @@
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Chat;
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Stats;
 				PRODUCT_NAME = Stats;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -542,7 +542,7 @@
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Chat;
+				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Stats;
 				PRODUCT_NAME = Stats;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
