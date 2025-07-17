@@ -9,8 +9,9 @@ import CommonUI
 import UIKit
 import SnapKit
 import RxSwift
+import SafariServices
 
-public class LoginViewController: BaseViewController {
+public class LoginViewController: BaseViewController, SFSafariViewControllerDelegate {
     let viewModel: LoginViewModel
     let loginView = LoginView()
 
@@ -30,7 +31,7 @@ public class LoginViewController: BaseViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        bindActions()
+        bindLoginEvents()
         bindTransition()
     }
 
@@ -38,6 +39,19 @@ public class LoginViewController: BaseViewController {
         
     }
 
+    private func bindLoginEvents() {
+        loginView.googleLoginTapped
+            .bind { [weak self] in
+                self?.presentGoogleLogin()
+            }
+            .disposed(by: disposeBag)
+    }
+
+    private func presentGoogleLogin() {
+        guard let url = URL(string: "https://dev-learnmate.store/oauth2/authorization/google") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
     private func bindTransition() {
 //        homeQuizView.onStartButtonTapped = { [weak self] indexPath in
 //            let quizViewController = QuizViewController()

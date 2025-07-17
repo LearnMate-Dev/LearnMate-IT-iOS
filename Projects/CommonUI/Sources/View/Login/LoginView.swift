@@ -10,8 +10,10 @@ import UIKit
 import SnapKit
 import RxSwift
 import Then
+import SafariServices
+import RxRelay
 
-open class LoginView: UIView {
+open class LoginView: UIView, SFSafariViewControllerDelegate {
     let logoLabel = UILabel().then {
         $0.text = "경계선 지능인을 위한 케어 서비스,"
         $0.textColor = .black
@@ -20,6 +22,8 @@ open class LoginView: UIView {
     var logoView = UIImageView()
     var googleLoginButton = UIButton()
     var appleLoginButton = UIButton()
+
+    public let googleLoginTapped = PublishRelay<Void>()
 
     let disposeBag = DisposeBag()
 
@@ -35,9 +39,7 @@ open class LoginView: UIView {
 
     func bindEvents() {
         googleLoginButton.rx.tap
-            .bind { [weak self] in
-                print("구글 로그인 버튼 클릭됨")
-            }
+            .bind(to: googleLoginTapped)
             .disposed(by: disposeBag)
     }
 

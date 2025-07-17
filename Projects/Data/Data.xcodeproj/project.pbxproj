@@ -10,6 +10,7 @@
 		43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */; };
 		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
 		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
+		95369A682E2891CF000C893F /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A672E2891CB000C893F /* TokenRepository.swift */; };
 		9562CA0D2E277DB60038F415 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562CA0C2E277DAF0038F415 /* LoginRepository.swift */; };
 		9562CA0F2E277DE10038F415 /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562CA0E2E277DDF0038F415 /* LoginDTO.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
@@ -34,6 +35,7 @@
 		06FAA1459D11CCE724C34195 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		95369A672E2891CB000C893F /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		9562CA0C2E277DAF0038F415 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		9562CA0E2E277DDF0038F415 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 		73F3ED55BFDC2EF15878F5B6 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				95369A672E2891CB000C893F /* TokenRepository.swift */,
 				9562CA0C2E277DAF0038F415 /* LoginRepository.swift */,
 				B0730BC3657E24BCEA511A3C /* CourseRepository.swift */,
 			);
@@ -200,6 +203,7 @@
 				43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */,
 				9562CA0D2E277DB60038F415 /* LoginRepository.swift in Sources */,
 				684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */,
+				95369A682E2891CF000C893F /* TokenRepository.swift in Sources */,
 				9562CA0F2E277DE10038F415 /* LoginDTO.swift in Sources */,
 				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
 			);

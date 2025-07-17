@@ -24,27 +24,27 @@ public class DefaultLoginRepository: LoginRepository {
     }
 
     private func request<T: Decodable>(endpoint: String, id: Int, responseType: T.Type) -> Single<T> {
-            return Single.create { single in
-                let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
-                let parameters: Parameters = [
-                    "id": id
-                ]
+        return Single.create { single in
+            let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
+            let parameters: Parameters = [
+                "id": id
+            ]
 
-                let request = AF.request(url,
-                                         method: .get,
-                                         parameters: parameters,
-                                         encoding: URLEncoding.queryString)
-                    .validate()
-                    .responseDecodable(of: responseType) { response in
-                        switch response.result {
-                        case .success(let value):
-                            single(.success(value))
-                        case .failure(let error):
-                            single(.failure(error))
-                        }
+            let request = AF.request(url,
+                                     method: .get,
+                                     parameters: parameters,
+                                     encoding: URLEncoding.queryString)
+                .validate()
+                .responseDecodable(of: responseType) { response in
+                    switch response.result {
+                    case .success(let value):
+                        single(.success(value))
+                    case .failure(let error):
+                        single(.failure(error))
                     }
+                }
 
-                return Disposables.create { request.cancel() }
-            }
+            return Disposables.create { request.cancel() }
         }
     }
+}

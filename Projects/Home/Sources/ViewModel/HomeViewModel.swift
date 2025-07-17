@@ -15,8 +15,10 @@ protocol HomeViewModelProtocol {
 public class HomeViewModel: HomeViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let courseUseCase: CourseUseCase
-    public init(courseUseCase: CourseUseCase) {
+    private let tokenUseCase: TokenUseCase
+    public init(courseUseCase: CourseUseCase, tokenUseCase: TokenUseCase) {
         self.courseUseCase = courseUseCase
+        self.tokenUseCase = tokenUseCase
         getCourses()
     }
     
