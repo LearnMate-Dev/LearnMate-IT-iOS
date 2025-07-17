@@ -17,8 +17,7 @@ public class QuizViewController: UIViewController {
                                              isRightButtonHidden: true)
     let progressView = UIView()
     let progressEntireView = UIView().then {
-        $0.backgroundColor = .gray
-        //        $0.backgroundColor = CommonUIAssets.LMGray5
+        $0.backgroundColor = CommonUIAssets.LMGray5
         $0.layer.cornerRadius = 3
     }
     let scrollView = UIScrollView()

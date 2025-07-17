@@ -37,15 +37,14 @@ open class OptionView: UIView {
 
     func initAttribute() {
         optionView = optionView.then {
-            $0.layer.borderColor = UIColor.black.cgColor
+            $0.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
             $0.layer.borderWidth = 1
-//            $0.backgroundColor = CommonUIAssets.LMGray6
             $0.layer.cornerRadius = 12
+            $0.backgroundColor = .white
         }
 
         optionLabel = optionLabel.then {
-            $0.textColor = .black
-//            $0.textColor = CommonUIAssets.LMGray1
+            $0.textColor = CommonUIAssets.LMGray1
             $0.textAlignment = .center
             $0.font = .systemFont(ofSize: 13, weight: .regular)
             $0.numberOfLines = 0

@@ -31,7 +31,7 @@ public final class DefaultNavigationBar: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .clear
 
         leftButton.setTitle(nil, for: .normal)
         rightButton.setTitle(nil, for: .normal)
