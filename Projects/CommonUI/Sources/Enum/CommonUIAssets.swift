@@ -42,6 +42,9 @@ public enum CommonUIAssets {
 
     /// * logo
     public static let smallLogo = image(named: "small_logo")
+    public static let logo = image(named: "logo")
+    public static let google = image(named: "google")
+    public static let apple = image(named: "apple")
 
     /// * Icon
     public static let IconPlay = image(named: "play")
