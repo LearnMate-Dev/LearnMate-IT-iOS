@@ -23,5 +23,10 @@ public struct DataAssembly: Assembly {
         container.register(TokenRepository.self) { _ in
             return DefaultTokenRepository()
         }
+        
+        container.register(QuizRepository.self) { resolver in
+            let tokenRepository = resolver.resolve(TokenRepository.self)!
+            return DefaultQuizRepository(tokenRepository: tokenRepository)
+        }
     }
 }

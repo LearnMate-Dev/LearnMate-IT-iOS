@@ -15,6 +15,9 @@
 		95369A662E2891B9000C893F /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A652E2891B4000C893F /* TokenRepository.swift */; };
 		95369A6A2E2891E3000C893F /* TokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A692E2891DE000C893F /* TokenUseCase.swift */; };
 		95369A6D2E289DB7000C893F /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A6C2E289DB3000C893F /* StepVO.swift */; };
+		95369A702E28A811000C893F /* QuizVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A6F2E28A80E000C893F /* QuizVO.swift */; };
+		95369A732E28A85F000C893F /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A722E28A85C000C893F /* QuizUseCase.swift */; };
+		95369A762E28A880000C893F /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A752E28A87C000C893F /* QuizRepository.swift */; };
 		9562CA132E279BF80038F415 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9562CA122E279BF30038F415 /* UIView+Extension.swift */; };
 		BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */; };
 		D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */; };
@@ -42,6 +45,9 @@
 		95369A652E2891B4000C893F /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		95369A692E2891DE000C893F /* TokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUseCase.swift; sourceTree = "<group>"; };
 		95369A6C2E289DB3000C893F /* StepVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVO.swift; sourceTree = "<group>"; };
+		95369A6F2E28A80E000C893F /* QuizVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVO.swift; sourceTree = "<group>"; };
+		95369A722E28A85C000C893F /* QuizUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUseCase.swift; sourceTree = "<group>"; };
+		95369A752E28A87C000C893F /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		9562CA122E279BF30038F415 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
@@ -103,6 +109,7 @@
 		2BE278B80FDD95404961E580 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				95369A722E28A85C000C893F /* QuizUseCase.swift */,
 				95369A692E2891DE000C893F /* TokenUseCase.swift */,
 				F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */,
 				574E8F32CEB080432AB7EA94 /* LoginUseCase.swift */,
@@ -130,6 +137,7 @@
 		9C17CEB3595F4C3FA69C5BAF /* VO */ = {
 			isa = PBXGroup;
 			children = (
+				95369A6F2E28A80E000C893F /* QuizVO.swift */,
 				95369A6C2E289DB3000C893F /* StepVO.swift */,
 				747DBBCAB797E5E0A82177F2 /* CourseVO.swift */,
 				FD08A7186FB9676854B7AEAC /* LoginVO.swift */,
@@ -140,6 +148,7 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				95369A752E28A87C000C893F /* QuizRepository.swift */,
 				95369A652E2891B4000C893F /* TokenRepository.swift */,
 				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
 				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
@@ -220,11 +229,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */,
+				95369A702E28A811000C893F /* QuizVO.swift in Sources */,
 				95369A6A2E2891E3000C893F /* TokenUseCase.swift in Sources */,
+				95369A732E28A85F000C893F /* QuizUseCase.swift in Sources */,
 				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
 				9562CA132E279BF80038F415 /* UIView+Extension.swift in Sources */,
 				95369A662E2891B9000C893F /* TokenRepository.swift in Sources */,
 				D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */,
+				95369A762E28A880000C893F /* QuizRepository.swift in Sources */,
 				BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */,
 				94174705336F0E353686EA83 /* LoginUseCase.swift in Sources */,
 				95369A6D2E289DB7000C893F /* StepVO.swift in Sources */,

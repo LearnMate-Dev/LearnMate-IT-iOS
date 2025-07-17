@@ -42,6 +42,7 @@ public class HomeViewController: BaseViewController {
         bindTransition()
         bindStepList()
         bindCourseData()
+        bindQuiz()
     }
 
     private func bindActions() {
@@ -50,10 +51,22 @@ public class HomeViewController: BaseViewController {
 
     private func bindTransition() {
         homeQuizView.onStartButtonTapped = { [weak self] indexPath in
-            let quizViewController = QuizViewController()
-            quizViewController.hidesBottomBarWhenPushed = true
-            self?.navigationController?.pushViewController(quizViewController, animated: true)
+            // course와 step 정보를 가져와서 퀴즈 시작
+            let course = indexPath.item + 1 // 1시작
+            let step = indexPath.item + 1   // 1작
+            self?.viewModel.startStep(course: course, step: step)
         }
+    }
+    
+    private func bindQuiz() {
+        viewModel.quizSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] quiz in
+                let quizViewController = QuizViewController()
+                quizViewController.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(quizViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindStepList() {

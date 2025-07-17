@@ -17,7 +17,8 @@ public struct HomeAssembly: Assembly {
         container.register(HomeViewModel.self) { resolver in
             let courseUseCase = resolver.resolve(CourseUseCase.self)!
             let tokenUseCase = resolver.resolve(TokenUseCase.self)!
-            return HomeViewModel(courseUseCase: courseUseCase, tokenUseCase: tokenUseCase)
+            let quizUseCase = resolver.resolve(QuizUseCase.self)!
+            return HomeViewModel(courseUseCase: courseUseCase, tokenUseCase: tokenUseCase, quizUseCase: quizUseCase)
         }
 
         /// ViewModel을 DI 통해 주입받아 Controller를 생성함
