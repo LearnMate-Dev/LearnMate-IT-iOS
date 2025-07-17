@@ -14,7 +14,7 @@ open class HomeProgressView: UIView {
     var courseLabel = UILabel()
     var progressLabel = UILabel()
     let progressEntireView = UIView().then {
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = CommonUIAssets.LMGray5
         $0.layer.cornerRadius = 3
     }
     var progressView = UIView()

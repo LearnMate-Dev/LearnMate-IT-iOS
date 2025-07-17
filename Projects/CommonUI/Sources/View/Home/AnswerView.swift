@@ -45,16 +45,13 @@ open class AnswerView: UIView {
         switch type {
         case .correct:
             correctView = correctView.then {
-                $0.layer.borderColor = UIColor.black.cgColor
-                $0.layer.borderWidth = 1
-//                $0.backgroundColor = CommonUIAssets.LMGray6
+                $0.backgroundColor = CommonUIAssets.LMGreen
                 $0.layer.cornerRadius = 12
             }
 
             correctLabel = correctLabel.then {
-                $0.textColor = .black
-    //            $0.textColor = CommonUIAssets.LMGray1
-                $0.textAlignment = .center
+                $0.textColor = CommonUIAssets.LMGray1
+                $0.textAlignment = .left
                 $0.font = .systemFont(ofSize: 13, weight: .regular)
                 $0.numberOfLines = 0
                 $0.setContentHuggingPriority(.required, for: .vertical)
@@ -62,15 +59,13 @@ open class AnswerView: UIView {
             }
         case .wrong:
             wrongView = wrongView.then {
-                $0.layer.borderColor = UIColor.black.cgColor
-                $0.layer.borderWidth = 1
-//                $0.backgroundColor = CommonUIAssets.LMBlue
+                $0.backgroundColor = CommonUIAssets.LMRed
                 $0.layer.cornerRadius = 12
             }
 
             wrongLabel = wrongLabel.then {
-                $0.textColor = .black
-    //            $0.textColor = CommonUIAssets.LMGray1
+                $0.textColor = CommonUIAssets.LMGray1
+                $0.textAlignment = .left
                 $0.font = .systemFont(ofSize: 14, weight: .regular)
                 $0.numberOfLines = 0
                 $0.setContentHuggingPriority(.required, for: .vertical)

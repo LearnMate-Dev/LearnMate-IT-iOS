@@ -22,27 +22,33 @@ public final class QuizCompleteAlertView: UIView {
         $0.clipsToBounds = true
     }
 
+    private let congratulationLabel = UILabel().then {
+        $0.text = "🎉"
+        $0.font = .boldSystemFont(ofSize: 50)
+        $0.textAlignment = .center
+    }
+
     private let titleLabel = UILabel().then {
         $0.text = "퀴즈 완료!"
-        $0.textColor = .black
-        $0.font = .boldSystemFont(ofSize: 20)
+        $0.textColor = CommonUIAssets.LMBlack
+        $0.font = .boldSystemFont(ofSize: 25)
         $0.textAlignment = .center
         $0.numberOfLines = 0
     }
 
     private let messageLabel = UILabel().then {
-        $0.text = "모든 질문에 잘 답변했어요 👏"
-        $0.textColor = .darkGray
+        $0.text = "모든 질문에 잘 답변했어요.\n수고하셨습니다!"
+        $0.textColor = CommonUIAssets.LMGray1
         $0.font = .systemFont(ofSize: 16)
         $0.textAlignment = .center
         $0.numberOfLines = 0
     }
 
-    private let confirmButton = UIButton(type: .system).then {
+    private let confirmButton = UIButton().then {
         $0.setTitle("확인", for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
-        $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .systemBlue
+        $0.setTitleColor(CommonUIAssets.LMGray1, for: .normal)
+        $0.backgroundColor = CommonUIAssets.LMOrange3
         $0.layer.cornerRadius = 8
     }
 
@@ -61,7 +67,7 @@ public final class QuizCompleteAlertView: UIView {
         self.addSubview(backgroundView)
         self.addSubview(containerView)
 
-        [titleLabel, messageLabel, confirmButton].forEach {
+        [congratulationLabel, titleLabel, messageLabel, confirmButton].forEach {
             containerView.addSubview($0)
         }
     }
@@ -76,8 +82,13 @@ public final class QuizCompleteAlertView: UIView {
             $0.width.equalToSuperview().multipliedBy(0.8)
         }
 
+        congratulationLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(34)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(24)
+            $0.top.equalTo(congratulationLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
         }
 
@@ -90,8 +101,8 @@ public final class QuizCompleteAlertView: UIView {
             $0.top.equalTo(messageLabel.snp.bottom).offset(20)
             $0.bottom.equalToSuperview().inset(20)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(100)
-            $0.height.equalTo(40)
+            $0.height.equalTo(44)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
 

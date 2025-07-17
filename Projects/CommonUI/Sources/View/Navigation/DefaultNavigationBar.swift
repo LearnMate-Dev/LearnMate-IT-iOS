@@ -22,8 +22,10 @@ public final class DefaultNavigationBar: UIView {
         setupLayout()
 
         leftButton.setImage(leftImage, for: .normal)
-        rightButton.setImage(leftImage, for: .normal)
+        rightButton.setImage(rightImage, for: .normal)
         rightButton.isHidden = isRightButtonHidden
+
+        leftButton.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +33,7 @@ public final class DefaultNavigationBar: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .clear
 
         leftButton.setTitle(nil, for: .normal)
         rightButton.setTitle(nil, for: .normal)
@@ -69,6 +71,23 @@ public final class DefaultNavigationBar: UIView {
 
     public func setupViewProperty(title: String) {
         titleLabel.text = title
+    }
+    
+    @objc private func leftButtonTapped() {
+        if let viewController = findViewController() {
+            viewController.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func findViewController() -> UIViewController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let viewController = nextResponder as? UIViewController {
+                return viewController
+            }
+            responder = nextResponder
+        }
+        return nil
     }
 }
 

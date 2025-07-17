@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */; };
 		92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */; };
 		94174705336F0E353686EA83 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E8F32CEB080432AB7EA94 /* LoginUseCase.swift */; };
+		95369A7E2E28B8D9000C893F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A7D2E28B8D1000C893F /* UIImage+Extension.swift */; };
 		A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CFC331192C9FE77F3446A /* StepVO.swift */; };
 		B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */; };
 		BBED9ACB62B271298F7028F8 /* CourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */; };
@@ -48,6 +49,7 @@
 		747DBBCAB797E5E0A82177F2 /* CourseVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVO.swift; sourceTree = "<group>"; };
 		798CFC331192C9FE77F3446A /* StepVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVO.swift; sourceTree = "<group>"; };
 		8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		95369A7D2E28B8D1000C893F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUseCase.swift; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		266DBF54466AF3D041290301 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				95369A7D2E28B8D1000C893F /* UIImage+Extension.swift */,
 				2E1DA9A49E79A791F7A526A1 /* String+Extension.swift */,
 				32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */,
 			);
@@ -194,8 +197,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -242,6 +243,7 @@
 				3E835D4F2E5F639557AC7C06 /* TokenUseCase.swift in Sources */,
 				5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */,
 				0DED9075FE34124C093D9FDF /* LoginVO.swift in Sources */,
+				95369A7E2E28B8D9000C893F /* UIImage+Extension.swift in Sources */,
 				CFBF3D58082C5F201FCFFD5B /* QuizVO.swift in Sources */,
 				A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */,
 			);
@@ -417,10 +419,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

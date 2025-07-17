@@ -15,10 +15,12 @@ public class QuizViewController: UIViewController {
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
                                              isRightButtonHidden: true)
-    let progressView = UIView()
+    let progressView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange1
+        $0.layer.cornerRadius = 3
+    }
     let progressEntireView = UIView().then {
-        $0.backgroundColor = .gray
-        //        $0.backgroundColor = CommonUIAssets.LMGray5
+        $0.backgroundColor = CommonUIAssets.LMGray5
         $0.layer.cornerRadius = 3
     }
     let scrollView = UIScrollView()
@@ -78,7 +80,7 @@ public class QuizViewController: UIViewController {
     }
 
     public func setupHierarchy() {
-        [navigationBar, progressView, progressEntireView, scrollView].forEach { view.addSubview($0) }
+        [navigationBar, progressEntireView, progressView, scrollView].forEach { view.addSubview($0) }
         scrollView.addSubview(quizStackView)
     }
     
@@ -96,6 +98,13 @@ public class QuizViewController: UIViewController {
             $0.top.equalTo(navigationBar.snp.bottom).offset(20)
             $0.width.equalToSuperview().inset(20)
             $0.centerX.equalToSuperview()
+        }
+        
+        progressView.snp.makeConstraints {
+            $0.height.equalTo(6)
+            $0.top.equalTo(navigationBar.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().inset(20)
+            $0.width.equalTo(0)
         }
         
         scrollView.snp.makeConstraints {
@@ -192,6 +201,8 @@ public class QuizViewController: UIViewController {
             let feedback = AnswerView(text: feedbackText, type: .correct)
             quizStackView.addArrangedSubview(feedback)
 
+            updateProgress()
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let nextIndex = self.currentQuestionIndex + 1
                 self.currentQuestionIndex = nextIndex
@@ -229,5 +240,24 @@ public class QuizViewController: UIViewController {
     func showQuizCompleteAlert() {
         let alertView = QuizCompleteAlertView()
         alertView.show(in: view)
+    }
+    
+    private func updateProgress() {
+        guard let quizData = quizData else { return }
+        
+        let totalQuestions = quizData.quizList.count
+        let completedQuestions = currentQuestionIndex + 1
+        
+        let totalWidth = UIScreen.main.bounds.width - 40
+        
+        let progressPerQuestion = totalWidth / CGFloat(totalQuestions)
+        let currentProgress = progressPerQuestion * CGFloat(completedQuestions)
+        
+        UIView.animate(withDuration: 0) {
+            self.progressView.snp.updateConstraints {
+                $0.width.equalTo(currentProgress)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
 }

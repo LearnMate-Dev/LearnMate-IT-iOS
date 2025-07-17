@@ -45,15 +45,12 @@ open class QuizView: UIView {
         switch type {
         case .situation:
             situationView = situationView.then {
-                $0.layer.borderColor = UIColor.black.cgColor
-                $0.layer.borderWidth = 1
-//                $0.backgroundColor = CommonUIAssets.LMGray6
+                $0.backgroundColor = CommonUIAssets.LMGray6
                 $0.layer.cornerRadius = 12
             }
 
             situationLabel = situationLabel.then {
-                $0.textColor = .black
-    //            $0.textColor = CommonUIAssets.LMGray1
+                $0.textColor = CommonUIAssets.LMGray1
                 $0.textAlignment = .center
                 $0.font = .systemFont(ofSize: 13, weight: .regular)
                 $0.numberOfLines = 0
@@ -62,15 +59,12 @@ open class QuizView: UIView {
             }
         case .question:
             questionView = questionView.then {
-                $0.layer.borderColor = UIColor.black.cgColor
-                $0.layer.borderWidth = 1
-//                $0.backgroundColor = CommonUIAssets.LMBlue
+                $0.backgroundColor = CommonUIAssets.LMBlue
                 $0.layer.cornerRadius = 12
             }
 
             questionLabel = questionLabel.then {
-                $0.textColor = .black
-    //            $0.textColor = CommonUIAssets.LMGray1
+                $0.textColor = CommonUIAssets.LMGray1
                 $0.font = .systemFont(ofSize: 14, weight: .regular)
                 $0.numberOfLines = 0
                 $0.setContentHuggingPriority(.required, for: .vertical)

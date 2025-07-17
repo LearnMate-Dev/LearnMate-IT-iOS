@@ -42,6 +42,9 @@ public enum CommonUIAssets {
 
     /// * logo
     public static let smallLogo = image(named: "small_logo")
+    public static let logo = image(named: "logo")
+    public static let google = image(named: "google")
+    public static let apple = image(named: "apple")
 
     /// * Icon
     public static let IconPlay = image(named: "play")
@@ -56,6 +59,10 @@ public enum CommonUIAssets {
     public static let LMGray1 = color(named: "LMGray01")
     public static let LMGray3 = color(named: "LMGray03")
     public static let LMGray5 = color(named: "LMGray05")
+    public static let LMGray6 = color(named: "LMGray06")
+    public static let LMBlue = color(named: "LMBlue")
+    public static let LMGreen = color(named: "LMGreen")
+    public static let LMRed = color(named: "LMRed")
 }
 
 private func image(named name: String) -> UIImage? {
