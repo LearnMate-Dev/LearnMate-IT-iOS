@@ -14,8 +14,7 @@ public class DefaultLoginRepository: LoginRepository {
 
     public func postGoogleLogin() -> Single<LoginVO> {
         return request(
-            endpoint: NetworkConfiguration.baseUrl,
-            id: 4,
+            endpoint: "/oauth2/authorization/google",
             responseType: LoginDTO.self
         )
         .map { dto in
@@ -23,17 +22,42 @@ public class DefaultLoginRepository: LoginRepository {
         }
     }
 
-    private func request<T: Decodable>(endpoint: String, id: Int, responseType: T.Type) -> Single<T> {
+    public func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO> {
+        print("⚠️ postAppleLogin")
+        print("⚠️ \(userName)")
+        print("⚠️ \(identityToken)")
+
+        let params: Parameters = [
+            "userName": userName,
+            "identityToken": identityToken
+        ]
+
+        return request(
+            endpoint: "/api/auth/apple/login",
+            parameters: params,
+            encoding: JSONEncoding.default,
+            responseType: LoginDTO.self
+        )
+        .map { dto in
+            return LoginVO(accessToken: "")
+        }
+    }
+
+    private func request<T: Decodable>(
+        endpoint: String,
+        method: HTTPMethod = .post,
+        parameters: Parameters? = nil,
+        encoding: ParameterEncoding = URLEncoding.queryString,
+        headers: HTTPHeaders? = nil,
+        responseType: T.Type
+    ) -> Single<T> {
         return Single.create { single in
             let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
-            let parameters: Parameters = [
-                "id": id
-            ]
-
             let request = AF.request(url,
-                                     method: .get,
+                                     method: method,
                                      parameters: parameters,
-                                     encoding: URLEncoding.queryString)
+                                     encoding: encoding,
+                                     headers: headers)
                 .validate()
                 .responseDecodable(of: responseType) { response in
                     switch response.result {
@@ -43,7 +67,7 @@ public class DefaultLoginRepository: LoginRepository {
                         single(.failure(error))
                     }
                 }
-
+            
             return Disposables.create { request.cancel() }
         }
     }

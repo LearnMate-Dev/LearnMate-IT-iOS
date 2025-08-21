@@ -9,6 +9,7 @@ import RxSwift
 
 public protocol LoginUseCase {
     func postGoogleLogin() -> Single<LoginVO>
+    func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO>
 }
 
 public final class DefaultLoginUseCase: LoginUseCase {
@@ -20,5 +21,9 @@ public final class DefaultLoginUseCase: LoginUseCase {
 
     public func postGoogleLogin() -> Single<LoginVO> {
         return repository.postGoogleLogin()
+    }
+
+    public func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO> {
+        return repository.postAppleLogin(userName: userName, identityToken: identityToken)
     }
 }

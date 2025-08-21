@@ -81,7 +81,7 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
             if let tokenData = appleIDCredential.identityToken,
                let tokenString = String(data: tokenData, encoding: .utf8) {
                 print("1️⃣ Identity Token: \(tokenString)")
-                viewModel.postAppleLogin(identityToken: tokenString)
+                viewModel.postAppleLogin(userName: userName, identityToken: tokenString)
             } else {
                 print("Failed to decode identity token")
             }

@@ -9,4 +9,5 @@ import RxSwift
 
 public protocol LoginRepository {
     func postGoogleLogin() -> Single<LoginVO>
+    func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO>
 }
