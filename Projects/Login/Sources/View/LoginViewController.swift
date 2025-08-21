@@ -74,20 +74,21 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userID = appleIDCredential.user
             let email = appleIDCredential.email
-            let fullName = appleIDCredential.fullName
+            let givenName = appleIDCredential.fullName?.givenName ?? ""
+            let familyName = appleIDCredential.fullName?.familyName ?? ""
+            let userName = givenName + familyName
 
             if let tokenData = appleIDCredential.identityToken,
                let tokenString = String(data: tokenData, encoding: .utf8) {
                 print("1️⃣ Identity Token: \(tokenString)")
+                viewModel.postAppleLogin(identityToken: tokenString)
             } else {
                 print("Failed to decode identity token")
             }
 
             print("2️⃣ UserID: \(userID)")
             print("3️⃣ Email: \(email ?? "Not provided")")
-            print("4️⃣ Full Name: \(fullName?.description ?? "Not provided")")
-
-            viewModel.postAppleLogin(userID: userID, email: email)
+            print("4️⃣ User Name: \(userName)")
         }
     }
 
