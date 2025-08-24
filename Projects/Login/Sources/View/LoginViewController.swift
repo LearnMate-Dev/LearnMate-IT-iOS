@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 import RxSwift
 import SafariServices
+import AuthenticationServices
 
-public class LoginViewController: BaseViewController, SFSafariViewControllerDelegate {
+public class LoginViewController: BaseViewController, SFSafariViewControllerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     let viewModel: LoginViewModel
     let loginView = LoginView()
 
@@ -45,13 +46,61 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
                 self?.presentGoogleLogin()
             }
             .disposed(by: disposeBag)
+
+        loginView.appleLoginTapped
+            .bind { [weak self] in
+                self?.presentAppleLogin()
+            }
+            .disposed(by: disposeBag)
     }
 
     private func presentGoogleLogin() {
         guard let url = URL(string: "https://dev-learnmate.store/oauth2/authorization/google") else { return }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
+
+    private func presentAppleLogin() {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+
+    // MARK: - ASAuthorizationControllerDelegate
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userID = appleIDCredential.user
+            let email = appleIDCredential.email
+            let givenName = appleIDCredential.fullName?.givenName ?? ""
+            let familyName = appleIDCredential.fullName?.familyName ?? ""
+            let userName = givenName + familyName
+
+            if let tokenData = appleIDCredential.identityToken,
+               let tokenString = String(data: tokenData, encoding: .utf8) {
+                print("1️⃣ Identity Token: \(tokenString)")
+                viewModel.postAppleLogin(userName: userName, identityToken: tokenString)
+            } else {
+                print("Failed to decode identity token")
+            }
+
+            print("2️⃣ UserID: \(userID)")
+            print("3️⃣ Email: \(email ?? "Not provided")")
+            print("4️⃣ User Name: \(userName)")
+        }
+    }
+
+    public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("Apple Login Error: \(error.localizedDescription)")
+    }
+
+    // MARK: - ASAuthorizationControllerPresentationContextProviding
+    public func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
+    }
+
     private func bindTransition() {
 //        homeQuizView.onStartButtonTapped = { [weak self] indexPath in
 //            let quizViewController = QuizViewController()

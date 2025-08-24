@@ -12,6 +12,7 @@ import RxSwift
 import Then
 import SafariServices
 import RxRelay
+import AuthenticationServices
 
 open class LoginView: UIView, SFSafariViewControllerDelegate {
     let logoLabel = UILabel().then {
@@ -26,9 +27,10 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
     }
 
     var googleLoginButton = UIButton()
-    var appleLoginButton = UIButton()
+    var appleLoginButton = ASAuthorizationAppleIDButton(type: .default, style: .black)
 
     public let googleLoginTapped = PublishRelay<Void>()
+    public let appleLoginTapped = PublishRelay<Void>()
 
     let disposeBag = DisposeBag()
 
@@ -46,6 +48,10 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
         googleLoginButton.rx.tap
             .bind(to: googleLoginTapped)
             .disposed(by: disposeBag)
+
+        appleLoginButton.rx.controlEvent(.touchUpInside)
+            .bind(to: appleLoginTapped)
+            .disposed(by: disposeBag)
     }
 
     func initAttribute() {
@@ -59,19 +65,7 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
             $0.backgroundColor = .white
             $0.layer.borderColor = CommonUIAssets.LMGray3?.cgColor
             $0.layer.borderWidth = 1
-            $0.layer.cornerRadius = 12
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            $0.semanticContentAttribute = .forceLeftToRight
-            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
-        }
-
-        appleLoginButton = appleLoginButton.then {
-            $0.setTitle("Apple로 시작하기", for: .normal)
-            $0.setTitleColor(.white, for: .normal)
-            $0.setImage(CommonUIAssets.apple?
-                .resize(to: CGSize(width: 25, height: 25)), for: .normal)
-            $0.backgroundColor = .black
-            $0.layer.cornerRadius = 12
+            $0.layer.cornerRadius = 5
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             $0.semanticContentAttribute = .forceLeftToRight
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)

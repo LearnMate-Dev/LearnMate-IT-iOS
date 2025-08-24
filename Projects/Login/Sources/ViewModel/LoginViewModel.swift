@@ -10,6 +10,7 @@ import RxSwift
 
 protocol LoginViewModelProtocol {
     func postGoogleLogin()
+    func postAppleLogin(userName: String?, identityToken: String)
 }
 
 public class LoginViewModel: LoginViewModelProtocol {
@@ -17,15 +18,23 @@ public class LoginViewModel: LoginViewModelProtocol {
     private let loginUseCase: LoginUseCase
     public init(loginUseCase: LoginUseCase) {
         self.loginUseCase = loginUseCase
-        postGoogleLogin()
     }
-    
+
     func postGoogleLogin() {
         loginUseCase.postGoogleLogin()
             .subscribe(onSuccess: { response in
                 print(response)
             }, onFailure: { _ in
-                
+
+            }).disposed(by: disposeBag)
+    }
+
+    func postAppleLogin(userName: String?, identityToken: String) {
+        loginUseCase.postAppleLogin(userName: userName, identityToken: identityToken)
+            .subscribe(onSuccess: { response in
+                print("Apple Login Response: \(response)")
+            }, onFailure: { error in
+                print("Apple Login Error: \(error)")
             }).disposed(by: disposeBag)
     }
 }
