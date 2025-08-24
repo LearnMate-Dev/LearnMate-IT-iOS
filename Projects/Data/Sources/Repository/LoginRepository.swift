@@ -8,6 +8,7 @@
 import Domain
 import RxSwift
 import Alamofire
+import Foundation
 
 public class DefaultLoginRepository: LoginRepository {
     public init() {}
@@ -23,23 +24,44 @@ public class DefaultLoginRepository: LoginRepository {
     }
 
     public func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO> {
-        print("⚠️ postAppleLogin")
-        print("⚠️ \(userName)")
-        print("⚠️ \(identityToken)")
-
         let params: Parameters = [
             "userName": userName,
             "identityToken": identityToken
         ]
 
-        return request(
-            endpoint: "/api/auth/apple/login",
-            parameters: params,
-            encoding: JSONEncoding.default,
-            responseType: LoginDTO.self
-        )
-        .map { dto in
-            return LoginVO(accessToken: "")
+        return Single.create { single in
+            let url = "\(NetworkConfiguration.baseUrl)/api/auth/apple/login"
+            let request = AF.request(url,
+                                     method: .post,
+                                     parameters: params,
+                                     encoding: JSONEncoding.default,
+                                     headers: nil)
+                .redirect(using: Redirector(behavior: .doNotFollow))
+                .response { response in
+                    if let error = response.error {
+                        single(.failure(error))
+                        return
+                    }
+
+                    guard let httpResponse = response.response else {
+                        single(.failure(AFError.responseValidationFailed(reason: .dataFileNil)))
+                        return
+                    }
+
+                    if let location = httpResponse.allHeaderFields["Location"] as? String,
+                       let components = URLComponents(string: location) {
+                        let items = components.queryItems ?? []
+                        let accessToken = items.first(where: { $0.name == "accessToken" })?.value
+                        single(.success(LoginVO(accessToken: accessToken)))
+                    } else {
+                        let error = NSError(domain: "DefaultLoginRepository",
+                                            code: -1,
+                                            userInfo: [NSLocalizedDescriptionKey: "Missing Location header or invalid redirect URL"])
+                        single(.failure(error))
+                    }
+                }
+
+            return Disposables.create { request.cancel() }
         }
     }
 
@@ -67,7 +89,7 @@ public class DefaultLoginRepository: LoginRepository {
                         single(.failure(error))
                     }
                 }
-            
+
             return Disposables.create { request.cancel() }
         }
     }
