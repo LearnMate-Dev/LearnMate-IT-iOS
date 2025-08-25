@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */; };
 		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
 		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
+		950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */; };
 		A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
 		E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0730BC3657E24BCEA511A3C /* CourseRepository.swift */; };
@@ -41,6 +42,7 @@
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		77810122262C6CB16D4D47DA /* QuizDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDTO.swift; sourceTree = "<group>"; };
+		950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDTO.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		73F3ED55BFDC2EF15878F5B6 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */,
 				B0730BC3657E24BCEA511A3C /* CourseRepository.swift */,
 				3D7624DE90CFBBEF778E120E /* LoginRepository.swift */,
 				3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */,
@@ -172,8 +175,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -212,6 +213,7 @@
 				FF43B3A4D0DC88307E918DB0 /* LoginDTO.swift in Sources */,
 				E9463A3FF42D5F0960245F80 /* QuizDTO.swift in Sources */,
 				684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */,
+				950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */,
 				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
 				34FD760EB97BB96E9D770BF0 /* LoginRepository.swift in Sources */,
 				A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */,
@@ -245,10 +247,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
