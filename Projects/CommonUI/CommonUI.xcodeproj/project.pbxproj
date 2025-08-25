@@ -19,6 +19,7 @@
 		70139D721530B3262C44ABC1 /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D089568D67BA41DD38CCFD6B /* AnswerView.swift */; };
 		7D319882A302F75CCE46A48C /* HomeQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A77FC9A0E2D7F62CA16E90 /* HomeQuizView.swift */; };
 		7DC59B80630854028C7C80F4 /* TuistBundle+CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */; };
+		950A0D602E5C3C7000C07CF2 /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */; };
 		BAD8B768F782046D4AA1C073 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DE048BEDCB92B48F401061 /* RxCocoa.framework */; };
 		BE81B1F3E60D37D75A058D2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCDC15081A22BAED6318E3E /* SnapKit.framework */; };
 		C2B0F8237715D14D8797DBC9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F45F908769FA7C3C0792F /* LoginView.swift */; };
@@ -64,6 +65,7 @@
 		7CE59FBFD1AAA1B5E7B45FD5 /* HomeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProgressView.swift; sourceTree = "<group>"; };
 		9266801EFBA6178C5B70C641 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+CommonUI.swift"; sourceTree = "<group>"; };
+		950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButton.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACC7259FC0C14CB352A4E6B /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		C28FE6392E1612667826E5C5 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		950A0D522E5C296400C07CF2 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		9786E1056828B1E6D5EDAB7C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +196,7 @@
 		BADD047B94176A526A5B7FB2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				950A0D522E5C296400C07CF2 /* Component */,
 				15CD642D82E9115C7976C408 /* Assets */,
 				88FA467F361B11350139B775 /* Base */,
 				532B9EC7299244FE28190921 /* Coordinator */,
@@ -308,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				950A0D602E5C3C7000C07CF2 /* LMButton.swift in Sources */,
 				C94951E661D9DC9D28B56273 /* TuistAssets+CommonUI.swift in Sources */,
 				7DC59B80630854028C7C80F4 /* TuistBundle+CommonUI.swift in Sources */,
 				F3DA12FF4D18AE405F2F6B08 /* BaseViewController.swift in Sources */,
