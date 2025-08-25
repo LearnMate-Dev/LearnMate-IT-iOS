@@ -32,11 +32,12 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
                                  bgColor: CommonUIAssets.LMOrange1)
     var googleLoginButton = LMButton(textColor: CommonUIAssets.LMBlack,
                                      bgColor: CommonUIAssets.LMWhite)
-    var appleLoginButton = ASAuthorizationAppleIDButton(type: .default, style: .black)
+    var appleLoginButton = LMButton(textColor: CommonUIAssets.LMWhite,
+                                    bgColor: CommonUIAssets.LMBlack)
 
+    public let lmLoginTapped = PublishRelay<Void>()
     public let googleLoginTapped = PublishRelay<Void>()
     public let appleLoginTapped = PublishRelay<Void>()
-    public let lmLoginTapped = PublishRelay<Void>()
 
     let disposeBag = DisposeBag()
 
@@ -80,14 +81,20 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
         googleLoginButton = googleLoginButton.then {
             $0.setTitle("Google로 로그인", for: .normal)
             $0.setImage(CommonUIAssets.google?
-                .resize(to: CGSize(width: 25, height: 25)), for: .normal)
+                .resize(to: CGSize(width: 27, height: 27)), for: .normal)
             $0.layer.borderColor = CommonUIAssets.LMGray3?.cgColor
             $0.layer.borderWidth = 1
             $0.semanticContentAttribute = .forceLeftToRight
-            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 4)
         }
 
-        appleLoginButton.cornerRadius = 8
+        appleLoginButton = appleLoginButton.then {
+            $0.setTitle("Apple로 로그인", for: .normal)
+            $0.setImage(CommonUIAssets.apple?
+                .resize(to: CGSize(width: 20, height: 20)), for: .normal)
+            $0.semanticContentAttribute = .forceLeftToRight
+            $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
+        }
     }
 
     func initUI() {
@@ -112,10 +119,6 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(205)
             $0.bottom.equalToSuperview().inset(70)
-        }
-
-        appleLoginButton.snp.makeConstraints {
-            $0.height.equalTo(60)
         }
     }
 
