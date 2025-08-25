@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import Then
+import RxRelay
 
 open class SignInView: UIView {
     let logoView = UIImageView().then {
@@ -24,14 +25,24 @@ open class SignInView: UIView {
                                bgColor: CommonUIAssets.LMOrange1)
     var signUpButton = UIButton()
 
+    public let signUpTapped = PublishRelay<Void>()
+    private let disposeBag = DisposeBag()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initAttribute()
         initUI()
+        bindEvents()
     }
 
     public func bind(course: CourseVO) {
         
+    }
+
+    func bindEvents() {
+        signUpButton.rx.tap
+            .bind(to: signUpTapped)
+            .disposed(by: disposeBag)
     }
 
     func initAttribute() {
@@ -44,11 +55,11 @@ open class SignInView: UIView {
         }
 
         idTextField = idTextField.then {
-            $0.placeholder = "아이디를 입력하세요."
+            $0.placeholder = "아이디를 입력하세요"
         }
 
         passwordTextField = passwordTextField.then {
-            $0.placeholder = "비밀번호를 입력하세요."
+            $0.placeholder = "비밀번호를 입력하세요"
             $0.isSecureTextEntry = true
         }
 

@@ -1,5 +1,5 @@
 //
-//  SignInViewController.swift
+//  SignUpViewController.swift
 //  Login
 //
 //  Created by 박지윤 on 8/25/25.
@@ -10,14 +10,20 @@ import UIKit
 import SnapKit
 import RxSwift
 
-public class SignInViewController: BaseViewController {
-//    let viewModel: LoginViewModel
+public class SignUpViewController: BaseViewController {
+    //    let viewModel: LoginViewModel
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: nil,
+                                             title: "회원가입",
                                              isRightButtonHidden: true)
-
-    let signInView = SignInView()
+    
+    let scrollView = UIScrollView()
+    let signUpView = SignUpView()
+    let signUpButtonView = UIView()
+    let signUpButton = LMButton(textColor: CommonUIAssets.LMBlack,
+                                bgColor: CommonUIAssets.LMOrange1).then {
+        $0.setTitle("회원가입", for: .normal)
+    }
 
     public override init() {
 //        self.viewModel = loginViewModel
@@ -30,7 +36,6 @@ public class SignInViewController: BaseViewController {
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(, animated: false)
     }
 
     public override func viewDidLoad() {
@@ -40,16 +45,6 @@ public class SignInViewController: BaseViewController {
     }
 
     private func bindActions() {
-        signInView.signUpTapped
-            .bind { [weak self] in
-                self?.presentSignUp()
-            }
-            .disposed(by: disposeBag)
-    }
-
-    private func presentSignUp() {
-        let signUpViewController = SignUpViewController()
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
     private func bindTransition() {
@@ -60,8 +55,11 @@ public class SignInViewController: BaseViewController {
     }
 
     public override func setupHierarchy() {
-        [navigationBar, signInView]
+        [navigationBar, scrollView, signUpButtonView]
             .forEach { view.addSubview($0) }
+
+        scrollView.addSubview(signUpView)
+        signUpButtonView.addSubview(signUpButton)
     }
 
     public override func setupDelegate() {
@@ -73,9 +71,24 @@ public class SignInViewController: BaseViewController {
             $0.width.centerX.equalToSuperview()
         }
 
-        signInView.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(signUpButtonView.snp.top)
+        }
+
+        signUpView.snp.makeConstraints {
+            $0.edges.width.equalToSuperview()
+        }
+
+        signUpButtonView.snp.makeConstraints {
+            $0.height.equalTo(55)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+        }
+
+        signUpButton.snp.makeConstraints {
+            $0.width.equalToSuperview()
         }
     }
 }
