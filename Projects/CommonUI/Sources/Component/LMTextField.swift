@@ -13,12 +13,12 @@ public class LMTextField: UITextField {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        setProperties()
+        initAttribute()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setProperties()
+        initAttribute()
     }
  
     public override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -33,7 +33,7 @@ public class LMTextField: UITextField {
         return bounds.inset(by: padding)
     }
 
-    public func setProperties() {
+    public func initAttribute() {
         self.textColor = CommonUIAssets.LMBlack
         self.font = UIFont.systemFont(ofSize: 16)
 

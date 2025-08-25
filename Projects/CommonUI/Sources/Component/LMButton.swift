@@ -14,22 +14,22 @@ public class LMButton: UIButton {
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        setProperties()
+        initAttribute()
     }
 
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setProperties()
+        initAttribute()
     }
 
     public convenience init(textColor: UIColor?, bgColor: UIColor?) {
         self.init(frame: .zero)
         self.textColor = textColor
         self.bgColor = bgColor
-        setProperties()
+        initAttribute()
     }
 
-    public func setProperties() {
+    public func initAttribute() {
         self.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         self.setTitleColor(textColor ?? .black, for: .normal)
         self.backgroundColor = bgColor ?? .white
