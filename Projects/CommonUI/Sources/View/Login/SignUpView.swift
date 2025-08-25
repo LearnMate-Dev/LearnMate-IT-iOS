@@ -17,7 +17,7 @@ open class SignUpView: UIView {
     let nameInputField = LMInputField(inputText: "이름",
                                       inputPlaceholder: "이름을 입력하세요",
                                       warningText: " 이름은 필수입니다")
-    let emailInputField = LMInputField(inputType: .email,
+    public let emailInputField = LMInputField(inputType: .email,
                                        inputText: "이메일",
                                        inputPlaceholder: " 이메일을 입력하세요",
                                        warningText: " 이메일 형식이 올바르지 않습니다",

@@ -9,6 +9,8 @@ import UIKit
 
 public class LMInputField: UIStackView {
 
+    public var onEmailButtonTapped: ((String) -> Void)?
+
     public enum InputType {
         case email
         case password
@@ -88,6 +90,7 @@ public class LMInputField: UIStackView {
         let emailButton = LMButton(textColor: CommonUIAssets.LMBlack,
                                    bgColor: CommonUIAssets.LMOrange1).then {
             $0.setTitle(buttonTitle, for: .normal)
+            $0.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
         }
 
         [inputTextField, emailButton]
@@ -142,5 +145,9 @@ public class LMInputField: UIStackView {
         self.inputTextField.snp.makeConstraints {
             $0.width.equalToSuperview()
         }
+    }
+
+    @objc private func authButtonTapped() {
+        onEmailButtonTapped?(inputTextField.text ?? "")
     }
 }
