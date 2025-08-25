@@ -64,6 +64,7 @@ public enum CommonUIAssets {
     public static let LMBlue = color(named: "LMBlue")
     public static let LMGreen = color(named: "LMGreen")
     public static let LMRed = color(named: "LMRed")
+    public static let LMRed2 = color(named: "LMRed02")
 }
 
 private func image(named name: String) -> UIImage? {
