@@ -28,9 +28,11 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
 
     var googleLoginButton = UIButton()
     var appleLoginButton = ASAuthorizationAppleIDButton(type: .default, style: .black)
+    var lmLoginButton = UIButton()
 
     public let googleLoginTapped = PublishRelay<Void>()
     public let appleLoginTapped = PublishRelay<Void>()
+    public let lmLoginTapped = PublishRelay<Void>()
 
     let disposeBag = DisposeBag()
 
@@ -52,28 +54,40 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
         appleLoginButton.rx.controlEvent(.touchUpInside)
             .bind(to: appleLoginTapped)
             .disposed(by: disposeBag)
+
+        lmLoginButton.rx.tap
+            .bind(to: lmLoginTapped)
+            .disposed(by: disposeBag)
     }
 
     func initAttribute() {
         self.backgroundColor = .white
 
+        lmLoginButton = lmLoginButton.then {
+            $0.setTitle("이메일로 로그인", for: .normal)
+            $0.setTitleColor(CommonUIAssets.LMBlack, for: .normal)
+            $0.backgroundColor = CommonUIAssets.LMOrange1
+            $0.layer.cornerRadius = 7
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        }
+
         googleLoginButton = googleLoginButton.then {
-            $0.setTitle("Google로 시작하기", for: .normal)
-            $0.setTitleColor(.black, for: .normal)
+            $0.setTitle("Google로 로그인", for: .normal)
+            $0.setTitleColor(CommonUIAssets.LMBlack, for: .normal)
             $0.setImage(CommonUIAssets.google?
                 .resize(to: CGSize(width: 25, height: 25)), for: .normal)
             $0.backgroundColor = .white
             $0.layer.borderColor = CommonUIAssets.LMGray3?.cgColor
             $0.layer.borderWidth = 1
-            $0.layer.cornerRadius = 5
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+            $0.layer.cornerRadius = 7
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
             $0.semanticContentAttribute = .forceLeftToRight
             $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
         }
     }
 
     func initUI() {
-        [logoLabel, logoView, googleLoginButton, appleLoginButton]
+        [logoLabel, logoView, lmLoginButton, googleLoginButton, appleLoginButton]
             .forEach { self.addSubview($0) }
 
         logoLabel.snp.makeConstraints {
@@ -85,6 +99,12 @@ open class LoginView: UIView, SFSafariViewControllerDelegate {
             $0.height.equalTo(56)
             $0.centerY.equalToSuperview().offset(-50)
             $0.centerX.equalToSuperview()
+        }
+
+        lmLoginButton.snp.makeConstraints {
+            $0.bottom.equalTo(googleLoginButton.snp.top).offset(-20)
+            $0.height.equalTo(50)
+            $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
         googleLoginButton.snp.makeConstraints {
