@@ -10,11 +10,9 @@ import UIKit
 import SnapKit
 import RxSwift
 import Then
-import SafariServices
 import RxRelay
-import AuthenticationServices
 
-open class LoginView: UIView, SFSafariViewControllerDelegate {
+open class LoginView: UIView {
     let logoLabel = UILabel().then {
         $0.text = "경계선 지능인을 위한 케어 서비스,"
         $0.textColor = .black
