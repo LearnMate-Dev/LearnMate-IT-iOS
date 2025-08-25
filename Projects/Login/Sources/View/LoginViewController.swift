@@ -41,6 +41,12 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
     }
 
     private func bindLoginEvents() {
+        loginView.lmLoginTapped
+            .bind { [weak self] in
+                self?.presentLmLogin()
+            }
+            .disposed(by: disposeBag)
+
         loginView.googleLoginTapped
             .bind { [weak self] in
                 self?.presentGoogleLogin()
@@ -52,6 +58,11 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
                 self?.presentAppleLogin()
             }
             .disposed(by: disposeBag)
+    }
+
+    private func presentLmLogin() {
+        let signInViewController = SignInViewController()
+        self.navigationController?.pushViewController(signInViewController, animated: true)
     }
 
     private func presentGoogleLogin() {
@@ -102,11 +113,6 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
     }
 
     private func bindTransition() {
-//        homeQuizView.onStartButtonTapped = { [weak self] indexPath in
-//            let quizViewController = QuizViewController()
-//            quizViewController.hidesBottomBarWhenPushed = true
-//            self?.navigationController?.pushViewController(quizViewController, animated: true)
-//        }
     }
 
     public override func setupViewProperty() {
