@@ -22,6 +22,7 @@
 		950A0D512E5AADC400C07CF2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D502E5AADC100C07CF2 /* SignInView.swift */; };
 		950A0D562E5C29D000C07CF2 /* LMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D552E5C29CC00C07CF2 /* LMTextField.swift */; };
 		950A0D602E5C3C7000C07CF2 /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */; };
+		950A0D622E5C562700C07CF2 /* LMInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D612E5C561400C07CF2 /* LMInputField.swift */; };
 		BAD8B768F782046D4AA1C073 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DE048BEDCB92B48F401061 /* RxCocoa.framework */; };
 		BE81B1F3E60D37D75A058D2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCDC15081A22BAED6318E3E /* SnapKit.framework */; };
 		C2B0F8237715D14D8797DBC9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F45F908769FA7C3C0792F /* LoginView.swift */; };
@@ -70,6 +71,7 @@
 		950A0D502E5AADC100C07CF2 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		950A0D552E5C29CC00C07CF2 /* LMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMTextField.swift; sourceTree = "<group>"; };
 		950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMButton.swift; sourceTree = "<group>"; };
+		950A0D612E5C561400C07CF2 /* LMInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInputField.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACC7259FC0C14CB352A4E6B /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		C28FE6392E1612667826E5C5 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				950A0D552E5C29CC00C07CF2 /* LMTextField.swift */,
 				950A0D5F2E5C3C6D00C07CF2 /* LMButton.swift */,
+				950A0D612E5C561400C07CF2 /* LMInputField.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				416C58AEE5E4491991982CFF /* HomeProgressView.swift in Sources */,
 				7D319882A302F75CCE46A48C /* HomeQuizView.swift in Sources */,
 				537F80B2F39FD73F6F78F9B2 /* HomeView.swift in Sources */,
+				950A0D622E5C562700C07CF2 /* LMInputField.swift in Sources */,
 				65762CE867888754D56BA2CB /* OptionView.swift in Sources */,
 				CEADBDD98AC9921C05AAC1DA /* QuizCollectionViewCell.swift in Sources */,
 				950A0D512E5AADC400C07CF2 /* SignInView.swift in Sources */,
