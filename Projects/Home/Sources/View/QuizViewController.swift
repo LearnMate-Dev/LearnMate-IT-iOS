@@ -14,6 +14,7 @@ import RxSwift
 public class QuizViewController: UIViewController {
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
+                                             title: nil,
                                              isRightButtonHidden: true)
     let progressView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1
