@@ -11,7 +11,7 @@ import SnapKit
 import RxSwift
 
 public class SignInViewController: BaseViewController {
-    let signViewModel: SignViewModel
+    let viewModel: SignViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
@@ -21,7 +21,7 @@ public class SignInViewController: BaseViewController {
     let signInView = SignInView()
 
     public init(signViewModel: SignViewModel) {
-        self.signViewModel = signViewModel
+        self.viewModel = signViewModel
         super.init()
     }
 
@@ -49,7 +49,7 @@ public class SignInViewController: BaseViewController {
     }
 
     private func presentSignUp() {
-        let signUpViewController = SignUpViewController(signViewModel: signViewModel)
+        let signUpViewController = SignUpViewController(signViewModel: viewModel)
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
