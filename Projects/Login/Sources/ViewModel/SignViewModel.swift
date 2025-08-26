@@ -16,6 +16,8 @@ protocol SignViewModelProtocol {
 public class SignViewModel: SignViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let signUseCase: SignUseCase
+    public weak var signInViewCoordinator: SignInCoordinator?
+
     public init(signUseCase: SignUseCase) {
         self.signUseCase = signUseCase
     }

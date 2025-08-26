@@ -10,11 +10,8 @@ import RxSwift
 import Alamofire
 
 public class DefaultSignRepository: SignRepository {
-    private let tokenRepository: TokenRepository
-    
-    public init(tokenRepository: TokenRepository) {
-        self.tokenRepository = tokenRepository
-    }
+
+    public init() { }
 
     public func postEmail(email: String) -> Completable {
         return request(endpoint: "/api/auth/email")
