@@ -28,5 +28,9 @@ public struct DataAssembly: Assembly {
             let tokenRepository = resolver.resolve(TokenRepository.self)!
             return DefaultQuizRepository(tokenRepository: tokenRepository)
         }
+
+        container.register(SignRepository.self) { _  in
+            return DefaultSignRepository()
+        }
     }
 }
