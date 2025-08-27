@@ -39,6 +39,11 @@ final class DefaultAppCoordinator: AppCoordinator{
         loginViewController.onPresentLmLogin = { [weak self] in
             guard let self else { return }
             let signInViewController = self.dependency.injector.resolve(SignInViewController.self)
+            signInViewController.onPresentSignUp = { [weak self] in
+                guard let self else { return }
+                let signUpViewController = self.dependency.injector.resolve(SignUpViewController.self)
+                self.navigationController.pushViewController(signUpViewController, animated: true)
+            }
             self.navigationController.pushViewController(signInViewController, animated: true)
         }
         self.navigationController.pushViewController(loginViewController, animated: true)

@@ -35,5 +35,10 @@ public struct LoginAssembly: Assembly {
             let vm = resolver.resolve(SignViewModel.self)!
             return SignInViewController(signViewModel: vm)
         }
+        
+        container.register(SignUpViewController.self) { resolver in
+            let vm = resolver.resolve(SignViewModel.self)!
+            return SignUpViewController(signViewModel: vm)
+        }
     }
 }

@@ -19,6 +19,7 @@ public class SignInViewController: BaseViewController {
                                              isRightButtonHidden: true)
 
     let signInView = SignInView()
+    public var onPresentSignUp: (() -> Void)?
 
     public init(signViewModel: SignViewModel) {
         self.viewModel = signViewModel
@@ -49,8 +50,9 @@ public class SignInViewController: BaseViewController {
     }
 
     private func presentSignUp() {
-        let signUpViewController = SignUpViewController(signViewModel: viewModel)
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        onPresentSignUp?()
+//        let signUpViewController = SignUpViewController(signViewModel: viewModel)
+//        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
     private func bindTransition() {
