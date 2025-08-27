@@ -11,7 +11,9 @@ import SnapKit
 import RxSwift
 
 public class SignUpViewController: BaseViewController {
-    let signViewModel: SignViewModel
+    let viewModel: SignViewModel
+    public weak var signUpViewCoordinator: SignUpCoordinator?
+
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
                                              title: "회원가입",
@@ -26,7 +28,7 @@ public class SignUpViewController: BaseViewController {
     }
 
     public init(signViewModel: SignViewModel) {
-        self.signViewModel = signViewModel
+        self.viewModel = signViewModel
         super.init()
     }
 
@@ -46,7 +48,7 @@ public class SignUpViewController: BaseViewController {
 
     private func bindActions() {
         signUpView.emailInputField.onEmailButtonTapped = { email in
-            self.signViewModel.postEmail(email: email)
+            self.viewModel.postEmail(email: email)
         }
     }
 

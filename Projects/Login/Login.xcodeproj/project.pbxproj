@@ -16,6 +16,7 @@
 		950A0D642E5C5F7D00C07CF2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D632E5C5F7900C07CF2 /* SignUpViewController.swift */; };
 		950A0D662E5CCB2F00C07CF2 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D652E5CCB2900C07CF2 /* SignViewModel.swift */; };
 		950A0D862E5DE6D000C07CF2 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */; };
+		950A0D8A2E5E0C8600C07CF2 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */; };
 		9543B5BD011752760C9E8D48 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3E03A11BBC654DEC110ECE /* Common.framework */; };
 		A2DD99D036B33B4B67E19670 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149968626029AF0A6483A522 /* RxSwift.framework */; };
 		A60EB3815F8DEA7C7B2A1E4D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */; };
@@ -70,6 +71,7 @@
 		950A0D632E5C5F7900C07CF2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		950A0D652E5CCB2900C07CF2 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		9A9C214589834256AC9DD6AB /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D197429DF4204F655968BA /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */,
+				950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4027F4EA82D89F9520C87D34 /* LoginViewController.swift in Sources */,
+				950A0D8A2E5E0C8600C07CF2 /* SignUpCoordinator.swift in Sources */,
 				92D7E2A0C6D4E3A6F57BAFB0 /* LoginViewModel.swift in Sources */,
 				950A0D662E5CCB2F00C07CF2 /* SignViewModel.swift in Sources */,
 				950A0D642E5C5F7D00C07CF2 /* SignUpViewController.swift in Sources */,

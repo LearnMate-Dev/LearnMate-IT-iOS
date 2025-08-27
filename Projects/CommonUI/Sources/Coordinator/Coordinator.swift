@@ -16,6 +16,7 @@ public enum CoordinatorType {
     case stats
     case myPage
     case signIn
+    case signUp
 }
 
 public protocol Coordinator: AnyObject {

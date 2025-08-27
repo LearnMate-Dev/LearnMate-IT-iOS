@@ -17,6 +17,7 @@ public class SignViewModel: SignViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let signUseCase: SignUseCase
     public weak var signInViewCoordinator: SignInCoordinator?
+    public weak var signUpViewCoordinator: SignUpCoordinator?
 
     public init(signUseCase: SignUseCase) {
         self.signUseCase = signUseCase
