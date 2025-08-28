@@ -47,8 +47,6 @@ public class SignUpViewController: BaseViewController {
         bindTransition()
         setupKeyboardDismissGesture()
 
-//        signUpView.authenticationInputField.disableButton(buttonTitle: )
-
         viewModel.onEmailSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.signUpView.emailInputField.disableButton(buttonTitle: "전송 완료")
@@ -123,6 +121,36 @@ public class SignUpViewController: BaseViewController {
     
     @objc private func dismissKeyboard() {
         view.endEditing(true)
+        validateOnKeyboardDismiss()
+    }
+
+    private func validateOnKeyboardDismiss() {
+        let name = signUpView.nameInputField.currentText()
+        if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            signUpView.nameInputField.showWarning()
+        } else {
+            signUpView.nameInputField.hideWarning()
+        }
+
+        let password = signUpView.passwordInputField.currentText()
+        if isValidPassword(password) {
+            signUpView.passwordInputField.hideWarning()
+        } else {
+            signUpView.passwordInputField.showWarning()
+        }
+
+        let confirm = signUpView.passwordCheckInputField.currentText()
+        if !password.isEmpty && password == confirm {
+            signUpView.passwordCheckInputField.hideWarning()
+        } else {
+            signUpView.passwordCheckInputField.showWarning()
+        }
+    }
+
+    private func isValidPassword(_ password: String) -> Bool {
+        let passwordRegex = "^(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#$%^&*(),.?\":{}|<>]{8,}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return predicate.evaluate(with: password)
     }
 
     public override func setupLayout() {

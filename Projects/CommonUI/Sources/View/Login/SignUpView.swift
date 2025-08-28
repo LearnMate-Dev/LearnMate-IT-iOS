@@ -14,7 +14,7 @@ import Then
 open class SignUpView: UIView {
     var inputFieldStackView = UIStackView()
 
-    let nameInputField = LMInputField(inputText: "이름",
+    public let nameInputField = LMInputField(inputText: "이름",
                                       inputPlaceholder: "이름을 입력하세요",
                                       warningText: " 이름은 필수입니다")
     public let emailInputField = LMInputField(inputType: .email,
@@ -27,11 +27,11 @@ open class SignUpView: UIView {
                                        inputPlaceholder: " 인증번호를 입력하세요",
                                        warningText: " 인증번호가 일치하지 않습니다",
                                        buttonTitle: "확인")
-    let passwordInputField = LMInputField(inputType: .password,
+    public let passwordInputField = LMInputField(inputType: .password,
                                           inputText: "비밀번호",
                                           inputPlaceholder: "비밀번호를 입력하세요",
                                           warningText: " 비밀번호 형식이 올바르지 않습니다")
-    let passwordCheckInputField = LMInputField(inputText: "비밀번호 확인",
+    public let passwordCheckInputField = LMInputField(inputText: "비밀번호 확인",
                                                inputPlaceholder: "비밀번호를 한번 더 입력하세요",
                                                warningText: " 비밀번호가 일치하지 않습니다")
 
