@@ -45,6 +45,7 @@ public class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         bindActions()
         bindTransition()
+        setupKeyboardDismissGesture()
 
 //        signUpView.authenticationInputField.disableButton(buttonTitle: )
 
@@ -112,6 +113,16 @@ public class SignUpViewController: BaseViewController {
     }
 
     public override func setupDelegate() {
+    }
+    
+    private func setupKeyboardDismissGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     public override func setupLayout() {
