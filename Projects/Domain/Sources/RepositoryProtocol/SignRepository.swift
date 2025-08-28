@@ -8,6 +8,6 @@
 import RxSwift
 
 public protocol SignRepository {
-    func postEmail(email: String) -> Completable
-    func postConfirm(email: String, code: String) -> Completable
+    func postEmail(email: String) -> Single<DefaultVO>
+    func postConfirm(email: String, code: String) -> Single<DefaultVO>
 }

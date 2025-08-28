@@ -26,6 +26,7 @@ public class SignUpViewController: BaseViewController {
                                 bgColor: CommonUIAssets.LMOrange1).then {
         $0.setTitle("회원가입", for: .normal)
     }
+    private var email: String = ""
 
     public init(signViewModel: SignViewModel) {
         self.viewModel = signViewModel
@@ -44,15 +45,58 @@ public class SignUpViewController: BaseViewController {
         super.viewDidLoad()
         bindActions()
         bindTransition()
+
+//        signUpView.authenticationInputField.disableButton(buttonTitle: )
+
+        viewModel.onEmailSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                self?.signUpView.emailInputField.disableButton(buttonTitle: "전송 완료")
+            }
+        }
+
+        viewModel.onConfirmSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                self?.signUpView.confirmInputField.hideWarning()
+                self?.signUpView.confirmInputField.disableButton(buttonTitle: "인증 완료")
+            }
+        }
+
+        viewModel.onConfirmFailure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.signUpView.confirmInputField.showWarning()
+            }
+        }
     }
 
     private func bindActions() {
-        signUpView.emailInputField.onEmailButtonTapped = { email in
-            self.viewModel.postEmail(email: email)
+        signUpView.emailInputField.onEmailButtonTapped = { [weak self] email in
+            guard let self = self else { return }
+
+            if self.isValidEmail(email) {
+                print("유효한 이메일: \(email)")
+                self.email = email
+                self.viewModel.postEmail(email: email)
+                self.signUpView.emailInputField.hideWarning()
+            } else {
+                print("유효하지 않은 이메일: \(email)")
+                self.signUpView.emailInputField.showWarning()
+            }
+        }
+
+        signUpView.confirmInputField.onEmailButtonTapped = { [weak self] code in
+            guard let self = self else { return }
+
+            self.viewModel.postConfirm(email: email, code: code)
         }
     }
 
     private func bindTransition() {
+    }
+
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
     }
 
     public override func setupViewProperty() {

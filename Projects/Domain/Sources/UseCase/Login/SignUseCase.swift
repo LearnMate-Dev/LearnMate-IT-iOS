@@ -8,8 +8,8 @@
 import RxSwift
 
 public protocol SignUseCase {
-    func postEmail(email: String) -> Completable
-    func postConfirm(email: String, code: String) -> Completable
+    func postEmail(email: String) -> Single<DefaultVO>
+    func postConfirm(email: String, code: String) -> Single<DefaultVO>
 }
 
 public final class DefaultSignUseCase: SignUseCase {
@@ -19,11 +19,11 @@ public final class DefaultSignUseCase: SignUseCase {
         self.repository = repository
     }
 
-    public func postEmail(email: String) -> Completable {
+    public func postEmail(email: String) -> Single<DefaultVO> {
         return repository.postEmail(email: email)
     }
 
-    public func postConfirm(email: String, code: String) -> Completable {
+    public func postConfirm(email: String, code: String) -> Single<DefaultVO> {
         return repository.postConfirm(email: email, code: code)
     }
 }

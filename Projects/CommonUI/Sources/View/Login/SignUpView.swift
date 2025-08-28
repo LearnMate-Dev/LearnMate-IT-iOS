@@ -22,7 +22,7 @@ open class SignUpView: UIView {
                                        inputPlaceholder: " 이메일을 입력하세요",
                                        warningText: " 이메일 형식이 올바르지 않습니다",
                                        buttonTitle: "인증 요청")
-    let authenticationInputField = LMInputField(inputType: .email,
+    public let confirmInputField = LMInputField(inputType: .email,
                                        inputText: "인증번호",
                                        inputPlaceholder: " 인증번호를 입력하세요",
                                        warningText: " 인증번호가 일치하지 않습니다",
@@ -61,7 +61,7 @@ open class SignUpView: UIView {
     func initUI() {
         self.addSubview(inputFieldStackView)
 
-        [nameInputField, emailInputField, authenticationInputField, passwordInputField, passwordCheckInputField]
+        [nameInputField, emailInputField, confirmInputField, passwordInputField, passwordCheckInputField]
             .forEach { inputFieldStackView.addArrangedSubview($0) }
 
         inputFieldStackView.snp.makeConstraints {

@@ -64,7 +64,7 @@ public class LMInputField: UIStackView {
 
         warningLabel = warningLabel.then {
             $0.text = waringText
-            $0.textColor = CommonUIAssets.LMRed2
+            $0.textColor = .clear
             $0.font = UIFont.systemFont(ofSize: 13, weight: .light)
         }
     }
@@ -90,7 +90,7 @@ public class LMInputField: UIStackView {
         let emailButton = LMButton(textColor: CommonUIAssets.LMBlack,
                                    bgColor: CommonUIAssets.LMOrange1).then {
             $0.setTitle(buttonTitle, for: .normal)
-            $0.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         }
 
         [inputTextField, emailButton]
@@ -147,7 +147,34 @@ public class LMInputField: UIStackView {
         }
     }
 
-    @objc private func authButtonTapped() {
+    @objc private func emailButtonTapped() {
         onEmailButtonTapped?(inputTextField.text ?? "")
+    }
+
+    public func showWarning() {
+        warningLabel.textColor = CommonUIAssets.LMRed2
+    }
+
+    public func hideWarning() {
+        warningLabel.textColor = .clear
+    }
+
+    public func disableButton(buttonTitle: String) {
+        for subview in self.arrangedSubviews {
+            if let stackView = subview as? UIStackView {
+                for stackSubview in stackView.arrangedSubviews {
+                    if let textField = stackSubview as? LMTextField {
+                        textField.isEnabled = false
+                    }
+
+                    if let button = stackSubview as? LMButton {
+                        button.setTitle(buttonTitle, for: .normal)
+                        button.isEnabled = false
+                        button.backgroundColor = CommonUIAssets.LMGray5
+                        button.setTitleColor(CommonUIAssets.LMWhite, for: .normal)
+                    }
+                }
+            }
+        }
     }
 }

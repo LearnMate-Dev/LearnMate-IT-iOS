@@ -13,33 +13,52 @@ public class DefaultSignRepository: SignRepository {
 
     public init() { }
 
-    public func postEmail(email: String) -> Completable {
-        return request(endpoint: "/api/auth/email")
-    }
-    
-    public func postConfirm(email: String, code: String) -> Completable {
-        return request(endpoint: "/api/auth/email/confirm")
+    public func postEmail(email: String) -> Single<DefaultVO> {
+        let params = ["email": email]
+        return request(endpoint: "/api/auth/email",
+                       parameters: params,
+                       responseType: DefaultDTO.self)
+        .map { dto in
+            return dto.getMessage()
+        }
     }
 
-    private func request(endpoint: String) -> Completable {
-        return Completable.create { completable in
+    public func postConfirm(email: String, code: String) -> Single<DefaultVO> {
+        let params = ["email": email, "code": code]
+        return request(endpoint: "/api/auth/email/confirm",
+                       parameters: params,
+                       responseType: DefaultDTO.self)
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
+    private func request<T: Decodable>(
+        endpoint: String,
+        parameters: [String: Any]? = nil,
+        responseType: T.Type
+    ) -> Single<T> {
+        return Single.create { single in
             let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
-            var headers: HTTPHeaders = [:]
-            let request = AF.request(url,
-                                     method: .get,
-                                     encoding: URLEncoding.queryString,
-                                     headers: headers)
-                .validate()
-                .response { response in
-                    if let error = response.error {
-                        print("❌ API 응답 실패")
-                        completable(.error(error))
-                    } else {
-                        print("✅ API 응답 성공")
-                        completable(.completed)
-                    }
+            let headers: HTTPHeaders = [:]
+            let request = AF.request(
+                url,
+                method: .post,
+                parameters: parameters,
+                encoding: JSONEncoding.default,
+                headers: headers
+            )
+            .validate()
+            .responseDecodable(of: responseType) { response in
+                switch response.result {
+                case .success(let value):
+                    print("✅ API 응답 성공: \(value)")
+                    single(.success(value))
+                case .failure(let error):
+                    print("❌ API 응답 실패: \(error)")
+                    single(.failure(error))
                 }
-
+            }
             return Disposables.create { request.cancel() }
         }
     }

@@ -18,6 +18,9 @@ public class SignViewModel: SignViewModelProtocol {
     private let signUseCase: SignUseCase
     public weak var signInViewCoordinator: SignInCoordinator?
     public weak var signUpViewCoordinator: SignUpCoordinator?
+    public var onEmailSuccess: (() -> Void)?
+    public var onConfirmSuccess: (() -> Void)?
+    public var onConfirmFailure: (() -> Void)?
 
     public init(signUseCase: SignUseCase) {
         self.signUseCase = signUseCase
@@ -25,25 +28,26 @@ public class SignViewModel: SignViewModelProtocol {
 
     func postEmail(email: String) {
         signUseCase.postEmail(email: email)
-            .subscribe(
-                onCompleted: {
-                    print("이메일 전송 성공")
-                },
-                onError: { error in
-                    print("이메일 전송 실패: \(error)")
-                }
-            ).disposed(by: disposeBag)
+            .subscribe(onSuccess: { [weak self] response in
+                print("이메일 전송 성공: \(response.message)")
+                self?.onEmailSuccess?()
+            }, onFailure: { error in
+                print("이메일 전송 실패: \(error)")
+            })
+            .disposed(by: disposeBag)
     }
 
     func postConfirm(email: String, code: String) {
         signUseCase.postConfirm(email: email, code: code)
-            .subscribe(
-                onCompleted: {
-                    print("이메일 전송 성공")
-                },
-                onError: { error in
-                    print("이메일 전송 실패: \(error)")
-                }
-            ).disposed(by: disposeBag)
+            .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else { return }
+                print("이메일 인증 성공: \(response.message)")
+                self.onConfirmSuccess?()
+            }, onFailure: { [weak self] error in
+                guard let self = self else { return }
+                print("이메일 인증 실패: \(error)")
+                self.onConfirmFailure?()
+            })
+            .disposed(by: disposeBag)
     }
 }
