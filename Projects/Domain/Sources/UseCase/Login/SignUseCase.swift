@@ -10,6 +10,7 @@ import RxSwift
 public protocol SignUseCase {
     func postEmail(email: String) -> Single<DefaultVO>
     func postConfirm(email: String, code: String) -> Single<DefaultVO>
+    func postSignUp(username: String, email: String, password: String) -> Single<DefaultVO>
 }
 
 public final class DefaultSignUseCase: SignUseCase {
@@ -25,5 +26,9 @@ public final class DefaultSignUseCase: SignUseCase {
 
     public func postConfirm(email: String, code: String) -> Single<DefaultVO> {
         return repository.postConfirm(email: email, code: code)
+    }
+
+    public func postSignUp(username: String, email: String, password: String) -> Single<DefaultVO> {
+        return repository.postSignUp(username: username, email: email, password: password)
     }
 }

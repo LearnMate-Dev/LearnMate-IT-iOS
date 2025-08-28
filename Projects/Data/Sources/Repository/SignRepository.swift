@@ -33,6 +33,16 @@ public class DefaultSignRepository: SignRepository {
         }
     }
 
+    public func postSignUp(username: String, email: String, password: String) -> Single<DefaultVO> {
+        let params = ["username": username, "email": email, "password": password]
+        return request(endpoint: "/api/auth/sign-up",
+                       parameters: params,
+                       responseType: DefaultDTO.self)
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
     private func request<T: Decodable>(
         endpoint: String,
         parameters: [String: Any]? = nil,

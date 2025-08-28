@@ -11,6 +11,7 @@ import RxSwift
 protocol SignViewModelProtocol {
     func postEmail(email: String)
     func postConfirm(email: String, code: String)
+    func postSignUp(username: String, email: String, password: String)
 }
 
 public class SignViewModel: SignViewModelProtocol {
@@ -47,6 +48,18 @@ public class SignViewModel: SignViewModelProtocol {
                 guard let self = self else { return }
                 print("이메일 인증 실패: \(error)")
                 self.onConfirmFailure?()
+            })
+            .disposed(by: disposeBag)
+    }
+
+    func postSignUp(username: String, email: String, password: String) {
+        signUseCase.postSignUp(username: username, email: email, password: password)
+            .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else { return }
+                print("회원가입 성공: \(response.message)")
+            }, onFailure: { [weak self] error in
+                guard let self = self else { return }
+                print("회원가입 실패: \(error)")
             })
             .disposed(by: disposeBag)
     }
