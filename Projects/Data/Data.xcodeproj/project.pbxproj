@@ -12,6 +12,7 @@
 		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
 		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
 		950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */; };
+		950A0D902E6039D600C07CF2 /* DefaultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */; };
 		A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
 		E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0730BC3657E24BCEA511A3C /* CourseRepository.swift */; };
@@ -43,6 +44,7 @@
 		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		77810122262C6CB16D4D47DA /* QuizDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDTO.swift; sourceTree = "<group>"; };
 		950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
+		950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDTO.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDTO.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		647255CD65221C9CD4A43DED /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */,
 				AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */,
 				A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */,
 				77810122262C6CB16D4D47DA /* QuizDTO.swift */,
@@ -216,6 +219,7 @@
 				950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */,
 				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
 				34FD760EB97BB96E9D770BF0 /* LoginRepository.swift in Sources */,
+				950A0D902E6039D600C07CF2 /* DefaultDTO.swift in Sources */,
 				A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */,
 				E6785667C8E247C344474CBB /* TokenRepository.swift in Sources */,
 			);
