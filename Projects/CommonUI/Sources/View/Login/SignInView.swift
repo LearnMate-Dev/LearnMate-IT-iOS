@@ -19,12 +19,13 @@ open class SignInView: UIView {
     }
 
     var textFieldStackView = UIStackView()
-    var idTextField = LMTextField()
-    var passwordTextField = LMTextField()
-    var loginButton = LMButton(textColor: CommonUIAssets.LMBlack,
+    public var idTextField = LMTextField()
+    public var passwordTextField = LMTextField()
+    var signInButton = LMButton(textColor: CommonUIAssets.LMBlack,
                                bgColor: CommonUIAssets.LMOrange1)
     var signUpButton = UIButton()
 
+    public let signInTapped = PublishRelay<Void>()
     public let signUpTapped = PublishRelay<Void>()
     private let disposeBag = DisposeBag()
 
@@ -40,6 +41,10 @@ open class SignInView: UIView {
     }
 
     func bindEvents() {
+        signInButton.rx.tap
+            .bind(to: signInTapped)
+            .disposed(by: disposeBag)
+
         signUpButton.rx.tap
             .bind(to: signUpTapped)
             .disposed(by: disposeBag)
@@ -63,7 +68,7 @@ open class SignInView: UIView {
             $0.isSecureTextEntry = true
         }
 
-        loginButton = loginButton.then {
+        signInButton = signInButton.then {
             $0.setTitle("로그인", for: .normal)
         }
 
@@ -84,7 +89,7 @@ open class SignInView: UIView {
     }
 
     func initUI() {
-        [logoView, textFieldStackView, loginButton, signUpButton]
+        [logoView, textFieldStackView, signInButton, signUpButton]
             .forEach { addSubview($0) }
 
         [idTextField, passwordTextField]
@@ -102,14 +107,14 @@ open class SignInView: UIView {
             $0.height.equalTo(130)
         }
 
-        loginButton.snp.makeConstraints {
+        signInButton.snp.makeConstraints {
             $0.top.equalTo(textFieldStackView.snp.bottom).offset(33)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
         signUpButton.snp.makeConstraints {
-            $0.top.equalTo(loginButton.snp.bottom).offset(35)
+            $0.top.equalTo(signInButton.snp.bottom).offset(35)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(27)
         }

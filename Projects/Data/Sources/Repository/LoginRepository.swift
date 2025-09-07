@@ -13,17 +13,17 @@ import Foundation
 public class DefaultLoginRepository: LoginRepository {
     public init() {}
 
-    public func postGoogleLogin() -> Single<LoginVO> {
+    public func postGoogleLogin() -> Single<GoogleLoginVO> {
         return request(
             endpoint: "/oauth2/authorization/google",
-            responseType: LoginDTO.self
+            responseType: GoogleLoginDTO.self
         )
         .map { dto in
-            return LoginVO(accessToken: "")
+            return GoogleLoginVO(accessToken: "")
         }
     }
 
-    public func postAppleLogin(userName: String?, identityToken: String) -> Single<LoginVO> {
+    public func postAppleLogin(userName: String?, identityToken: String) -> Single<GoogleLoginVO> {
         let params: Parameters = [
             "userName": userName,
             "identityToken": identityToken
@@ -52,7 +52,7 @@ public class DefaultLoginRepository: LoginRepository {
                        let components = URLComponents(string: location) {
                         let items = components.queryItems ?? []
                         let accessToken = items.first(where: { $0.name == "accessToken" })?.value
-                        single(.success(LoginVO(accessToken: accessToken)))
+                        single(.success(GoogleLoginVO(accessToken: accessToken)))
                     } else {
                         let error = NSError(domain: "DefaultLoginRepository",
                                             code: -1,

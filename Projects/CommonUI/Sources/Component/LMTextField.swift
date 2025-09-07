@@ -52,4 +52,8 @@ public class LMTextField: UITextField {
             $0.height.equalTo(55)
         }
     }
+
+    public func currentText() -> String {
+        return self.text ?? ""
+    }
 }
