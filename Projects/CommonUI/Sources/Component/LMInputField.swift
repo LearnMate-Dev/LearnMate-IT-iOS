@@ -155,14 +155,14 @@ public class LMInputField: UIStackView {
         warningLabel.textColor = CommonUIAssets.LMRed2
     }
 
-        public func hideWarning() {
+    public func hideWarning() {
         warningLabel.textColor = .clear
     }
-    
+
     public func currentText() -> String {
         return inputTextField.text ?? ""
     }
-    
+
     public func disableButton(buttonTitle: String) {
         for subview in self.arrangedSubviews {
             if let stackView = subview as? UIStackView {

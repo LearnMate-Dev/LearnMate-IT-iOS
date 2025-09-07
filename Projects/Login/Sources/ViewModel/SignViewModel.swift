@@ -7,6 +7,7 @@
 
 import Domain
 import RxSwift
+import RxRelay
 
 protocol SignViewModelProtocol {
     func postEmail(email: String)
@@ -22,6 +23,7 @@ public class SignViewModel: SignViewModelProtocol {
     public var onEmailSuccess: (() -> Void)?
     public var onConfirmSuccess: (() -> Void)?
     public var onConfirmFailure: (() -> Void)?
+    public let emailVerified = BehaviorRelay<Bool>(value: false)
 
     public init(signUseCase: SignUseCase) {
         self.signUseCase = signUseCase
@@ -44,6 +46,7 @@ public class SignViewModel: SignViewModelProtocol {
                 guard let self = self else { return }
                 print("이메일 인증 성공: \(response.message)")
                 self.onConfirmSuccess?()
+                self.emailVerified.accept(true)
             }, onFailure: { [weak self] error in
                 guard let self = self else { return }
                 print("이메일 인증 실패: \(error)")

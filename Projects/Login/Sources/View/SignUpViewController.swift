@@ -87,6 +87,35 @@ public class SignUpViewController: BaseViewController {
 
             self.viewModel.postConfirm(email: email, code: code)
         }
+
+        signUpButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+
+                let name = self.signUpView.nameInputField.currentText()
+                let email = self.signUpView.emailInputField.currentText()
+                let password = self.signUpView.passwordInputField.currentText()
+                let confirm = self.signUpView.passwordCheckInputField.currentText()
+
+                print("회원가입 버튼 탭 - name: \(name), email: \(email), password: \(password), confirm: \(confirm)")
+
+                // 조건 체크
+                let isNameValid = !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                let isEmailVerified = !self.email.isEmpty // 이메일 인증 완료 여부
+                let isPasswordValid = self.isValidPassword(password)
+                let isConfirmValid = !password.isEmpty && password == confirm
+
+                if isNameValid && isEmailVerified && isPasswordValid && isConfirmValid {
+                    self.postSignUp(username: name, email: email, password: password)
+                } else {
+                    print("회원가입 조건 미충족")
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+
+    private func postSignUp(username: String, email: String, password: String) {
+        self.viewModel.postSignUp(username: username, email: email, password: password)
     }
 
     private func bindTransition() {
