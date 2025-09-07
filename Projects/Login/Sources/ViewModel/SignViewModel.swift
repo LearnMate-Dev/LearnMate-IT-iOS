@@ -24,6 +24,7 @@ public class SignViewModel: SignViewModelProtocol {
     public var onEmailSuccess: (() -> Void)?
     public var onConfirmSuccess: (() -> Void)?
     public var onConfirmFailure: (() -> Void)?
+    public var onSignInSuccess: (() -> Void)?
     public let emailVerified = BehaviorRelay<Bool>(value: false)
 
     public init(signUseCase: SignUseCase) {
@@ -33,7 +34,10 @@ public class SignViewModel: SignViewModelProtocol {
     func postSignIn(email: String, password: String) {
         signUseCase.postSignIn(email: email, password: password)
             .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else { return }
                 print("로그인 성공: \(response)")
+                
+                self.onSignInSuccess?()
             }, onFailure: { error in
                 print("로그인 실패: \(error)")
             })

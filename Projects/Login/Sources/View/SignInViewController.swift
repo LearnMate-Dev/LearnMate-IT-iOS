@@ -20,6 +20,7 @@ public class SignInViewController: BaseViewController {
 
     let signInView = SignInView()
     public var onPresentSignUp: (() -> Void)?
+    public var onLoginSuccess: (() -> Void)?
 
     public init(signViewModel: SignViewModel) {
         self.viewModel = signViewModel
@@ -69,6 +70,11 @@ public class SignInViewController: BaseViewController {
     }
 
     private func bindTransition() {
+        viewModel.onSignInSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                self?.onLoginSuccess?()
+            }
+        }
     }
 
     public override func setupViewProperty() {

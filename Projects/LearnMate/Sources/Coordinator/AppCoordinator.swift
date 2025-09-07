@@ -15,6 +15,7 @@ protocol AppCoordinator: Coordinator {
     func showTabbarFlow()
     func setTabBarCoordinator()
     func getChildCoordinator(_ type: CoordinatorType) -> Coordinator?
+    func showHomeAfterLogin()
 }
 
 final class DefaultAppCoordinator: AppCoordinator{
@@ -44,6 +45,10 @@ final class DefaultAppCoordinator: AppCoordinator{
                 let signUpViewController = self.dependency.injector.resolve(SignUpViewController.self)
                 self.navigationController.pushViewController(signUpViewController, animated: true)
             }
+            signInViewController.onLoginSuccess = { [weak self] in
+                guard let self else { return }
+                self.showHomeAfterLogin()
+            }
             self.navigationController.pushViewController(signInViewController, animated: true)
         }
         self.navigationController.pushViewController(loginViewController, animated: true)
@@ -57,6 +62,13 @@ final class DefaultAppCoordinator: AppCoordinator{
         if getChildCoordinator(.tabbar) == nil { setTabBarCoordinator() }
         let tabBarCoordinator = getChildCoordinator(.tabbar) as! TabBarCoordinator
         tabBarCoordinator.start()
+    }
+
+    /// 로그인 성공 후 홈으로 이동
+    func showHomeAfterLogin() {
+        // 로그인 관련 뷰컨트롤러들을 모두 제거하고 탭바로 이동
+        navigationController.viewControllers.removeAll()
+        showTabbarFlow()
     }
 
     /// 탭바 컨트롤러 세팅, 자식 코디네이터로 등록
