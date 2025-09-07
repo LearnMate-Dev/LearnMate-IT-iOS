@@ -36,6 +36,16 @@ final class DefaultAppCoordinator: AppCoordinator{
     
     func start() {
         let loginViewController = dependency.injector.resolve(LoginViewController.self)
+        loginViewController.onPresentLmLogin = { [weak self] in
+            guard let self else { return }
+            let signInViewController = self.dependency.injector.resolve(SignInViewController.self)
+            signInViewController.onPresentSignUp = { [weak self] in
+                guard let self else { return }
+                let signUpViewController = self.dependency.injector.resolve(SignUpViewController.self)
+                self.navigationController.pushViewController(signUpViewController, animated: true)
+            }
+            self.navigationController.pushViewController(signInViewController, animated: true)
+        }
         self.navigationController.pushViewController(loginViewController, animated: true)
 //        setNavigationBar()
 //        setTabBarCoordinator()

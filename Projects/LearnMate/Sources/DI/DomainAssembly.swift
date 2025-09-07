@@ -29,5 +29,10 @@ public struct DomainAssembly: Assembly {
             let repository = resolver.resolve(QuizRepository.self)!
             return DefaultQuizUseCase(repository: repository)
         }
+        
+        container.register(SignUseCase.self) { resolver in
+            let repository = resolver.resolve(SignRepository.self)!
+            return DefaultSignUseCase(repository: repository)
+        }
     }
 }

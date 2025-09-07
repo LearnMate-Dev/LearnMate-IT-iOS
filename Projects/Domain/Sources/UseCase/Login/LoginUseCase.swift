@@ -2,7 +2,7 @@
 //  LoginUseCase.swift
 //  Domain
 //
-//  Created by 박지윤 on 7/16/25.
+//  Created by 박지윤 on 8/26/25.
 //
 
 import RxSwift

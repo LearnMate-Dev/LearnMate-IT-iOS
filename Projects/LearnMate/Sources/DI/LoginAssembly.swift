@@ -24,5 +24,21 @@ public struct LoginAssembly: Assembly {
             let loginViewModel = resolver.resolve(LoginViewModel.self)!
             return LoginViewController(loginViewModel: loginViewModel)
         }
+
+        /// Sign DI 등록
+        container.register(SignViewModel.self) { resolver in
+            let useCase = resolver.resolve(SignUseCase.self)!
+            return SignViewModel(signUseCase: useCase)
+        }
+        
+        container.register(SignInViewController.self) { resolver in
+            let vm = resolver.resolve(SignViewModel.self)!
+            return SignInViewController(signViewModel: vm)
+        }
+        
+        container.register(SignUpViewController.self) { resolver in
+            let vm = resolver.resolve(SignViewModel.self)!
+            return SignUpViewController(signViewModel: vm)
+        }
     }
 }

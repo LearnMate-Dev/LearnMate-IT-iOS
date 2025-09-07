@@ -11,16 +11,18 @@ import SnapKit
 import RxSwift
 
 public class SignInViewController: BaseViewController {
-//    let viewModel: LoginViewModel
+    let viewModel: SignViewModel
+
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
                                              title: nil,
                                              isRightButtonHidden: true)
 
     let signInView = SignInView()
+    public var onPresentSignUp: (() -> Void)?
 
-    public override init() {
-//        self.viewModel = loginViewModel
+    public init(signViewModel: SignViewModel) {
+        self.viewModel = signViewModel
         super.init()
     }
 
@@ -48,8 +50,9 @@ public class SignInViewController: BaseViewController {
     }
 
     private func presentSignUp() {
-        let signUpViewController = SignUpViewController()
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        onPresentSignUp?()
+//        let signUpViewController = SignUpViewController(signViewModel: viewModel)
+//        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
     private func bindTransition() {

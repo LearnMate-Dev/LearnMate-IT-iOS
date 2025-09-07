@@ -15,6 +15,7 @@ import AuthenticationServices
 public class LoginViewController: BaseViewController, SFSafariViewControllerDelegate, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     let viewModel: LoginViewModel
     let loginView = LoginView()
+    public var onPresentLmLogin: (() -> Void)?
 
     public init(loginViewModel: LoginViewModel) {
         self.viewModel = loginViewModel
@@ -61,8 +62,7 @@ public class LoginViewController: BaseViewController, SFSafariViewControllerDele
     }
 
     private func presentLmLogin() {
-        let signInViewController = SignInViewController()
-        self.navigationController?.pushViewController(signInViewController, animated: true)
+        onPresentLmLogin?()
     }
 
     private func presentGoogleLogin() {
