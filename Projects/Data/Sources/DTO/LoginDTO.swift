@@ -9,14 +9,21 @@ import Foundation
 import Domain
 
 public struct LoginDTO: Decodable {
+    public let is_success: Bool
+    public let code: String
+    public let message: String
+    public let data: LoginDataDTO
+}
+
+public struct LoginDataDTO: Decodable {
     public let accessToken: String
     public let refreshToken: String
 }
 
 extension LoginDTO {
     func getMessage() -> LoginVO {
-        return .init(accessToken: accessToken,
-                     refreshToken: refreshToken)
+        return .init(accessToken: data.accessToken,
+                     refreshToken: data.refreshToken)
     }
 }
 

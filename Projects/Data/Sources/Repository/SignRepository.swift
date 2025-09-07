@@ -13,12 +13,12 @@ public class DefaultSignRepository: SignRepository {
 
     public init() { }
 
-    public func postSignIn(email: String, password: String) -> Single<DefaultVO> {
+    public func postSignIn(email: String, password: String) -> Single<LoginVO> {
         let params = ["email": email,
                       "password": password]
         return request(endpoint: "/api/auth/sign-in",
                        parameters: params,
-                       responseType: DefaultDTO.self)
+                       responseType: LoginDTO.self)
         .map { dto in
             return dto.getMessage()
         }

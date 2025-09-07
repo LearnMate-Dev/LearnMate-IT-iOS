@@ -10,6 +10,7 @@ import RxSwift
 import RxRelay
 
 protocol SignViewModelProtocol {
+    func postSignIn(email: String, password: String)
     func postEmail(email: String)
     func postConfirm(email: String, code: String)
     func postSignUp(username: String, email: String, password: String)
@@ -32,7 +33,7 @@ public class SignViewModel: SignViewModelProtocol {
     func postSignIn(email: String, password: String) {
         signUseCase.postSignIn(email: email, password: password)
             .subscribe(onSuccess: { [weak self] response in
-                print("로그인 성공: \(response.message)")
+                print("로그인 성공: \(response)")
             }, onFailure: { error in
                 print("로그인 실패: \(error)")
             })
