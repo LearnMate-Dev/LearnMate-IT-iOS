@@ -60,7 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 print("🔑 토큰 길이: \(token.count)")
                 
                 let tokenRepository = injector.resolve(TokenRepository.self)
-                tokenRepository.saveAccessToken(token)
+                tokenRepository.saveAccessToken(token: token)
                 
                 // 저장된 토큰 확인
                 if let savedToken = tokenRepository.getAccessToken() {
