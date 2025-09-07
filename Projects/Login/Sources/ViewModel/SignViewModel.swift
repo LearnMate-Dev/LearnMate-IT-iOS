@@ -19,6 +19,7 @@ protocol SignViewModelProtocol {
 public class SignViewModel: SignViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let signUseCase: SignUseCase
+    private let tokenRepository: TokenRepository
     public weak var signInViewCoordinator: SignInCoordinator?
     public weak var signUpViewCoordinator: SignUpCoordinator?
     public var onEmailSuccess: (() -> Void)?
@@ -27,8 +28,9 @@ public class SignViewModel: SignViewModelProtocol {
     public var onSignInSuccess: (() -> Void)?
     public let emailVerified = BehaviorRelay<Bool>(value: false)
 
-    public init(signUseCase: SignUseCase) {
+    public init(signUseCase: SignUseCase, tokenRepository: TokenRepository) {
         self.signUseCase = signUseCase
+        self.tokenRepository = tokenRepository
     }
 
     func postSignIn(email: String, password: String) {
@@ -37,6 +39,15 @@ public class SignViewModel: SignViewModelProtocol {
                 guard let self = self else { return }
                 print("로그인 성공: \(response)")
                 
+                if let accessToken = response.accessToken {
+                    self.tokenRepository.saveAccessToken(token: accessToken)
+                    print("🔑 토큰 저장 완료: \(accessToken)")
+                }
+                if let refreshToken = response.refreshToken {
+                    self.tokenRepository.saveRefreshToken(token: refreshToken)
+                    print("🔄 리프레시 토큰 저장 완료: \(refreshToken)")
+                }
+
                 self.onSignInSuccess?()
             }, onFailure: { error in
                 print("로그인 실패: \(error)")

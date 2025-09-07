@@ -28,7 +28,8 @@ public struct LoginAssembly: Assembly {
         /// Sign DI 등록
         container.register(SignViewModel.self) { resolver in
             let useCase = resolver.resolve(SignUseCase.self)!
-            return SignViewModel(signUseCase: useCase)
+            let tokenRepository = resolver.resolve(TokenRepository.self)!
+            return SignViewModel(signUseCase: useCase, tokenRepository: tokenRepository)
         }
         
         container.register(SignInViewController.self) { resolver in

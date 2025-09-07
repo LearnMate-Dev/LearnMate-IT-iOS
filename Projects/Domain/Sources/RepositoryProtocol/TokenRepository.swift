@@ -8,7 +8,10 @@
 import RxSwift
 
 public protocol TokenRepository {
-    func saveAccessToken(_ token: String)
+    func saveAccessToken(token: String)
     func getAccessToken() -> String?
     func clearAccessToken()
+    func saveRefreshToken(token: String)
+    func getRefreshToken() -> String?
+    func clearRefreshToken()
 }
