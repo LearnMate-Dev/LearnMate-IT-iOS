@@ -49,6 +49,7 @@ public enum CommonUIAssets {
     /// * Icon
     public static let IconPlay = image(named: "play")
     public static let IconBack = image(named: "back")
+    public static let IconSend = image(named: "send")
 
     /// color
     public static let LMOrange1 = color(named: "LMOrange01")
@@ -62,6 +63,7 @@ public enum CommonUIAssets {
     public static let LMGray5 = color(named: "LMGray05")
     public static let LMGray6 = color(named: "LMGray06")
     public static let LMBlue = color(named: "LMBlue")
+    public static let LMBlue2 = color(named: "LMBlue02")
     public static let LMGreen = color(named: "LMGreen")
     public static let LMRed = color(named: "LMRed")
     public static let LMRed2 = color(named: "LMRed02")
