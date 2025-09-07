@@ -13,6 +13,17 @@ public class DefaultSignRepository: SignRepository {
 
     public init() { }
 
+    public func postSignIn(email: String, password: String) -> Single<DefaultVO> {
+        let params = ["email": email,
+                      "password": password]
+        return request(endpoint: "/api/auth/sign-in",
+                       parameters: params,
+                       responseType: DefaultDTO.self)
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
     public func postEmail(email: String) -> Single<DefaultVO> {
         let params = ["email": email]
         return request(endpoint: "/api/auth/email",
@@ -24,7 +35,8 @@ public class DefaultSignRepository: SignRepository {
     }
 
     public func postConfirm(email: String, code: String) -> Single<DefaultVO> {
-        let params = ["email": email, "code": code]
+        let params = ["email": email,
+                      "code": code]
         return request(endpoint: "/api/auth/email/confirm",
                        parameters: params,
                        responseType: DefaultDTO.self)
@@ -34,7 +46,9 @@ public class DefaultSignRepository: SignRepository {
     }
 
     public func postSignUp(username: String, email: String, password: String) -> Single<DefaultVO> {
-        let params = ["username": username, "email": email, "password": password]
+        let params = ["username": username,
+                      "email": email,
+                      "password": password]
         return request(endpoint: "/api/auth/sign-up",
                        parameters: params,
                        responseType: DefaultDTO.self)

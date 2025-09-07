@@ -29,6 +29,16 @@ public class SignViewModel: SignViewModelProtocol {
         self.signUseCase = signUseCase
     }
 
+    func postSignIn(email: String, password: String) {
+        signUseCase.postSignIn(email: email, password: password)
+            .subscribe(onSuccess: { [weak self] response in
+                print("로그인 성공: \(response.message)")
+            }, onFailure: { error in
+                print("로그인 실패: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+
     func postEmail(email: String) {
         signUseCase.postEmail(email: email)
             .subscribe(onSuccess: { [weak self] response in

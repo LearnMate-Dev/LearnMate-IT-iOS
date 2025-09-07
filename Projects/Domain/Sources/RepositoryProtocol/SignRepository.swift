@@ -8,6 +8,7 @@
 import RxSwift
 
 public protocol SignRepository {
+    func postSignIn(email: String, password: String) -> Single<DefaultVO>
     func postEmail(email: String) -> Single<DefaultVO>
     func postConfirm(email: String, code: String) -> Single<DefaultVO>
     func postSignUp(username: String, email: String, password: String) -> Single<DefaultVO>

@@ -32,7 +32,6 @@ public class SignInViewController: BaseViewController {
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(, animated: false)
     }
 
     public override func viewDidLoad() {
@@ -42,6 +41,17 @@ public class SignInViewController: BaseViewController {
     }
 
     private func bindActions() {
+        signInView.signInTapped
+            .bind { [weak self] in
+                guard let self = self else { return }
+
+                let email = self.signInView.idTextField.currentText()
+                let password = self.signInView.passwordTextField.currentText()
+
+                self.postSignIn(email: email, password: password)
+            }
+            .disposed(by: disposeBag)
+
         signInView.signUpTapped
             .bind { [weak self] in
                 self?.presentSignUp()
@@ -49,10 +59,13 @@ public class SignInViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 
+    private func postSignIn(email: String, password: String) {
+        self.viewModel.postSignIn(email: email,
+                                  password: password)
+    }
+
     private func presentSignUp() {
         onPresentSignUp?()
-//        let signUpViewController = SignUpViewController(signViewModel: viewModel)
-//        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
     private func bindTransition() {
