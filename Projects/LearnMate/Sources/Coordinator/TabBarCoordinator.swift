@@ -9,6 +9,7 @@ import CommonUI
 import Login
 import Home
 import UIKit
+import Chat
 
 protocol TabBarCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
@@ -91,9 +92,11 @@ final class DefaultTabBarController: TabBarCoordinator {
     private func startTabCoordinator(of page: TabBarPage, to tabNavigationController: UINavigationController) {
         switch page {
         case .home:
-            // 추후 homeCoordinator 로 변경
             let homeViewController = dependency.injector.resolve(HomeViewController.self)
             tabNavigationController.pushViewController(homeViewController, animated: true)
+        case .chat:
+            let chatViewController = dependency.injector.resolve(ChatViewController.self)
+            tabNavigationController.pushViewController(chatViewController, animated: true)
         default:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .black
