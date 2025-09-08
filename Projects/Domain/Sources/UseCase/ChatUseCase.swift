@@ -8,12 +8,17 @@
 import RxSwift
 
 public protocol ChatUseCase {
+    func startTextChat() -> Single<ChatVO>
 }
 
 public final class DefaultChatUseCase: ChatUseCase {
-    let repository: ChatRepository
+    private let repository: ChatRepository
 
     public init(repository: ChatRepository) {
         self.repository = repository
+    }
+
+    public func startTextChat() -> Single<ChatVO> {
+        return repository.startTextChat()
     }
 }

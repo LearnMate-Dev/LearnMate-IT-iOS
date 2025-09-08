@@ -8,4 +8,5 @@
 import RxSwift
 
 public protocol ChatRepository {
+    func startTextChat() -> Single<ChatVO>
 }
