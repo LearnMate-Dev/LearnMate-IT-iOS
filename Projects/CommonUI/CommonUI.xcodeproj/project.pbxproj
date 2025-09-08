@@ -194,13 +194,21 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		951F3F852E6DDE7F0022583B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		9786E1056828B1E6D5EDAB7C /* View */ = {
 			isa = PBXGroup;
 			children = (
 				DFA6DB2905DB98838A8AEA6F /* Home */,
 				4F020027E0FF96E7A77E5F05 /* Login */,
 				7F5AEF3C3719E8689E7AF017 /* Navigation */,
-				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
+				951F3F852E6DDE7F0022583B /* Chat */,
 				C28FE6392E1612667826E5C5 /* DiaryView.swift */,
 				9266801EFBA6178C5B70C641 /* MyPageView.swift */,
 			);
