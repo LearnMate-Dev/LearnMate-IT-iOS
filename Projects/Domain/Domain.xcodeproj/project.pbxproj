@@ -18,6 +18,8 @@
 		950A0D6B2E5CCBF000C07CF2 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D6A2E5CCBE800C07CF2 /* SignRepository.swift */; };
 		950A0D822E5DE10C00C07CF2 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D812E5DE10700C07CF2 /* LoginUseCase.swift */; };
 		950A0D922E603DA100C07CF2 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D912E603D9C00C07CF2 /* DefaultVO.swift */; };
+		951F3F892E6DE1F80022583B /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F882E6DE1F60022583B /* ChatUseCase.swift */; };
+		951F3F8B2E6DE2140022583B /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F8A2E6DE2100022583B /* ChatRepository.swift */; };
 		95369A7E2E28B8D9000C893F /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369A7D2E28B8D1000C893F /* UIImage+Extension.swift */; };
 		A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CFC331192C9FE77F3446A /* StepVO.swift */; };
 		B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */; };
@@ -55,6 +57,8 @@
 		950A0D6A2E5CCBE800C07CF2 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 		950A0D812E5DE10700C07CF2 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		950A0D912E603D9C00C07CF2 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
+		951F3F882E6DE1F60022583B /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
+		951F3F8A2E6DE2100022583B /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		95369A7D2E28B8D1000C893F /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenUseCase.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		2BE278B80FDD95404961E580 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				951F3F882E6DE1F60022583B /* ChatUseCase.swift */,
 				950A0D672E5CCBAC00C07CF2 /* Login */,
 				F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */,
 				6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */,
@@ -167,6 +172,7 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				951F3F8A2E6DE2100022583B /* ChatRepository.swift */,
 				950A0D6A2E5CCBE800C07CF2 /* SignRepository.swift */,
 				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
 				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
@@ -260,12 +266,14 @@
 				B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */,
 				3E835D4F2E5F639557AC7C06 /* TokenUseCase.swift in Sources */,
 				5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */,
+				951F3F892E6DE1F80022583B /* ChatUseCase.swift in Sources */,
 				950A0D922E603DA100C07CF2 /* DefaultVO.swift in Sources */,
 				0DED9075FE34124C093D9FDF /* LoginVO.swift in Sources */,
 				95369A7E2E28B8D9000C893F /* UIImage+Extension.swift in Sources */,
 				950A0D692E5CCBB900C07CF2 /* SignUseCase.swift in Sources */,
 				CFBF3D58082C5F201FCFFD5B /* QuizVO.swift in Sources */,
 				A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */,
+				951F3F8B2E6DE2140022583B /* ChatRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
