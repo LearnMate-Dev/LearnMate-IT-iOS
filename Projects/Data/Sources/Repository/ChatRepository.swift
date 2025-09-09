@@ -16,7 +16,7 @@ public class DefaultChatRepository: ChatRepository {
         self.tokenRepository = tokenRepository
     }
 
-    public func postChat() -> Single<ChatVO> {
+    public func postChatStart() -> Single<ChatVO> {
         return Single.create { single in
             let url = "\(NetworkConfiguration.baseUrl)/api/chats/text"
             var headers: HTTPHeaders = [:]
@@ -46,4 +46,39 @@ public class DefaultChatRepository: ChatRepository {
             return Disposables.create { request.cancel() }
         }
     }
+
+    public func postChat(chatRoomId: Int, content: String) -> Single<ChatMessageVO> {
+           return Single.create { single in
+               let url = "\(NetworkConfiguration.baseUrl)/api/chats/text/\(chatRoomId)"
+               var headers: HTTPHeaders = [:]
+               
+               if let token = self.tokenRepository.getAccessToken() {
+                   headers.add(name: "Authorization", value: "Bearer \(token)")
+               }
+               
+               let requestBody = ChatMessageRequestDTO(content: content)
+               
+               print("[메시지 전송 POST] URL: \(url)")
+               print("[메시지 전송 POST] 헤더: \(headers)")
+               print("[메시지 전송 POST] 요청 내용: \(content)")
+               
+               let request = AF.request(url,
+                                        method: .post,
+                                        parameters: requestBody,
+                                        encoder: JSONParameterEncoder.default,
+                                        headers: headers)
+                   .validate()
+                   .responseDecodable(of: ChatMessageResponseDTO.self) { response in
+                       switch response.result {
+                       case .success(let value):
+                           print("[메시지 전송 POST] 성공: \(value)")
+                           single(.success(value.data.toDomain()))
+                       case .failure(let error):
+                           print("[메시지 전송 POST] 실패: \(error)")
+                           single(.failure(error))
+                       }
+                   }
+               return Disposables.create { request.cancel() }
+           }
+       }
 }

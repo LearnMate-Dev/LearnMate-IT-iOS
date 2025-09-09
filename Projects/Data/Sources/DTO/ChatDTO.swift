@@ -27,3 +27,30 @@ extension ChatDataDTO {
         )
     }
 }
+
+public struct ChatMessageResponseDTO: Decodable {
+    public let is_success: Bool
+    public let code: String
+    public let message: String
+    public let data: ChatMessageDataDTO
+}
+
+public struct ChatMessageDataDTO: Decodable {
+    public let chatId: Int
+    public let author: String
+    public let content: String
+}
+
+public struct ChatMessageRequestDTO: Encodable {
+    public let content: String
+}
+
+extension ChatMessageDataDTO {
+    func toDomain() -> ChatMessageVO {
+        return ChatMessageVO(
+            chatId: chatId,
+            author: author,
+            content: content
+        )
+    }
+}

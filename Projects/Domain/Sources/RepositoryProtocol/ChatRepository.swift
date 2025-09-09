@@ -8,5 +8,6 @@
 import RxSwift
 
 public protocol ChatRepository {
-    func postChat() -> Single<ChatVO>
+    func postChatStart() -> Single<ChatVO>
+    func postChat(chatRoomId: Int, content: String) -> Single<ChatMessageVO>
 }
