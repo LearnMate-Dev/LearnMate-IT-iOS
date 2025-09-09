@@ -8,7 +8,7 @@
 import RxSwift
 
 public protocol TokenUseCase {
-    func saveAccessToken(_ token: String)
+    func saveAccessToken(token: String)
     func getAccessToken() -> String?
     func clearAccessToken()
 }
@@ -20,8 +20,8 @@ public final class DefaultTokenUseCase: TokenUseCase {
         self.repository = repository
     }
     
-    public func saveAccessToken(_ token: String) {
-        repository.saveAccessToken(token)
+    public func saveAccessToken(token: String) {
+        repository.saveAccessToken(token: token)
     }
     
     public func getAccessToken() -> String? {

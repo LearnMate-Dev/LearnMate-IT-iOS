@@ -17,7 +17,7 @@ public class DefaultTokenRepository: TokenRepository {
         // Initialization if needed
     }
     
-    public func saveAccessToken(_ token: String) {
+    public func saveAccessToken(token: String) {
         userDefaults.set(token, forKey: accessToken)
         print("✅ Access Token saved: \(token)")
     }

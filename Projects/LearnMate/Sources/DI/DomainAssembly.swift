@@ -34,5 +34,10 @@ public struct DomainAssembly: Assembly {
             let repository = resolver.resolve(SignRepository.self)!
             return DefaultSignUseCase(repository: repository)
         }
+
+        container.register(ChatUseCase.self) { resolver in
+            let repository = resolver.resolve(ChatRepository.self)!
+            return DefaultChatUseCase(repository: repository)
+        }
     }
 }

@@ -32,5 +32,10 @@ public struct DataAssembly: Assembly {
         container.register(SignRepository.self) { _  in
             return DefaultSignRepository()
         }
+
+        container.register(ChatRepository.self) { resolver in
+            let tokenRepository = resolver.resolve(TokenRepository.self)!
+            return DefaultChatRepository(tokenRepository: tokenRepository)
+        }
     }
 }
