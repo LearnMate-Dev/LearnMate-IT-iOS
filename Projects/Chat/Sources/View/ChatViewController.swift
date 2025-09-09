@@ -15,6 +15,8 @@ public class ChatViewController: BaseViewController {
     let chatView = ChatView()
 
     private var messages: [ChatMessageVO] = []
+    
+    private let loadingView = ChatAnalysisLoadingView()
 
     public init(chatViewModel: ChatViewModel) {
         self.viewModel = chatViewModel
@@ -47,6 +49,7 @@ public class ChatViewController: BaseViewController {
 
     public override func setupHierarchy() {
         view.addSubview(chatView)
+        view.addSubview(loadingView)
     }
 
     public override func setupDelegate() {
@@ -56,6 +59,13 @@ public class ChatViewController: BaseViewController {
         chatView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        // 초기에는 로딩 화면 숨김
+        loadingView.isHidden = true
     }
 
     private func bindData() {
@@ -79,6 +89,10 @@ public class ChatViewController: BaseViewController {
     private func bindActions() {
         chatView.onSendButtonTapped = { [weak self] message in
             self?.sendMessage(message)
+        }
+        
+        chatView.onEndButtonTapped = { [weak self] in
+            self?.showAnalysisLoading()
         }
     }
     
@@ -112,6 +126,39 @@ public class ChatViewController: BaseViewController {
     private func addMessageToUI(_ message: ChatMessageVO) {
         messages.append(message)
         chatView.addMessageToUI(message)
+    }
+    
+    private func showAnalysisLoading() {
+        print("🔄 대화 분석 시작")
+        
+        // 로딩 화면 표시
+        loadingView.isHidden = false
+        loadingView.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.loadingView.alpha = 1
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.hideAnalysisLoading()
+        }
+    }
+    
+    private func hideAnalysisLoading() {
+        print("✅ 대화 분석 완료")
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.loadingView.alpha = 0
+        }) { _ in
+            self.loadingView.isHidden = true
+            // 여기서 분석 결과 화면으로 이동하거나 다른 액션 수행
+            self.navigateToAnalysisResult()
+        }
+    }
+    
+    private func navigateToAnalysisResult() {
+        // TODO: 분석 결과 화면으로 이동하는 로직 구현
+        print("📊 분석 결과 화면으로 이동")
     }
 
     private func updateRecommendTopics(_ topics: [String]) {

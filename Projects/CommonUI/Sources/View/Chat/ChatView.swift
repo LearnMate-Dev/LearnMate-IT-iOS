@@ -107,6 +107,7 @@ open class ChatView: UIView {
     let disposeBag = DisposeBag()
     
     public var onSendButtonTapped: ((String) -> Void)?
+    public var onEndButtonTapped: (() -> Void)?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -121,6 +122,12 @@ open class ChatView: UIView {
             .subscribe(onNext: { [weak self] text in
                 self?.onSendButtonTapped?(text)
                 self?.chatTextField.text = ""
+            })
+            .disposed(by: disposeBag)
+            
+        endButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onEndButtonTapped?()
             })
             .disposed(by: disposeBag)
     }
