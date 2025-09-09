@@ -16,7 +16,7 @@ public class DefaultChatRepository: ChatRepository {
         self.tokenRepository = tokenRepository
     }
 
-    public func startTextChat() -> Single<ChatVO> {
+    public func postChat() -> Single<ChatVO> {
         return Single.create { single in
             let url = "\(NetworkConfiguration.baseUrl)/api/chats/text"
             var headers: HTTPHeaders = [:]

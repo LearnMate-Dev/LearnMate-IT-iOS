@@ -8,7 +8,7 @@
 import RxSwift
 
 public protocol ChatUseCase {
-    func startTextChat() -> Single<ChatVO>
+    func postChat() -> Single<ChatVO>
 }
 
 public final class DefaultChatUseCase: ChatUseCase {
@@ -18,7 +18,7 @@ public final class DefaultChatUseCase: ChatUseCase {
         self.repository = repository
     }
 
-    public func startTextChat() -> Single<ChatVO> {
-        return repository.startTextChat()
+    public func postChat() -> Single<ChatVO> {
+        return repository.postChat()
     }
 }

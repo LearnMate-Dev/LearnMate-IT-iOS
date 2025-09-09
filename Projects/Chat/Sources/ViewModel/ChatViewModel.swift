@@ -26,7 +26,7 @@ public class ChatViewModel: ChatViewModelProtocol {
     }
 
     func startTextChat() {
-        chatUseCase.startTextChat()
+        chatUseCase.postChat()
             .subscribe(onSuccess: { [weak self] chat in
                 print("✅ 텍스트 대화 시작 성공: \(chat)")
                 self?.chatSubject.onNext(chat)
