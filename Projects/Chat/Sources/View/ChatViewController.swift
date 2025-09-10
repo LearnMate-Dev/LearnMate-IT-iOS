@@ -157,8 +157,12 @@ public class ChatViewController: BaseViewController {
     }
     
     private func navigateToAnalysisResult() {
-        // TODO: 분석 결과 화면으로 이동하는 로직 구현
         print("📊 분석 결과 화면으로 이동")
+        
+        let analysisController = ChatAnalysisController(messages: messages)
+        analysisController.modalPresentationStyle = .fullScreen
+        
+        present(analysisController, animated: true)
     }
 
     private func updateRecommendTopics(_ topics: [String]) {
@@ -169,7 +173,6 @@ public class ChatViewController: BaseViewController {
             return
         }
 
-        // ChatView의 recommendTexts 프로퍼티로 간단하게 업데이트
         chatView.recommendTexts = topics
         
         print("✅ 추천 주제 업데이트 완료: \(topics.count)개")

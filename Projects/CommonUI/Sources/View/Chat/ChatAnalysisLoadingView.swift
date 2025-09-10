@@ -2,7 +2,7 @@
 //  ChatAnalysisLoadingView.swift
 //  CommonUI
 //
-//  Created by 박지윤 on 7/2/25.
+//  Created by 박지윤 on 9/10/25.
 //
 
 import UIKit
@@ -10,7 +10,6 @@ import SnapKit
 import Then
 
 open class ChatAnalysisLoadingView: UIView {
-    
     private let loadingSpinner = UIActivityIndicatorView(style: .large).then {
         $0.color = CommonUIAssets.LMGray1
         $0.startAnimating()
@@ -59,4 +58,4 @@ open class ChatAnalysisLoadingView: UIView {
             $0.top.equalTo(mainLabel.snp.bottom).offset(8)
         }
     }
-} 
+}
