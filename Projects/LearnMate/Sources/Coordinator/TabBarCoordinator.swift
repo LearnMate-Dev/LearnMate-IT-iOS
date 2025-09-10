@@ -95,8 +95,8 @@ final class DefaultTabBarController: TabBarCoordinator {
             let homeViewController = dependency.injector.resolve(HomeViewController.self)
             tabNavigationController.pushViewController(homeViewController, animated: true)
         case .chat:
-            let chatViewController = dependency.injector.resolve(ChatViewController.self)
-            tabNavigationController.pushViewController(chatViewController, animated: true)
+            let chatMainViewController = dependency.injector.resolve(ChatMainViewController.self)
+            tabNavigationController.pushViewController(chatMainViewController, animated: true)
         default:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .black
