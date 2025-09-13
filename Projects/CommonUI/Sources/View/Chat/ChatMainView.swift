@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Domain
 
 public class ChatMainView: UIView {
     private let emptyStateContainer = UIView()
@@ -37,6 +38,7 @@ public class ChatMainView: UIView {
                                          bgColor: CommonUIAssets.LMOrange1)
 
     private var isShowingEmptyState = true
+    private var chatRoomList: [ChatRoomVO] = []
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +70,7 @@ public class ChatMainView: UIView {
         [chatListTableView].forEach { chatListContainer.addSubview($0) }
 
         setupConstraints()
-        showChatList()
+        showEmptyState()
     }
 
     private func setupConstraints() {
@@ -79,7 +81,8 @@ public class ChatMainView: UIView {
         }
 
         emptyIconImageView.snp.makeConstraints {
-            $0.top.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(-20)
+            $0.centerX.equalToSuperview()
             $0.width.height.equalTo(60)
         }
 
@@ -125,6 +128,16 @@ public class ChatMainView: UIView {
         chatListTableView.reloadData()
     }
 
+    public func updateChatList(_ chatRoomListVO: ChatRoomListVO) {
+        self.chatRoomList = chatRoomListVO.chatRoomList
+        
+        if chatRoomListVO.chatRoomList.isEmpty {
+            showEmptyState()
+        } else {
+            showChatList()
+        }
+    }
+
     public func setNewChatButtonAction(_ action: @escaping () -> Void) {
         newChatButton.addTarget(self, action: #selector(newChatButtonTapped), for: .touchUpInside)
         newChatButtonAction = action
@@ -139,17 +152,14 @@ public class ChatMainView: UIView {
 
 extension ChatMainView: UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return chatRoomList.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
         
-        if indexPath.row == 0 {
-            cell.configure(title: "1", date: "2025-12-30")
-        } else {
-            cell.configure(title: "2", date: "2025-12-31")
-        }
+        let chatRoom = chatRoomList[indexPath.row]
+        cell.configure(title: chatRoom.title, date: chatRoom.createdAt)
         
         return cell
     }

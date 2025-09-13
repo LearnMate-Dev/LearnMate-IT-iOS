@@ -18,6 +18,7 @@ public class ChatViewModel: ChatViewModelProtocol {
     private let chatUseCase: ChatUseCase
     private let tokenUseCase: TokenUseCase
 
+    let chatListSubject = PublishSubject<ChatRoomListVO>()
     let chatSubject = PublishSubject<ChatVO>()
     let messageSubject = PublishSubject<ChatMessageVO>()
     private var currentChatRoomId: Int = 0
@@ -26,6 +27,16 @@ public class ChatViewModel: ChatViewModelProtocol {
                 tokenUseCase: TokenUseCase) {
         self.chatUseCase = chatUseCase
         self.tokenUseCase = tokenUseCase
+    }
+
+    func getChatList() {
+        chatUseCase.getChatList()
+            .subscribe(onSuccess: { [weak self] chat in
+                print("✅ 저장된 대화 불러오기 성공: \(chat)")
+                self?.chatListSubject.onNext(chat)
+            }, onFailure: { error in
+                print("❌ 저장된 대화 불러오기 실패: \(error)")
+            }).disposed(by: disposeBag)
     }
 
     func startTextChat() {

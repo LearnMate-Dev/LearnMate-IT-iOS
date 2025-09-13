@@ -11,7 +11,11 @@ public struct ChatRoomResponseDTO: Decodable {
     public let is_success: Bool
     public let code: String
     public let message: String
-    public let data: [ChatRoomDataDTO]
+    public let data: ChatRoomListDTO
+}
+
+public struct ChatRoomListDTO: Decodable {
+    public let chatRoomList: [ChatRoomDataDTO]
 }
 
 public struct ChatRoomDataDTO: Decodable {
@@ -25,5 +29,11 @@ extension ChatRoomDataDTO {
         return ChatRoomVO(chatRoomId: chatRoomId,
                           title: title,
                           createdAt: createdAt)
+    }
+}
+
+extension ChatRoomListDTO {
+    func toDomain() -> ChatRoomListVO {
+        return ChatRoomListVO(chatRoomList: chatRoomList.map { $0.toDomain() })
     }
 }

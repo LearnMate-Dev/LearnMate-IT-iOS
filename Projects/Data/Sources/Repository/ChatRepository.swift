@@ -20,10 +20,10 @@ public class DefaultChatRepository: ChatRepository {
     public func postChatStart() -> Single<ChatVO> {
         return request(method: .post,
                        endpoint: "/api/chats/text",
-                       responseType: ChatDataDTO.self
+                       responseType: ChatResponseDTO.self
         )
         .map { dto in
-            return dto.toDomain()
+            return dto.data.toDomain()
         }
     }
 
@@ -34,10 +34,10 @@ public class DefaultChatRepository: ChatRepository {
         return request(method: .post,
                        parameters: parameter,
                        endpoint: "/api/chats/text/\(chatRoomId)",
-                       responseType: ChatMessageDataDTO.self
+                       responseType: ChatMessageResponseDTO.self
         )
         .map { dto in
-            return dto.toDomain()
+            return dto.data.toDomain()
         }
     }
 
@@ -56,20 +56,20 @@ public class DefaultChatRepository: ChatRepository {
     public func postChatAnalysis(chatRoomId: Int) -> Single<ChatDetailVO> {
         return request(method: .post,
                        endpoint: "/api/chats/text/\(chatRoomId)/analysis",
-                       responseType: ChatDetailDataDTO.self
+                       responseType: ChatDetailResponseDTO.self
         )
         .map { dto in
-            return dto.toDomain()
+            return dto.data.toDomain()
         }
     }
 
     /// 저장된 대화 내역 리스트 조회하기
-    public func getChatList() -> Single<[ChatRoomVO]> {
-        return request(endpoint: "/api/chats/",
-                       responseType: [ChatRoomDataDTO].self
+    public func getChatList() -> Single<ChatRoomListVO> {
+        return request(endpoint: "/api/chats",
+                       responseType: ChatRoomResponseDTO.self
         )
-        .map { dtoList in
-            dtoList.map { $0.toDomain() }
+        .map { dto in
+            return dto.data.toDomain()
         }
     }
 
@@ -77,10 +77,10 @@ public class DefaultChatRepository: ChatRepository {
     public func getChatDetail(chatRoomId: Int) -> Single<ChatDetailVO> {
         return request(endpoint: "/api/chats/\(chatRoomId)",
                        encoding: URLEncoding.default,
-                       responseType: ChatDetailDataDTO.self
+                       responseType: ChatDetailResponseDTO.self
         )
         .map { dto in
-            return dto.toDomain()
+            return dto.data.toDomain()
         }
     }
 
@@ -105,7 +105,7 @@ public class DefaultChatRepository: ChatRepository {
             print("🔑 Authorization 헤더: \(headers)")
             
             let request = AF.request(url,
-                                     method: .get,
+                                     method: method,
                                      parameters: parameters,
                                      encoding: encoding,
                                      headers: headers)

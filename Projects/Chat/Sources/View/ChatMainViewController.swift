@@ -33,6 +33,7 @@ public class ChatMainViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        viewModel.getChatList()
     }
 
     public override func viewDidLoad() {
@@ -69,6 +70,12 @@ public class ChatMainViewController: BaseViewController {
     }
 
     private func bindData() {
+        viewModel.chatListSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] chatRoomList in
+                self?.chatMainView.updateChatList(chatRoomList)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindActions() {

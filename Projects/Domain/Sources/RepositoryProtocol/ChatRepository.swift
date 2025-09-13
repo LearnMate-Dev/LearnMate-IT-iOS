@@ -12,6 +12,6 @@ public protocol ChatRepository {
     func postChat(chatRoomId: Int, content: String) -> Single<ChatMessageVO>
     func deleteChat(chatRoomId: Int) -> Single<DefaultVO>
     func postChatAnalysis(chatRoomId: Int) -> Single<ChatDetailVO>
-    func getChatList() -> Single<[ChatRoomVO]>
+    func getChatList() -> Single<ChatRoomListVO>
     func getChatDetail(chatRoomId: Int) -> Single<ChatDetailVO>
 }
