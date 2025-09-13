@@ -41,6 +41,28 @@ public class DefaultChatRepository: ChatRepository {
         }
     }
 
+    /// 대화방 삭제하기
+    public func deleteChat(chatRoomId: Int) -> Single<DefaultVO> {
+        return request(method: .delete,
+                       endpoint: "/api/chats/\(chatRoomId)",
+                       responseType: DefaultDTO.self
+        )
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
+    /// 대화 분석하기
+    public func postChatAnalysis(chatRoomId: Int) -> Single<ChatDetailVO> {
+        return request(method: .post,
+                       endpoint: "/api/chats/text/\(chatRoomId)/analysis",
+                       responseType: ChatDetailDataDTO.self
+        )
+        .map { dto in
+            return dto.toDomain()
+        }
+    }
+
     /// 저장된 대화 내역 리스트 조회하기
     public func getChatList() -> Single<[ChatRoomVO]> {
         return request(endpoint: "/api/chats/",

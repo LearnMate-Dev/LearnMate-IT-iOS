@@ -85,9 +85,7 @@
 		647255CD65221C9CD4A43DED /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				951F3F8E2E6F36440022583B /* ChatDTO.swift */,
-				9516ED5C2E71D3FB00F548A1 /* ChatRoomDTO.swift */,
-				9516ED602E71D5B200F548A1 /* ChatDetailDTO.swift */,
+				9516ED642E75609400F548A1 /* Chat */,
 				950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */,
 				AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */,
 				A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */,
@@ -115,6 +113,16 @@
 				EF3121301A12FEB266E0B923 /* Project */,
 				20629251A4CAB947CD938921 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		9516ED642E75609400F548A1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				951F3F8E2E6F36440022583B /* ChatDTO.swift */,
+				9516ED5C2E71D3FB00F548A1 /* ChatRoomDTO.swift */,
+				9516ED602E71D5B200F548A1 /* ChatDetailDTO.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		A46DA33BCE1E2288153B2AC3 /* Network */ = {
