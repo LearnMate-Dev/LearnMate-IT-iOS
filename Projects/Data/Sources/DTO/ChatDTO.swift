@@ -41,16 +41,15 @@ public struct ChatMessageDataDTO: Decodable {
     public let content: String
 }
 
-public struct ChatMessageRequestDTO: Encodable {
-    public let content: String
-}
-
 extension ChatMessageDataDTO {
     func toDomain() -> ChatMessageVO {
         return ChatMessageVO(
             chatId: chatId,
             author: author,
-            content: content
-        )
+            content: content)
     }
+}
+
+public struct ChatMessageRequestDTO: Encodable {
+    public let content: String
 }

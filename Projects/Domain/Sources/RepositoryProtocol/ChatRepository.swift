@@ -10,4 +10,6 @@ import RxSwift
 public protocol ChatRepository {
     func postChatStart() -> Single<ChatVO>
     func postChat(chatRoomId: Int, content: String) -> Single<ChatMessageVO>
+    func getChatList() -> Single<[ChatRoomVO]>
+    func getChatDetail(chatRoomId: Int) -> Single<ChatDetailVO>
 }
