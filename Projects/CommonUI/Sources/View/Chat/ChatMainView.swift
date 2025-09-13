@@ -9,8 +9,14 @@ import UIKit
 import SnapKit
 import Then
 import Domain
+import RxRelay
+import RxSwift
 
 public class ChatMainView: UIView {
+
+    public let newChatButtonTapped = PublishRelay<Void>()
+    let disposeBag = DisposeBag()
+
     private let emptyStateContainer = UIView()
 
     private let emptyIconImageView = UIImageView().then {
@@ -45,6 +51,7 @@ public class ChatMainView: UIView {
         initAttribute()
         setupUI()
         setupTableView()
+        bindEvents()
     }
     
     required public init?(coder: NSCoder) {
@@ -109,6 +116,12 @@ public class ChatMainView: UIView {
         }
     }
 
+    private func bindEvents() {
+        newChatButton.rx.tap
+            .bind(to: newChatButtonTapped)
+            .disposed(by: disposeBag)
+    }
+
     private func setupTableView() {
         chatListTableView.delegate = self
         chatListTableView.dataSource = self
@@ -136,17 +149,6 @@ public class ChatMainView: UIView {
         } else {
             showChatList()
         }
-    }
-
-    public func setNewChatButtonAction(_ action: @escaping () -> Void) {
-        newChatButton.addTarget(self, action: #selector(newChatButtonTapped), for: .touchUpInside)
-        newChatButtonAction = action
-    }
-
-    private var newChatButtonAction: (() -> Void)?
-
-    @objc private func newChatButtonTapped() {
-        newChatButtonAction?()
     }
 }
 

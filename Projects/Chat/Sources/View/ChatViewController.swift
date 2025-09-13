@@ -14,6 +14,11 @@ public class ChatViewController: BaseViewController {
     let viewModel: ChatViewModel
     let chatView = ChatView()
 
+    let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
+                                             rightImage: nil,
+                                             title: nil,
+                                             isRightButtonHidden: true)
+
     private var messages: [ChatMessageVO] = []
     
     private let loadingView = ChatAnalysisLoadingView()
@@ -48,23 +53,29 @@ public class ChatViewController: BaseViewController {
     }
 
     public override func setupHierarchy() {
-        view.addSubview(chatView)
-        view.addSubview(loadingView)
+        [navigationBar, chatView, loadingView]
+            .forEach { view.addSubview($0) }
     }
 
     public override func setupDelegate() {
     }
 
     public override func setupLayout() {
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.width.centerX.equalToSuperview()
+        }
+
         chatView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
         
         loadingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        // 초기에는 로딩 화면 숨김
+        navigationBar.isHidden = false
         loadingView.isHidden = true
     }
 
@@ -134,6 +145,7 @@ public class ChatViewController: BaseViewController {
         // 로딩 화면 표시
         loadingView.isHidden = false
         loadingView.alpha = 0
+        navigationBar.isHidden = true
         
         UIView.animate(withDuration: 0.3) {
             self.loadingView.alpha = 1

@@ -12,6 +12,7 @@ import Domain
 
 public class ChatMainViewController: BaseViewController {
     let viewModel: ChatViewModel
+    public var onPresentNewChat: (() -> Void)?
 
     let chatLabel = UILabel().then {
         $0.text = "대화"
@@ -42,7 +43,7 @@ public class ChatMainViewController: BaseViewController {
         setupHierarchy()
         setupLayout()
         bindData()
-        bindActions()
+        bindEvents()
     }
 
     public override func setupViewProperty() {
@@ -78,6 +79,17 @@ public class ChatMainViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
 
-    private func bindActions() {
+    private func bindEvents() {
+        chatMainView.newChatButtonTapped
+            .bind { [weak self] in
+                self?.presentNewChatView()
+            }
+            .disposed(by: disposeBag)
+    }
+
+    private func presentNewChatView() {
+        let chatViewController = ChatViewController(chatViewModel: viewModel)
+        chatViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
 }
