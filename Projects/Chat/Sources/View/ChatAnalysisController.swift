@@ -12,17 +12,23 @@ import Domain
 public class ChatAnalysisController: BaseViewController {
     
     private let chatAnalysisView = ChatAnalysisView()
-    private var messages: [ChatMessageVO] = []
+
+    let navigationBar = DefaultNavigationBar(leftImage: nil,
+                                             rightImage: nil,
+                                             title: "대화 분석",
+                                             isRightButtonHidden: true)
+
+    private var messages: [ChatListVO] = []
     
-    public init(messages: [ChatMessageVO]) {
+    public init(messages: [ChatListVO]) {
         self.messages = messages
         super.init()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         chatAnalysisView.setupAnalysisData(messages)
@@ -37,8 +43,14 @@ public class ChatAnalysisController: BaseViewController {
     }
     
     public override func setupLayout() {
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.width.centerX.equalToSuperview()
+        }
+
         chatAnalysisView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }

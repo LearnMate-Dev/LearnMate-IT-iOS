@@ -19,13 +19,13 @@ public struct ChatListVO {
     public let chatId: Int
     public let author: Int
     public let content: String
-    public let comment: String
+    public let comment: String?
     public let createdAt: String
 
     public init(chatId: Int,
                 author: Int,
                 content: String,
-                comment: String,
+                comment: String?,
                 createdAt: String) {
         self.chatId = chatId
         self.author = author

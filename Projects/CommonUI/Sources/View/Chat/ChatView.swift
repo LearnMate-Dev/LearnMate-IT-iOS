@@ -13,6 +13,11 @@ import Then
 import RxRelay
 
 open class ChatView: UIView {
+
+    public var onSendButtonTapped: ((String) -> Void)?
+    public var onEndButtonTapped: (() -> Void)?
+    let disposeBag = DisposeBag()
+
     let titleLabel = UILabel().then {
         $0.text = "AI와 텍스트로 대화하세요"
         $0.textColor = .black
@@ -103,12 +108,7 @@ open class ChatView: UIView {
         $0.layer.cornerRadius = 22
         $0.isEnabled = false
     }
-
-    let disposeBag = DisposeBag()
     
-    public var onSendButtonTapped: ((String) -> Void)?
-    public var onEndButtonTapped: (() -> Void)?
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initAttribute()

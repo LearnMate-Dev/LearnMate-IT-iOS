@@ -21,6 +21,7 @@ public class ChatViewModel: ChatViewModelProtocol {
     let chatListSubject = PublishSubject<ChatRoomListVO>()
     let chatSubject = PublishSubject<ChatVO>()
     let messageSubject = PublishSubject<ChatMessageVO>()
+    let analysisResultSubject = PublishSubject<ChatDetailVO>()
     private var currentChatRoomId: Int = 0
 
     public init(chatUseCase: ChatUseCase,
@@ -62,6 +63,16 @@ public class ChatViewModel: ChatViewModelProtocol {
                 self?.messageSubject.onNext(message)
             }, onFailure: { error in
                 print("❌ 메시지 전송 실패: \(error)")
+            }).disposed(by: disposeBag)
+    }
+
+    func postChatAnalysis() {
+        chatUseCase.postChatAnalysis(chatRoomId: currentChatRoomId)
+            .subscribe(onSuccess: { [weak self] analysisResult in
+                print("✅ 대화 분석 성공: \(analysisResult)")
+                self?.analysisResultSubject.onNext(analysisResult)
+            }, onFailure: { error in
+                print("❌ 대화 분석 실패: \(error)")
             }).disposed(by: disposeBag)
     }
 }

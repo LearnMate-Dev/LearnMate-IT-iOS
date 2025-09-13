@@ -55,7 +55,7 @@ public class DefaultChatRepository: ChatRepository {
     /// 대화 분석하기
     public func postChatAnalysis(chatRoomId: Int) -> Single<ChatDetailVO> {
         return request(method: .post,
-                       endpoint: "/api/chats/text/\(chatRoomId)/analysis",
+                       endpoint: "/api/chats/\(chatRoomId)/analysis",
                        responseType: ChatDetailResponseDTO.self
         )
         .map { dto in
@@ -76,7 +76,6 @@ public class DefaultChatRepository: ChatRepository {
     /// 저장된 대화 내역 상세 조회하기
     public func getChatDetail(chatRoomId: Int) -> Single<ChatDetailVO> {
         return request(endpoint: "/api/chats/\(chatRoomId)",
-                       encoding: URLEncoding.default,
                        responseType: ChatDetailResponseDTO.self
         )
         .map { dto in

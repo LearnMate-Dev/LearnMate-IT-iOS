@@ -23,7 +23,7 @@ public struct ChatListDTO: Decodable {
     public let chatId: Int
     public let author: Int
     public let content: String
-    public let comment: String
+    public let comment: String?
     public let createdAt: String
 }
 

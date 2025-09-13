@@ -95,6 +95,13 @@ public class ChatViewController: BaseViewController {
                 self?.addMessageToUI(message)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.analysisResultSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] analysisResult in
+                self?.presentAnalysisController(with: analysisResult)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindActions() {
@@ -104,6 +111,7 @@ public class ChatViewController: BaseViewController {
         
         chatView.onEndButtonTapped = { [weak self] in
             self?.showAnalysisLoading()
+            self?.viewModel.postChatAnalysis()
         }
     }
     
@@ -121,14 +129,14 @@ public class ChatViewController: BaseViewController {
         if messages.isEmpty {
             chatView.hideRecommendSection()
         }
-        
+
         // 사용자 메시지 UI에 추가
         let userMessage = ChatMessageVO(chatId: 0, author: "HUMAN", content: text)
         addMessageToUI(userMessage)
         
         // API 호출
         viewModel.sendMessage(content: text)
-        
+
         // 텍스트 필드 초기화 및 버튼 비활성화
         chatView.chatTextField.text = ""
         chatView.sendButton.isEnabled = false
@@ -155,24 +163,21 @@ public class ChatViewController: BaseViewController {
             self.hideAnalysisLoading()
         }
     }
-    
+
     private func hideAnalysisLoading() {
-        print("✅ 대화 분석 완료")
-        
         UIView.animate(withDuration: 0.3, animations: {
             self.loadingView.alpha = 0
         }) { _ in
             self.loadingView.isHidden = true
-            // 여기서 분석 결과 화면으로 이동하거나 다른 액션 수행
-            self.navigateToAnalysisResult()
         }
     }
     
     private func navigateToAnalysisResult() {
         print("📊 분석 결과 화면으로 이동")
         
-        let analysisController = ChatAnalysisController(messages: messages)
-        analysisController.modalPresentationStyle = .fullScreen
+        let emptyChatList: [ChatListVO] = []
+        let analysisController = ChatAnalysisController(messages: emptyChatList)
+        analysisController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
         present(analysisController, animated: true)
     }
@@ -188,5 +193,11 @@ public class ChatViewController: BaseViewController {
         chatView.recommendTexts = topics
         
         print("✅ 추천 주제 업데이트 완료: \(topics.count)개")
+    }
+
+    private func presentAnalysisController(with analysisResult: ChatDetailVO) {
+        let analysisController = ChatAnalysisController(messages: analysisResult.chatList)
+        analysisController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(analysisController, animated: true)
     }
 }
