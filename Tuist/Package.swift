@@ -24,6 +24,7 @@ let package = Package(
         .package(url: "https://github.com/ReactorKit/ReactorKit.git", .upToNextMajor(from: "3.0.0")),
         .package(url: "https://github.com/SnapKit/SnapKit", .upToNextMajor(from: "5.0.1")),
         .package(url: "https://github.com/devxoul/Then", .upToNextMajor(from: "3.0.0")),
-        .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: "5.0.0"))
-    ]
+        .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/WenchaoD/FSCalendar.git", from: "2.8.4")
+     ]
 )

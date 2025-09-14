@@ -3,18 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		11E1631C9C29E4197C2782CB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E083003E4769EA2B259F4BE8 /* ChatViewController.swift */; };
+		11FB77FA2F86CE64816D448C /* ChatAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD38136DBF1DC16E4E5C1149 /* ChatAnalysisViewController.swift */; };
 		3B4198F882286B277F8A91E1 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E359E9093579B130E0EDD53 /* Then.framework */; };
 		7F3F4DE30EE902DEABC6040E /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAFFC509053CC99EAA3B277 /* ChatViewModel.swift */; };
 		9179FB9B1C2AEDCB7A3CFC7E /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588CFD307FD55B64676DA657 /* ChatCoordinator.swift */; };
 		91C973D65FBDD1ABF65A1A2A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F910F30DEBC80ABF5CC5A6F9 /* Domain.framework */; };
-		9516ED482E7076F800F548A1 /* ChatAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED472E7076E900F548A1 /* ChatAnalysisViewController.swift */; };
-		9516ED4F2E708CE100F548A1 /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED4E2E708CD900F548A1 /* ChatMainViewController.swift */; };
-		956C4D722E7690C600E32F93 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D712E7690BF00E32F93 /* ChatDetailViewController.swift */; };
+		9D4DCAC5131580FCDFB46C37 /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3020541ADB39BD0E8D703 /* ChatMainViewController.swift */; };
+		A1775C0ED2D81A830AFBC418 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F4BAB810472885244650D /* ChatDetailViewController.swift */; };
 		B6F14AC32696F30284073B2F /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE28C25EAD3F5DC9E76FFAC /* Chat.framework */; };
 		B89B886F288E5BDECC82BA50 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD6CA2A2FDA5A5D9C4A87D /* Common.framework */; };
 		E096380D552BAA6326ED8397 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB61D7206C15B58E35E2DEB /* CommonUI.framework */; };
@@ -57,21 +57,21 @@
 
 /* Begin PBXFileReference section */
 		082A769CEB29C2CF1616DE7A /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		120F4BAB810472885244650D /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
+		12F3020541ADB39BD0E8D703 /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
 		1C9D9ED19FA740929CF59EFD /* ChatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatTests-Info.plist"; sourceTree = "<group>"; };
 		1CB61D7206C15B58E35E2DEB /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588CFD307FD55B64676DA657 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		5AAFFC509053CC99EAA3B277 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		5E359E9093579B130E0EDD53 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BD6CA2A2FDA5A5D9C4A87D /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9516ED472E7076E900F548A1 /* ChatAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisViewController.swift; sourceTree = "<group>"; };
-		9516ED4E2E708CD900F548A1 /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
-		956C4D712E7690BF00E32F93 /* ChatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailViewController.swift; sourceTree = "<group>"; };
 		BC90A71D97E9F538AACFD586 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A6CF81DAC793585959F31D /* Chat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Chat-Info.plist"; sourceTree = "<group>"; };
 		E05B48A08FE1A700DE3FEE63 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E083003E4769EA2B259F4BE8 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EEE28C25EAD3F5DC9E76FFAC /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F910F30DEBC80ABF5CC5A6F9 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD38136DBF1DC16E4E5C1149 /* ChatAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,10 +160,10 @@
 		B076E5D7F9914D43D18020A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9516ED4E2E708CD900F548A1 /* ChatMainViewController.swift */,
+				FD38136DBF1DC16E4E5C1149 /* ChatAnalysisViewController.swift */,
+				120F4BAB810472885244650D /* ChatDetailViewController.swift */,
+				12F3020541ADB39BD0E8D703 /* ChatMainViewController.swift */,
 				E083003E4769EA2B259F4BE8 /* ChatViewController.swift */,
-				9516ED472E7076E900F548A1 /* ChatAnalysisViewController.swift */,
-				956C4D712E7690BF00E32F93 /* ChatDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +236,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5BF2D8A0F20A5563CE9A6AEB /* Build configuration list for PBXProject "Chat" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -285,12 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9516ED4F2E708CE100F548A1 /* ChatMainViewController.swift in Sources */,
 				9179FB9B1C2AEDCB7A3CFC7E /* ChatCoordinator.swift in Sources */,
+				11FB77FA2F86CE64816D448C /* ChatAnalysisViewController.swift in Sources */,
+				A1775C0ED2D81A830AFBC418 /* ChatDetailViewController.swift in Sources */,
+				9D4DCAC5131580FCDFB46C37 /* ChatMainViewController.swift in Sources */,
 				11E1631C9C29E4197C2782CB /* ChatViewController.swift in Sources */,
 				7F3F4DE30EE902DEABC6040E /* ChatViewModel.swift in Sources */,
-				9516ED482E7076F800F548A1 /* ChatAnalysisViewController.swift in Sources */,
-				956C4D722E7690C600E32F93 /* ChatDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +326,21 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.ChatTests;
 				PRODUCT_NAME = ChatTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -416,7 +425,11 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Chat;
 				PRODUCT_NAME = Chat;
 				SDKROOT = iphoneos;
@@ -425,7 +438,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -510,7 +523,11 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.ChatTests;
 				PRODUCT_NAME = ChatTests;
 				SDKROOT = iphoneos;
@@ -518,7 +535,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -548,7 +565,11 @@
 					"$(inherited)",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Chat;
 				PRODUCT_NAME = Chat;
 				SDKROOT = iphoneos;
@@ -556,7 +577,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -390,6 +390,7 @@
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryDemoApp-Info.plist";
@@ -399,10 +400,13 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
 				OTHER_SWIFT_FLAGS = (
 					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
@@ -413,7 +417,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -426,6 +430,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryDemoAppTests-Info.plist";
@@ -436,10 +441,13 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
 				OTHER_SWIFT_FLAGS = (
 					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
@@ -450,7 +458,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiaryDemoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DiaryDemoApp";
@@ -467,6 +475,7 @@
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryDemoApp-Info.plist";
@@ -476,10 +485,13 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
 				OTHER_SWIFT_FLAGS = (
 					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
@@ -507,6 +519,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryDemoAppTests-Info.plist";
@@ -517,10 +530,13 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
 				OTHER_SWIFT_FLAGS = (
 					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-Xcc",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
