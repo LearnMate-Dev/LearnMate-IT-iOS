@@ -190,7 +190,7 @@ public class ChatViewController: BaseViewController {
             chatRoom: ChatRoomVO(chatRoomId: 0, title: "대화 분석", createdAt: ""),
             chatList: []
         )
-        let analysisController = ChatAnalysisController(chatViewModel: viewModel,
+        let analysisController = ChatAnalysisViewController(chatViewModel: viewModel,
                                                         chatDetail: emptyChatDetail)
         analysisController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
@@ -211,7 +211,7 @@ public class ChatViewController: BaseViewController {
     }
 
     private func presentAnalysisController(with analysisResult: ChatDetailVO) {
-        let analysisController = ChatAnalysisController(chatViewModel: viewModel,
+        let analysisController = ChatAnalysisViewController(chatViewModel: viewModel,
                                                         chatDetail: analysisResult)
         analysisController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(analysisController, animated: true)

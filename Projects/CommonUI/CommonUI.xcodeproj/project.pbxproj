@@ -30,6 +30,7 @@
 		9516ED512E708CF700F548A1 /* ChatMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED502E708CF200F548A1 /* ChatMainView.swift */; };
 		9516ED532E709BA600F548A1 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED522E709BA300F548A1 /* ChatListCell.swift */; };
 		956C4D702E767F8800E32F93 /* LMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D6F2E767F8300E32F93 /* LMAlert.swift */; };
+		956C4D742E7690EA00E32F93 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D732E7690E600E32F93 /* ChatDetailView.swift */; };
 		BAD8B768F782046D4AA1C073 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3DE048BEDCB92B48F401061 /* RxCocoa.framework */; };
 		BE81B1F3E60D37D75A058D2B /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCDC15081A22BAED6318E3E /* SnapKit.framework */; };
 		C2B0F8237715D14D8797DBC9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012F45F908769FA7C3C0792F /* LoginView.swift */; };
@@ -86,6 +87,7 @@
 		9516ED502E708CF200F548A1 /* ChatMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainView.swift; sourceTree = "<group>"; };
 		9516ED522E709BA300F548A1 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		956C4D6F2E767F8300E32F93 /* LMAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAlert.swift; sourceTree = "<group>"; };
+		956C4D732E7690E600E32F93 /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACC7259FC0C14CB352A4E6B /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		C28FE6392E1612667826E5C5 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				9516ED502E708CF200F548A1 /* ChatMainView.swift */,
 				9516ED522E709BA300F548A1 /* ChatListCell.swift */,
 				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
+				956C4D732E7690E600E32F93 /* ChatDetailView.swift */,
 				9516ED4C2E707AC900F548A1 /* ChatAnalysisLoadingView.swift */,
 				9516ED492E7076FB00F548A1 /* ChatAnalysisView.swift */,
 			);
@@ -374,6 +377,7 @@
 				950A0D962E605CEA00C07CF2 /* UIStackView+Extension.swift in Sources */,
 				E055AA66777B1D4CC8C884E4 /* CommonUIAssets.swift in Sources */,
 				950A0D4F2E5AADB500C07CF2 /* SignUpView.swift in Sources */,
+				956C4D742E7690EA00E32F93 /* ChatDetailView.swift in Sources */,
 				F7673E4248628D67F3542848 /* ChatView.swift in Sources */,
 				950A0D562E5C29D000C07CF2 /* LMTextField.swift in Sources */,
 				9516ED4D2E707ACF00F548A1 /* ChatAnalysisLoadingView.swift in Sources */,

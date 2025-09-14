@@ -1,5 +1,5 @@
 //
-//  ChatAnalysisController.swift
+//  ChatAnalysisViewController.swift
 //  Chat
 //
 //  Created by 박지윤 on 9/9/25.
@@ -10,7 +10,7 @@ import CommonUI
 import Domain
 import RxSwift
 
-public class ChatAnalysisController: BaseViewController {
+public class ChatAnalysisViewController: BaseViewController {
     let viewModel: ChatViewModel
     private let chatAnalysisView = ChatAnalysisView()
     let navigationBar = DefaultNavigationBar(leftImage: nil,

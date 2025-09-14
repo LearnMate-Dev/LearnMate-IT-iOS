@@ -85,11 +85,23 @@ public class ChatMainViewController: BaseViewController {
                 self?.presentNewChatView()
             }
             .disposed(by: disposeBag)
+        
+        chatMainView.chatCellTapped
+            .bind { [weak self] chatRoom in
+                self?.presentChatDetailView(chatRoom: chatRoom)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func presentNewChatView() {
         let chatViewController = ChatViewController(chatViewModel: viewModel)
         chatViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(chatViewController, animated: true)
+    }
+    
+    private func presentChatDetailView(chatRoom: ChatRoomVO) {
+        let chatDetailViewController = ChatDetailViewController(chatViewModel: viewModel, chatRoom: chatRoom)
+        chatDetailViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chatDetailViewController, animated: true)
     }
 }

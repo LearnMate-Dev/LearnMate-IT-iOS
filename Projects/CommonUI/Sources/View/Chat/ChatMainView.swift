@@ -15,6 +15,7 @@ import RxSwift
 public class ChatMainView: UIView {
 
     public let newChatButtonTapped = PublishRelay<Void>()
+    public let chatCellTapped = PublishRelay<ChatRoomVO>()
     let disposeBag = DisposeBag()
 
     private let emptyStateContainer = UIView()
@@ -153,14 +154,18 @@ public class ChatMainView: UIView {
 }
 
 extension ChatMainView: UITableViewDataSource, UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return chatRoomList.count
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
         
-        let chatRoom = chatRoomList[indexPath.row]
+        let chatRoom = chatRoomList[indexPath.section]
         cell.configure(title: chatRoom.title, date: chatRoom.createdAt)
         
         return cell
@@ -168,5 +173,19 @@ extension ChatMainView: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 5
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let chatRoom = chatRoomList[indexPath.section]
+        chatCellTapped.accept(chatRoom)
     }
 }
