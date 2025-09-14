@@ -15,8 +15,7 @@ public class SignInViewController: BaseViewController {
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: nil,
-                                             isRightButtonHidden: true)
+                                             title: nil)
 
     let signInView = SignInView()
     public var onPresentSignUp: (() -> Void)?

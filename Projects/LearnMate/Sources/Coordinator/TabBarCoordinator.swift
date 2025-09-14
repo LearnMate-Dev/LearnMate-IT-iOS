@@ -77,10 +77,10 @@ final class DefaultTabBarController: TabBarCoordinator {
             return UITabBarItem(title: page.tabIconName(),
                                 image: CommonUIAssets.tabIconDiary?.original,
                                 selectedImage: CommonUIAssets.tabIconDiarySelected?.original)
-        case .stats:
-            return UITabBarItem(title: page.tabIconName(),
-                                image: CommonUIAssets.tabIconStats?.original,
-                                selectedImage: CommonUIAssets.tabIconStatsSelected?.original)
+//        case .stats:
+//            return UITabBarItem(title: page.tabIconName(),
+//                                image: CommonUIAssets.tabIconStats?.original,
+//                                selectedImage: CommonUIAssets.tabIconStatsSelected?.original)
         case .myPage:
             return UITabBarItem(title: page.tabIconName(),
                                 image: CommonUIAssets.tabIconMypage?.original,
@@ -95,8 +95,8 @@ final class DefaultTabBarController: TabBarCoordinator {
             let homeViewController = dependency.injector.resolve(HomeViewController.self)
             tabNavigationController.pushViewController(homeViewController, animated: true)
         case .chat:
-            let chatViewController = dependency.injector.resolve(ChatViewController.self)
-            tabNavigationController.pushViewController(chatViewController, animated: true)
+            let chatMainViewController = dependency.injector.resolve(ChatMainViewController.self)
+            tabNavigationController.pushViewController(chatMainViewController, animated: true)
         default:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .black
@@ -106,15 +106,15 @@ final class DefaultTabBarController: TabBarCoordinator {
 }
 
 enum TabBarPage: String, CaseIterable {
-    case home, chat, diary, stats, myPage
+    case home, chat, diary, myPage
     
     init?(index: Int) {
         switch index {
         case 0: self = .home
         case 1: self = .chat
         case 2: self = .diary
-        case 3: self = .stats
-        case 4: self = .myPage
+//        case 3: self = .stats
+        case 3: self = .myPage
         default: return nil
         }
     }
@@ -124,8 +124,8 @@ enum TabBarPage: String, CaseIterable {
         case .home: return 0
         case .chat: return 1
         case .diary: return 2
-        case .stats: return 3
-        case .myPage: return 4
+//        case .stats: return 3
+        case .myPage: return 3
         }
     }
 
@@ -134,7 +134,7 @@ enum TabBarPage: String, CaseIterable {
         case .home: return "홈"
         case .chat: return "대화"
         case .diary: return "일기"
-        case .stats: return "통계"
+//        case .stats: return "통계"
         case .myPage: return "마이페이지"
         }
     }

@@ -18,9 +18,9 @@ public struct ChatAssembly: Assembly {
                                  tokenUseCase: tokenUseCase)
         }
 
-        container.register(ChatViewController.self) { resolver in
+        container.register(ChatMainViewController.self) { resolver in
             let chatViewModel = resolver.resolve(ChatViewModel.self)!
-            return ChatViewController(chatViewModel: chatViewModel)
+            return ChatMainViewController(chatViewModel: chatViewModel)
         }
     }
 }

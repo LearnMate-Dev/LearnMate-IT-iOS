@@ -16,8 +16,7 @@ public class SignUpViewController: BaseViewController {
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: "회원가입",
-                                             isRightButtonHidden: true)
+                                             title: "회원가입")
     
     let scrollView = UIScrollView()
     let signUpView = SignUpView()

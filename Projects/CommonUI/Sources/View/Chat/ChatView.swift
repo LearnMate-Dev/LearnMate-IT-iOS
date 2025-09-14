@@ -13,6 +13,11 @@ import Then
 import RxRelay
 
 open class ChatView: UIView {
+
+    public var onSendButtonTapped: ((String) -> Void)?
+    public var onEndButtonTapped: (() -> Void)?
+    let disposeBag = DisposeBag()
+
     let titleLabel = UILabel().then {
         $0.text = "AI와 텍스트로 대화하세요"
         $0.textColor = .black
@@ -82,6 +87,7 @@ open class ChatView: UIView {
             for (index, text) in newValue.enumerated() {
                 if index < recommendLabels.count {
                     recommendLabels[index].text = text
+                    updateRecommendViewHeight(at: index)
                 }
             }
         }
@@ -103,11 +109,7 @@ open class ChatView: UIView {
         $0.layer.cornerRadius = 22
         $0.isEnabled = false
     }
-
-    let disposeBag = DisposeBag()
     
-    public var onSendButtonTapped: ((String) -> Void)?
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initAttribute()
@@ -123,6 +125,12 @@ open class ChatView: UIView {
                 self?.chatTextField.text = ""
             })
             .disposed(by: disposeBag)
+            
+        endButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onEndButtonTapped?()
+            })
+            .disposed(by: disposeBag)
     }
 
     func initAttribute() {
@@ -136,11 +144,11 @@ open class ChatView: UIView {
         chatScrollView.addSubview(chatStackView)
         
         // 추천 뷰들을 StackView에 추가하고 각각에 라벨 추가
-        for (view, label) in zip(recommendViews, recommendLabels) {
+        for (index, (view, label)) in zip(recommendViews, recommendLabels).enumerated() {
             recommendStackView.addArrangedSubview(view)
             view.addSubview(label)
             
-            // 뷰 높이 설정
+            // 초기 뷰 높이 설정 (최소 높이)
             view.snp.makeConstraints { $0.height.equalTo(40) }
             
             // 라벨 레이아웃 설정
@@ -199,7 +207,7 @@ open class ChatView: UIView {
         }
 
         sendButton.snp.makeConstraints {
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-30)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
             $0.height.width.equalTo(44)
             $0.trailing.equalToSuperview().inset(20)
         }
@@ -225,6 +233,21 @@ open class ChatView: UIView {
                 self.layoutIfNeeded()
             }
         }
+    }
+    
+    // endButton 숨기기 메서드
+    public func hideEndButton() {
+        endButton.isHidden = true
+    }
+    
+    // endButton 보이기 메서드
+    public func showEndButton() {
+        endButton.isHidden = false
+    }
+    
+    // subtitleLabel 텍스트 변경 메서드
+    public func updateSubtitleText(_ text: String) {
+        subtitleLabel.text = text
     }
     
     // 메시지 추가 메서드
@@ -283,6 +306,31 @@ open class ChatView: UIView {
         }
         
         return containerView
+    }
+
+    // 추천 뷰 높이를 동적으로 업데이트하는 메서드
+    private func updateRecommendViewHeight(at index: Int) {
+        guard index < recommendLabels.count && index < recommendViews.count else { return }
+        
+        let label = recommendLabels[index]
+        let view = recommendViews[index]
+        
+        // 라벨의 intrinsic content size를 계산
+        let maxWidth: CGFloat = 280 - 32 // recommendStackView width - label insets (16 * 2)
+        let size = label.sizeThatFits(CGSize(width: maxWidth, height: CGFloat.infinity))
+        
+        // 최소 높이 40, 최대 높이 100으로 제한
+        let calculatedHeight = max(40, min(100, size.height + 16)) // 16은 상하 패딩
+        
+        // 기존 높이 constraint 업데이트
+        view.snp.updateConstraints { make in
+            make.height.equalTo(calculatedHeight)
+        }
+        
+        // 애니메이션과 함께 레이아웃 업데이트
+        UIView.animate(withDuration: 0.3) {
+            self.layoutIfNeeded()
+        }
     }
 
     required public init?(coder: NSCoder) {

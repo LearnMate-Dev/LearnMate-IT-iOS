@@ -18,6 +18,8 @@
 		950A0D6B2E5CCBF000C07CF2 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D6A2E5CCBE800C07CF2 /* SignRepository.swift */; };
 		950A0D822E5DE10C00C07CF2 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D812E5DE10700C07CF2 /* LoginUseCase.swift */; };
 		950A0D922E603DA100C07CF2 /* DefaultVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D912E603D9C00C07CF2 /* DefaultVO.swift */; };
+		9516ED592E71CE1300F548A1 /* ChatDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED582E71CE1000F548A1 /* ChatDetailVO.swift */; };
+		9516ED5B2E71CF0300F548A1 /* ChatRoomListVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED5A2E71CEFE00F548A1 /* ChatRoomListVO.swift */; };
 		951F3F892E6DE1F80022583B /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F882E6DE1F60022583B /* ChatUseCase.swift */; };
 		951F3F8B2E6DE2140022583B /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F8A2E6DE2100022583B /* ChatRepository.swift */; };
 		951F3F8D2E6F360C0022583B /* ChatVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F8C2E6F36090022583B /* ChatVO.swift */; };
@@ -58,6 +60,8 @@
 		950A0D6A2E5CCBE800C07CF2 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 		950A0D812E5DE10700C07CF2 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		950A0D912E603D9C00C07CF2 /* DefaultVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVO.swift; sourceTree = "<group>"; };
+		9516ED582E71CE1000F548A1 /* ChatDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailVO.swift; sourceTree = "<group>"; };
+		9516ED5A2E71CEFE00F548A1 /* ChatRoomListVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListVO.swift; sourceTree = "<group>"; };
 		951F3F882E6DE1F60022583B /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		951F3F8A2E6DE2100022583B /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		951F3F8C2E6F36090022583B /* ChatVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVO.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				951F3F8C2E6F36090022583B /* ChatVO.swift */,
+				9516ED5A2E71CEFE00F548A1 /* ChatRoomListVO.swift */,
+				9516ED582E71CE1000F548A1 /* ChatDetailVO.swift */,
 				950A0D912E603D9C00C07CF2 /* DefaultVO.swift */,
 				747DBBCAB797E5E0A82177F2 /* CourseVO.swift */,
 				FD08A7186FB9676854B7AEAC /* LoginVO.swift */,
@@ -260,7 +266,9 @@
 				950A0D6B2E5CCBF000C07CF2 /* SignRepository.swift in Sources */,
 				69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */,
 				950A0D822E5DE10C00C07CF2 /* LoginUseCase.swift in Sources */,
+				9516ED592E71CE1300F548A1 /* ChatDetailVO.swift in Sources */,
 				92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */,
+				9516ED5B2E71CF0300F548A1 /* ChatRoomListVO.swift in Sources */,
 				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
 				D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */,
 				1782D2A1A7FB2BD6FFA1DFEA /* QuizRepository.swift in Sources */,
