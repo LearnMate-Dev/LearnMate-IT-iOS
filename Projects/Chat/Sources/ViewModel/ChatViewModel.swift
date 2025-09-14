@@ -75,4 +75,13 @@ public class ChatViewModel: ChatViewModelProtocol {
                 print("❌ 대화 분석 실패: \(error)")
             }).disposed(by: disposeBag)
     }
+    
+    func deleteChat() {
+        chatUseCase.deleteChat(chatRoomId: currentChatRoomId)
+            .subscribe(onSuccess: { result in
+                print("✅ 대화방 삭제 성공: \(result)")
+            }, onFailure: { error in
+                print("❌ 대화방 삭제 실패: \(error)")
+            }).disposed(by: disposeBag)
+    }
 }

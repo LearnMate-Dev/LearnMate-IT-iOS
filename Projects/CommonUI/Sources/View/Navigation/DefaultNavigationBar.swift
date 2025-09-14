@@ -74,13 +74,13 @@ public final class DefaultNavigationBar: UIView {
         titleLabel.text = title
     }
 
-    @objc private func leftButtonTapped() {
+    @objc public func leftButtonTapped() {
         if let viewController = findViewController() {
             viewController.navigationController?.popViewController(animated: true)
         }
     }
 
-    @objc private func rightButtonTapped() {
+    @objc public func rightButtonTapped() {
         if let viewController = findViewController() {
             viewController.navigationController?.popToRootViewController(animated: true)
         }

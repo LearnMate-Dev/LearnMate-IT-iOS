@@ -8,9 +8,10 @@
 import UIKit
 import CommonUI
 import Domain
+import RxSwift
 
 public class ChatAnalysisController: BaseViewController {
-
+    let viewModel: ChatViewModel
     private let chatAnalysisView = ChatAnalysisView()
     let navigationBar = DefaultNavigationBar(leftImage: nil,
                                              rightImage: CommonUIAssets.IconClose ?? nil,
@@ -18,7 +19,8 @@ public class ChatAnalysisController: BaseViewController {
 
     private var chatDetail: ChatDetailVO
 
-    public init(chatDetail: ChatDetailVO) {
+    public init(chatViewModel: ChatViewModel, chatDetail: ChatDetailVO) {
+        self.viewModel = chatViewModel
         self.chatDetail = chatDetail
         super.init()
     }
@@ -31,6 +33,7 @@ public class ChatAnalysisController: BaseViewController {
         super.viewDidLoad()
         navigationBar.setupViewProperty(title: chatDetail.chatRoom.title)
         chatAnalysisView.setupAnalysisData(chatDetail.chatList)
+        setupActions()
     }
 
     public override func setupViewProperty() {
@@ -52,5 +55,47 @@ public class ChatAnalysisController: BaseViewController {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+    }
+    
+    private func setupActions() {
+        // DefaultNavigationBar의 기본 타겟 제거 후 우리의 커스텀 액션 추가
+        navigationBar.rightButton.removeTarget(navigationBar, action: #selector(DefaultNavigationBar.rightButtonTapped), for: .touchUpInside)
+        navigationBar.rightButton.addTarget(self, action: #selector(handleRightButtonTapped), for: .touchUpInside)
+        
+        // SaveButton 액션 설정
+        chatAnalysisView.onSaveButtonTapped.subscribe(onNext: { [weak self] in
+            self?.handleSaveButtonTapped()
+        }).disposed(by: disposeBag)
+    }
+    
+    @objc private func handleRightButtonTapped() {
+        showExitConfirmationAlert()
+    }
+    
+    private func handleSaveButtonTapped() {
+        // 저장 버튼 클릭 시 루트 뷰컨트롤러로 이동
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    private func showExitConfirmationAlert() {
+        let lmAlert = LMAlert(title: "저장하지 않은 대화는 사라집니다.\n그래도 나가시겠습니까?")
+        
+        lmAlert.setCancelAction {
+            // 아니요 버튼 - 아무것도 하지 않음
+        }
+        
+        lmAlert.setConfirmAction { [weak self] in
+            self?.deleteChatAndExit()
+        }
+        
+        lmAlert.show(in: view)
+    }
+    
+    private func deleteChatAndExit() {
+        // 대화방 삭제 API 호출
+        viewModel.deleteChat()
+
+        // 루트 뷰컨트롤러로 이동
+        navigationController?.popToRootViewController(animated: true)
     }
 }

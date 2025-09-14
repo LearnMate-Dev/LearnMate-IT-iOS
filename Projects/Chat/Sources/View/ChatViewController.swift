@@ -19,6 +19,7 @@ public class ChatViewController: BaseViewController {
                                              title: nil)
 
     private var messages: [ChatMessageVO] = []
+    private var hasStartedConversation = false
     
     private let loadingView = ChatAnalysisLoadingView()
 
@@ -115,6 +116,10 @@ public class ChatViewController: BaseViewController {
             self?.showAnalysisLoading()
             self?.viewModel.postChatAnalysis()
         }
+        
+        // DefaultNavigationBar의 기본 타겟 제거 후 우리의 커스텀 액션 추가
+        navigationBar.leftButton.removeTarget(navigationBar, action: #selector(DefaultNavigationBar.leftButtonTapped), for: .touchUpInside)
+        navigationBar.leftButton.addTarget(self, action: #selector(handleBackButtonTapped), for: .touchUpInside)
     }
     
     private func setupTextFieldActions() {
@@ -129,6 +134,7 @@ public class ChatViewController: BaseViewController {
     private func sendMessage(_ text: String) {
         // 첫 번째 메시지 전송 시 추천 섹션 숨기기 및 endButton 보이기
         if messages.isEmpty {
+            hasStartedConversation = true
             chatView.hideRecommendSection()
             chatView.showEndButton()
             chatView.updateSubtitleText("대화를 종료하면 분석 결과를 제공해요")
@@ -184,7 +190,8 @@ public class ChatViewController: BaseViewController {
             chatRoom: ChatRoomVO(chatRoomId: 0, title: "대화 분석", createdAt: ""),
             chatList: []
         )
-        let analysisController = ChatAnalysisController(chatDetail: emptyChatDetail)
+        let analysisController = ChatAnalysisController(chatViewModel: viewModel,
+                                                        chatDetail: emptyChatDetail)
         analysisController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
         present(analysisController, animated: true)
@@ -204,8 +211,40 @@ public class ChatViewController: BaseViewController {
     }
 
     private func presentAnalysisController(with analysisResult: ChatDetailVO) {
-        let analysisController = ChatAnalysisController(chatDetail: analysisResult)
+        let analysisController = ChatAnalysisController(chatViewModel: viewModel,
+                                                        chatDetail: analysisResult)
         analysisController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(analysisController, animated: true)
+    }
+    
+    @objc private func handleBackButtonTapped() {
+        if hasStartedConversation {
+            showEndConversationAlert()
+        } else {
+            // 대화가 시작되지 않았다면 바로 뒤로 가기
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func showEndConversationAlert() {
+        let lmAlert = LMAlert(title: "대화를 종료하시겠습니까?")
+        
+        lmAlert.setCancelAction {
+            // 아니요 버튼 - 아무것도 하지 않음
+        }
+        
+        lmAlert.setConfirmAction { [weak self] in
+            self?.endConversationAndGoBack()
+        }
+        
+        lmAlert.show(in: view)
+    }
+    
+    private func endConversationAndGoBack() {
+        // 대화방 삭제 API 호출
+        viewModel.deleteChat()
+        
+        // 이전 화면으로 이동
+        navigationController?.popViewController(animated: true)
     }
 }
