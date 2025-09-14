@@ -16,8 +16,7 @@ public class ChatViewController: BaseViewController {
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: nil,
-                                             isRightButtonHidden: true)
+                                             title: nil)
 
     private var messages: [ChatMessageVO] = []
     
@@ -46,6 +45,9 @@ public class ChatViewController: BaseViewController {
         bindActions()
         setupTextFieldActions()
         viewModel.startTextChat()
+        
+        // 초기에 endButton 숨기기
+        chatView.hideEndButton()
     }
 
     public override func setupViewProperty() {
@@ -125,9 +127,11 @@ public class ChatViewController: BaseViewController {
     }
 
     private func sendMessage(_ text: String) {
-        // 첫 번째 메시지 전송 시 추천 섹션 숨기기
+        // 첫 번째 메시지 전송 시 추천 섹션 숨기기 및 endButton 보이기
         if messages.isEmpty {
             chatView.hideRecommendSection()
+            chatView.showEndButton()
+            chatView.updateSubtitleText("대화를 종료하면 분석 결과를 제공해요")
         }
 
         // 사용자 메시지 UI에 추가
@@ -175,8 +179,12 @@ public class ChatViewController: BaseViewController {
     private func navigateToAnalysisResult() {
         print("📊 분석 결과 화면으로 이동")
         
-        let emptyChatList: [ChatListVO] = []
-        let analysisController = ChatAnalysisController(messages: emptyChatList)
+        // 임시 ChatDetailVO 생성 (빈 데이터로)
+        let emptyChatDetail = ChatDetailVO(
+            chatRoom: ChatRoomVO(chatRoomId: 0, title: "대화 분석", createdAt: ""),
+            chatList: []
+        )
+        let analysisController = ChatAnalysisController(chatDetail: emptyChatDetail)
         analysisController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
         
         present(analysisController, animated: true)
@@ -196,7 +204,7 @@ public class ChatViewController: BaseViewController {
     }
 
     private func presentAnalysisController(with analysisResult: ChatDetailVO) {
-        let analysisController = ChatAnalysisController(messages: analysisResult.chatList)
+        let analysisController = ChatAnalysisController(chatDetail: analysisResult)
         analysisController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(analysisController, animated: true)
     }

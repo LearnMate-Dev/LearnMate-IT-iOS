@@ -10,18 +10,16 @@ import CommonUI
 import Domain
 
 public class ChatAnalysisController: BaseViewController {
-    
+
     private let chatAnalysisView = ChatAnalysisView()
-
     let navigationBar = DefaultNavigationBar(leftImage: nil,
-                                             rightImage: nil,
-                                             title: "대화 분석",
-                                             isRightButtonHidden: true)
+                                             rightImage: CommonUIAssets.IconClose ?? nil,
+                                             title: "")
 
-    private var messages: [ChatListVO] = []
-    
-    public init(messages: [ChatListVO]) {
-        self.messages = messages
+    private var chatDetail: ChatDetailVO
+
+    public init(chatDetail: ChatDetailVO) {
+        self.chatDetail = chatDetail
         super.init()
     }
 
@@ -31,17 +29,19 @@ public class ChatAnalysisController: BaseViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        chatAnalysisView.setupAnalysisData(messages)
+        navigationBar.setupViewProperty(title: chatDetail.chatRoom.title)
+        chatAnalysisView.setupAnalysisData(chatDetail.chatList)
     }
-    
+
     public override func setupViewProperty() {
         view.backgroundColor = CommonUIAssets.LMOrange4
     }
-    
+
     public override func setupHierarchy() {
-        view.addSubview(chatAnalysisView)
+        [navigationBar, chatAnalysisView]
+            .forEach { view.addSubview($0) }
     }
-    
+
     public override func setupLayout() {
         navigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)

@@ -207,8 +207,8 @@
 			children = (
 				9516ED502E708CF200F548A1 /* ChatMainView.swift */,
 				9516ED522E709BA300F548A1 /* ChatListCell.swift */,
-				9516ED4C2E707AC900F548A1 /* ChatAnalysisLoadingView.swift */,
 				3EBDD10D8389EBB23B42C54F /* ChatView.swift */,
+				9516ED4C2E707AC900F548A1 /* ChatAnalysisLoadingView.swift */,
 				9516ED492E7076FB00F548A1 /* ChatAnalysisView.swift */,
 			);
 			path = Chat;

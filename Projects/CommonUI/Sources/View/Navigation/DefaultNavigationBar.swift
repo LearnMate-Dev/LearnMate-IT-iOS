@@ -16,8 +16,7 @@ public final class DefaultNavigationBar: UIView {
 
     public init(leftImage: UIImage?,
                 rightImage: UIImage?,
-                title: String?,
-                isRightButtonHidden: Bool) {
+                title: String?) {
         super.init(frame: .zero)
         setupUI()
         setupLayout()
@@ -25,9 +24,9 @@ public final class DefaultNavigationBar: UIView {
         leftButton.setImage(leftImage, for: .normal)
         rightButton.setImage(rightImage, for: .normal)
         titleLabel.text = title
-        rightButton.isHidden = isRightButtonHidden
 
         leftButton.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
@@ -80,7 +79,13 @@ public final class DefaultNavigationBar: UIView {
             viewController.navigationController?.popViewController(animated: true)
         }
     }
-    
+
+    @objc private func rightButtonTapped() {
+        if let viewController = findViewController() {
+            viewController.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+
     private func findViewController() -> UIViewController? {
         var responder: UIResponder? = self
         while let nextResponder = responder?.next {

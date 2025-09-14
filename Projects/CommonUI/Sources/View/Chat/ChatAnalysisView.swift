@@ -9,9 +9,14 @@ import UIKit
 import SnapKit
 import Then
 import Domain
+import RxSwift
+import RxRelay
 
 open class ChatAnalysisView: UIView {
-    
+
+    public var onSaveButtonTapped = PublishRelay<Void>()
+    let disposeBag = DisposeBag()
+
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = true
         $0.alwaysBounceVertical = true
@@ -24,37 +29,73 @@ open class ChatAnalysisView: UIView {
         $0.spacing = 16
         $0.alignment = .fill
     }
-    
+
+    private let nonScrollView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange4
+    }
+
+    var chatSaveButton = LMButton(textColor: CommonUIAssets.LMBlack,
+                                     bgColor: CommonUIAssets.LMOrange1)
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        initAttribute()
         setupUI()
+        setupConstraints()
+        bindEvents()
     }
-    
+
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    func initAttribute() {
+        chatSaveButton = chatSaveButton.then {
+            $0.setTitle("대화 저장하기", for: .normal)
+        }
+    }
+
     private func setupUI() {
         backgroundColor = CommonUIAssets.LMOrange4
         
-        self.addSubview(scrollView)
+        [scrollView, nonScrollView].forEach { addSubview($0) }
         scrollView.addSubview(contentView)
         contentView.addSubview(analysisStackView)
+        nonScrollView.addSubview(chatSaveButton)
+    }
 
+    public func setupConstraints() {
         scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(nonScrollView.snp.top)
         }
-        
+
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
         }
-        
+
         analysisStackView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-20)
         }
+
+        nonScrollView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            $0.height.equalTo(75)
+        }
+
+        chatSaveButton.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalToSuperview().inset(20)
+        }
+    }
+
+    func bindEvents() {
+        chatSaveButton.rx.tap
+            .bind(to: onSaveButtonTapped)
+            .disposed(by: disposeBag)
     }
 
     public func setupAnalysisData(_ messages: [ChatListVO]) {
