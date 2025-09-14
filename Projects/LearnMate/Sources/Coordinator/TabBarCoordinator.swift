@@ -11,6 +11,7 @@ import Home
 import UIKit
 import Chat
 import Diary
+import MyPage
 
 protocol TabBarCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
@@ -47,7 +48,15 @@ final class DefaultTabBarController: TabBarCoordinator {
     /// 각 탭바에 들어갈 네비게이션 컨트롤러 생성
     private func createTabNavigationController(of page: TabBarPage) -> UINavigationController {
         let tabNavigationController = UINavigationController()
-        tabNavigationController.setNavigationBarHidden(false, animated: false)
+        
+        // 채팅과 일기 탭에서는 네비게이션 바 숨기기
+        switch page {
+        case .chat, .diary:
+            tabNavigationController.setNavigationBarHidden(true, animated: false)
+        default:
+            tabNavigationController.setNavigationBarHidden(false, animated: false)
+        }
+        
         tabNavigationController.tabBarItem = self.configureTabBarItem(of: page)
         self.startTabCoordinator(of: page, to: tabNavigationController)
         return tabNavigationController
@@ -101,11 +110,23 @@ final class DefaultTabBarController: TabBarCoordinator {
         case .diary:
             let diaryViewController = dependency.injector.resolve(DiaryViewController.self)
             tabNavigationController.pushViewController(diaryViewController, animated: true)
+        case .myPage:
+            let myPageViewController = dependency.injector.resolve(MyPageViewController.self)
+            myPageViewController.onLogout = { [weak self] in
+                self?.handleLogout()
+            }
+            tabNavigationController.pushViewController(myPageViewController, animated: true)
         default:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .black
             tabNavigationController.pushViewController(viewController, animated: true)
         }
+    }
+    
+    private func handleLogout() {
+        // 모든 뷰 컨트롤러 제거하고 로그인 화면으로 이동
+        navigationController.viewControllers.removeAll()
+        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
 }
 

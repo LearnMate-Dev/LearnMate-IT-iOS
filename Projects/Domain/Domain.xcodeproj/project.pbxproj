@@ -25,6 +25,7 @@
 		92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */; };
 		956C4D8B2E77104800E32F93 /* DiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */; };
 		956C4D8D2E7710BC00E32F93 /* DiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */; };
+		956C4D922E771DD300E32F93 /* TokenValidationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */; };
 		9DBF2CB00F16FBC09602488A /* ChatDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F5EF085884AD8C9591CE5 /* ChatDetailVO.swift */; };
 		A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CFC331192C9FE77F3446A /* StepVO.swift */; };
 		B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */; };
@@ -65,6 +66,7 @@
 		8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUseCase.swift; sourceTree = "<group>"; };
 		956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRepository.swift; sourceTree = "<group>"; };
+		956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenValidationUseCase.swift; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2CBEE7AC445460FAE28675 /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		A89402CD621AD4E2A5B16175 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		2BE278B80FDD95404961E580 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */,
 				91F12B6BCED9685E9C73515E /* Login */,
 				9B2CBEE7AC445460FAE28675 /* ChatUseCase.swift */,
 				956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */,
@@ -289,6 +292,7 @@
 				72077A10B09B16423036D020 /* ChatRoomListVO.swift in Sources */,
 				6A879D6F3FB2FB826037933B /* ChatVO.swift in Sources */,
 				956C4D8D2E7710BC00E32F93 /* DiaryRepository.swift in Sources */,
+				956C4D922E771DD300E32F93 /* TokenValidationUseCase.swift in Sources */,
 				5EB8590C9D2C002D0BDBC021 /* CourseVO.swift in Sources */,
 				5F1581531DDCFDC2FD2DA68C /* DefaultVO.swift in Sources */,
 				0DED9075FE34124C093D9FDF /* LoginVO.swift in Sources */,

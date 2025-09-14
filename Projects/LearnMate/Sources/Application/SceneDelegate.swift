@@ -34,7 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                            LoginAssembly(),
                            HomeAssembly(),
                            ChatAssembly(),
-                           DiaryAssembly()])
+                           DiaryAssembly(),
+                           MyPageAssembly()])
         appCoordinator?.start()
     }
 

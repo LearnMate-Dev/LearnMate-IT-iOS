@@ -9,6 +9,8 @@ import CommonUI
 import Home
 import UIKit
 import Login
+import RxSwift
+import Domain
 
 protocol AppCoordinator: Coordinator {
     // func showLoginFlow()
@@ -25,6 +27,7 @@ final class DefaultAppCoordinator: AppCoordinator{
     }
     
     private let dependency: Dependency
+    private let disposeBag = DisposeBag()
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var type: CoordinatorType = .app
@@ -36,6 +39,50 @@ final class DefaultAppCoordinator: AppCoordinator{
     }
     
     func start() {
+        // 자동 로그인 확인
+        checkAutoLogin()
+    }
+    
+    private func checkAutoLogin() {
+        let tokenRepository = dependency.injector.resolve(TokenRepository.self)
+        
+        // 먼저 토큰이 있는지 빠르게 확인
+        guard let accessToken = tokenRepository.getAccessToken(), !accessToken.isEmpty else {
+            print("❌ 저장된 토큰 없음, 로그인 화면으로 이동")
+            showLoginFlow()
+            return
+        }
+        
+        print("🔑 저장된 토큰 발견, 토큰 검증 시작")
+        
+        let tokenValidationUseCase = dependency.injector.resolve(TokenValidationUseCase.self)
+        
+        tokenValidationUseCase.validateToken()
+            .subscribe(onSuccess: { [weak self] isValid in
+                guard let self = self else { return }
+                
+                if isValid {
+                    print("✅ 토큰 검증 성공, 자동 로그인 완료")
+                    DispatchQueue.main.async {
+                        self.showTabbarFlow()
+                    }
+                } else {
+                    print("❌ 토큰 무효, 로그인 화면으로 이동")
+                    DispatchQueue.main.async {
+                        self.showLoginFlow()
+                    }
+                }
+            }, onFailure: { [weak self] error in
+                guard let self = self else { return }
+                print("❌ 토큰 검증 네트워크 에러: \(error), 로그인 화면으로 이동")
+                DispatchQueue.main.async {
+                    self.showLoginFlow()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showLoginFlow() {
         let loginViewController = dependency.injector.resolve(LoginViewController.self)
         loginViewController.onPresentLmLogin = { [weak self] in
             guard let self else { return }
@@ -52,9 +99,6 @@ final class DefaultAppCoordinator: AppCoordinator{
             self.navigationController.pushViewController(signInViewController, animated: true)
         }
         self.navigationController.pushViewController(loginViewController, animated: true)
-//        setNavigationBar()
-//        setTabBarCoordinator()
-//        showTabbarFlow()
     }
 
     /// 탭바 컨트롤러 플로우
@@ -101,6 +145,11 @@ final class DefaultAppCoordinator: AppCoordinator{
 /// 자식 코디네이터가 종료되었을 때 실행할 메서드
 extension DefaultAppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
+        childCoordinators.removeAll { $0 === childCoordinator }
         
+        // TabBarCoordinator가 종료되면 로그인 화면으로 이동
+        if childCoordinator is TabBarCoordinator {
+            showLoginFlow()
+        }
     }
 }
