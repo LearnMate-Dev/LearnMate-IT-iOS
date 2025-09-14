@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00181A63BD5A4E32A1794E47 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328D6D1BA0FA2636FA0155B8 /* Domain.framework */; };
-		27371483CDC3D1446B5586A8 /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB022AC527566D7BC614272C /* FSCalendar.framework */; };
 		4E4C583D5CAC9D03C7EB7F42 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3315666B7BD56F485B8A9 /* SnapKit.framework */; };
 		5FECAF90D2F533678E72BE33 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C10B46B4182DF961CF26CC /* RxSwift.framework */; };
 		885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */; };
@@ -65,7 +64,6 @@
 		474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB32AAE1BAD4767CE6D9F22 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2AAFED786D950F229E6BA2 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB022AC527566D7BC614272C /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		E57A12A246065D220B5FF7D4 /* Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Diary-Info.plist"; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				F27D20B38412A2CC20E1D2ED /* Common.framework in Frameworks */,
 				D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */,
 				00181A63BD5A4E32A1794E47 /* Domain.framework in Frameworks */,
-				27371483CDC3D1446B5586A8 /* FSCalendar.framework in Frameworks */,
 				5FECAF90D2F533678E72BE33 /* RxSwift.framework in Frameworks */,
 				4E4C583D5CAC9D03C7EB7F42 /* SnapKit.framework in Frameworks */,
 				D95F10BE4FEEEF094BE37E04 /* Then.framework in Frameworks */,
@@ -174,7 +171,6 @@
 				8C2AAFED786D950F229E6BA2 /* Diary.framework */,
 				474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */,
 				328D6D1BA0FA2636FA0155B8 /* Domain.framework */,
-				BB022AC527566D7BC614272C /* FSCalendar.framework */,
 				02C10B46B4182DF961CF26CC /* RxSwift.framework */,
 				08A3315666B7BD56F485B8A9 /* SnapKit.framework */,
 				4DB32AAE1BAD4767CE6D9F22 /* Then.framework */,

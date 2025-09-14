@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import FSCalendar
 
 open class DiaryView: UIView {
     
@@ -30,7 +31,7 @@ open class DiaryView: UIView {
         $0.setImage(CommonUIAssets.IconAdd, for: .normal)
     }
 
-//    private(set) var calendarView = FSCalendarView()
+    private(set) var calendarView = CalendarView()
     let diaryTodayView = DiaryTodayView()
 
     // MARK: Properties
@@ -41,6 +42,16 @@ open class DiaryView: UIView {
     var tapPrevious: ((Int, Int) -> Void)?
     var tapNext: ((Int, Int) -> Void)?
 
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureSubviews()
+        makeConstraints()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: Configuration
     func configureSubviews() {
         addButtonEvent()

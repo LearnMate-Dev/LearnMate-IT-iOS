@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,9 @@
 		7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */; };
 		86D9AEEC02591BAA7F54A5BA /* DiaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB5BD3CC1DAB1DC5E29823 /* DiaryDetailView.swift */; };
 		8E0E6BDEA9574116ECBD55E4 /* ChatAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B9323B265D5683B336EF2 /* ChatAnalysisView.swift */; };
+		956C4D852E76F05000E32F93 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D842E76F04A00E32F93 /* CalendarView.swift */; };
+		956C4D872E76F0AF00E32F93 /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D862E76F0A700E32F93 /* CalendarViewCell.swift */; };
+		956C4D892E76F0F500E32F93 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D882E76F0F400E32F93 /* DividerView.swift */; };
 		96EC2CC574B6ED29C83445A2 /* LMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B461760B2611C637CCD35 /* LMButton.swift */; };
 		A08AEF6AF6E193802D530204 /* LMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195B7F96DD5F38D1EB470427 /* LMAlert.swift */; };
 		A8D633A6C67CC42F3E7017EA /* LMInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D915D93710901915F0E1B11 /* LMInputField.swift */; };
@@ -42,6 +45,7 @@
 		CEADBDD98AC9921C05AAC1DA /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A9CE581345578C7C0F1F1A /* QuizCollectionViewCell.swift */; };
 		CFB380B298BD58E955349DB3 /* DefaultNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69A8F84966D9255A07CB9B1 /* DefaultNavigationBar.swift */; };
 		D5A1FD9A23361E68C449CB95 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDBA6D35FFEB10E15860DEAA /* RxRelay.framework */; };
+		D6F86ADD009EC221F1406E4A /* FSCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051C9BA921E7112E72ED3C05 /* FSCalendar.framework */; };
 		DD2A7F27C6902B1F7FB0BC1D /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2685DC22364927A00A14326C /* Colors.xcassets */; };
 		E040692C1AD240D1B76D922B /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F071BE47C00467572D4D30 /* Domain.framework */; };
 		E055AA66777B1D4CC8C884E4 /* CommonUIAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EF1CA00DA4B6E64F0CB1F0 /* CommonUIAssets.swift */; };
@@ -68,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		012F45F908769FA7C3C0792F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		051C9BA921E7112E72ED3C05 /* FSCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C3D5AB996D321B353C1255 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1591A892B06D329BE11253BC /* QuizCompleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCompleteAlertView.swift; sourceTree = "<group>"; };
 		179BF0E6EE3B59F510B8AF40 /* DiaryAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddView.swift; sourceTree = "<group>"; };
@@ -94,6 +99,9 @@
 		83D64639CB805B71A9CA6C17 /* ChatAnalysisLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisLoadingView.swift; sourceTree = "<group>"; };
 		9266801EFBA6178C5B70C641 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+CommonUI.swift"; sourceTree = "<group>"; };
+		956C4D842E76F04A00E32F93 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		956C4D862E76F0A700E32F93 /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
+		956C4D882E76F0F400E32F93 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		963B9323B265D5683B336EF2 /* ChatAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisView.swift; sourceTree = "<group>"; };
 		9CCDC15081A22BAED6318E3E /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC4F396C35AD4C9F54E4BF6 /* DiaryTodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryTodayView.swift; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E040692C1AD240D1B76D922B /* Domain.framework in Frameworks */,
+				D6F86ADD009EC221F1406E4A /* FSCalendar.framework in Frameworks */,
 				BAD8B768F782046D4AA1C073 /* RxCocoa.framework in Frameworks */,
 				4A71A59F40DC619E678B1CAD /* RxCocoaRuntime.framework in Frameworks */,
 				D5A1FD9A23361E68C449CB95 /* RxRelay.framework in Frameworks */,
@@ -237,6 +246,8 @@
 		A4CE5E0046457BDF29D0FDBE /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				956C4D842E76F04A00E32F93 /* CalendarView.swift */,
+				956C4D862E76F0A700E32F93 /* CalendarViewCell.swift */,
 				179BF0E6EE3B59F510B8AF40 /* DiaryAddView.swift */,
 				4DBB5BD3CC1DAB1DC5E29823 /* DiaryDetailView.swift */,
 				FDCDDE79ED900C96E8D0EC4A /* DiaryEditView.swift */,
@@ -273,6 +284,7 @@
 		BCBFE28A82364D98B26F502F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				956C4D882E76F0F400E32F93 /* DividerView.swift */,
 				195B7F96DD5F38D1EB470427 /* LMAlert.swift */,
 				283B461760B2611C637CCD35 /* LMButton.swift */,
 				4D915D93710901915F0E1B11 /* LMInputField.swift */,
@@ -301,6 +313,7 @@
 			children = (
 				F0F7A08F911F04FE3F6FE36B /* CommonUI.framework */,
 				D7F071BE47C00467572D4D30 /* Domain.framework */,
+				051C9BA921E7112E72ED3C05 /* FSCalendar.framework */,
 				F3DE048BEDCB92B48F401061 /* RxCocoa.framework */,
 				CA4151AAF9C1E241C733FF76 /* RxCocoaRuntime.framework */,
 				DDBA6D35FFEB10E15860DEAA /* RxRelay.framework */,
@@ -358,8 +371,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 26B57D5F96290632B0503228 /* Build configuration list for PBXProject "CommonUI" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -396,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956C4D872E76F0AF00E32F93 /* CalendarViewCell.swift in Sources */,
 				C94951E661D9DC9D28B56273 /* TuistAssets+CommonUI.swift in Sources */,
 				7DC59B80630854028C7C80F4 /* TuistBundle+CommonUI.swift in Sources */,
 				F3DA12FF4D18AE405F2F6B08 /* BaseViewController.swift in Sources */,
@@ -405,6 +417,7 @@
 				21B9DB651F4D3F7DFB5CE055 /* LMTextField.swift in Sources */,
 				E0865F2849CCB89CC83D3B77 /* Coordinator.swift in Sources */,
 				E055AA66777B1D4CC8C884E4 /* CommonUIAssets.swift in Sources */,
+				956C4D852E76F05000E32F93 /* CalendarView.swift in Sources */,
 				B9F3C0F9AA675E70FB8ED969 /* UIStackView+Extension.swift in Sources */,
 				F151F3B566BCA8E16853B241 /* ChatAnalysisLoadingView.swift in Sources */,
 				8E0E6BDEA9574116ECBD55E4 /* ChatAnalysisView.swift in Sources */,
@@ -419,6 +432,7 @@
 				7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */,
 				568C33E681D9B58B71273564 /* DiaryTodayView.swift in Sources */,
 				318A2464888400F05D38B7E5 /* DiaryView.swift in Sources */,
+				956C4D892E76F0F500E32F93 /* DividerView.swift in Sources */,
 				70139D721530B3262C44ABC1 /* AnswerView.swift in Sources */,
 				416C58AEE5E4491991982CFF /* HomeProgressView.swift in Sources */,
 				7D319882A302F75CCE46A48C /* HomeQuizView.swift in Sources */,
@@ -449,6 +463,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/CommonUI-Info.plist";
@@ -460,13 +475,10 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.CommonUI;
 				PRODUCT_NAME = CommonUI;
 				SDKROOT = iphoneos;
@@ -547,6 +559,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/CommonUI-Info.plist";
@@ -558,13 +571,10 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.CommonUI;
 				PRODUCT_NAME = CommonUI;
 				SDKROOT = iphoneos;
@@ -572,10 +582,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -15,8 +15,7 @@ let project = Project(
                 .project(target: "CommonUI", path: "../CommonUI"),
                 .external(name: "SnapKit"),
                 .external(name: "Then"),
-                .external(name: "RxSwift"),
-                .external(name: "FSCalendar")
+                .external(name: "RxSwift")
             ]
         ),
         .target(

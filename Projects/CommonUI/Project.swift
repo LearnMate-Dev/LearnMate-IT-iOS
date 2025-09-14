@@ -14,7 +14,8 @@ let project = Project(
                 .project(target: "Domain", path: "../Domain"),
                 .external(name: "SnapKit"),
                 .external(name: "RxSwift"),
-                .external(name: "RxCocoa")
+                .external(name: "RxCocoa"),
+                .external(name: "FSCalendar")
             ]
         )
     ]

@@ -10,6 +10,7 @@ import Login
 import Home
 import UIKit
 import Chat
+import Diary
 
 protocol TabBarCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
@@ -97,6 +98,9 @@ final class DefaultTabBarController: TabBarCoordinator {
         case .chat:
             let chatMainViewController = dependency.injector.resolve(ChatMainViewController.self)
             tabNavigationController.pushViewController(chatMainViewController, animated: true)
+        case .diary:
+            let diaryViewController = dependency.injector.resolve(DiaryViewController.self)
+            tabNavigationController.pushViewController(diaryViewController, animated: true)
         default:
             let viewController = UIViewController()
             viewController.view.backgroundColor = .black
