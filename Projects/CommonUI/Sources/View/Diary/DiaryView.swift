@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 import Then
-import FSCalendar
+import RxSwift
 
 open class DiaryView: UIView {
     
@@ -38,18 +38,34 @@ open class DiaryView: UIView {
     private var currentYear = 2025
     private var currentMonth = 09
 
-    var tapAdd: (() -> Void)?
+    public var onAddButtonTapped: (() -> Void)?
     var tapPrevious: ((Int, Int) -> Void)?
     var tapNext: ((Int, Int) -> Void)?
+    let disposeBag = DisposeBag()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
         makeConstraints()
+        bindEvents()
+        calendarView.configureSubviews()
+        calendarView.makeConstraints()
+        setupSampleEmotionData()
     }
-    
+
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupSampleEmotionData() {
+        // 샘플 이모지 데이터 설정 (이미지와 동일하게)
+        let sampleEmotions: [Int: String] = [
+            1: "😢",  // 우는 얼굴
+            7: "😐",  // 무표정한 얼굴
+            12: "🥳", // 파티 모자
+            13: "😡"  // 화난 얼굴
+        ]
+        calendarView.setEmotionData(sampleEmotions)
     }
     
     // MARK: Configuration
@@ -94,26 +110,29 @@ open class DiaryView: UIView {
         calendarView.snp.makeConstraints {
             $0.top.equalTo(monthLabel.snp.bottom).offset(17)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(550)
+            $0.height.equalTo(410)
         }
 
         diaryTodayView.snp.makeConstraints {
             $0.top.equalTo(calendarView.snp.bottom).offset(3)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(20)
+            $0.height.equalTo(115)
         }
+    }
+
+    func bindEvents() {
+        addButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.onAddButtonTapped?()
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: Event
     private func addButtonEvent() {
-        addButton.addTarget(self, action: #selector(handleDiaryAddButton), for: .touchUpInside)
         previousButton.addTarget(self, action: #selector(handlePreviousButton), for: .touchUpInside)
         nextButton.addTarget(self, action: #selector(handleNextButton), for: .touchUpInside)
-    }
-
-    @objc
-    private func handleDiaryAddButton() {
-        tapAdd?()
     }
 
     @objc private func handlePreviousButton() {

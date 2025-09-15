@@ -22,7 +22,7 @@ public class DiaryViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = CommonUIAssets.LMOrange4
@@ -54,5 +54,13 @@ public class DiaryViewController: BaseViewController {
     }
     
     private func bindEvents() {
+        diaryView.onAddButtonTapped = { [weak self] in
+            self?.presentNewDiaryView()
+        }
+    }
+
+    private func presentNewDiaryView() {
+        let diaryAddViewController = DiaryAddViewController(diaryViewModel: viewModel)
+        self.navigationController?.pushViewController(diaryAddViewController, animated: true)
     }
 }
