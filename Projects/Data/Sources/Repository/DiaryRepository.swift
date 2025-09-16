@@ -16,6 +16,66 @@ public class DefaultDiaryRepository: DiaryRepository {
         self.tokenRepository = tokenRepository
     }
 
+    public func postDiary(content: String) -> Single<DiaryVO> {
+        let parameter = ["content": content]
+
+        return request(method: .post,
+                       parameters: parameter,
+                       endpoint: "/api/diaries",
+                       responseType: DiaryResponseDTO.self
+        )
+        .map { dto in
+            return dto.data.toDomain()
+        }
+    }
+
+    public func getDiary(date: String) -> Single<DiaryVO> {
+        let parameter = ["date": date]
+
+        return request(parameters: parameter,
+                       endpoint: "/api/diaries",
+                       responseType: DiaryResponseDTO.self
+        )
+        .map { dto in
+            return dto.data.toDomain()
+        }
+    }
+    
+    public func getDiaryDetail(diaryId: Int, date: String) -> Single<DiaryVO>  {
+        let parameter = ["date": date]
+
+        return request(parameters: parameter,
+                       endpoint: "/api/diaries/\(diaryId)",
+                       responseType: DiaryResponseDTO.self
+        )
+        .map { dto in
+            return dto.data.toDomain()
+        }
+    }
+    
+    public func deleteDiaryDetail(diaryId: Int) -> Single<DefaultVO> {
+        return request(method: .delete,
+                       endpoint: "/api/diaries/\(diaryId)",
+                       responseType: DefaultDTO.self
+        )
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+    
+    public func getDiaryCalendar(year: Int, month: Int) -> Single<DiaryCalendarVO>  {
+        let parameter = ["year": year,
+                         "month": month]
+
+        return request(parameters: parameter,
+                       endpoint: "/api/diaries/calendar",
+                       responseType: DiaryCalendarResponseDTO.self
+        )
+        .map { dto in
+            return dto.data.toDomain()
+        }
+    }
+
     private func request<T: Decodable>(
         method: HTTPMethod = .get,
         parameters: [String: Any]? = nil,

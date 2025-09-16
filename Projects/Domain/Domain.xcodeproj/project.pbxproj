@@ -23,6 +23,8 @@
 		6D73D9043F7C3AA14AED7068 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB20675E9BA27548003EA55 /* ChatRepository.swift */; };
 		72077A10B09B16423036D020 /* ChatRoomListVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF735832A6028B0F0633B0 /* ChatRoomListVO.swift */; };
 		92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB908BB15CBDA006ADC3A1 /* UIView+Extension.swift */; };
+		9532C7B02E7872A400B4BADE /* DiaryVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7AF2E7872A100B4BADE /* DiaryVO.swift */; };
+		9532C7B22E78F44800B4BADE /* DiaryCalendarVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7B12E78F44400B4BADE /* DiaryCalendarVO.swift */; };
 		956C4D8B2E77104800E32F93 /* DiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */; };
 		956C4D8D2E7710BC00E32F93 /* DiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */; };
 		956C4D922E771DD300E32F93 /* TokenValidationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */; };
@@ -64,6 +66,8 @@
 		798CFC331192C9FE77F3446A /* StepVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepVO.swift; sourceTree = "<group>"; };
 		89BF735832A6028B0F0633B0 /* ChatRoomListVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomListVO.swift; sourceTree = "<group>"; };
 		8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		9532C7AF2E7872A100B4BADE /* DiaryVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryVO.swift; sourceTree = "<group>"; };
+		9532C7B12E78F44400B4BADE /* DiaryCalendarVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCalendarVO.swift; sourceTree = "<group>"; };
 		956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUseCase.swift; sourceTree = "<group>"; };
 		956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRepository.swift; sourceTree = "<group>"; };
 		956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenValidationUseCase.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		9C17CEB3595F4C3FA69C5BAF /* VO */ = {
 			isa = PBXGroup;
 			children = (
+				9532C7AF2E7872A100B4BADE /* DiaryVO.swift */,
+				9532C7B12E78F44400B4BADE /* DiaryCalendarVO.swift */,
 				097F5EF085884AD8C9591CE5 /* ChatDetailVO.swift */,
 				89BF735832A6028B0F0633B0 /* ChatRoomListVO.swift */,
 				00CA0A9509EC3798653BF795 /* ChatVO.swift */,
@@ -276,9 +282,11 @@
 				16748FBAA3739FB31DEB293A /* UIImage+Extension.swift in Sources */,
 				92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */,
 				6D73D9043F7C3AA14AED7068 /* ChatRepository.swift in Sources */,
+				9532C7B02E7872A400B4BADE /* DiaryVO.swift in Sources */,
 				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
 				D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */,
 				1782D2A1A7FB2BD6FFA1DFEA /* QuizRepository.swift in Sources */,
+				9532C7B22E78F44800B4BADE /* DiaryCalendarVO.swift in Sources */,
 				0C6B16A92D1488D0C06BCD13 /* SignRepository.swift in Sources */,
 				D81C7F2583A1BD30BD7C53DD /* TokenRepository.swift in Sources */,
 				51C33E60507A25394BA1A51D /* ChatUseCase.swift in Sources */,
