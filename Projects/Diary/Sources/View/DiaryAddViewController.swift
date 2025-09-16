@@ -75,7 +75,7 @@ public class DiaryAddViewController: BaseViewController {
     }
 
     private func showAnalysisLoading() {
-        print("🔄 대화 분석 시작")
+        print("🔄 일기 분석 시작")
         
         // 로딩 화면 표시
         loadingView.isHidden = false
@@ -85,10 +85,6 @@ public class DiaryAddViewController: BaseViewController {
         UIView.animate(withDuration: 0.3) {
             self.loadingView.alpha = 1
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            self.hideAnalysisLoading()
-        }
     }
 
     private func hideAnalysisLoading() {
@@ -96,24 +92,78 @@ public class DiaryAddViewController: BaseViewController {
             self.loadingView.alpha = 0
         }) { _ in
             self.loadingView.isHidden = true
+            self.navigationBar.isHidden = false
+        }
+    }
+    
+    private func showToast(message: String) {
+        let toastLabel = UILabel()
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont.systemFont(ofSize: 16)
+        toastLabel.text = message
+        toastLabel.alpha = 0.0
+        toastLabel.layer.cornerRadius = 8
+        toastLabel.clipsToBounds = true
+        
+        view.addSubview(toastLabel)
+        
+        toastLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(100)
+            $0.width.lessThanOrEqualToSuperview().inset(40)
+            $0.height.greaterThanOrEqualTo(50)
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            toastLabel.alpha = 1.0
+        }) { _ in
+            UIView.animate(withDuration: 0.3, delay: 2.0, animations: {
+                toastLabel.alpha = 0.0
+            }) { _ in
+                toastLabel.removeFromSuperview()
+            }
         }
     }
 
-    private func navigateToAnalysisResult() {
+    private func navigateToAnalysisResult(diaryData: DiaryVO) {
         print("📊 분석 결과 화면으로 이동")
-
-//        let diaryResultViewController = DiaryResultViewController(chatViewModel: viewModel)
-//        diaryResultViewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-//
-//        present(diaryResultViewController, animated: true)
+        
+        let diaryResultViewController = DiaryResultViewController(diaryViewModel: viewModel, diaryData: diaryData)
+        diaryResultViewController.modalPresentationStyle = .fullScreen
+        
+        present(diaryResultViewController, animated: true)
     }
 
     private func bindData() {
+        viewModel.onDiaryPostSuccess = { [weak self] diaryData in
+            DispatchQueue.main.async {
+                self?.hideAnalysisLoading()
+                self?.navigateToAnalysisResult(diaryData: diaryData)
+            }
+        }
+        
+        viewModel.onDiaryPostFailure = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.hideAnalysisLoading()
+                self?.showToast(message: "일기 작성에 실패했습니다. 다시 시도해주세요.")
+            }
+        }
     }
     
     private func bindEvents() {
-//        diaryAddView.onAddButtonTapped = { [weak self] text in
-//            self?.viewModel.sendMessage(text)
-//        }
+        diaryAddView.onAddButtonTapped = { [weak self] content in
+            guard let self = self else { return }
+            
+            if content.isEmpty {
+                print("❌ 일기 내용이 비어있습니다")
+                return
+            }
+            
+            print("📝 일기 작성 요청: \(content)")
+            self.showAnalysisLoading()
+            self.viewModel.postDiary(content: content)
+        }
     }
 }

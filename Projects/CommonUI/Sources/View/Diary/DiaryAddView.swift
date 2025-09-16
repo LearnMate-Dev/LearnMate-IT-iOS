@@ -112,7 +112,9 @@ open class DiaryAddView: UIView {
     func bindEvents() {
         diaryAddButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.onAddButtonTapped?(self?.diaryTextView.text ?? "test")
+                guard let self = self else { return }
+                let content = self.getDiaryText() ?? ""
+                self.onAddButtonTapped?(content)
             })
             .disposed(by: disposeBag)
     }

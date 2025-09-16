@@ -103,6 +103,9 @@ final class DefaultAppCoordinator: AppCoordinator{
 
     /// 탭바 컨트롤러 플로우
     func showTabbarFlow() {
+        // 네비게이션 바 숨기기
+        navigationController.setNavigationBarHidden(true, animated: false)
+        
         if getChildCoordinator(.tabbar) == nil { setTabBarCoordinator() }
         let tabBarCoordinator = getChildCoordinator(.tabbar) as! TabBarCoordinator
         tabBarCoordinator.start()

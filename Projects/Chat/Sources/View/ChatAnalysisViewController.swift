@@ -81,7 +81,6 @@ public class ChatAnalysisViewController: BaseViewController {
         let lmAlert = LMAlert(title: "저장하지 않은 대화는 사라집니다.\n그래도 나가시겠습니까?")
         
         lmAlert.setCancelAction {
-            // 아니요 버튼 - 아무것도 하지 않음
         }
         
         lmAlert.setConfirmAction { [weak self] in

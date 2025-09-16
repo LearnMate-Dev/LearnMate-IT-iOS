@@ -53,14 +53,9 @@ public class DefaultTokenRepository: TokenRepository {
             return Single.just(false)
         }
         
-        // 토큰이 있으면 일단 유효하다고 가정 (실제 서버 검증은 나중에 구현)
-        // TODO: 실제 서버 토큰 검증 API 구현 시 아래 주석 해제
-        print("🔑 토큰 존재 확인, 자동 로그인 허용")
-        return Single.just(true)
-        
-        /*
+        // 기존 API를 사용해서 토큰 유효성 검증 (courses API 호출)
         return Single.create { single in
-            let url = "\(NetworkConfiguration.baseUrl)/api/auth/validate"
+            let url = "\(NetworkConfiguration.baseUrl)/api/courses"
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(accessToken)"
             ]
@@ -87,6 +82,5 @@ public class DefaultTokenRepository: TokenRepository {
             
             return Disposables.create { request.cancel() }
         }
-        */
     }
 }

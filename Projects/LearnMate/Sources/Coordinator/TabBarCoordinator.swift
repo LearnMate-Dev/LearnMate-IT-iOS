@@ -49,13 +49,8 @@ final class DefaultTabBarController: TabBarCoordinator {
     private func createTabNavigationController(of page: TabBarPage) -> UINavigationController {
         let tabNavigationController = UINavigationController()
         
-        // 채팅과 일기 탭에서는 네비게이션 바 숨기기
-        switch page {
-        case .chat, .diary:
-            tabNavigationController.setNavigationBarHidden(true, animated: false)
-        default:
-            tabNavigationController.setNavigationBarHidden(false, animated: false)
-        }
+        // 모든 탭에서 네비게이션 바 숨기기
+        tabNavigationController.setNavigationBarHidden(true, animated: false)
         
         tabNavigationController.tabBarItem = self.configureTabBarItem(of: page)
         self.startTabCoordinator(of: page, to: tabNavigationController)

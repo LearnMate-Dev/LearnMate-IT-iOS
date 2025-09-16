@@ -69,6 +69,7 @@ public class DefaultDiaryRepository: DiaryRepository {
 
         return request(parameters: parameter,
                        endpoint: "/api/diaries/calendar",
+                       encoding: URLEncoding.default,
                        responseType: DiaryCalendarResponseDTO.self
         )
         .map { dto in
@@ -95,14 +96,21 @@ public class DefaultDiaryRepository: DiaryRepository {
             }
             print("🌐 API 요청 URL: \(url)")
             print("🔑 Authorization 헤더: \(headers)")
+            print("📤 요청 파라미터: \(parameters ?? [:])")
+            print("📤 요청 메서드: \(method)")
+            print("📤 인코딩: \(encoding)")
             
             let request = AF.request(url,
                                      method: method,
                                      parameters: parameters,
                                      encoding: encoding,
                                      headers: headers)
-                .validate()
                 .responseDecodable(of: responseType) { response in
+                    print("📊 HTTP 상태 코드: \(response.response?.statusCode ?? -1)")
+                    if let data = response.data {
+                        print("📊 응답 데이터: \(String(data: data, encoding: .utf8) ?? "데이터 파싱 실패")")
+                    }
+                    
                     switch response.result {
                     case .success(let value):
                         print("✅ API 응답 성공: \(value)")
