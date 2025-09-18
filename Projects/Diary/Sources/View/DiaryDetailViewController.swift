@@ -1,21 +1,21 @@
 //
-//  DiaryResultViewController.swift
+//  DiaryDetailViewController.swift
 //  Diary
 //
-//  Created by 박지윤 on 1/7/25.
+//  Created by 박지윤 on 9/18/25.
 //
 
 import UIKit
 import CommonUI
 import Domain
 
-public class DiaryResultViewController: BaseViewController {
+public class DiaryDetailViewController: BaseViewController {
     let diaryResultView = DiaryResultView()
     let viewModel: DiaryViewModel
 
-    let navigationBar = DefaultNavigationBar(leftImage: nil,
+    let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: CommonUIAssets.IconClose ?? nil,
-                                             title: "일기 맞춤법 검사 결과")
+                                             title: "일기 상세")
     
     private let diaryData: DiaryVO
     
@@ -24,7 +24,7 @@ public class DiaryResultViewController: BaseViewController {
         self.diaryData = diaryData
         super.init()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,44 +73,9 @@ public class DiaryResultViewController: BaseViewController {
     }
 
     @objc private func handleRightButtonTapped() {
-        showExitConfirmationAlert()
-    }
-
-    private func showExitConfirmationAlert() {
-        let lmAlert = LMAlert(title: "저장하지 않은 일기는 사라집니다.\n그래도 나가시겠습니까?")
-        
-        lmAlert.setCancelAction {
-        }
-        
-        lmAlert.setConfirmAction { [weak self] in
-            self?.deleteDiaryAndExit()
-        }
-        
-        lmAlert.show(in: view)
-    }
-
-    private func deleteDiaryAndExit() {
-        viewModel.deleteDiaryDetail(diaryId: diaryData.diaryId)
-
-        // 모달 닫기
-        dismiss(animated: true)
     }
 
     private func bindEvents() {
-        // leftButton이 nil이므로 이벤트 바인딩 제거
-        // navigationBar.leftButton.rx.tap
-        //     .subscribe(onNext: { [weak self] in
-        //         self?.navigationController?.popViewController(animated: true)
-        //     })
-        //     .disposed(by: disposeBag)
-        
-        diaryResultView.onSaveButtonTapped = { [weak self] in
-            self?.handleSaveDiary()
-        }
-    }
-    
-    private func handleSaveDiary() {
-        self.navigationController?.popViewController(animated: true)
     }
 
     private func configureData() {

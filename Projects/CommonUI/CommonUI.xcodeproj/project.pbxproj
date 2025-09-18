@@ -28,7 +28,6 @@
 		7D319882A302F75CCE46A48C /* HomeQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A77FC9A0E2D7F62CA16E90 /* HomeQuizView.swift */; };
 		7DC59B80630854028C7C80F4 /* TuistBundle+CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */; };
 		7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */; };
-		86D9AEEC02591BAA7F54A5BA /* DiaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB5BD3CC1DAB1DC5E29823 /* DiaryDetailView.swift */; };
 		8E0E6BDEA9574116ECBD55E4 /* ChatAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B9323B265D5683B336EF2 /* ChatAnalysisView.swift */; };
 		9532C7A92E786B3C00B4BADE /* DiaryLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7A82E786B3800B4BADE /* DiaryLoadingView.swift */; };
 		956C4D852E76F05000E32F93 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D842E76F04A00E32F93 /* CalendarView.swift */; };
@@ -84,7 +83,6 @@
 		39A77FC9A0E2D7F62CA16E90 /* HomeQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeQuizView.swift; sourceTree = "<group>"; };
 		47AA88AB7E000E21ED0BD7D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D915D93710901915F0E1B11 /* LMInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMInputField.swift; sourceTree = "<group>"; };
-		4DBB5BD3CC1DAB1DC5E29823 /* DiaryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailView.swift; sourceTree = "<group>"; };
 		5026821CC7DCD8E25C99E1BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		54D77EBBB5DC07D000BA651F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		6AF2493B1FE3475547B1AF00 /* ChatMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainView.swift; sourceTree = "<group>"; };
@@ -257,7 +255,6 @@
 				D81F42DF8103F21916D13101 /* DiaryView.swift */,
 				956C4D842E76F04A00E32F93 /* CalendarView.swift */,
 				179BF0E6EE3B59F510B8AF40 /* DiaryAddView.swift */,
-				4DBB5BD3CC1DAB1DC5E29823 /* DiaryDetailView.swift */,
 				FDCDDE79ED900C96E8D0EC4A /* DiaryEditView.swift */,
 				9532C7A82E786B3800B4BADE /* DiaryLoadingView.swift */,
 				7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */,
@@ -433,7 +430,6 @@
 				BF78C65BBEB24BF648EA2427 /* ChatMainView.swift in Sources */,
 				451E4F690605A30900E088FE /* ChatView.swift in Sources */,
 				736D1C5EB53FB204B030C397 /* DiaryAddView.swift in Sources */,
-				86D9AEEC02591BAA7F54A5BA /* DiaryDetailView.swift in Sources */,
 				9532C7A92E786B3C00B4BADE /* DiaryLoadingView.swift in Sources */,
 				F8B8A383C8670A714B41F2EE /* DiaryEditView.swift in Sources */,
 				7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */,

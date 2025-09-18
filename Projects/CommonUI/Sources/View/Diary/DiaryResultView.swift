@@ -127,6 +127,7 @@ open class DiaryResultView: UIView {
     
     // MARK: Properties
     private var diaryData: DiaryVO?
+    private var isButtonVisible: Bool = true
     let disposeBag = DisposeBag()
     
     // MARK: Public Properties
@@ -136,6 +137,12 @@ open class DiaryResultView: UIView {
         super.init(frame: frame)
         setupUI()
         bindEvents()
+    }
+    
+    public convenience init(frame: CGRect, showButton: Bool) {
+        self.init(frame: frame)
+        self.isButtonVisible = showButton
+        updateButtonVisibility()
     }
     
     required public init?(coder: NSCoder) {
@@ -153,7 +160,9 @@ open class DiaryResultView: UIView {
         }
         
         addSubview(scrollView)
-        addSubview(confirmButton)
+        if isButtonVisible {
+            addSubview(confirmButton)
+        }
         scrollView.addSubview(contentView)
         
         // 원형 점수 표시기 설정
@@ -189,19 +198,25 @@ open class DiaryResultView: UIView {
     }
     
     private func setupConstraints() {
-        scrollView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
+        if isButtonVisible {
+            scrollView.snp.makeConstraints {
+                $0.top.leading.trailing.equalToSuperview()
+                $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
+            }
+            
+            confirmButton.snp.makeConstraints {
+                $0.leading.trailing.equalToSuperview().inset(20)
+                $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
+            }
+        } else {
+            scrollView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
         }
         
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
-        }
-        
-        confirmButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
         }
 
         dateLabel.snp.makeConstraints {
@@ -320,6 +335,38 @@ open class DiaryResultView: UIView {
         
         // 피드백 설정
         feedbackLabel.text = diary.feedback
+    }
+    
+    public func setButtonVisibility(_ isVisible: Bool) {
+        self.isButtonVisible = isVisible
+        updateButtonVisibility()
+    }
+    
+    private func updateButtonVisibility() {
+        if isButtonVisible {
+            if confirmButton.superview == nil {
+                addSubview(confirmButton)
+                confirmButton.snp.makeConstraints {
+                    $0.leading.trailing.equalToSuperview().inset(20)
+                    $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
+                }
+            }
+            confirmButton.isHidden = false
+            
+            // 스크롤뷰 제약조건 업데이트
+            scrollView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalToSuperview()
+                $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
+            }
+        } else {
+            confirmButton.isHidden = true
+            confirmButton.removeFromSuperview()
+            
+            // 스크롤뷰 제약조건 업데이트
+            scrollView.snp.remakeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }
     }
     
     private func setupScoreProgress(score: Int) {
