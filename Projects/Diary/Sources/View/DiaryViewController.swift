@@ -26,7 +26,11 @@ public class DiaryViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        viewModel.getDiaryCalendar(year: 2025, month: 9)
+        let today = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: today)
+        let month = calendar.component(.month, from: today)
+        viewModel.getDiaryCalendar(year: year, month: month)
     }
 
     public override func viewDidLoad() {
@@ -57,10 +61,30 @@ public class DiaryViewController: BaseViewController {
     }
     
     private func bindData() {
+        // 캘린더 데이터 바인딩
+        viewModel.diaryCalendarSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] calendarData in
+                self?.updateDiaryTodayView(with: calendarData)
+            })
+            .disposed(by: disposeBag)
+        
+        // 캘린더 에러 처리
+        viewModel.diaryCalendarErrorSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { error in
+                print("❌ 캘린더 데이터 로드 실패: \(error)")
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindEvents() {
         diaryView.onAddButtonTapped = { [weak self] in
+            self?.presentNewDiaryView()
+        }
+        
+        // DiaryTodayView의 일기 추가 버튼 이벤트 바인딩
+        diaryView.diaryTodayView.tapDiaryAdd = { [weak self] in
             self?.presentNewDiaryView()
         }
     }
@@ -68,5 +92,30 @@ public class DiaryViewController: BaseViewController {
     private func presentNewDiaryView() {
         let diaryAddViewController = DiaryAddViewController(diaryViewModel: viewModel)
         self.navigationController?.pushViewController(diaryAddViewController, animated: true)
+    }
+    
+    private func updateDiaryTodayView(with calendarData: DiaryCalendarVO) {
+        let today = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayString = formatter.string(from: today)
+        
+        // 오늘 날짜의 일기가 있는지 확인
+        let todayDiary = calendarData.diaryList.first { diary in
+            diary.createdAt.hasPrefix(todayString)
+        }
+        
+        if let diary = todayDiary {
+            // 오늘 일기가 있는 경우
+            diaryView.diaryTodayView.setDiaryTodayData(
+                date: todayString,
+                diaryId: diary.diaryId,
+                score: diary.score,
+                content: diary.createdAt
+            )
+        } else {
+            // 오늘 일기가 없는 경우
+            diaryView.diaryTodayView.setDiaryTodayEmptyData(date: todayString)
+        }
     }
 }

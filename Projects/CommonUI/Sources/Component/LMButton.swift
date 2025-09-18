@@ -39,4 +39,10 @@ public class LMButton: UIButton {
             $0.height.equalTo(55)
         }
     }
+    
+    public func setHeight(_ height: CGFloat) {
+        self.snp.updateConstraints {
+            $0.height.equalTo(height)
+        }
+    }
 }

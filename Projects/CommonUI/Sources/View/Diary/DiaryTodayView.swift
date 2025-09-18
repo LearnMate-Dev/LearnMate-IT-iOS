@@ -39,7 +39,7 @@ open class DiaryTodayView: UIView {
 
     // MARK: Properties
     var tap: (() -> Void)?
-    var tapDiaryAdd: (() -> Void)?
+    public var tapDiaryAdd: (() -> Void)?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,13 +63,14 @@ open class DiaryTodayView: UIView {
             $0.setTitle("+ 일기 추가하기", for: .normal)
             $0.setTitleColor(CommonUIAssets.LMGray1, for: .normal)
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+            $0.setHeight(48)
         }
 
         addSubview(dateLabel)
         addSubview(dividerView)
     }
 
-    func setDiaryTodayEmptyData(date: String) {
+    public func setDiaryTodayEmptyData(date: String) {
         addSubview(diaryAddButton)
         emotionLabel.removeFromSuperview()
         contentLabel.removeFromSuperview()
@@ -83,6 +84,9 @@ open class DiaryTodayView: UIView {
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(20)
         }
+        
+        // 일기 추가 버튼 이벤트 설정
+        diaryAddButton.addTarget(self, action: #selector(handleDiaryAddButton), for: .touchUpInside)
     }
 
     func setDiaryEmptyData(date: String) {
@@ -92,6 +96,35 @@ open class DiaryTodayView: UIView {
                                                 toFormat: "yyyy년 MM월 dd일")
         emotionLabel.text = "🫥"
         contentLabel.text = "작성된 일기가 없습니다"
+    }
+    
+    public func setDiaryTodayData(date: String, diaryId: Int, score: Int, content: String) {
+        setNonTodayView()
+        
+        dateLabel.text = date.convertDateString(fromFormat: "yyyy-MM-dd",
+                                                toFormat: "yyyy년 MM월 dd일")
+        
+        // 점수에 따른 이모지 설정
+        let emotion = getEmotionFromScore(score)
+        emotionLabel.text = emotion
+        
+        // 실제 일기 내용 표시
+        contentLabel.text = content
+    }
+    
+    private func getEmotionFromScore(_ score: Int) -> String {
+        switch score {
+        case 90...100:
+            return "😊" // 매우 좋음
+        case 80..<90:
+            return "🙂" // 좋음
+        case 70..<80:
+            return "😐" // 보통
+        case 60..<70:
+            return "😕" // 아쉬움
+        default:
+            return "😢" // 슬픔
+        }
     }
 
 //    func setDiaryTodayData(data: DiaryDTO) {

@@ -20,16 +20,70 @@ open class DiaryResultView: UIView {
     }
     
     private let contentView = UIView()
-    
-    private let dateLabel = UILabel().then {
+
+    private(set) var dateLabel = UILabel().then {
+        $0.text = Date().getToday()
+        $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+    }
+
+    private let dateUnderlineView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange1
+    }
+
+    // 원형 점수 표시기
+    private let scoreContainerView = UIView()
+    private let scoreCircleView = UIView().then {
+        $0.backgroundColor = .yellow
+        $0.layer.borderWidth = 8
+        $0.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
+        $0.layer.cornerRadius = 60
+    }
+    private let scoreProgressView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange3
+        $0.layer.cornerRadius = 60
+    }
+    private let scoreLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         $0.textColor = CommonUIAssets.LMBlack
+        $0.textAlignment = .center
+    }
+    
+    // 내가 쓴 일기 섹션
+    private let originalSectionTitleLabel = UILabel().then {
+        $0.text = "내가 쓴 일기"
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.textColor = CommonUIAssets.LMBlack
+    }
+    
+    private let originalContentContainer = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
+        $0.layer.cornerRadius = 12
     }
     
     private let originalContentLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        $0.textColor = CommonUIAssets.LMGray1
+        $0.textColor = CommonUIAssets.LMBlack
         $0.numberOfLines = 0
+    }
+    
+    // 화살표
+    private let arrowImageView = UIImageView().then {
+        $0.image = UIImage(systemName: "arrow.down")
+        $0.tintColor = CommonUIAssets.LMGray3
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    // 맞춤법 교정 결과 섹션
+    private let revisedSectionTitleLabel = UILabel().then {
+        $0.text = "맞춤법 교정 결과"
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.textColor = CommonUIAssets.LMBlack
+    }
+    
+    private let revisedContentContainer = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
+        $0.layer.cornerRadius = 12
     }
     
     private let revisedContentLabel = UILabel().then {
@@ -38,28 +92,38 @@ open class DiaryResultView: UIView {
         $0.numberOfLines = 0
     }
     
-    private let scoreLabel = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        $0.textColor = CommonUIAssets.LMOrange1
-        $0.textAlignment = .center
+    // 맞춤법 오류 섹션
+    private let errorSectionTitleLabel = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.textColor = CommonUIAssets.LMBlack
     }
     
-    private let revisionsStackView = UIStackView().then {
+    private let errorStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 12
         $0.distribution = .fill
+    }
+    
+    // AI 피드백 섹션
+    private let feedbackSectionTitleLabel = UILabel().then {
+        $0.text = "AI 피드백"
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        $0.textColor = CommonUIAssets.LMBlack
+    }
+    
+    private let feedbackContainer = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
+        $0.layer.cornerRadius = 12
     }
     
     private let feedbackLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textColor = CommonUIAssets.LMBlack
         $0.numberOfLines = 0
-        $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
-        $0.layer.cornerRadius = 12
     }
     
-    private var saveDiaryButton = LMButton(textColor: CommonUIAssets.LMBlack,
-                                          bgColor: CommonUIAssets.LMOrange1)
+    private var confirmButton = LMButton(textColor: CommonUIAssets.LMBlack,
+                                        bgColor: CommonUIAssets.LMOrange1)
     
     // MARK: Properties
     private var diaryData: DiaryVO?
@@ -80,25 +144,44 @@ open class DiaryResultView: UIView {
     
     // MARK: Setup
     private func setupUI() {
-        backgroundColor = CommonUIAssets.LMOrange4
+        backgroundColor = CommonUIAssets.LMWhite
         
         // 버튼 설정
-        saveDiaryButton = saveDiaryButton.then {
+        confirmButton = confirmButton.then {
             $0.setTitle("일기 저장하기", for: .normal)
+            $0.layer.cornerRadius = 12
         }
         
         addSubview(scrollView)
-        addSubview(saveDiaryButton)
+        addSubview(confirmButton)
         scrollView.addSubview(contentView)
         
-        [dateLabel, originalContentLabel, revisedContentLabel, scoreLabel, revisionsStackView, feedbackLabel]
+        // 원형 점수 표시기 설정
+        scoreContainerView.addSubview(scoreCircleView)
+        scoreContainerView.addSubview(scoreProgressView)
+        scoreContainerView.addSubview(scoreLabel)
+        
+        // 원문 컨테이너 설정
+        originalContentContainer.addSubview(originalContentLabel)
+        
+        // 수정문 컨테이너 설정
+        revisedContentContainer.addSubview(revisedContentLabel)
+        
+        // 피드백 컨테이너 설정
+        feedbackContainer.addSubview(feedbackLabel)
+        
+        [dateLabel, dateUnderlineView, scoreContainerView,
+         originalSectionTitleLabel, originalContentContainer,
+         arrowImageView, revisedSectionTitleLabel, revisedContentContainer,
+         errorSectionTitleLabel, errorStackView,
+         feedbackSectionTitleLabel, feedbackContainer]
             .forEach { contentView.addSubview($0) }
         
         setupConstraints()
     }
     
     private func bindEvents() {
-        saveDiaryButton.rx.tap
+        confirmButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.onSaveButtonTapped?()
             })
@@ -108,7 +191,7 @@ open class DiaryResultView: UIView {
     private func setupConstraints() {
         scrollView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(saveDiaryButton.snp.top).offset(-20)
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
         }
         
         contentView.snp.makeConstraints {
@@ -116,40 +199,102 @@ open class DiaryResultView: UIView {
             $0.width.equalToSuperview()
         }
         
-        saveDiaryButton.snp.makeConstraints {
+        confirmButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
         }
-        
+
         dateLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.leading.equalToSuperview().inset(20)
+        }
+
+        dateUnderlineView.snp.makeConstraints {
+            $0.top.equalTo(dateLabel.snp.bottom)
+            $0.centerX.width.equalTo(dateLabel)
+            $0.height.equalTo(3)
+        }
+
+        scoreContainerView.snp.makeConstraints {
+            $0.top.equalTo(dateUnderlineView.snp.bottom).offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(120)
+        }
+        
+        scoreCircleView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scoreProgressView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scoreLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        // 내가 쓴 일기 섹션
+        originalSectionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(scoreContainerView.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
+        originalContentContainer.snp.makeConstraints {
+            $0.top.equalTo(originalSectionTitleLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+
         originalContentLabel.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(20)
+            $0.edges.equalToSuperview().inset(16)
+        }
+
+        // 화살표
+        arrowImageView.snp.makeConstraints {
+            $0.top.equalTo(originalContentContainer.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(20)
+        }
+        
+        // 맞춤법 교정 결과 섹션
+        revisedSectionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(arrowImageView.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        revisedContentContainer.snp.makeConstraints {
+            $0.top.equalTo(revisedSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
         revisedContentLabel.snp.makeConstraints {
-            $0.top.equalTo(originalContentLabel.snp.bottom).offset(16)
+            $0.edges.equalToSuperview().inset(16)
+        }
+        
+        // 맞춤법 오류 섹션
+        errorSectionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(revisedContentContainer.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        scoreLabel.snp.makeConstraints {
-            $0.top.equalTo(revisedContentLabel.snp.bottom).offset(20)
-            $0.centerX.equalToSuperview()
+        errorStackView.snp.makeConstraints {
+            $0.top.equalTo(errorSectionTitleLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(20)
         }
         
-        revisionsStackView.snp.makeConstraints {
-            $0.top.equalTo(scoreLabel.snp.bottom).offset(20)
+        // AI 피드백 섹션
+        feedbackSectionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(errorStackView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        feedbackContainer.snp.makeConstraints {
+            $0.top.equalTo(feedbackSectionTitleLabel.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().offset(-20)
         }
         
         feedbackLabel.snp.makeConstraints {
-            $0.top.equalTo(revisionsStackView.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-20)
+            $0.edges.equalToSuperview().inset(16)
         }
     }
     
@@ -157,114 +302,156 @@ open class DiaryResultView: UIView {
     public func configure(with diary: DiaryVO) {
         self.diaryData = diary
         
-        dateLabel.text = diary.createdAt
-        originalContentLabel.text = "원문: \(diary.originContent)"
-        revisedContentLabel.text = "수정문: \(diary.spellingDto.revisedContent)"
-        scoreLabel.text = "점수: \(diary.spellingDto.score)점"
+        // 날짜 설정
+        dateLabel.text = diary.createdAt.convertDateString(fromFormat: "yyyy-MM-dd", toFormat: "yyyy년 M월 d일")
         
-        setupRevisions(diary.spellingDto.revisions)
-        setupFeedback(diary.feedback)
+        // 원문 설정
+        originalContentLabel.text = diary.originContent
+        
+        // 수정문 설정 (하이라이트 포함)
+        setupRevisedContent(diary.spellingDto.revisedContent, revisions: diary.spellingDto.revisions)
+        
+        // 점수 설정
+        scoreLabel.text = "\(diary.spellingDto.score)점"
+        setupScoreProgress(score: diary.spellingDto.score)
+        
+        // 오류 섹션 설정
+        setupErrorSection(revisions: diary.spellingDto.revisions)
+        
+        // 피드백 설정
+        feedbackLabel.text = diary.feedback
     }
     
-    private func setupRevisions(_ revisions: [RevisionVO]) {
-        revisionsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    private func setupScoreProgress(score: Int) {
+        let progress = CGFloat(score) / 100.0
+        let angle = progress * 2 * .pi - .pi / 2 // -90도부터 시작
+        
+        // 원형 프로그레스 애니메이션
+        let path = UIBezierPath(arcCenter: CGPoint(x: 60, y: 60), 
+                               radius: 52, 
+                               startAngle: -.pi / 2, 
+                               endAngle: angle, 
+                               clockwise: true)
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = CommonUIAssets.LMOrange1?.cgColor
+        shapeLayer.lineWidth = 8
+        shapeLayer.lineCap = .round
+        
+        scoreProgressView.layer.sublayers?.removeAll()
+        scoreProgressView.layer.addSublayer(shapeLayer)
+    }
+    
+    private func setupRevisedContent(_ revisedContent: String, revisions: [RevisionVO]) {
+        let attributedString = NSMutableAttributedString(string: revisedContent)
+        
+        for revision in revisions {
+            let range = (revisedContent as NSString).range(of: revision.revisedContent)
+            if range.location != NSNotFound {
+                attributedString.addAttribute(.backgroundColor, 
+                                            value: CommonUIAssets.LMOrange1?.withAlphaComponent(0.3) ?? UIColor.orange.withAlphaComponent(0.3), 
+                                            range: range)
+            }
+        }
+        
+        revisedContentLabel.attributedText = attributedString
+    }
+    
+    private func setupErrorSection(revisions: [RevisionVO]) {
+        errorStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         if revisions.isEmpty {
-            let noRevisionsLabel = UILabel().then {
-                $0.text = "수정사항이 없습니다. 완벽한 문장이에요! 🎉"
+            errorSectionTitleLabel.text = "맞춤법 오류 0개"
+            let noErrorsLabel = UILabel().then {
+                $0.text = "완벽한 문장이에요! 🎉"
                 $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
                 $0.textColor = CommonUIAssets.LMOrange1
                 $0.textAlignment = .center
             }
-            revisionsStackView.addArrangedSubview(noRevisionsLabel)
+            errorStackView.addArrangedSubview(noErrorsLabel)
         } else {
-            let titleLabel = UILabel().then {
-                $0.text = "📝 수정사항"
-                $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-                $0.textColor = CommonUIAssets.LMBlack
-            }
-            revisionsStackView.addArrangedSubview(titleLabel)
+            errorSectionTitleLabel.text = "맞춤법 오류 \(revisions.count)개"
             
             for revision in revisions {
-                let revisionView = createRevisionView(revision)
-                revisionsStackView.addArrangedSubview(revisionView)
+                let errorView = createErrorView(revision)
+                errorStackView.addArrangedSubview(errorView)
             }
         }
     }
     
-    private func createRevisionView(_ revision: RevisionVO) -> UIView {
-        let containerView = UIView().then {
-            $0.backgroundColor = .white
-            $0.layer.cornerRadius = 12
-            $0.layer.shadowColor = UIColor.black.cgColor
-            $0.layer.shadowOpacity = 0.1
-            $0.layer.shadowOffset = CGSize(width: 0, height: 2)
-            $0.layer.shadowRadius = 4
+    private func createErrorView(_ revision: RevisionVO) -> UIView {
+        let containerView = UIView()
+        
+        let originalBox = UIView().then {
+            $0.backgroundColor = .clear
+            $0.layer.borderWidth = 1
+            $0.layer.borderColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.3).cgColor
+            $0.layer.cornerRadius = 8
         }
         
-        let categoryLabel = UILabel().then {
-            $0.text = revision.category
-            $0.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-            $0.textColor = CommonUIAssets.LMOrange1
+        let originalLabel = UILabel().then {
+            $0.text = revision.originContent
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            $0.textColor = CommonUIAssets.LMBlack
+            $0.textAlignment = .center
         }
         
-        let originalTextLabel = UILabel().then {
-            $0.text = "❌ \(revision.originContent)"
-            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-            $0.textColor = .systemRed
+        let arrowImageView = UIImageView().then {
+            $0.image = UIImage(systemName: "arrow.right")
+            $0.tintColor = CommonUIAssets.LMOrange1
+            $0.contentMode = .scaleAspectFit
         }
         
-        let revisedTextLabel = UILabel().then {
-            $0.text = "✅ \(revision.revisedContent)"
-            $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-            $0.textColor = .systemGreen
+        let revisedBox = UIView().then {
+            $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.3)
+            $0.layer.cornerRadius = 8
         }
         
-        let commentLabel = UILabel().then {
-            $0.text = revision.comment
-            $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-            $0.textColor = CommonUIAssets.LMGray1
-            $0.numberOfLines = 0
+        let revisedLabel = UILabel().then {
+            $0.text = revision.revisedContent
+            $0.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            $0.textColor = CommonUIAssets.LMBlack
+            $0.textAlignment = .center
         }
         
-        let examplesLabel = UILabel().then {
-            $0.text = "예시: \(revision.examples.joined(separator: ", "))"
-            $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-            $0.textColor = CommonUIAssets.LMGray3
-            $0.numberOfLines = 0
-        }
-        
-        [categoryLabel, originalTextLabel, revisedTextLabel, commentLabel, examplesLabel]
+        [originalBox, originalLabel, arrowImageView, revisedBox, revisedLabel]
             .forEach { containerView.addSubview($0) }
         
-        categoryLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(16)
+        originalBox.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(80)
+            $0.height.equalTo(32)
         }
         
-        originalTextLabel.snp.makeConstraints {
-            $0.top.equalTo(categoryLabel.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(16)
+        originalLabel.snp.makeConstraints {
+            $0.edges.equalTo(originalBox).inset(8)
         }
         
-        revisedTextLabel.snp.makeConstraints {
-            $0.top.equalTo(originalTextLabel.snp.bottom).offset(4)
-            $0.leading.trailing.equalToSuperview().inset(16)
+        arrowImageView.snp.makeConstraints {
+            $0.leading.equalTo(originalBox.snp.trailing).offset(8)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(16)
         }
         
-        commentLabel.snp.makeConstraints {
-            $0.top.equalTo(revisedTextLabel.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(16)
+        revisedBox.snp.makeConstraints {
+            $0.leading.equalTo(arrowImageView.snp.trailing).offset(8)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(80)
+            $0.height.equalTo(32)
         }
         
-        examplesLabel.snp.makeConstraints {
-            $0.top.equalTo(commentLabel.snp.bottom).offset(4)
-            $0.leading.trailing.bottom.equalToSuperview().inset(16)
+        revisedLabel.snp.makeConstraints {
+            $0.edges.equalTo(revisedBox).inset(8)
+        }
+        
+        containerView.snp.makeConstraints {
+            $0.height.equalTo(32)
         }
         
         return containerView
     }
     
-    private func setupFeedback(_ feedback: String) {
-        feedbackLabel.text = "💬 피드백\n\n\(feedback)"
-    }
 }

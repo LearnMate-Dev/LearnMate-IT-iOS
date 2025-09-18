@@ -23,6 +23,10 @@ public class DiaryViewModel: DiaryViewModelProtocol {
     
     public var onDiaryPostSuccess: ((DiaryVO) -> Void)?
     public var onDiaryPostFailure: ((Error) -> Void)?
+    
+    // 캘린더 데이터 Subject
+    public let diaryCalendarSubject = PublishSubject<DiaryCalendarVO>()
+    public let diaryCalendarErrorSubject = PublishSubject<Error>()
 
     public init(diaryUseCase: DiaryUseCase,
                 tokenUseCase: TokenUseCase) {
@@ -70,10 +74,12 @@ public class DiaryViewModel: DiaryViewModelProtocol {
     
     func getDiaryCalendar(year: Int, month: Int) {
         diaryUseCase.getDiaryCalendar(year: year, month: month)
-            .subscribe(onSuccess: { data in
+            .subscribe(onSuccess: { [weak self] data in
                 print("✅ getDiaryCalendar 성공: \(data)")
-            }, onFailure: { error in
+                self?.diaryCalendarSubject.onNext(data)
+            }, onFailure: { [weak self] error in
                 print("❌ getDiaryCalendar 실패: \(error)")
+                self?.diaryCalendarErrorSubject.onNext(error)
             }).disposed(by: disposeBag)
     }
 }

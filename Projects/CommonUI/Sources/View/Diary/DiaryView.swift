@@ -32,7 +32,7 @@ open class DiaryView: UIView {
     }
 
     private(set) var calendarView = CalendarView()
-    let diaryTodayView = DiaryTodayView()
+    public let diaryTodayView = DiaryTodayView()
 
     // MARK: Properties
     private var currentYear = 2025
