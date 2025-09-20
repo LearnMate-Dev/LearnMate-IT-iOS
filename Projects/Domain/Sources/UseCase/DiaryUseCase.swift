@@ -6,11 +6,12 @@
 //
 
 import RxSwift
+import Foundation
 
 public protocol DiaryUseCase {
     func postDiary(content: String) -> Single<DiaryVO>
-    func getDiary(date: String) -> Single<DiaryVO>
-    func getDiaryDetail(diaryId: Int, date: String) -> Single<DiaryVO>
+    func getDiary(date: Date) -> Single<DiaryVO>
+    func getDiaryDetail(diaryId: Int, date: Date) -> Single<DiaryVO>
     func deleteDiaryDetail(diaryId: Int) -> Single<DefaultVO>
     func getDiaryCalendar(year: Int, month: Int) -> Single<DiaryCalendarVO>
 }
@@ -26,11 +27,11 @@ public final class DefaultDiaryUseCase: DiaryUseCase {
         repository.postDiary(content: content)
     }
     
-    public func getDiary(date: String) -> Single<DiaryVO> {
+    public func getDiary(date: Date) -> Single<DiaryVO> {
         repository.getDiary(date: date)
     }
     
-    public func getDiaryDetail(diaryId: Int, date: String) -> Single<DiaryVO> {
+    public func getDiaryDetail(diaryId: Int, date: Date) -> Single<DiaryVO> {
         repository.getDiaryDetail(diaryId: diaryId, date: date)
     }
     

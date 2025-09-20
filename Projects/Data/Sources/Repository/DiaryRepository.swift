@@ -8,6 +8,7 @@
 import Domain
 import RxSwift
 import Alamofire
+import Foundation
 
 public class DefaultDiaryRepository: DiaryRepository {
     private let tokenRepository: TokenRepository
@@ -29,11 +30,15 @@ public class DefaultDiaryRepository: DiaryRepository {
         }
     }
 
-    public func getDiary(date: String) -> Single<DiaryVO> {
-        let parameter = ["date": date]
+    public func getDiary(date: Date) -> Single<DiaryVO> {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        let parameter = ["date": dateString]
 
         return request(parameters: parameter,
                        endpoint: "/api/diaries",
+                       encoding: URLEncoding.default,
                        responseType: DiaryResponseDTO.self
         )
         .map { dto in
@@ -41,11 +46,15 @@ public class DefaultDiaryRepository: DiaryRepository {
         }
     }
     
-    public func getDiaryDetail(diaryId: Int, date: String) -> Single<DiaryVO>  {
-        let parameter = ["date": date]
+    public func getDiaryDetail(diaryId: Int, date: Date) -> Single<DiaryVO>  {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: date)
+        let parameter = ["date": dateString]
 
         return request(parameters: parameter,
                        endpoint: "/api/diaries/\(diaryId)",
+                       encoding: URLEncoding.default,
                        responseType: DiaryResponseDTO.self
         )
         .map { dto in

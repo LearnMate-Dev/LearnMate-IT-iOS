@@ -7,11 +7,12 @@
 
 import Domain
 import RxSwift
+import Foundation
 
 protocol DiaryViewModelProtocol {
     func postDiary(content: String)
-    func getDiary(date: String)
-    func getDiaryDetail(diaryId: Int, date: String)
+    func getDiary(date: Date)
+    func getDiaryDetail(diaryId: Int, date: Date)
     func deleteDiaryDetail(diaryId: Int)
     func getDiaryCalendar(year: Int, month: Int)
 }
@@ -27,6 +28,11 @@ public class DiaryViewModel: DiaryViewModelProtocol {
     // 캘린더 데이터 Subject
     public let diaryCalendarSubject = PublishSubject<DiaryCalendarVO>()
     public let diaryCalendarErrorSubject = PublishSubject<Error>()
+    
+    // 특정 날짜 일기 데이터 Subject
+    public let diarySubject = PublishSubject<DiaryVO>()
+    public let diaryErrorSubject = PublishSubject<Error>()
+    public let diaryEmptySubject = PublishSubject<Date>() // 일기가 없을 때 날짜 전달
 
     public init(diaryUseCase: DiaryUseCase,
                 tokenUseCase: TokenUseCase) {
@@ -45,16 +51,19 @@ public class DiaryViewModel: DiaryViewModelProtocol {
             }).disposed(by: disposeBag)
     }
     
-    func getDiary(date: String) {
+    func getDiary(date: Date) {
         diaryUseCase.getDiary(date: date)
-            .subscribe(onSuccess: { data in
+            .subscribe(onSuccess: { [weak self] data in
                 print("✅ getDiary 성공: \(data)")
-            }, onFailure: { error in
+                self?.diarySubject.onNext(data)
+            }, onFailure: { [weak self] error in
                 print("❌ getDiary 실패: \(error)")
+                // 에러 시 해당 날짜에 일기가 없다고 처리
+                self?.diaryEmptySubject.onNext(date)
             }).disposed(by: disposeBag)
     }
     
-    func getDiaryDetail(diaryId: Int, date: String) {
+    func getDiaryDetail(diaryId: Int, date: Date) {
         diaryUseCase.getDiaryDetail(diaryId: diaryId, date: date)
             .subscribe(onSuccess: { data in
                 print("✅ getDiaryDetail 성공: \(data)")

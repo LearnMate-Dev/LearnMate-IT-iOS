@@ -30,7 +30,12 @@ public class DiaryViewController: BaseViewController {
         let calendar = Calendar.current
         let year = calendar.component(.year, from: today)
         let month = calendar.component(.month, from: today)
+        
+        // 캘린더 데이터 로드
         viewModel.getDiaryCalendar(year: year, month: month)
+        
+        // 첫 진입 시 오늘 날짜의 일기 데이터도 로드
+        viewModel.getDiary(date: today)
     }
 
     public override func viewDidLoad() {
@@ -42,6 +47,9 @@ public class DiaryViewController: BaseViewController {
         setupLayout()
         bindData()
         bindEvents()
+        
+        // 첫 진입 시 오늘 날짜로 초기 상태 설정
+        setupInitialState()
     }
 
     public override func setupViewProperty() {
@@ -76,6 +84,31 @@ public class DiaryViewController: BaseViewController {
                 print("❌ 캘린더 데이터 로드 실패: \(error)")
             })
             .disposed(by: disposeBag)
+        
+        // 특정 날짜 일기 데이터 바인딩
+        viewModel.diarySubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] diary in
+                print("📱 DiaryViewController: diarySubject 수신됨 - \(diary)")
+                self?.updateDiaryTodayViewWithSelectedDate(diary: diary)
+            })
+            .disposed(by: disposeBag)
+        
+        // 특정 날짜 일기 에러 처리
+        viewModel.diaryErrorSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { error in
+                print("❌ 특정 날짜 일기 로드 실패: \(error)")
+            })
+            .disposed(by: disposeBag)
+        
+        // 특정 날짜에 일기가 없을 때 처리
+        viewModel.diaryEmptySubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] date in
+                self?.updateDiaryTodayViewWithEmptyData(date: date)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindEvents() {
@@ -87,8 +120,22 @@ public class DiaryViewController: BaseViewController {
         diaryView.diaryTodayView.tapDiaryAdd = { [weak self] in
             self?.presentNewDiaryView()
         }
+        
+        // 캘린더 날짜 클릭 이벤트 바인딩
+        diaryView.calendarView.tapDay = { [weak self] date in
+            self?.viewModel.getDiary(date: date)
+        }
     }
 
+    private func setupInitialState() {
+        // 첫 진입 시 오늘 날짜로 DiaryTodayView 초기 상태 설정
+        let today = Date()
+        diaryView.diaryTodayView.setDiaryTodayEmptyData(date: today)
+        
+        // 캘린더에서 오늘 날짜 선택 상태로 설정
+        diaryView.calendarView.setSelectedDate(today)
+    }
+    
     private func presentNewDiaryView() {
         let diaryAddViewController = DiaryAddViewController(diaryViewModel: viewModel)
         self.navigationController?.pushViewController(diaryAddViewController, animated: true)
@@ -114,8 +161,46 @@ public class DiaryViewController: BaseViewController {
                 content: diary.createdAt
             )
         } else {
-            // 오늘 일기가 없는 경우
-            diaryView.diaryTodayView.setDiaryTodayEmptyData(date: todayString)
+            // 오늘 일기가 없는 경우 - 오늘 날짜로 빈 상태 설정
+            diaryView.diaryTodayView.setDiaryTodayEmptyData(date: today)
         }
+    }
+    
+    private func updateDiaryTodayViewWithSelectedDate(diary: DiaryVO) {
+        print("📱 updateDiaryTodayViewWithSelectedDate 호출됨")
+        print("📱 diary.createdAt: \(diary.createdAt)")
+        print("📱 diary.score: \(diary.spellingDto.score)")
+        print("📱 diary.content: \(diary.spellingDto.revisedContent)")
+
+        // 선택된 날짜의 일기 데이터로 DiaryTodayView 업데이트
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        if let date = formatter.date(from: diary.createdAt) {
+            print("📱 Date 파싱 성공: \(date)")
+            diaryView.diaryTodayView.setDiaryTodayData(
+                date: date,
+                diaryId: diary.diaryId,
+                score: diary.spellingDto.score,
+                content: diary.spellingDto.revisedContent
+            )
+        } else {
+            print("📱 Date 파싱 실패, 문자열로 직접 설정")
+            // 날짜 파싱 실패 시 문자열로 직접 설정
+            diaryView.diaryTodayView.setDiaryTodayData(
+                date: diary.createdAt,
+                diaryId: diary.diaryId,
+                score: diary.spellingDto.score,
+                content: diary.spellingDto.revisedContent
+            )
+        }
+    }
+
+    private func updateDiaryTodayViewWithEmptyData(date: Date) {
+        print("📱 updateDiaryTodayViewWithEmptyData 호출됨")
+        print("📱 date: \(date)")
+        print("📱 오늘 날짜인가: \(Calendar.current.isDateInToday(date))")
+        
+        // 선택된 날짜에 일기가 없을 때 DiaryTodayView 업데이트
+        diaryView.diaryTodayView.setDiaryTodayEmptyData(date: date)
     }
 }

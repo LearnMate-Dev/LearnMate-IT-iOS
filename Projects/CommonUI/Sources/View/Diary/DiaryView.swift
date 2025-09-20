@@ -31,7 +31,7 @@ open class DiaryView: UIView {
         $0.setImage(CommonUIAssets.IconAdd, for: .normal)
     }
 
-    private(set) var calendarView = CalendarView()
+    public var calendarView = CalendarView()
     public let diaryTodayView = DiaryTodayView()
 
     // MARK: Properties
@@ -117,7 +117,7 @@ open class DiaryView: UIView {
             $0.top.equalTo(calendarView.snp.bottom).offset(3)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(20)
-            $0.height.equalTo(115)
+            $0.height.equalTo(141)
         }
     }
 
