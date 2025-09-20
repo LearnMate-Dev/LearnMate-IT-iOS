@@ -64,6 +64,12 @@ public class SignUpViewController: BaseViewController {
                 self?.signUpView.confirmInputField.showWarning()
             }
         }
+        
+        viewModel.onSignUpSuccess = { [weak self] in
+            DispatchQueue.main.async {
+                self?.showSignUpSuccessModal()
+            }
+        }
     }
 
     private func bindActions() {
@@ -206,5 +212,19 @@ public class SignUpViewController: BaseViewController {
         signUpButton.snp.makeConstraints {
             $0.width.equalToSuperview()
         }
+    }
+    
+    private func showSignUpSuccessModal() {
+        let alertView = LMAlert(title: "회원가입이 완료되었습니다!\n로그인 화면으로 이동하시겠습니까?", 
+                               cancelTitle: "", 
+                               confirmTitle: "확인")
+        alertView.setConfirmAction { [weak self] in
+            self?.navigateToSignIn()
+        }
+        alertView.show(in: view)
+    }
+    
+    private func navigateToSignIn() {
+        navigationController?.popViewController(animated: true)
     }
 }

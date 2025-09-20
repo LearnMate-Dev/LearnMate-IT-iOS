@@ -41,6 +41,7 @@ open class HomeProgressView: UIView {
     }
     
     @objc private func nextButtonTapped() {
+        guard nextButton.isEnabled else { return }
         if currentCourseIndex < courseList.count - 1 {
             currentCourseIndex += 1
             updateCurrentCourse()
@@ -49,6 +50,7 @@ open class HomeProgressView: UIView {
     }
     
     @objc private func previousButtonTapped() {
+        guard previousButton.isEnabled else { return }
         if currentCourseIndex > 0 {
             currentCourseIndex -= 1
             updateCurrentCourse()
@@ -72,8 +74,9 @@ open class HomeProgressView: UIView {
     
     public func updateButtonVisibility() {
         guard currentCourseIndex < courseList.count else {
-            nextButton.isHidden = true
-            previousButton.isHidden = true
+            nextButton.isEnabled = false
+            previousButton.isEnabled = false
+            updateButtonAppearance()
             return
         }
         
@@ -82,11 +85,23 @@ open class HomeProgressView: UIView {
         let hasNextCourse = currentCourseIndex < courseList.count - 1
         let hasPreviousCourse = currentCourseIndex > 0
         
-        // nextButton: 모든 스텝이 완료되고 다음 코스가 있을 때만 표시
-        nextButton.isHidden = !allStepsSolved || !hasNextCourse
+        // nextButton: 모든 스텝이 완료되고 다음 코스가 있을 때만 활성화
+        nextButton.isEnabled = allStepsSolved && hasNextCourse
         
-        // previousButton: 이전 코스가 있을 때만 표시
-        previousButton.isHidden = !hasPreviousCourse
+        // previousButton: 이전 코스가 있을 때만 활성화
+        previousButton.isEnabled = hasPreviousCourse
+        
+        updateButtonAppearance()
+    }
+    
+    private func updateButtonAppearance() {
+        // nextButton 스타일 업데이트
+        nextButton.backgroundColor = nextButton.isEnabled ? CommonUIAssets.LMOrange1 : CommonUIAssets.LMGray5
+        nextButton.tintColor = nextButton.isEnabled ? .white : CommonUIAssets.LMGray3
+        
+        // previousButton 스타일 업데이트
+        previousButton.backgroundColor = previousButton.isEnabled ? CommonUIAssets.LMOrange1 : CommonUIAssets.LMGray5
+        previousButton.tintColor = previousButton.isEnabled ? .white : CommonUIAssets.LMGray3
     }
 
     public func updateProgress(progress: Int) {
@@ -152,11 +167,17 @@ open class HomeProgressView: UIView {
         }
         
         nextButton = nextButton.then {
-            $0.setImage(CommonUIAssets.IconNext2, for: .normal)
+            $0.setImage(CommonUIAssets.IconNext, for: .normal)
+            $0.backgroundColor = CommonUIAssets.LMOrange1
+            $0.layer.cornerRadius = 15
+            $0.tintColor = .white
         }
         
         previousButton = previousButton.then {
-            $0.setImage(CommonUIAssets.IconBack, for: .normal)
+            $0.setImage(CommonUIAssets.IconPrevious, for: .normal)
+            $0.backgroundColor = CommonUIAssets.LMOrange1
+            $0.layer.cornerRadius = 15
+            $0.tintColor = .white
         }
     }
 
@@ -202,13 +223,13 @@ open class HomeProgressView: UIView {
         }
         
         nextButton.snp.makeConstraints {
-            $0.width.height.equalTo(40)
+            $0.width.height.equalTo(30)
             $0.trailing.equalToSuperview().inset(20)
             $0.centerY.equalTo(courseLabel)
         }
         
         previousButton.snp.makeConstraints {
-            $0.width.height.equalTo(40)
+            $0.width.height.equalTo(30)
             $0.trailing.equalTo(nextButton.snp.leading).offset(-10)
             $0.centerY.equalTo(courseLabel)
         }

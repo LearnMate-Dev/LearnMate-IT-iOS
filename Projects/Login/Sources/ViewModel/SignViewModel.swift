@@ -26,6 +26,7 @@ public class SignViewModel: SignViewModelProtocol {
     public var onConfirmSuccess: (() -> Void)?
     public var onConfirmFailure: (() -> Void)?
     public var onSignInSuccess: (() -> Void)?
+    public var onSignUpSuccess: (() -> Void)?
     public let emailVerified = BehaviorRelay<Bool>(value: false)
 
     public init(signUseCase: SignUseCase, tokenRepository: TokenRepository) {
@@ -86,6 +87,7 @@ public class SignViewModel: SignViewModelProtocol {
             .subscribe(onSuccess: { [weak self] response in
                 guard let self = self else { return }
                 print("회원가입 성공: \(response.message)")
+                self.onSignUpSuccess?()
             }, onFailure: { [weak self] error in
                 guard let self = self else { return }
                 print("회원가입 실패: \(error)")

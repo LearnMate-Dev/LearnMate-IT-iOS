@@ -133,6 +133,11 @@ public class LMAlert: UIView {
         titleLabel.attributedText = attributedString
         cancelButton.setTitle(cancelTitle, for: .normal)
         confirmButton.setTitle(confirmTitle, for: .normal)
+        
+        // cancelTitle이 비어있으면 취소 버튼 숨기기
+        if cancelTitle.isEmpty {
+            cancelButton.isHidden = true
+        }
     }
     
     // MARK: - Actions
