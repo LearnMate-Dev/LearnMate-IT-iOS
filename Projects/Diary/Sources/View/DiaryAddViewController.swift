@@ -147,7 +147,7 @@ public class DiaryAddViewController: BaseViewController {
         viewModel.onDiaryPostFailure = { [weak self] error in
             DispatchQueue.main.async {
                 self?.hideAnalysisLoading()
-                self?.showToast(message: "일기 작성에 실패했습니다. 다시 시도해주세요.")
+                self?.showToast(message: "  일기 작성에 실패했습니다. 다시 시도해주세요.  ")
             }
         }
     }

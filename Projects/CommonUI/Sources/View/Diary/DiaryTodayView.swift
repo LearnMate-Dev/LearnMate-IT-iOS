@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Then
+import Domain
 
 open class DiaryTodayView: UIView {
     // MARK: UI Components
@@ -30,9 +31,17 @@ open class DiaryTodayView: UIView {
 
     private(set) var contentLabel = UILabel().then {
         $0.lineBreakMode = .byWordWrapping
-        $0.font = UIFont.systemFont(ofSize: 13, weight: .light)
+        $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textColor = CommonUIAssets.LMGray1
         $0.numberOfLines = 2
+        
+        // 줄간격 설정
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        $0.attributedText = NSAttributedString(
+            string: $0.text ?? "",
+            attributes: [.paragraphStyle: paragraphStyle]
+        )
     }
 
     private(set) var diaryAddButton = LMButton(textColor: CommonUIAssets.LMBlack,
@@ -41,6 +50,10 @@ open class DiaryTodayView: UIView {
     // MARK: Properties
     var tap: (() -> Void)?
     public var tapDiaryAdd: (() -> Void)?
+    public var tapDiaryDetail: ((DiaryVO?) -> Void)?
+    
+    // 현재 일기 데이터 저장
+    private var currentDiaryData: DiaryVO?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,16 +88,23 @@ open class DiaryTodayView: UIView {
         setDateLabel(from: date)
         setEmotionAndContent(score: score, content: content)
     }
-
+    
     /// 일기 데이터 설정 (Date 날짜)
     public func setDiaryTodayData(date: Date, diaryId: Int, score: Int, content: String) {
         setNonTodayView()
         setDateLabel(from: date)
         setEmotionAndContent(score: score, content: content)
     }
+    
+    /// DiaryVO 데이터 설정
+    public func setDiaryData(_ diaryData: DiaryVO?) {
+        currentDiaryData = diaryData
+    }
 
     /// 빈 일기 데이터 설정 (String 날짜)
     public func setDiaryTodayEmptyData(date: String) {
+        currentDiaryData = nil // 일기 데이터 없음
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
@@ -94,9 +114,11 @@ open class DiaryTodayView: UIView {
             setEmptyDataWithString(date: date)
         }
     }
-
+    
     /// 빈 일기 데이터 설정 (Date 날짜)
     public func setDiaryTodayEmptyData(date: Date) {
+        currentDiaryData = nil // 일기 데이터 없음
+        
         if Calendar.current.isDateInToday(date) {
             setTodayEmptyData(date: date)
         } else {
@@ -163,7 +185,22 @@ open class DiaryTodayView: UIView {
     /// 이모지와 내용 설정
     private func setEmotionAndContent(score: Int, content: String) {
         emotionLabel.text = getEmotionFromScore(score)
-        contentLabel.text = content
+        setContentWithLineSpacing(content)
+    }
+    
+    /// 줄간격이 적용된 텍스트 설정
+    private func setContentWithLineSpacing(_ text: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        
+        contentLabel.attributedText = NSAttributedString(
+            string: text,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 16, weight: .regular),
+                .foregroundColor: CommonUIAssets.LMGray1 ?? .black,
+                .paragraphStyle: paragraphStyle
+            ]
+        )
     }
 
     /// 빈 상태 이모지와 내용 설정
@@ -192,14 +229,14 @@ open class DiaryTodayView: UIView {
         }
 
         emotionLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(15)
+            $0.leading.equalToSuperview().inset(5)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(25)
+            $0.width.equalTo(30)
         }
 
         contentLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(emotionLabel.snp.trailing).offset(15)
+            $0.leading.equalTo(emotionLabel.snp.trailing).offset(10)
             $0.trailing.equalToSuperview().inset(15)
         }
     }
@@ -258,7 +295,12 @@ open class DiaryTodayView: UIView {
 
     /// 탭 제스처 핸들러
     @objc private func handleTap() {
-        tap?()
+        // 일기 데이터가 있으면 상세 화면으로, 없으면 기본 탭 이벤트
+        if let diaryData = currentDiaryData {
+            tapDiaryDetail?(diaryData)
+        } else {
+            tap?()
+        }
     }
 
     /// 일기 추가 버튼 핸들러

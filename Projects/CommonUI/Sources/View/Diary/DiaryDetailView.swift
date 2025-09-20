@@ -1,8 +1,8 @@
 //
-//  DiaryResultView.swift
+//  DiaryDetailView.swift
 //  CommonUI
 //
-//  Created by 박지윤 on 1/7/25.
+//  Created by 박지윤 on 9/20/25.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import Then
 import Domain
 import RxSwift
 
-open class DiaryResultView: UIView {
+open class DiaryDetailView: UIView {
     
     // MARK: UI Components
     private let scrollView = UIScrollView().then {
@@ -22,15 +22,14 @@ open class DiaryResultView: UIView {
     private let contentView = UIView()
 
     private(set) var dateLabel = UILabel().then {
-        $0.text = Date().getToday()
         $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     }
-
+    
     private let dateUnderlineView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1
     }
-
+    
     // 원형 점수 표시기
     private let scoreContainerView = UIView()
     private let scoreCircleView = UIView().then {
@@ -39,12 +38,12 @@ open class DiaryResultView: UIView {
         $0.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
         $0.layer.cornerRadius = 60
     }
-
+    
     private let scoreProgressView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange3
         $0.layer.cornerRadius = 60
     }
-
+    
     private let scoreLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         $0.textColor = CommonUIAssets.LMBlack
@@ -124,12 +123,8 @@ open class DiaryResultView: UIView {
         $0.numberOfLines = 0
     }
     
-    private var confirmButton = LMButton(textColor: CommonUIAssets.LMBlack,
-                                        bgColor: CommonUIAssets.LMOrange1)
-    
     // MARK: Properties
     private var diaryData: DiaryVO?
-    private var isButtonVisible: Bool = true
     let disposeBag = DisposeBag()
     
     // MARK: Public Properties
@@ -141,12 +136,6 @@ open class DiaryResultView: UIView {
         bindEvents()
     }
     
-    public convenience init(frame: CGRect, showButton: Bool) {
-        self.init(frame: frame)
-        self.isButtonVisible = showButton
-        updateButtonVisibility()
-    }
-    
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -155,18 +144,9 @@ open class DiaryResultView: UIView {
     private func setupUI() {
         backgroundColor = CommonUIAssets.LMWhite
         
-        // 버튼 설정
-        confirmButton = confirmButton.then {
-            $0.setTitle("일기 저장하기", for: .normal)
-            $0.layer.cornerRadius = 12
-        }
-        
         addSubview(scrollView)
-        if isButtonVisible {
-            addSubview(confirmButton)
-        }
         scrollView.addSubview(contentView)
-        
+
         // 원형 점수 표시기 설정
         scoreContainerView.addSubview(scoreCircleView)
         scoreContainerView.addSubview(scoreProgressView)
@@ -192,52 +172,29 @@ open class DiaryResultView: UIView {
     }
     
     private func bindEvents() {
-        confirmButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.onSaveButtonTapped?()
-            })
-            .disposed(by: disposeBag)
     }
     
     private func setupConstraints() {
-        if isButtonVisible {
-            scrollView.snp.makeConstraints {
-                $0.top.leading.trailing.equalToSuperview()
-                $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
-            }
-
-            contentView.snp.makeConstraints {
-                $0.top.leading.trailing.bottom.equalToSuperview()
-                $0.width.equalToSuperview()
-            }
-
-            confirmButton.snp.makeConstraints {
-                $0.leading.trailing.equalToSuperview().inset(20)
-                $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-            }
-        } else {
-            scrollView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-
-            contentView.snp.makeConstraints {
-                $0.top.leading.trailing.equalToSuperview()
-                $0.bottom.greaterThanOrEqualToSuperview()
-                $0.width.equalToSuperview()
-            }
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
-
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
+            $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(20)
         }
-
+        
         dateUnderlineView.snp.makeConstraints {
             $0.top.equalTo(dateLabel.snp.bottom)
             $0.centerX.width.equalTo(dateLabel)
             $0.height.equalTo(3)
         }
-
+        
         scoreContainerView.snp.makeConstraints {
             $0.top.equalTo(dateUnderlineView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
@@ -266,11 +223,11 @@ open class DiaryResultView: UIView {
             $0.top.equalTo(originalSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-
+        
         originalContentLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
-
+        
         // 화살표
         arrowImageView.snp.makeConstraints {
             $0.top.equalTo(originalContentContainer.snp.bottom).offset(16)
@@ -315,7 +272,7 @@ open class DiaryResultView: UIView {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(20)
         }
-        
+
         feedbackLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
@@ -327,7 +284,7 @@ open class DiaryResultView: UIView {
         
         // 날짜 설정
         dateLabel.text = diary.createdAt
-        
+
         // 원문 설정
         originalContentLabel.text = diary.originContent
         
@@ -344,48 +301,16 @@ open class DiaryResultView: UIView {
         // 피드백 설정
         feedbackLabel.text = diary.feedback
     }
-    
-    public func setButtonVisibility(_ isVisible: Bool) {
-        self.isButtonVisible = isVisible
-        updateButtonVisibility()
-    }
-    
-    private func updateButtonVisibility() {
-        if isButtonVisible {
-            if confirmButton.superview == nil {
-                addSubview(confirmButton)
-                confirmButton.snp.makeConstraints {
-                    $0.leading.trailing.equalToSuperview().inset(20)
-                    $0.bottom.equalTo(safeAreaLayoutGuide).offset(-20)
-                }
-            }
-            confirmButton.isHidden = false
-            
-            // 스크롤뷰 제약조건 업데이트
-            scrollView.snp.remakeConstraints {
-                $0.top.leading.trailing.equalToSuperview()
-                $0.bottom.equalTo(confirmButton.snp.top).offset(-20)
-            }
-        } else {
-            confirmButton.isHidden = true
-            confirmButton.removeFromSuperview()
 
-            // 스크롤뷰 제약조건 업데이트
-            scrollView.snp.remakeConstraints {
-                $0.edges.equalToSuperview()
-            }
-        }
-    }
-    
     private func setupScoreProgress(score: Int) {
         let progress = CGFloat(score) / 100.0
         let angle = progress * 2 * .pi - .pi / 2 // -90도부터 시작
         
         // 원형 프로그레스 애니메이션
-        let path = UIBezierPath(arcCenter: CGPoint(x: 60, y: 60), 
-                               radius: 52, 
-                               startAngle: -.pi / 2, 
-                               endAngle: angle, 
+        let path = UIBezierPath(arcCenter: CGPoint(x: 60, y: 60),
+                               radius: 52,
+                               startAngle: -.pi / 2,
+                               endAngle: angle,
                                clockwise: true)
         
         let shapeLayer = CAShapeLayer()
@@ -405,8 +330,8 @@ open class DiaryResultView: UIView {
         for revision in revisions {
             let range = (revisedContent as NSString).range(of: revision.revisedContent)
             if range.location != NSNotFound {
-                attributedString.addAttribute(.backgroundColor, 
-                                            value: CommonUIAssets.LMOrange1?.withAlphaComponent(0.3) ?? UIColor.orange.withAlphaComponent(0.3), 
+                attributedString.addAttribute(.backgroundColor,
+                                            value: CommonUIAssets.LMOrange1?.withAlphaComponent(0.3) ?? UIColor.orange.withAlphaComponent(0.3),
                                             range: range)
             }
         }

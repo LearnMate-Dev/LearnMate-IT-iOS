@@ -10,11 +10,11 @@ import CommonUI
 import Domain
 
 public class DiaryDetailViewController: BaseViewController {
-    let diaryResultView = DiaryResultView()
+    let diaryDetailView = DiaryDetailView()
     let viewModel: DiaryViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
-                                             rightImage: CommonUIAssets.IconClose ?? nil,
+                                             rightImage: nil,
                                              title: "일기 상세")
     
     private let diaryData: DiaryVO
@@ -34,7 +34,6 @@ public class DiaryDetailViewController: BaseViewController {
         setupViewProperty()
         setupHierarchy()
         setupLayout()
-        setupActions()
         bindEvents()
         configureData()
     }
@@ -44,7 +43,7 @@ public class DiaryDetailViewController: BaseViewController {
     
     public override func setupHierarchy() {
         view.addSubview(navigationBar)
-        view.addSubview(diaryResultView)
+        view.addSubview(diaryDetailView)
     }
     
     public override func setupDelegate() {
@@ -55,21 +54,14 @@ public class DiaryDetailViewController: BaseViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.width.centerX.equalToSuperview()
         }
-        
-        diaryResultView.snp.makeConstraints {
+
+        diaryDetailView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
     public override func setupBind() {
-    }
-
-    public func setupActions() {
-        // 기존 타겟들을 모두 제거
-        navigationBar.rightButton.removeTarget(navigationBar, action: nil, for: .touchUpInside)
-        // 새로운 타겟 추가
-        navigationBar.rightButton.addTarget(self, action: #selector(handleRightButtonTapped), for: .touchUpInside)
     }
 
     @objc private func handleRightButtonTapped() {
@@ -79,6 +71,6 @@ public class DiaryDetailViewController: BaseViewController {
     }
 
     private func configureData() {
-        diaryResultView.configure(with: diaryData)
+        diaryDetailView.configure(with: diaryData)
     }
 }

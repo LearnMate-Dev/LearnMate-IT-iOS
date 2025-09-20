@@ -14,6 +14,9 @@ public class DiaryViewController: BaseViewController {
     let viewModel: DiaryViewModel
     let diaryView = DiaryView()
     
+    // 첫 진입 여부를 추적하는 플래그
+    private var isFirstAppearance = true
+    
     public init(diaryViewModel: DiaryViewModel) {
         self.viewModel = diaryViewModel
         super.init()
@@ -26,16 +29,22 @@ public class DiaryViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        let today = Date()
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: today)
-        let month = calendar.component(.month, from: today)
         
-        // 캘린더 데이터 로드
-        viewModel.getDiaryCalendar(year: year, month: month)
-        
-        // 첫 진입 시 오늘 날짜의 일기 데이터도 로드
-        viewModel.getDiary(date: today)
+        // 첫 진입 시에만 데이터 로드
+        if isFirstAppearance {
+            let today = Date()
+            let calendar = Calendar.current
+            let year = calendar.component(.year, from: today)
+            let month = calendar.component(.month, from: today)
+            
+            // 캘린더 데이터 로드
+            viewModel.getDiaryCalendar(year: year, month: month)
+            
+            // 오늘 날짜의 일기 데이터 로드
+            viewModel.getDiary(date: today)
+            
+            isFirstAppearance = false
+        }
     }
 
     public override func viewDidLoad() {
@@ -121,6 +130,13 @@ public class DiaryViewController: BaseViewController {
             self?.presentNewDiaryView()
         }
         
+        // DiaryTodayView의 일기 상세 보기 이벤트 바인딩
+        diaryView.diaryTodayView.tapDiaryDetail = { [weak self] diaryData in
+            if let diaryData = diaryData {
+                self?.presentDiaryDetailView(diaryData: diaryData)
+            }
+        }
+        
         // 캘린더 날짜 클릭 이벤트 바인딩
         diaryView.calendarView.tapDay = { [weak self] date in
             self?.viewModel.getDiary(date: date)
@@ -141,7 +157,16 @@ public class DiaryViewController: BaseViewController {
         self.navigationController?.pushViewController(diaryAddViewController, animated: true)
     }
     
+    private func presentDiaryDetailView(diaryData: DiaryVO) {
+        let diaryDetailViewController = DiaryDetailViewController(diaryViewModel: viewModel, diaryData: diaryData)
+        diaryDetailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(diaryDetailViewController, animated: true)
+    }
+    
     private func updateDiaryTodayView(with calendarData: DiaryCalendarVO) {
+        // 첫 진입 시에만 오늘 날짜로 DiaryTodayView 업데이트
+        guard isFirstAppearance else { return }
+        
         let today = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -193,6 +218,9 @@ public class DiaryViewController: BaseViewController {
                 content: diary.spellingDto.revisedContent
             )
         }
+        
+        // DiaryVO 데이터 설정 (탭 이벤트용)
+        diaryView.diaryTodayView.setDiaryData(diary)
     }
 
     private func updateDiaryTodayViewWithEmptyData(date: Date) {
