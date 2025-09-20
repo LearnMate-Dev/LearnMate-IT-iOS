@@ -110,7 +110,7 @@ public class QuizViewController: UIViewController {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(progressEntireView.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.bottom.equalToSuperview().inset(10)
         }
         
         quizStackView.snp.makeConstraints {
@@ -151,6 +151,7 @@ public class QuizViewController: UIViewController {
         if !situationText.isEmpty {
             let situationView = QuizView(text: situationText, type: .situation)
             quizStackView.addArrangedSubview(situationView)
+            scrollToBottom()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.showQuestion(index: index)
@@ -169,6 +170,7 @@ public class QuizViewController: UIViewController {
         
         let questionView = QuizView(text: currentQuiz.quiz, type: .question)
         quizStackView.addArrangedSubview(questionView)
+        scrollToBottom()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let optionStack = UIStackView().then {
@@ -187,6 +189,7 @@ public class QuizViewController: UIViewController {
             self.quizStackView.addArrangedSubview(optionStack)
             self.currentQuestionIndex = index
             self.currentOptionStackView = optionStack
+            self.scrollToBottom()
         }
     }
     
@@ -211,6 +214,7 @@ public class QuizViewController: UIViewController {
             let feedbackText = currentQuiz.quizOptions[selectedIndex].description
             let feedback = AnswerView(text: feedbackText, type: .correct)
             quizStackView.addArrangedSubview(feedback)
+            scrollToBottom()
 
             updateProgress()
 
@@ -222,6 +226,7 @@ public class QuizViewController: UIViewController {
         } else {
             let feedback = AnswerView(text: "다시 한 번 생각해보세요.", type: .wrong)
             quizStackView.addArrangedSubview(feedback)
+            scrollToBottom()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let currentQuiz = quizData.quizList[self.currentQuestionIndex]
@@ -240,6 +245,7 @@ public class QuizViewController: UIViewController {
 
                 self.quizStackView.addArrangedSubview(optionStack)
                 self.currentOptionStackView = optionStack
+                self.scrollToBottom()
             }
         }
     }
@@ -275,6 +281,18 @@ public class QuizViewController: UIViewController {
                 $0.width.equalTo(currentProgress)
             }
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func scrollToBottom() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let bottomOffset = CGPoint(
+                x: 0,
+                y: self.scrollView.contentSize.height - self.scrollView.bounds.height
+            )
+            if bottomOffset.y > 0 {
+                self.scrollView.setContentOffset(bottomOffset, animated: true)
+            }
         }
     }
 }

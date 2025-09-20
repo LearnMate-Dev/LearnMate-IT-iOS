@@ -163,7 +163,8 @@ public class HomeViewController: BaseViewController {
 
         scrollView.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.bottom).offset(10)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
 
         contentView.snp.makeConstraints {

@@ -106,7 +106,7 @@ open class HomeProgressView: UIView {
 
     public func updateProgress(progress: Int) {
         let progressEntireWidth = 344 - 40
-        let progressWidth = Int(CGFloat(progress)) / 100 * progressEntireWidth
+        let progressWidth = CGFloat(progress) / 100.0 * CGFloat(progressEntireWidth)
 
         progressView.snp.updateConstraints { make in
             make.width.equalTo(progressWidth)
