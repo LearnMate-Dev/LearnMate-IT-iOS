@@ -109,12 +109,16 @@ public class HomeViewController: BaseViewController {
                 self?.homeProgressView.onNextCourseTapped = { [weak self] in
                     self?.updateCurrentCourseAndSteps()
                 }
+                self?.homeProgressView.onPreviousCourseTapped = { [weak self] in
+                    self?.updateCurrentCourseAndSteps()
+                }
             })
             .disposed(by: disposeBag)
     }
     
     private func updateCurrentCourseAndSteps() {
-        guard let currentCourse = homeProgressView.courseList.first(where: { $0.courseLv == homeProgressView.currentCourseIndex + 1 }) else { return }
+        guard homeProgressView.currentCourseIndex < homeProgressView.courseList.count else { return }
+        let currentCourse = homeProgressView.courseList[homeProgressView.currentCourseIndex]
         self.currentCourse = currentCourse
         homeQuizView.setQuizList(currentCourse.stepList)
     }
@@ -125,8 +129,8 @@ public class HomeViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 print("🔄 patchStep 성공 감지, getCourses 호출하여 뷰 재로딩")
                 self?.viewModel.getCourses()
-                // HomeProgressView의 nextButton 가시성 업데이트
-                self?.homeProgressView.updateNextButtonVisibility()
+                // HomeProgressView의 버튼 가시성 업데이트
+                self?.homeProgressView.updateButtonVisibility()
             })
             .disposed(by: disposeBag)
     }

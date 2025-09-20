@@ -22,9 +22,11 @@ open class HomeProgressView: UIView {
     var restartButton = UIButton()
     var continueButton = UIButton()
     var nextButton = UIButton()
+    var previousButton = UIButton()
     public var courseList: [CourseVO] = []
     public var currentCourseIndex: Int = 0
     public var onNextCourseTapped: (() -> Void)?
+    public var onPreviousCourseTapped: (() -> Void)?
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +37,7 @@ open class HomeProgressView: UIView {
     
     private func bindActions() {
         nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        previousButton.addTarget(self, action: #selector(previousButtonTapped), for: .touchUpInside)
     }
     
     @objc private func nextButtonTapped() {
@@ -42,6 +45,14 @@ open class HomeProgressView: UIView {
             currentCourseIndex += 1
             updateCurrentCourse()
             onNextCourseTapped?()
+        }
+    }
+    
+    @objc private func previousButtonTapped() {
+        if currentCourseIndex > 0 {
+            currentCourseIndex -= 1
+            updateCurrentCourse()
+            onPreviousCourseTapped?()
         }
     }
 
@@ -56,20 +67,26 @@ open class HomeProgressView: UIView {
         courseLabel.text = "한국어 훈련 \(currentCourse.courseLv)단계"
         progressLabel.text = "진행률 \(currentCourse.progress)%"
         updateProgress(progress: currentCourse.progress)
-        updateNextButtonVisibility()
+        updateButtonVisibility()
     }
     
-    public func updateNextButtonVisibility() {
+    public func updateButtonVisibility() {
         guard currentCourseIndex < courseList.count else {
             nextButton.isHidden = true
+            previousButton.isHidden = true
             return
         }
         
         let currentCourse = courseList[currentCourseIndex]
         let allStepsSolved = currentCourse.stepList.allSatisfy { $0.stepStatus == "SOLVED" }
         let hasNextCourse = currentCourseIndex < courseList.count - 1
+        let hasPreviousCourse = currentCourseIndex > 0
         
+        // nextButton: 모든 스텝이 완료되고 다음 코스가 있을 때만 표시
         nextButton.isHidden = !allStepsSolved || !hasNextCourse
+        
+        // previousButton: 이전 코스가 있을 때만 표시
+        previousButton.isHidden = !hasPreviousCourse
     }
 
     public func updateProgress(progress: Int) {
@@ -137,13 +154,17 @@ open class HomeProgressView: UIView {
         nextButton = nextButton.then {
             $0.setImage(CommonUIAssets.IconNext2, for: .normal)
         }
+        
+        previousButton = previousButton.then {
+            $0.setImage(CommonUIAssets.IconBack, for: .normal)
+        }
     }
 
     func initUI() {
         [restartButton, continueButton]
             .forEach { buttonStackView.addArrangedSubview($0) }
 
-        [courseLabel, progressLabel, progressEntireView, progressView, buttonStackView, nextButton]
+        [courseLabel, progressLabel, progressEntireView, progressView, buttonStackView, nextButton, previousButton]
             .forEach { self.addSubview($0) }
 
         self.snp.makeConstraints {
@@ -183,6 +204,12 @@ open class HomeProgressView: UIView {
         nextButton.snp.makeConstraints {
             $0.width.height.equalTo(40)
             $0.trailing.equalToSuperview().inset(20)
+            $0.centerY.equalTo(courseLabel)
+        }
+        
+        previousButton.snp.makeConstraints {
+            $0.width.height.equalTo(40)
+            $0.trailing.equalTo(nextButton.snp.leading).offset(-10)
             $0.centerY.equalTo(courseLabel)
         }
     }
