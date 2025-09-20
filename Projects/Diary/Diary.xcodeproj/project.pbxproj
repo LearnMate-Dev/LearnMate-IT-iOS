@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */; };
 		891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */; };
 		94B961B5E2FDEBC84B982CCF /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2AAFED786D950F229E6BA2 /* Diary.framework */; };
+		9532C7B62E79C66E00B4BADE /* DiaryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */; };
+		95C68FAD2E7867F90017D28B /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */; };
+		95EDE8D32E7C55B00091ED75 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */; };
 		D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEC8F153FC27AECC51B0518 /* CommonUI.framework */; };
 		D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */; };
 		D8F7B770E4A729F83E48FA58 /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E8068669524427E86AA /* DiaryTests.swift */; };
@@ -64,6 +67,9 @@
 		474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB32AAE1BAD4767CE6D9F22 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2AAFED786D950F229E6BA2 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResultViewController.swift; sourceTree = "<group>"; };
+		95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
+		95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
 		C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		E57A12A246065D220B5FF7D4 /* Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Diary-Info.plist"; sourceTree = "<group>"; };
@@ -150,7 +156,10 @@
 		A3E9C9C2982E99C8AD377407 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */,
 				C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */,
+				95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */,
+				9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,8 +247,6 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 21D1B3D84AAE7B6E00AA6ED5 /* Build configuration list for PBXProject "Diary" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -290,8 +297,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9532C7B62E79C66E00B4BADE /* DiaryResultViewController.swift in Sources */,
+				95EDE8D32E7C55B00091ED75 /* DiaryDetailViewController.swift in Sources */,
 				885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */,
 				891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */,
+				95C68FAD2E7867F90017D28B /* DiaryAddViewController.swift in Sources */,
 				D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +324,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryTests-Info.plist";
@@ -324,13 +335,10 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.DiaryTests;
 				PRODUCT_NAME = DiaryTests;
 				SDKROOT = iphoneos;
@@ -338,7 +346,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +363,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Diary-Info.plist";
@@ -366,13 +375,10 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Diary;
 				PRODUCT_NAME = Diary;
 				SDKROOT = iphoneos;
@@ -380,10 +386,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -399,6 +402,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/DiaryTests-Info.plist";
@@ -409,23 +413,17 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.DiaryTests;
 				PRODUCT_NAME = DiaryTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -444,6 +442,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Diary-Info.plist";
@@ -455,13 +454,10 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = (
-					"$(inherited)",
-					"-Xcc",
-					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
-				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Diary;
 				PRODUCT_NAME = Diary;
 				SDKROOT = iphoneos;
@@ -470,7 +466,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

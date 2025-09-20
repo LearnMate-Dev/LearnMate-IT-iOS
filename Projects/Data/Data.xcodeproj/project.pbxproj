@@ -7,18 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1776E871E0CB4A493E8354 /* DefaultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C66458E6219D981E14335 /* DefaultDTO.swift */; };
 		34FD760EB97BB96E9D770BF0 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7624DE90CFBBEF778E120E /* LoginRepository.swift */; };
+		3A371C0557EFC12B7A68ADB2 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662B73C60D5CDD9A179AED9B /* ChatRepository.swift */; };
 		43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */; };
+		59034BF673F78A457B681967 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F0E176D612624E2C929B7 /* SignRepository.swift */; };
 		684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */; };
 		901ACA7B98089AB702ADA830 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAA1459D11CCE724C34195 /* Domain.framework */; };
-		950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */; };
-		950A0D902E6039D600C07CF2 /* DefaultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */; };
-		9516ED5D2E71D3FE00F548A1 /* ChatRoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED5C2E71D3FB00F548A1 /* ChatRoomDTO.swift */; };
-		9516ED612E71D5B800F548A1 /* ChatDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516ED602E71D5B200F548A1 /* ChatDetailDTO.swift */; };
-		951F3F8F2E6F36450022583B /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F8E2E6F36440022583B /* ChatDTO.swift */; };
-		951F3F912E6F36680022583B /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F3F902E6F36640022583B /* ChatRepository.swift */; };
+		9532C7AC2E786F3F00B4BADE /* DiaryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7AB2E786F3A00B4BADE /* DiaryDTO.swift */; };
+		9532C7AE2E78707D00B4BADE /* DiaryCalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7AD2E78707600B4BADE /* DiaryCalendarDTO.swift */; };
+		956C4D8F2E77142700E32F93 /* DiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8E2E77140A00E32F93 /* DiaryRepository.swift */; };
+		99E14C3BCF2FDBB8004B27AC /* ChatRoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2298B5F633729122951DB918 /* ChatRoomDTO.swift */; };
 		A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */; };
 		B2F8FBFA915F696CCCA4152A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B0D3D8C7049B6856791C1D /* Alamofire.framework */; };
+		C69F1794E1B0FB5F7B7CBDA5 /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21C1CF4EA22470F573D1 /* ChatDTO.swift */; };
+		C9C427C4DD6EB1B302F5F219 /* ChatDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D04653F84020B268C53D3 /* ChatDetailDTO.swift */; };
 		E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0730BC3657E24BCEA511A3C /* CourseRepository.swift */; };
 		E6785667C8E247C344474CBB /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050263DDA587409393A9328A /* TokenRepository.swift */; };
 		E9463A3FF42D5F0960245F80 /* QuizDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77810122262C6CB16D4D47DA /* QuizDTO.swift */; };
@@ -40,23 +43,26 @@
 
 /* Begin PBXFileReference section */
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
+		044D04653F84020B268C53D3 /* ChatDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailDTO.swift; sourceTree = "<group>"; };
 		050263DDA587409393A9328A /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		06FAA1459D11CCE724C34195 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2298B5F633729122951DB918 /* ChatRoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDTO.swift; sourceTree = "<group>"; };
+		377C66458E6219D981E14335 /* DefaultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDTO.swift; sourceTree = "<group>"; };
 		3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		3D7624DE90CFBBEF778E120E /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D46FD93B80D052843AD5063 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		662B73C60D5CDD9A179AED9B /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		77810122262C6CB16D4D47DA /* QuizDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDTO.swift; sourceTree = "<group>"; };
-		950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
-		950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDTO.swift; sourceTree = "<group>"; };
-		9516ED5C2E71D3FB00F548A1 /* ChatRoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomDTO.swift; sourceTree = "<group>"; };
-		9516ED602E71D5B200F548A1 /* ChatDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailDTO.swift; sourceTree = "<group>"; };
-		951F3F8E2E6F36440022583B /* ChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
-		951F3F902E6F36640022583B /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		9532C7AB2E786F3A00B4BADE /* DiaryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDTO.swift; sourceTree = "<group>"; };
+		9532C7AD2E78707600B4BADE /* DiaryCalendarDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCalendarDTO.swift; sourceTree = "<group>"; };
+		956C4D8E2E77140A00E32F93 /* DiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRepository.swift; sourceTree = "<group>"; };
 		A3B0D3D8C7049B6856791C1D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDTO.swift; sourceTree = "<group>"; };
 		B0730BC3657E24BCEA511A3C /* CourseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseRepository.swift; sourceTree = "<group>"; };
+		C53F21C1CF4EA22470F573D1 /* ChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
+		DC5F0E176D612624E2C929B7 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +88,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		508DB87A8CFE03F2164A0BF9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				044D04653F84020B268C53D3 /* ChatDetailDTO.swift */,
+				C53F21C1CF4EA22470F573D1 /* ChatDTO.swift */,
+				2298B5F633729122951DB918 /* ChatRoomDTO.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		647255CD65221C9CD4A43DED /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				9516ED642E75609400F548A1 /* Chat */,
-				950A0D8F2E6039D300C07CF2 /* DefaultDTO.swift */,
+				9532C7AA2E786F0000B4BADE /* Diary */,
+				508DB87A8CFE03F2164A0BF9 /* Chat */,
 				AAAC2885ACFE998578DC25E8 /* CourseDTO.swift */,
+				377C66458E6219D981E14335 /* DefaultDTO.swift */,
 				A44BC1E2E75FC256F832CA38 /* LoginDTO.swift */,
 				77810122262C6CB16D4D47DA /* QuizDTO.swift */,
 			);
@@ -97,12 +114,13 @@
 		73F3ED55BFDC2EF15878F5B6 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				951F3F902E6F36640022583B /* ChatRepository.swift */,
-				950A0D6F2E5CCEFD00C07CF2 /* SignRepository.swift */,
-				B0730BC3657E24BCEA511A3C /* CourseRepository.swift */,
+				DC5F0E176D612624E2C929B7 /* SignRepository.swift */,
 				3D7624DE90CFBBEF778E120E /* LoginRepository.swift */,
-				3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */,
 				050263DDA587409393A9328A /* TokenRepository.swift */,
+				3CCA951B89F2C3D20AA31F7F /* QuizRepository.swift */,
+				B0730BC3657E24BCEA511A3C /* CourseRepository.swift */,
+				662B73C60D5CDD9A179AED9B /* ChatRepository.swift */,
+				956C4D8E2E77140A00E32F93 /* DiaryRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -115,14 +133,13 @@
 			);
 			sourceTree = "<group>";
 		};
-		9516ED642E75609400F548A1 /* Chat */ = {
+		9532C7AA2E786F0000B4BADE /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				951F3F8E2E6F36440022583B /* ChatDTO.swift */,
-				9516ED5C2E71D3FB00F548A1 /* ChatRoomDTO.swift */,
-				9516ED602E71D5B200F548A1 /* ChatDetailDTO.swift */,
+				9532C7AB2E786F3A00B4BADE /* DiaryDTO.swift */,
+				9532C7AD2E78707600B4BADE /* DiaryCalendarDTO.swift */,
 			);
-			path = Chat;
+			path = Diary;
 			sourceTree = "<group>";
 		};
 		A46DA33BCE1E2288153B2AC3 /* Network */ = {
@@ -232,20 +249,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9516ED612E71D5B800F548A1 /* ChatDetailDTO.swift in Sources */,
+				C69F1794E1B0FB5F7B7CBDA5 /* ChatDTO.swift in Sources */,
+				C9C427C4DD6EB1B302F5F219 /* ChatDetailDTO.swift in Sources */,
+				99E14C3BCF2FDBB8004B27AC /* ChatRoomDTO.swift in Sources */,
 				43E9C2380F425520C1FA1AD2 /* CourseDTO.swift in Sources */,
-				9516ED5D2E71D3FE00F548A1 /* ChatRoomDTO.swift in Sources */,
+				0C1776E871E0CB4A493E8354 /* DefaultDTO.swift in Sources */,
 				FF43B3A4D0DC88307E918DB0 /* LoginDTO.swift in Sources */,
 				E9463A3FF42D5F0960245F80 /* QuizDTO.swift in Sources */,
 				684AAEA9796EED3F9FC592FC /* NetworkConfiguration.swift in Sources */,
-				950A0D702E5CCF0200C07CF2 /* SignRepository.swift in Sources */,
-				951F3F8F2E6F36450022583B /* ChatDTO.swift in Sources */,
+				3A371C0557EFC12B7A68ADB2 /* ChatRepository.swift in Sources */,
+				9532C7AC2E786F3F00B4BADE /* DiaryDTO.swift in Sources */,
 				E1BFC73FB539432F6E12CD94 /* CourseRepository.swift in Sources */,
-				951F3F912E6F36680022583B /* ChatRepository.swift in Sources */,
 				34FD760EB97BB96E9D770BF0 /* LoginRepository.swift in Sources */,
-				950A0D902E6039D600C07CF2 /* DefaultDTO.swift in Sources */,
 				A334985695DC9388841BBC43 /* QuizRepository.swift in Sources */,
+				59034BF673F78A457B681967 /* SignRepository.swift in Sources */,
 				E6785667C8E247C344474CBB /* TokenRepository.swift in Sources */,
+				9532C7AE2E78707D00B4BADE /* DiaryCalendarDTO.swift in Sources */,
+				956C4D8F2E77142700E32F93 /* DiaryRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +329,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

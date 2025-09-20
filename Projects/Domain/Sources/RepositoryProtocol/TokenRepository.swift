@@ -14,4 +14,5 @@ public protocol TokenRepository {
     func saveRefreshToken(token: String)
     func getRefreshToken() -> String?
     func clearRefreshToken()
+    func validateToken() -> Single<Bool>
 }

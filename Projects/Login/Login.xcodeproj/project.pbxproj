@@ -3,23 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2FF4EC99DC8AFDA6474A54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530CC29B42C645D90C6417F /* SignUpViewController.swift */; };
 		250A492BA0E6132DCEBD7CE7 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9C214589834256AC9DD6AB /* Then.framework */; };
 		4027F4EA82D89F9520C87D34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159850B93C915DFB2D697BF2 /* LoginViewController.swift */; };
+		47A5B19D727E094AB3E609C2 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94347C029993F3A7163E0D /* SignUpCoordinator.swift */; };
 		58DB5E0A3D1E600D0B90C66D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44C290B1A433AEF98F1870 /* Alamofire.framework */; };
 		6D45A5743268B6AB834A00C0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF3B7E565CEC77F3F96CE8E /* Domain.framework */; };
 		92D7E2A0C6D4E3A6F57BAFB0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E71FB3926A3A3118D0096 /* LoginViewModel.swift */; };
-		950A0D5E2E5C3A6D00C07CF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D5D2E5C3A6700C07CF2 /* SignInViewController.swift */; };
-		950A0D642E5C5F7D00C07CF2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D632E5C5F7900C07CF2 /* SignUpViewController.swift */; };
-		950A0D662E5CCB2F00C07CF2 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D652E5CCB2900C07CF2 /* SignViewModel.swift */; };
-		950A0D862E5DE6D000C07CF2 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */; };
-		950A0D8A2E5E0C8600C07CF2 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */; };
 		9543B5BD011752760C9E8D48 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3E03A11BBC654DEC110ECE /* Common.framework */; };
+		9CA5834F18EE0313B5DDD396 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD60F685267E861FDA1FC6 /* SignInViewController.swift */; };
 		A2DD99D036B33B4B67E19670 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149968626029AF0A6483A522 /* RxSwift.framework */; };
 		A60EB3815F8DEA7C7B2A1E4D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */; };
+		B12493E0ECAB257C106608C4 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C804405C71F85DA84779A /* SignViewModel.swift */; };
+		D28E2FC4AE5F7ACDE801E66B /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F05C3948307A51BA730E85 /* SignInCoordinator.swift */; };
 		E603A7E7971D4E54E1F59146 /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C6E6787DFAF624F53D6F5B /* Login.framework */; };
 		F841FF334E1C6034EABAEDCB /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D6E91FA13D3D7D7989E850 /* CommonUI.framework */; };
 /* End PBXBuildFile section */
@@ -63,18 +63,18 @@
 		1F122292170A9B08F370E93A /* Login-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Login-Info.plist"; sourceTree = "<group>"; };
 		21D6E91FA13D3D7D7989E850 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C6E6787DFAF624F53D6F5B /* Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4530CC29B42C645D90C6417F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4D94347C029993F3A7163E0D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		5A3E03A11BBC654DEC110ECE /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF3B7E565CEC77F3F96CE8E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D21628961E74D99945474E /* LoginTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LoginTests-Info.plist"; sourceTree = "<group>"; };
 		7D44C290B1A433AEF98F1870 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		950A0D5D2E5C3A6700C07CF2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		950A0D632E5C5F7900C07CF2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		950A0D652E5CCB2900C07CF2 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
-		950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
-		950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		845C804405C71F85DA84779A /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		9A9C214589834256AC9DD6AB /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D197429DF4204F655968BA /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD60F685267E861FDA1FC6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		B7F05C3948307A51BA730E85 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		C32E71FB3926A3A3118D0096 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				159850B93C915DFB2D697BF2 /* LoginViewController.swift */,
-				950A0D5D2E5C3A6700C07CF2 /* SignInViewController.swift */,
-				950A0D632E5C5F7900C07CF2 /* SignUpViewController.swift */,
+				AFCD60F685267E861FDA1FC6 /* SignInViewController.swift */,
+				4530CC29B42C645D90C6417F /* SignUpViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				C32E71FB3926A3A3118D0096 /* LoginViewModel.swift */,
-				950A0D652E5CCB2900C07CF2 /* SignViewModel.swift */,
+				845C804405C71F85DA84779A /* SignViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -159,18 +159,18 @@
 		82158BAC7310E834F5971A06 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				950A0D842E5DE4F000C07CF2 /* Coordinator */,
+				96E8BAEDF1C0DEE2376290F2 /* Coordinator */,
 				04AE692FD1ACBC62C53BE327 /* View */,
 				787BEC2C2BCE59B03D483875 /* ViewModel */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		950A0D842E5DE4F000C07CF2 /* Coordinator */ = {
+		96E8BAEDF1C0DEE2376290F2 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				950A0D852E5DE6C600C07CF2 /* SignInCoordinator.swift */,
-				950A0D892E5E0C8000C07CF2 /* SignUpCoordinator.swift */,
+				B7F05C3948307A51BA730E85 /* SignInCoordinator.swift */,
+				4D94347C029993F3A7163E0D /* SignUpCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -243,6 +243,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 6C10079AF94881EFE73379E4 /* Build configuration list for PBXProject "Login" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -285,13 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28E2FC4AE5F7ACDE801E66B /* SignInCoordinator.swift in Sources */,
+				47A5B19D727E094AB3E609C2 /* SignUpCoordinator.swift in Sources */,
 				4027F4EA82D89F9520C87D34 /* LoginViewController.swift in Sources */,
-				950A0D8A2E5E0C8600C07CF2 /* SignUpCoordinator.swift in Sources */,
+				9CA5834F18EE0313B5DDD396 /* SignInViewController.swift in Sources */,
+				1C2FF4EC99DC8AFDA6474A54 /* SignUpViewController.swift in Sources */,
 				92D7E2A0C6D4E3A6F57BAFB0 /* LoginViewModel.swift in Sources */,
-				950A0D662E5CCB2F00C07CF2 /* SignViewModel.swift in Sources */,
-				950A0D642E5C5F7D00C07CF2 /* SignUpViewController.swift in Sources */,
-				950A0D862E5DE6D000C07CF2 /* SignInCoordinator.swift in Sources */,
-				950A0D5E2E5C3A6D00C07CF2 /* SignInViewController.swift in Sources */,
+				B12493E0ECAB257C106608C4 /* SignViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +322,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/LoginTests-Info.plist";
@@ -330,16 +333,26 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LoginTests;
 				PRODUCT_NAME = LoginTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -353,6 +366,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/LoginTests-Info.plist";
@@ -363,9 +377,16 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LoginTests;
 				PRODUCT_NAME = LoginTests;
 				SDKROOT = iphoneos;
@@ -373,7 +394,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -390,6 +411,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Login-Info.plist";
@@ -401,9 +423,16 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Login;
 				PRODUCT_NAME = Login;
 				SDKROOT = iphoneos;
@@ -412,7 +441,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -431,6 +460,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include",
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Derived/InfoPlists/Login-Info.plist";
@@ -442,9 +472,16 @@
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Login;
 				PRODUCT_NAME = Login;
 				SDKROOT = iphoneos;
@@ -452,7 +489,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

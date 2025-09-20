@@ -9,8 +9,12 @@ import Domain
 import RxSwift
 
 protocol ChatViewModelProtocol {
+    func getChatList()
     func startTextChat()
     func sendMessage(content: String)
+    func postChatAnalysis()
+    func deleteChat()
+    func getChatDetail(chatRoomId: Int)
 }
 
 public class ChatViewModel: ChatViewModelProtocol {

@@ -54,6 +54,9 @@ public enum CommonUIAssets {
     public static let IconEdit = image(named: "edit")
     public static let IconMessage = image(named: "message")
     public static let IconBubble = image(named: "bubble")
+    public static let IconPrevious = image(named: "previous")
+    public static let IconNext = image(named: "next")
+    public static let IconAdd = image(named: "add")
 
     /// color
     public static let LMOrange1 = color(named: "LMOrange01")

@@ -37,5 +37,10 @@ public struct DataAssembly: Assembly {
             let tokenRepository = resolver.resolve(TokenRepository.self)!
             return DefaultChatRepository(tokenRepository: tokenRepository)
         }
+
+        container.register(DiaryRepository.self) { resolver in
+            let tokenRepository = resolver.resolve(TokenRepository.self)!
+            return DefaultDiaryRepository(tokenRepository: tokenRepository)
+        }
     }
 }

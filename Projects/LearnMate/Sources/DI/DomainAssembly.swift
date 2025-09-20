@@ -25,6 +25,11 @@ public struct DomainAssembly: Assembly {
             return DefaultTokenUseCase(repository: repository)
         }
         
+        container.register(TokenValidationUseCase.self) { resolver in
+            let repository = resolver.resolve(TokenRepository.self)!
+            return DefaultTokenValidationUseCase(repository: repository)
+        }
+        
         container.register(QuizUseCase.self) { resolver in
             let repository = resolver.resolve(QuizRepository.self)!
             return DefaultQuizUseCase(repository: repository)
@@ -38,6 +43,11 @@ public struct DomainAssembly: Assembly {
         container.register(ChatUseCase.self) { resolver in
             let repository = resolver.resolve(ChatRepository.self)!
             return DefaultChatUseCase(repository: repository)
+        }
+
+        container.register(DiaryUseCase.self) { resolver in
+            let repository = resolver.resolve(DiaryRepository.self)!
+            return DefaultDiaryUseCase(repository: repository)
         }
     }
 }
