@@ -10,6 +10,9 @@ import SnapKit
 import Then
 
 public final class QuizCompleteAlertView: UIView {
+    
+    // MARK: - Properties
+    public var onConfirmButtonTapped: (() -> Void)?
 
     private let backgroundView = UIView().then {
         $0.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -116,6 +119,9 @@ public final class QuizCompleteAlertView: UIView {
     }
 
     @objc private func dismiss() {
+        // 확인 버튼 콜백 호출
+        onConfirmButtonTapped?()
+        
         UIView.animate(withDuration: 0.3, animations: {
             self.backgroundView.alpha = 0.0
         }) { _ in

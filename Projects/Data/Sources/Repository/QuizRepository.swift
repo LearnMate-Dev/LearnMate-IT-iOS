@@ -17,37 +17,66 @@ public class DefaultQuizRepository: QuizRepository {
     }
     
     public func startStep(course: Int, step: Int) -> Single<QuizVO> {
-        return request(
-            endpoint: "/api/courses",
-            course: course,
-            step: step,
-            responseType: QuizResponseDTO.self
+        let params: Parameters = [
+            "course": course,
+            "step": step
+        ]
+
+        return request(method: .post,
+                       parameters: params,
+                       endpoint: "/api/courses",
+                       encoding: URLEncoding.default,
+                       responseType: QuizResponseDTO.self
         )
         .map { dto in
             return dto.data.toDomain()
         }
     }
-    
-    private func request<T: Decodable>(endpoint: String, course: Int, step: Int, responseType: T.Type) -> Single<T> {
+
+    public func patchStep(stepProgressId: Int) -> Single<DefaultVO> {
+        return request(method: .patch,
+                       endpoint: "/api/courses/\(stepProgressId)",
+                       responseType: DefaultDTO.self
+        )
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
+    private func request<T: Decodable>(
+        method: HTTPMethod = .get,
+        parameters: [String: Any]? = nil,
+        endpoint: String,
+        encoding: ParameterEncoding = JSONEncoding.default,
+        responseType: T.Type
+    ) -> Single<T> {
         return Single.create { single in
-            let url = "\(NetworkConfiguration.baseUrl)\(endpoint)?course=\(course)&step=\(step)"
+            let url = "\(NetworkConfiguration.baseUrl)\(endpoint)"
             var headers: HTTPHeaders = [:]
+            
             if let token = self.tokenRepository.getAccessToken() {
+                print("🔑 사용할 토큰: \(token)")
                 headers.add(name: "Authorization", value: "Bearer \(token)")
             } else {
                 print("❌ 토큰이 없습니다!")
             }
-            
             print("🌐 API 요청 URL: \(url)")
             print("🔑 Authorization 헤더: \(headers)")
+            print("📤 요청 파라미터: \(parameters ?? [:])")
+            print("📤 요청 메서드: \(method)")
+            print("📤 인코딩: \(encoding)")
             
             let request = AF.request(url,
-                                     method: .post,
-                                     parameters: nil,
-                                     encoding: JSONEncoding.default,
+                                     method: method,
+                                     parameters: parameters,
+                                     encoding: encoding,
                                      headers: headers)
-                .validate()
                 .responseDecodable(of: responseType) { response in
+                    print("📊 HTTP 상태 코드: \(response.response?.statusCode ?? -1)")
+                    if let data = response.data {
+                        print("📊 응답 데이터: \(String(data: data, encoding: .utf8) ?? "데이터 파싱 실패")")
+                    }
+                    
                     switch response.result {
                     case .success(let value):
                         print("✅ API 응답 성공: \(value)")

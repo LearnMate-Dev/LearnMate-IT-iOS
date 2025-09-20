@@ -69,7 +69,7 @@ open class HomeProgressView: UIView {
         }
 
         progressView = progressView.then {
-            $0.backgroundColor = .red
+            $0.backgroundColor = CommonUIAssets.LMOrange1
             $0.layer.cornerRadius = 3
             $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
             // TODO: 100% 달성 시 모든 corner에 적용

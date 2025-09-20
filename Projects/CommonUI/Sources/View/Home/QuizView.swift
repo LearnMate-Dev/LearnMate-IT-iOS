@@ -80,8 +80,9 @@ open class QuizView: UIView {
             situationView.addSubview(situationLabel)
 
             situationView.snp.makeConstraints {
-                $0.verticalEdges.equalToSuperview()
+                $0.top.bottom.equalToSuperview()
                 $0.centerX.equalToSuperview()
+                $0.width.lessThanOrEqualToSuperview().multipliedBy(0.8)
             }
 
             situationLabel.snp.makeConstraints {
@@ -93,8 +94,9 @@ open class QuizView: UIView {
             questionView.addSubview(questionLabel)
 
             questionView.snp.makeConstraints {
-                $0.verticalEdges.equalToSuperview()
+                $0.top.bottom.equalToSuperview()
                 $0.leading.equalToSuperview().inset(20)
+                $0.width.lessThanOrEqualToSuperview().multipliedBy(0.7)
             }
             
             questionLabel.snp.makeConstraints {

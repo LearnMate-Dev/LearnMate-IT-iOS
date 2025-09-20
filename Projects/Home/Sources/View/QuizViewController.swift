@@ -12,6 +12,9 @@ import SnapKit
 import RxSwift
 
 public class QuizViewController: UIViewController {
+    let viewModel: HomeViewModel
+    private let disposeBag = DisposeBag()
+
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
                                              title: nil)
@@ -40,12 +43,9 @@ public class QuizViewController: UIViewController {
     var quizData: QuizVO?
     var currentQuiz: QuizDetailVO?
 
-    public init(quizData: QuizVO) {
+    public init(homeViewModel: HomeViewModel, quizData: QuizVO) {
+        self.viewModel = homeViewModel
         self.quizData = quizData
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,6 +64,7 @@ public class QuizViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         bindDatas()
+        bindPatchStepSuccess()
         if let quizData = quizData {
             showSituation(index: 0)
         }
@@ -126,6 +127,16 @@ public class QuizViewController: UIViewController {
         } else {
             navigationBar.setupViewProperty(title: "처음 보는 사람과 인사하기")
         }
+    }
+    
+    func bindPatchStepSuccess() {
+        viewModel.patchStepSuccessSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                // patchStep 성공 시 네비게이션 뒤로 가기
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     func showSituation(index: Int) {
@@ -239,6 +250,12 @@ public class QuizViewController: UIViewController {
     
     func showQuizCompleteAlert() {
         let alertView = QuizCompleteAlertView()
+        alertView.onConfirmButtonTapped = { [weak self] in
+            // 퀴즈 완료 시 stepProgressId를 사용하여 patchStep 호출
+            if let quizData = self?.quizData {
+                self?.viewModel.patchStep(stepProgressId: quizData.stepProgressId)
+            }
+        }
         alertView.show(in: view)
     }
     

@@ -90,8 +90,7 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
             return UICollectionViewCell()
         }
         let step = stepList[indexPath.item]
-        cell.quizTitleLabel.text = step.stepTitle
-        cell.quizSubtitleLabel.text = step.stepDescription
+        cell.configure(with: step)
         cell.onStartButtonTapped
             .subscribe(onNext: { [weak self] in
                 self?.onStartButtonTapped?(indexPath)

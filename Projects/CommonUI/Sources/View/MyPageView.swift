@@ -37,7 +37,7 @@ open class MyPageView: UIView {
     }
     
     private func setupUI() {
-        backgroundColor = CommonUIAssets.LMWhite
+        backgroundColor = CommonUIAssets.LMOrange4
 
         self.addSubview(tableView)
 

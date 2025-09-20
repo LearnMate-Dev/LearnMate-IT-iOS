@@ -9,6 +9,7 @@ import CommonUI
 import UIKit
 import SnapKit
 import RxSwift
+import Domain
 
 public class HomeViewController: BaseViewController {
     let viewModel: HomeViewModel
@@ -21,6 +22,10 @@ public class HomeViewController: BaseViewController {
     let homeView = HomeView()
     let homeProgressView = HomeProgressView()
     let homeQuizView = HomeQuizView()
+    
+    // 코스와 스텝 정보 저장
+    private var currentCourse: CourseVO?
+    private var stepList: [StepVO] = []
 
     public init(homeViewModel: HomeViewModel) {
         self.viewModel = homeViewModel
@@ -46,6 +51,7 @@ public class HomeViewController: BaseViewController {
         bindStepList()
         bindCourseData()
         bindQuiz()
+        bindPatchStepSuccess()
     }
 
     private func bindActions() {
@@ -54,10 +60,13 @@ public class HomeViewController: BaseViewController {
 
     private func bindTransition() {
         homeQuizView.onStartButtonTapped = { [weak self] indexPath in
-            // course와 step 정보를 가져와서 퀴즈 시작
-            let course = indexPath.item + 1 // 1시작
-            let step = indexPath.item + 1   // 1작
-            self?.viewModel.startStep(course: course, step: step)
+            // getCourses에서 받아온 courseLv와 stepLv 사용
+            guard let self = self,
+                  let course = self.currentCourse,
+                  indexPath.item < self.stepList.count else { return }
+            
+            let step = self.stepList[indexPath.item]
+            self.viewModel.startStep(course: course.courseLv, step: step.stepLv)
         }
     }
     
@@ -65,7 +74,7 @@ public class HomeViewController: BaseViewController {
         viewModel.quizSubject
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] quiz in
-                let quizViewController = QuizViewController(quizData: quiz)
+                let quizViewController = QuizViewController(homeViewModel: self!.viewModel, quizData: quiz)
                 quizViewController.hidesBottomBarWhenPushed = true
                 self?.navigationController?.pushViewController(quizViewController, animated: true)
             })
@@ -76,6 +85,7 @@ public class HomeViewController: BaseViewController {
         viewModel.stepListSubject
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] stepList in
+                self?.stepList = stepList
                 self?.homeQuizView.setQuizList(stepList)
             })
             .disposed(by: disposeBag)
@@ -84,8 +94,19 @@ public class HomeViewController: BaseViewController {
     private func bindCourseData() {
         viewModel.courseSubject
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] courseList in
-                self?.homeProgressView.setCourseList(courseList)
+            .subscribe(onNext: { [weak self] course in
+                self?.currentCourse = course
+                self?.homeProgressView.setCourseList(course)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindPatchStepSuccess() {
+        viewModel.patchStepSuccessSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("🔄 patchStep 성공 감지, getCourses 호출하여 뷰 재로딩")
+                self?.viewModel.getCourses()
             })
             .disposed(by: disposeBag)
     }

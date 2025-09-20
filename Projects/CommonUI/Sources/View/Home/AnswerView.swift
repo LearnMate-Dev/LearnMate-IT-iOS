@@ -81,8 +81,9 @@ open class AnswerView: UIView {
             correctView.addSubview(correctLabel)
 
             correctView.snp.makeConstraints {
-                $0.verticalEdges.equalToSuperview()
+                $0.top.bottom.equalToSuperview()
                 $0.leading.equalToSuperview().inset(20)
+                $0.width.lessThanOrEqualToSuperview().multipliedBy(0.7)
             }
 
             correctLabel.snp.makeConstraints {
@@ -94,8 +95,9 @@ open class AnswerView: UIView {
             wrongView.addSubview(wrongLabel)
 
             wrongView.snp.makeConstraints {
-                $0.verticalEdges.equalToSuperview()
+                $0.top.bottom.equalToSuperview()
                 $0.leading.equalToSuperview().inset(20)
+                $0.width.lessThanOrEqualToSuperview().multipliedBy(0.7)
             }
 
             wrongLabel.snp.makeConstraints {
