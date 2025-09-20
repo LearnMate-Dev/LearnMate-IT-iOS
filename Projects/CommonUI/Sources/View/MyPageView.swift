@@ -83,10 +83,10 @@ open class MyPageView: UIView {
     
     // MARK: - Public Methods
     public func updateUserName(_ name: String) {
-        // "내 정보" 섹션의 첫 번째 아이템(사용자 이름) 업데이트
-        if sections.count > 0 && sections[0].items.count > 0 {
+        // "내 정보" 섹션의 두 번째 아이템(사용자 이름) 업데이트
+        if sections.count > 0 && sections[0].items.count > 1 {
             var updatedItems = sections[0].items
-            updatedItems[0] = MyPageItem(title: "내 정보", subtitle: name, icon: "person.fill", hasChevron: false)
+            updatedItems[1] = MyPageItem(title: "사용자 이름", subtitle: name, hasChevron: false)
             sections[0] = MyPageSection(title: sections[0].title, items: updatedItems)
             tableView.reloadData()
         }
@@ -164,7 +164,13 @@ extension MyPageView: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyPageTableViewCell.identifier, for: indexPath) as! MyPageTableViewCell
         let item = sections[indexPath.section].items[indexPath.row]
-        cell.configure(with: item)
+        
+        // 마지막 섹션의 마지막 셀이거나, 섹션의 마지막 셀이 아닌 경우 디바이더 숨김
+        let isLastSection = indexPath.section == sections.count - 1
+        let isLastRowInSection = indexPath.row == sections[indexPath.section].items.count - 1
+        let shouldHideDivider = isLastSection || !isLastRowInSection
+        
+        cell.configure(with: item, isLastCell: shouldHideDivider)
         return cell
     }
 }
@@ -215,7 +221,7 @@ extension MyPageView: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0 : 1
+        return 0
     }
 }
 
@@ -264,6 +270,10 @@ private class MyPageTableViewCell: UITableViewCell {
         $0.contentMode = .scaleAspectFit
     }
     
+    private let dividerView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMGray5
+    }
+    
     private let containerView = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -280,6 +290,7 @@ private class MyPageTableViewCell: UITableViewCell {
         selectionStyle = .none
         
         contentView.addSubview(containerView)
+        contentView.addSubview(dividerView)
         containerView.addSubview(iconImageView)
         containerView.addSubview(titleLabel)
         containerView.addSubview(subtitleLabel)
@@ -314,9 +325,15 @@ private class MyPageTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
             $0.width.height.equalTo(12)
         }
+        
+        dividerView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(0.5)
+        }
     }
     
-    func configure(with item: MyPageItem) {
+    func configure(with item: MyPageItem, isLastCell: Bool = false) {
         titleLabel.text = item.title
         
         if let icon = item.icon {
@@ -340,5 +357,6 @@ private class MyPageTableViewCell: UITableViewCell {
         }
         
         chevronImageView.isHidden = !item.hasChevron
+        dividerView.isHidden = isLastCell
     }
 }

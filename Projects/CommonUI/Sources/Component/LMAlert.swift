@@ -98,23 +98,39 @@ public class LMAlert: UIView {
         containerView.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.width.equalTo(280)
-            $0.height.equalTo(140)
+            $0.height.greaterThanOrEqualTo(140)
         }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.lessThanOrEqualTo(buttonStackView.snp.top).offset(-16)
         }
         
         buttonStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(44)
+            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(16)
         }
     }
     
     private func configure(title: String, cancelTitle: String, confirmTitle: String) {
-        titleLabel.text = title
+        // 줄간격을 적용한 attributed string 생성
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.alignment = .center
+        
+        let attributedString = NSAttributedString(
+            string: title,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 16, weight: .medium),
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: paragraphStyle
+            ]
+        )
+
+        titleLabel.attributedText = attributedString
         cancelButton.setTitle(cancelTitle, for: .normal)
         confirmButton.setTitle(confirmTitle, for: .normal)
     }
