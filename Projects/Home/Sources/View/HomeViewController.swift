@@ -50,6 +50,7 @@ public class HomeViewController: BaseViewController {
         bindTransition()
         bindStepList()
         bindCourseData()
+        bindCourseList()
         bindQuiz()
         bindPatchStepSuccess()
     }
@@ -96,9 +97,26 @@ public class HomeViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] course in
                 self?.currentCourse = course
-                self?.homeProgressView.setCourseList(course)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func bindCourseList() {
+        viewModel.courseListSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] courseList in
+                self?.homeProgressView.setCourseList(courseList)
+                self?.homeProgressView.onNextCourseTapped = { [weak self] in
+                    self?.updateCurrentCourseAndSteps()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateCurrentCourseAndSteps() {
+        guard let currentCourse = homeProgressView.courseList.first(where: { $0.courseLv == homeProgressView.currentCourseIndex + 1 }) else { return }
+        self.currentCourse = currentCourse
+        homeQuizView.setQuizList(currentCourse.stepList)
     }
     
     private func bindPatchStepSuccess() {
@@ -107,6 +125,8 @@ public class HomeViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 print("🔄 patchStep 성공 감지, getCourses 호출하여 뷰 재로딩")
                 self?.viewModel.getCourses()
+                // HomeProgressView의 nextButton 가시성 업데이트
+                self?.homeProgressView.updateNextButtonVisibility()
             })
             .disposed(by: disposeBag)
     }

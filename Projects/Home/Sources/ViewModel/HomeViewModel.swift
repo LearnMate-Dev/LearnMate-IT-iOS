@@ -22,6 +22,7 @@ public class HomeViewModel: HomeViewModelProtocol {
     
     let stepListSubject = PublishSubject<[StepVO]>()
     let courseSubject = PublishSubject<CourseVO>()
+    let courseListSubject = PublishSubject<[CourseVO]>()
     let quizSubject = PublishSubject<QuizVO>()
     let patchStepSuccessSubject = PublishSubject<Void>()
     
@@ -36,6 +37,7 @@ public class HomeViewModel: HomeViewModelProtocol {
         courseUseCase.getCourses()
             .subscribe(onSuccess: { [weak self] response in
                 print("✅ 코스 정보: \(response)")
+                self?.courseListSubject.onNext(response.list)
                 if let firstCourse = response.list.first {
                     self?.stepListSubject.onNext(firstCourse.stepList)
                     self?.courseSubject.onNext(firstCourse)
