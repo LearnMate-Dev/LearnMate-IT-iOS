@@ -141,6 +141,15 @@ public class DiaryViewController: BaseViewController {
         diaryView.calendarView.tapDay = { [weak self] date in
             self?.viewModel.getDiary(date: date)
         }
+        
+        // 월 변경 이벤트 바인딩
+        diaryView.tapPrevious = { [weak self] year, month in
+            self?.viewModel.getDiaryCalendar(year: year, month: month)
+        }
+        
+        diaryView.tapNext = { [weak self] year, month in
+            self?.viewModel.getDiaryCalendar(year: year, month: month)
+        }
     }
 
     private func setupInitialState() {
@@ -164,6 +173,20 @@ public class DiaryViewController: BaseViewController {
     }
     
     private func updateDiaryTodayView(with calendarData: DiaryCalendarVO) {
+        // 캘린더 데이터로 이모지 정보 업데이트
+        var emotionData: [Int: String] = [:]
+        for diary in calendarData.diaryList {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            if let date = formatter.date(from: diary.createdAt) {
+                let day = Calendar.current.component(.day, from: date)
+                // 점수에 따른 이모지 매핑 (예시)
+                let emotion = getEmotionForScore(diary.score)
+                emotionData[day] = emotion
+            }
+        }
+        diaryView.calendarView.setEmotionData(emotionData)
+        
         // 첫 진입 시에만 오늘 날짜로 DiaryTodayView 업데이트
         guard isFirstAppearance else { return }
         
@@ -188,6 +211,21 @@ public class DiaryViewController: BaseViewController {
         } else {
             // 오늘 일기가 없는 경우 - 오늘 날짜로 빈 상태 설정
             diaryView.diaryTodayView.setDiaryTodayEmptyData(date: today)
+        }
+    }
+    
+    private func getEmotionForScore(_ score: Int) -> String {
+        switch score {
+        case 90...100:
+            return "🥳" // 파티 모자
+        case 80..<90:
+            return "😊" // 웃는 얼굴
+        case 70..<80:
+            return "😐" // 무표정한 얼굴
+        case 60..<70:
+            return "😕" // 약간 찡그린 얼굴
+        default:
+            return "😢" // 우는 얼굴
         }
     }
     

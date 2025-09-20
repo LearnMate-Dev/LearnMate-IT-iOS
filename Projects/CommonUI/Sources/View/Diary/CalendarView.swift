@@ -135,6 +135,19 @@ public final class CalendarView: UIView {
         selectedDate = date
         calendarCollectionView.reloadData()
     }
+    
+    public func updateMonth(year: Int, month: Int) {
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = 1
+        
+        if let newDate = calendar.date(from: components) {
+            currentDate = newDate
+            calendarCollectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -196,13 +209,13 @@ public class CalendarCell: UICollectionViewCell {
     
     private let emotionLabel = UILabel().then {
         $0.textAlignment = .center
-        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.font = UIFont.systemFont(ofSize: 15)
     }
     
     private let stackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
-        $0.spacing = 20
+        $0.spacing = 10
     }
     
     private let bottomBorderView = UIView().then {

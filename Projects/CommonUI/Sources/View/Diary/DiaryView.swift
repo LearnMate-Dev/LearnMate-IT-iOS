@@ -18,7 +18,7 @@ open class DiaryView: UIView {
     }
 
     private(set) var monthLabel = UILabel().then {
-        $0.text = "2025년 09월"
+        $0.text = ""
         $0.textColor = CommonUIAssets.LMGray1
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     }
@@ -35,15 +35,21 @@ open class DiaryView: UIView {
     public let diaryTodayView = DiaryTodayView()
 
     // MARK: Properties
-    private var currentYear = 2025
-    private var currentMonth = 09
+    private var currentYear: Int
+    private var currentMonth: Int
 
     public var onAddButtonTapped: (() -> Void)?
-    var tapPrevious: ((Int, Int) -> Void)?
-    var tapNext: ((Int, Int) -> Void)?
+    public var tapPrevious: ((Int, Int) -> Void)?
+    public var tapNext: ((Int, Int) -> Void)?
     let disposeBag = DisposeBag()
 
     public override init(frame: CGRect) {
+        // 현재 날짜로 초기화
+        let today = Date()
+        let calendar = Calendar.current
+        self.currentYear = calendar.component(.year, from: today)
+        self.currentMonth = calendar.component(.month, from: today)
+        
         super.init(frame: frame)
         configureSubviews()
         makeConstraints()
@@ -51,6 +57,7 @@ open class DiaryView: UIView {
         calendarView.configureSubviews()
         calendarView.makeConstraints()
         setupSampleEmotionData()
+        updateMonthButtonTitle()
     }
 
     required public init?(coder: NSCoder) {
@@ -143,6 +150,9 @@ open class DiaryView: UIView {
             currentMonth -= 1
         }
         updateMonthButtonTitle()
+        
+        // 캘린더 월 업데이트
+        calendarView.updateMonth(year: currentYear, month: currentMonth)
 
         tapPrevious?(currentYear, currentMonth)
     }
@@ -155,6 +165,9 @@ open class DiaryView: UIView {
             currentMonth += 1
         }
         updateMonthButtonTitle()
+        
+        // 캘린더 월 업데이트
+        calendarView.updateMonth(year: currentYear, month: currentMonth)
 
         tapNext?(currentYear, currentMonth)
     }
