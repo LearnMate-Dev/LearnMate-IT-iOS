@@ -224,7 +224,8 @@ public class QuizViewController: UIViewController {
                 self.showSituation(index: nextIndex)
             }
         } else {
-            let feedback = AnswerView(text: "다시 한 번 생각해보세요.", type: .wrong)
+            let feedbackText = currentQuiz.quizOptions[selectedIndex].description
+            let feedback = AnswerView(text: feedbackText, type: .wrong)
             quizStackView.addArrangedSubview(feedback)
             scrollToBottom()
 
