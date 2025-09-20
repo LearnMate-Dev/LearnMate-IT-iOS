@@ -163,7 +163,8 @@ public class HomeViewController: BaseViewController {
 
         scrollView.snp.makeConstraints {
             $0.top.equalTo(logoImageView.snp.bottom).offset(10)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(10)
         }
 
         contentView.snp.makeConstraints {
@@ -183,9 +184,9 @@ public class HomeViewController: BaseViewController {
         homeQuizView.snp.makeConstraints {
             $0.top.equalTo(homeProgressView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
-//            $0.height.equalTo(330)
+            $0.height.equalTo(330)
             $0.width.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(50)
+            $0.bottom.equalToSuperview().inset(20)
         }
     }
 }

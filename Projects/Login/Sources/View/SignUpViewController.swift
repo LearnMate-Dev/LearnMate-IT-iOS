@@ -215,7 +215,7 @@ public class SignUpViewController: BaseViewController {
     }
     
     private func showSignUpSuccessModal() {
-        let alertView = LMAlert(title: "회원가입이 완료되었습니다!", 
+        let alertView = LMAlert(title: "회원가입이 완료되었습니다!\n로그인 화면으로 이동하시겠습니까?", 
                                cancelTitle: "", 
                                confirmTitle: "확인")
         alertView.setConfirmAction { [weak self] in
