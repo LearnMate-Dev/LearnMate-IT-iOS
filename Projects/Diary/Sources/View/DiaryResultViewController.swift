@@ -110,7 +110,11 @@ public class DiaryResultViewController: BaseViewController {
     }
     
     private func handleSaveDiary() {
-        self.navigationController?.popViewController(animated: true)
+        print("🔄 handleSaveDiary 호출됨")
+        print("🔄 navigationController: \(String(describing: navigationController))")
+        
+        // root view인 DiaryViewController로 이동
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     private func configureData() {

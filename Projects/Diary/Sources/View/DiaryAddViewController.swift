@@ -131,9 +131,8 @@ public class DiaryAddViewController: BaseViewController {
         print("📊 분석 결과 화면으로 이동")
         
         let diaryResultViewController = DiaryResultViewController(diaryViewModel: viewModel, diaryData: diaryData)
-        diaryResultViewController.modalPresentationStyle = .fullScreen
         
-        present(diaryResultViewController, animated: true)
+        navigationController?.pushViewController(diaryResultViewController, animated: true)
     }
 
     private func bindData() {

@@ -194,6 +194,7 @@ open class DiaryResultView: UIView {
     private func bindEvents() {
         confirmButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                print("🔄 DiaryResultView: confirmButton 탭됨")
                 self?.onSaveButtonTapped?()
             })
             .disposed(by: disposeBag)
