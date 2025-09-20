@@ -49,5 +49,10 @@ public struct DomainAssembly: Assembly {
             let repository = resolver.resolve(DiaryRepository.self)!
             return DefaultDiaryUseCase(repository: repository)
         }
+
+        container.register(UserUseCase.self) { resolver in
+            let repository = resolver.resolve(UserRepository.self)!
+            return DefaultUserUseCase(repository: repository)
+        }
     }
 }

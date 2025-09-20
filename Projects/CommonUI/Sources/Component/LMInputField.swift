@@ -24,18 +24,21 @@ public class LMInputField: UIStackView {
     private var waringText: String?
     private var inputType: InputType?
     private var buttonTitle: String?
+    private var isSecureTextEntry: Bool = false
 
     public init(inputType: InputType? = nil,
                 inputText: String?,
                 inputPlaceholder: String?,
                 warningText: String?,
-                buttonTitle: String? = ""
+                buttonTitle: String? = "",
+                isSecureTextEntry: Bool = false
     ) {
         self.inputType = inputType
         self.inputText = inputText
         self.inputPlaceholder = inputPlaceholder
         self.waringText = warningText
         self.buttonTitle = buttonTitle
+        self.isSecureTextEntry = isSecureTextEntry
         super.init(frame: .zero)
         initUI()
         initAttribute()
@@ -60,6 +63,7 @@ public class LMInputField: UIStackView {
 
         inputTextField = inputTextField.then {
             $0.placeholder = inputPlaceholder
+            $0.isSecureTextEntry = isSecureTextEntry
         }
 
         warningLabel = warningLabel.then {
