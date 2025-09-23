@@ -10,4 +10,5 @@ import RxSwift
 public protocol QuizRepository {
     func startStep(course: Int, step: Int) -> Single<QuizVO>
     func patchStep(stepProgressId: Int) -> Single<DefaultVO>
+    func deleteStep(stepProgressId: Int) -> Single<DefaultVO>
 }

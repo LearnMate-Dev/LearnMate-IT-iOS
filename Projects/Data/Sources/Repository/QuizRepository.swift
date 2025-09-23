@@ -43,6 +43,16 @@ public class DefaultQuizRepository: QuizRepository {
         }
     }
 
+    public func deleteStep(stepProgressId: Int) -> Single<DefaultVO> {
+        return request(method: .delete,
+                       endpoint: "/api/courses/\(stepProgressId)",
+                       responseType: DefaultDTO.self
+        )
+        .map { dto in
+            return dto.getMessage()
+        }
+    }
+
     private func request<T: Decodable>(
         method: HTTPMethod = .get,
         parameters: [String: Any]? = nil,

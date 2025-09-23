@@ -12,6 +12,7 @@ protocol HomeViewModelProtocol {
     func getCourses()
     func startStep(course: Int, step: Int)
     func patchStep(stepProgressId: Int)
+    func deleteStep(stepProgressId: Int)
 }
 
 public class HomeViewModel: HomeViewModelProtocol {
@@ -67,6 +68,15 @@ public class HomeViewModel: HomeViewModelProtocol {
                 self?.patchStepSuccessSubject.onNext(())
             }, onFailure: { error in
                 print("❌ 퀴즈 완료 실패: \(error)")
+            }).disposed(by: disposeBag)
+    }
+
+    func deleteStep(stepProgressId: Int) {
+        quizUseCase.deleteStep(stepProgressId: stepProgressId)
+            .subscribe(onSuccess: { [weak self] result in
+                print("✅ 퀴즈 삭제 성공: \(result)")
+            }, onFailure: { error in
+                print("❌ 퀴즈 삭제 실패: \(error)")
             }).disposed(by: disposeBag)
     }
 }

@@ -203,12 +203,12 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
+				1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */,
 				CFB20675E9BA27548003EA55 /* ChatRepository.swift */,
 				956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */,
-				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
-				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
-				1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */,
 				95EDE8D82E7E6F6A0091ED75 /* UserRepository.swift */,
+				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
 				B437170C7511425C025E4D08 /* SignRepository.swift */,
 				1A1F66123A81636A913985E6 /* TokenRepository.swift */,
 			);

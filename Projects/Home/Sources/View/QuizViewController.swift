@@ -17,7 +17,8 @@ public class QuizViewController: UIViewController {
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: nil)
+                                             title: nil,
+                                             isBack: false)
     let progressView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1
         $0.layer.cornerRadius = 3
@@ -64,6 +65,7 @@ public class QuizViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         bindDatas()
+        bindEvents()
         bindPatchStepSuccess()
         if let quizData = quizData {
             showSituation(index: 0)
@@ -127,6 +129,37 @@ public class QuizViewController: UIViewController {
         } else {
             navigationBar.setupViewProperty(title: "처음 보는 사람과 인사하기")
         }
+    }
+    
+    func bindEvents() {
+        navigationBar.leftButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.showExitConfirmationAlert()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showExitConfirmationAlert() {
+        let lmAlert = LMAlert(title: "퀴즈를 중단하시겠습니까?\n진행 상황이 저장되지 않습니다.")
+        
+        lmAlert.setCancelAction {
+            // 취소 시 아무것도 하지 않음
+        }
+        
+        lmAlert.setConfirmAction { [weak self] in
+            self?.deleteStepAndExit()
+        }
+        
+        lmAlert.show(in: view)
+    }
+    
+    private func deleteStepAndExit() {
+        guard let quizData = quizData else { return }
+        
+        viewModel.deleteStep(stepProgressId: quizData.stepProgressId)
+        
+        // 네비게이션에서 뒤로가기
+        navigationController?.popViewController(animated: true)
     }
     
     func bindPatchStepSuccess() {
