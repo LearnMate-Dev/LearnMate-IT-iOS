@@ -60,6 +60,7 @@ public enum CommonUIAssets {
     public static let IconAdd = image(named: "add")
 
     /// color
+    public static let LMOrange0 = color(named: "LMOrange00")
     public static let LMOrange1 = color(named: "LMOrange01")
     public static let LMOrange3 = color(named: "LMOrange03")
     public static let LMOrange4 = color(named: "LMOrange04")
@@ -70,11 +71,13 @@ public enum CommonUIAssets {
     public static let LMGray4 = color(named: "LMGray04")
     public static let LMGray5 = color(named: "LMGray05")
     public static let LMGray6 = color(named: "LMGray06")
-    public static let LMBlue = color(named: "LMBlue")
+    public static let LMBlue = color(named: "LMBlue01")
     public static let LMBlue2 = color(named: "LMBlue02")
-    public static let LMGreen = color(named: "LMGreen")
+    public static let LMGreen = color(named: "LMGreen01")
+    public static let LMGreen2 = color(named: "LMGreen02")
     public static let LMRed = color(named: "LMRed")
     public static let LMRed2 = color(named: "LMRed02")
+    public static let LMPink = color(named: "LMPink")
 }
 
 private func image(named name: String) -> UIImage? {

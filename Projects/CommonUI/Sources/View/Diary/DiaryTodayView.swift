@@ -57,7 +57,6 @@ open class DiaryTodayView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        print("initttt")
         configureSubviews()
         makeConstraints()
     }

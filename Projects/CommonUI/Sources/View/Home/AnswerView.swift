@@ -45,7 +45,7 @@ open class AnswerView: UIView {
         switch type {
         case .correct:
             correctView = correctView.then {
-                $0.backgroundColor = CommonUIAssets.LMGreen
+                $0.backgroundColor = CommonUIAssets.LMGreen2
                 $0.layer.cornerRadius = 12
             }
 

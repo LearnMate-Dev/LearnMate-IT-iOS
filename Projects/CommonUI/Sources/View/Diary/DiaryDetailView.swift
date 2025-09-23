@@ -330,8 +330,12 @@ open class DiaryDetailView: UIView {
         for revision in revisions {
             let range = (revisedContent as NSString).range(of: revision.revisedContent)
             if range.location != NSNotFound {
-                attributedString.addAttribute(.backgroundColor,
-                                            value: CommonUIAssets.LMOrange1?.withAlphaComponent(0.3) ?? UIColor.orange.withAlphaComponent(0.3),
+                let categoryColor = SpellingCategoryColor.color(for: revision.category)
+                attributedString.addAttribute(.foregroundColor,
+                                              value: categoryColor.color ?? .black,
+                                            range: range)
+                attributedString.addAttribute(.font,
+                                              value: UIFont.systemFont(ofSize: 16, weight: .medium),
                                             range: range)
             }
         }
@@ -363,11 +367,12 @@ open class DiaryDetailView: UIView {
     
     private func createErrorView(_ revision: RevisionVO) -> UIView {
         let containerView = UIView()
+        let categoryColor = SpellingCategoryColor.color(for: revision.category)
         
         let originalBox = UIView().then {
             $0.backgroundColor = .clear
             $0.layer.borderWidth = 1
-            $0.layer.borderColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.3).cgColor
+            $0.layer.borderColor = categoryColor.borderColor?.cgColor
             $0.layer.cornerRadius = 8
         }
         
@@ -380,12 +385,12 @@ open class DiaryDetailView: UIView {
         
         let arrowImageView = UIImageView().then {
             $0.image = UIImage(systemName: "arrow.right")
-            $0.tintColor = CommonUIAssets.LMOrange1
+            $0.tintColor = categoryColor.color
             $0.contentMode = .scaleAspectFit
         }
         
         let revisedBox = UIView().then {
-            $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.3)
+            $0.backgroundColor = categoryColor.lightColor
             $0.layer.cornerRadius = 8
         }
         

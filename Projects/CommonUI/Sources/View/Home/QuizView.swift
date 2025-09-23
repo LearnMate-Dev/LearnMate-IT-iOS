@@ -59,7 +59,7 @@ open class QuizView: UIView {
             }
         case .question:
             questionView = questionView.then {
-                $0.backgroundColor = CommonUIAssets.LMBlue
+                $0.backgroundColor = CommonUIAssets.LMBlue2
                 $0.layer.cornerRadius = 12
             }
 
