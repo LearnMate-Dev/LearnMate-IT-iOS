@@ -16,7 +16,7 @@ final class HomeQuizCell: UICollectionViewCell {
     var quizSubtitleLabel = UILabel()
     var startButton = UIButton()
 
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     let onStartButtonTapped = PublishSubject<Void>()
 
     override init(frame: CGRect) {
@@ -123,7 +123,7 @@ final class HomeQuizCell: UICollectionViewCell {
         startButton.configuration = config
     }
 
-    func bindActions() {
+    public func bindActions() {
         startButton.rx.tap
             .bind(to: onStartButtonTapped)
             .disposed(by: disposeBag)
