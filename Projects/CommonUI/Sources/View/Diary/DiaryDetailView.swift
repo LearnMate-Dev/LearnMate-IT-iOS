@@ -12,7 +12,9 @@ import Domain
 import RxSwift
 
 open class DiaryDetailView: UIView {
-    
+
+    private let isResult: Bool
+
     // MARK: UI Components
     private let scrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = true
@@ -25,11 +27,11 @@ open class DiaryDetailView: UIView {
         $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
     }
-    
+
     private let dateUnderlineView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1
     }
-    
+
     // 원형 점수 표시기
     private let scoreContainerView = UIView()
     private let scoreCircleView = UIView().then {
@@ -38,111 +40,132 @@ open class DiaryDetailView: UIView {
         $0.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
         $0.layer.cornerRadius = 60
     }
-    
+
     private let scoreProgressView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange3
         $0.layer.cornerRadius = 60
     }
-    
+
     private let scoreLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         $0.textColor = CommonUIAssets.LMBlack
         $0.textAlignment = .center
     }
-    
+
     // 내가 쓴 일기 섹션
     private let originalSectionTitleLabel = UILabel().then {
         $0.text = "내가 쓴 일기"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = CommonUIAssets.LMBlack
     }
-    
+
     private let originalContentContainer = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
         $0.layer.cornerRadius = 12
     }
-    
+
     private let originalContentLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textColor = CommonUIAssets.LMBlack
         $0.numberOfLines = 0
     }
-    
+
     // 화살표
     private let arrowImageView = UIImageView().then {
         $0.image = UIImage(systemName: "arrow.down")
         $0.tintColor = CommonUIAssets.LMGray3
         $0.contentMode = .scaleAspectFit
     }
-    
+
     // 맞춤법 교정 결과 섹션
     private let revisedSectionTitleLabel = UILabel().then {
         $0.text = "맞춤법 교정 결과"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = CommonUIAssets.LMBlack
     }
-    
+
     private let revisedContentContainer = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
         $0.layer.cornerRadius = 12
     }
-    
+
     private let revisedContentLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textColor = CommonUIAssets.LMBlack
         $0.numberOfLines = 0
     }
-    
+
     // 맞춤법 오류 섹션
     private let errorSectionTitleLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = CommonUIAssets.LMBlack
     }
-    
+
     private let errorStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 12
         $0.distribution = .fill
     }
-    
+
     // AI 피드백 섹션
     private let feedbackSectionTitleLabel = UILabel().then {
         $0.text = "AI 피드백"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = CommonUIAssets.LMBlack
     }
-    
+
     private let feedbackContainer = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1?.withAlphaComponent(0.1)
         $0.layer.cornerRadius = 12
     }
-    
+
     private let feedbackLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         $0.textColor = CommonUIAssets.LMBlack
         $0.numberOfLines = 0
     }
-    
+
+    private let nonScrollView = UIView().then {
+        $0.backgroundColor = CommonUIAssets.LMWhite
+    }
+
+    private var confirmButton = LMButton(textColor: CommonUIAssets.LMBlack,
+                                        bgColor: CommonUIAssets.LMOrange1)
+
     // MARK: Properties
     private var diaryData: DiaryVO?
     let disposeBag = DisposeBag()
-    
+
     // MARK: Public Properties
     public var onSaveButtonTapped: (() -> Void)?
-    
+
     public override init(frame: CGRect) {
+        self.isResult = false
         super.init(frame: frame)
         setupUI()
         bindEvents()
     }
-    
+
+    public init(isResult: Bool) {
+        self.isResult = isResult
+        super.init(frame: .zero)
+        setupUI()
+        bindEvents()
+    }
+
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: Setup
     private func setupUI() {
         backgroundColor = CommonUIAssets.LMWhite
+        confirmButton.setTitle("일기 저장하기", for: .normal)
+
+        if isResult {
+            addSubview(nonScrollView)
+            nonScrollView.addSubview(confirmButton)
+        }
         
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -151,122 +174,139 @@ open class DiaryDetailView: UIView {
         scoreContainerView.addSubview(scoreCircleView)
         scoreContainerView.addSubview(scoreProgressView)
         scoreContainerView.addSubview(scoreLabel)
-        
+
         // 원문 컨테이너 설정
         originalContentContainer.addSubview(originalContentLabel)
-        
+
         // 수정문 컨테이너 설정
         revisedContentContainer.addSubview(revisedContentLabel)
-        
+
         // 피드백 컨테이너 설정
         feedbackContainer.addSubview(feedbackLabel)
-        
+
         [dateLabel, dateUnderlineView, scoreContainerView,
          originalSectionTitleLabel, originalContentContainer,
          arrowImageView, revisedSectionTitleLabel, revisedContentContainer,
          errorSectionTitleLabel, errorStackView,
          feedbackSectionTitleLabel, feedbackContainer]
             .forEach { contentView.addSubview($0) }
-        
+
         setupConstraints()
     }
-    
+
     private func bindEvents() {
     }
-    
+
     private func setupConstraints() {
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        if (isResult) {
+            scrollView.snp.makeConstraints {
+                $0.top.width.equalToSuperview()
+                $0.bottom.equalToSuperview().inset(100)
+            }
+
+            nonScrollView.snp.makeConstraints {
+                $0.top.equalTo(scrollView.snp.bottom)
+                $0.width.bottom.equalToSuperview()
+            }
+
+            confirmButton.snp.makeConstraints {
+                $0.width.equalToSuperview().inset(20)
+                $0.center.equalToSuperview()
+            }
+        } else {
+            scrollView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
         }
-        
+
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
         }
-        
+
         dateLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(20)
         }
-        
+
         dateUnderlineView.snp.makeConstraints {
             $0.top.equalTo(dateLabel.snp.bottom)
             $0.centerX.width.equalTo(dateLabel)
             $0.height.equalTo(3)
         }
-        
+    
         scoreContainerView.snp.makeConstraints {
             $0.top.equalTo(dateUnderlineView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(120)
         }
-        
+
         scoreCircleView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
+
         scoreProgressView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
+
         scoreLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
-        
+
         // 내가 쓴 일기 섹션
         originalSectionTitleLabel.snp.makeConstraints {
             $0.top.equalTo(scoreContainerView.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         originalContentContainer.snp.makeConstraints {
             $0.top.equalTo(originalSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         originalContentLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
-        
+
         // 화살표
         arrowImageView.snp.makeConstraints {
             $0.top.equalTo(originalContentContainer.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(20)
         }
-        
+
         // 맞춤법 교정 결과 섹션
         revisedSectionTitleLabel.snp.makeConstraints {
             $0.top.equalTo(arrowImageView.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         revisedContentContainer.snp.makeConstraints {
             $0.top.equalTo(revisedSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         revisedContentLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
-        
+
         // 맞춤법 오류 섹션
         errorSectionTitleLabel.snp.makeConstraints {
             $0.top.equalTo(revisedContentContainer.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         errorStackView.snp.makeConstraints {
             $0.top.equalTo(errorSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         // AI 피드백 섹션
         feedbackSectionTitleLabel.snp.makeConstraints {
             $0.top.equalTo(errorStackView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
-        
+
         feedbackContainer.snp.makeConstraints {
             $0.top.equalTo(feedbackSectionTitleLabel.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(20)
@@ -277,7 +317,7 @@ open class DiaryDetailView: UIView {
             $0.edges.equalToSuperview().inset(16)
         }
     }
-    
+
     // MARK: Public Methods
     public func configure(with diary: DiaryVO) {
         self.diaryData = diary

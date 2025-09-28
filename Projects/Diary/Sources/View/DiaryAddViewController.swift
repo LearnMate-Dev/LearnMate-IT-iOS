@@ -31,6 +31,12 @@ public class DiaryAddViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     public override func viewDidLoad() {
@@ -131,6 +137,7 @@ public class DiaryAddViewController: BaseViewController {
         print("📊 분석 결과 화면으로 이동")
         
         let diaryResultViewController = DiaryResultViewController(diaryViewModel: viewModel, diaryData: diaryData)
+        diaryResultViewController.hidesBottomBarWhenPushed = true
         
         navigationController?.pushViewController(diaryResultViewController, animated: true)
     }

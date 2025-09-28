@@ -162,6 +162,7 @@ public class DiaryViewController: BaseViewController {
     
     private func presentNewDiaryView() {
         let diaryAddViewController = DiaryAddViewController(diaryViewModel: viewModel)
+        diaryAddViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(diaryAddViewController, animated: true)
     }
     

@@ -10,7 +10,7 @@ import CommonUI
 import Domain
 
 public class DiaryResultViewController: BaseViewController {
-    let diaryResultView = DiaryResultView()
+    let diaryResultView = DiaryDetailView()
     let viewModel: DiaryViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: nil,
@@ -66,9 +66,7 @@ public class DiaryResultViewController: BaseViewController {
     }
 
     public func setupActions() {
-        // 기존 타겟들을 모두 제거
         navigationBar.rightButton.removeTarget(navigationBar, action: nil, for: .touchUpInside)
-        // 새로운 타겟 추가
         navigationBar.rightButton.addTarget(self, action: #selector(handleRightButtonTapped), for: .touchUpInside)
     }
 
@@ -92,18 +90,10 @@ public class DiaryResultViewController: BaseViewController {
     private func deleteDiaryAndExit() {
         viewModel.deleteDiaryDetail(diaryId: diaryData.diaryId)
 
-        // 모달 닫기
         dismiss(animated: true)
     }
 
     private func bindEvents() {
-        // leftButton이 nil이므로 이벤트 바인딩 제거
-        // navigationBar.leftButton.rx.tap
-        //     .subscribe(onNext: { [weak self] in
-        //         self?.navigationController?.popViewController(animated: true)
-        //     })
-        //     .disposed(by: disposeBag)
-        
         diaryResultView.onSaveButtonTapped = { [weak self] in
             self?.handleSaveDiary()
         }
@@ -113,7 +103,6 @@ public class DiaryResultViewController: BaseViewController {
         print("🔄 handleSaveDiary 호출됨")
         print("🔄 navigationController: \(String(describing: navigationController))")
         
-        // root view인 DiaryViewController로 이동
         self.navigationController?.popToRootViewController(animated: true)
     }
 

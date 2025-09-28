@@ -27,7 +27,6 @@
 		736D1C5EB53FB204B030C397 /* DiaryAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179BF0E6EE3B59F510B8AF40 /* DiaryAddView.swift */; };
 		7D319882A302F75CCE46A48C /* HomeQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A77FC9A0E2D7F62CA16E90 /* HomeQuizView.swift */; };
 		7DC59B80630854028C7C80F4 /* TuistBundle+CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */; };
-		7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */; };
 		8E0E6BDEA9574116ECBD55E4 /* ChatAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963B9323B265D5683B336EF2 /* ChatAnalysisView.swift */; };
 		95256BFF2E82F7F900AC3FE1 /* SpellingCategoryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95256BFE2E82F7F800AC3FE1 /* SpellingCategoryColor.swift */; };
 		9532C7A92E786B3C00B4BADE /* DiaryLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7A82E786B3800B4BADE /* DiaryLoadingView.swift */; };
@@ -94,7 +93,6 @@
 		75EF1CA00DA4B6E64F0CB1F0 /* CommonUIAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUIAssets.swift; sourceTree = "<group>"; };
 		7CE59FBFD1AAA1B5E7B45FD5 /* HomeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProgressView.swift; sourceTree = "<group>"; };
 		7DE79D12719B54383633DF73 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResultView.swift; sourceTree = "<group>"; };
 		83D64639CB805B71A9CA6C17 /* ChatAnalysisLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisLoadingView.swift; sourceTree = "<group>"; };
 		9266801EFBA6178C5B70C641 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		94EF204F3CD6F86C6167C300 /* TuistBundle+CommonUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+CommonUI.swift"; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 				FDCDDE79ED900C96E8D0EC4A /* DiaryEditView.swift */,
 				9532C7A82E786B3800B4BADE /* DiaryLoadingView.swift */,
 				95EDE8D42E7E60C50091ED75 /* DiaryDetailView.swift */,
-				7EEBE047F5F8EC16F0985204 /* DiaryResultView.swift */,
 				ACC4F396C35AD4C9F54E4BF6 /* DiaryTodayView.swift */,
 			);
 			path = Diary;
@@ -439,7 +436,6 @@
 				736D1C5EB53FB204B030C397 /* DiaryAddView.swift in Sources */,
 				9532C7A92E786B3C00B4BADE /* DiaryLoadingView.swift in Sources */,
 				F8B8A383C8670A714B41F2EE /* DiaryEditView.swift in Sources */,
-				7DD1D21C569B040F1AB7067B /* DiaryResultView.swift in Sources */,
 				95EDE8D52E7E60CA0091ED75 /* DiaryDetailView.swift in Sources */,
 				568C33E681D9B58B71273564 /* DiaryTodayView.swift in Sources */,
 				318A2464888400F05D38B7E5 /* DiaryView.swift in Sources */,
