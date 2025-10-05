@@ -82,7 +82,7 @@ open class ChatAnalysisView: UIView {
 
         nonScrollView.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             $0.height.equalTo(75)
         }
 
@@ -147,7 +147,7 @@ open class ChatAnalysisView: UIView {
         
         let bubbleView = UIView().then {
             $0.layer.cornerRadius = 16
-            $0.backgroundColor = author == "HUMAN" ? CommonUIAssets.LMBlue2 : UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+            $0.backgroundColor = author == "HUMAN" ? CommonUIAssets.LMBlue : UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         }
         
         let messageLabel = UILabel().then {

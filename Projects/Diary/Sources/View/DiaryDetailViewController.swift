@@ -10,7 +10,7 @@ import CommonUI
 import Domain
 
 public class DiaryDetailViewController: BaseViewController {
-    let diaryDetailView = DiaryDetailView()
+    let diaryDetailView = DiaryDetailView(isResult: false)
     let viewModel: DiaryViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,

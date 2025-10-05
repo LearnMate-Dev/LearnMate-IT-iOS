@@ -28,6 +28,9 @@
 		956C4D8B2E77104800E32F93 /* DiaryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */; };
 		956C4D8D2E7710BC00E32F93 /* DiaryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */; };
 		956C4D922E771DD300E32F93 /* TokenValidationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */; };
+		95EDE8D92E7E6F6E0091ED75 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDE8D82E7E6F6A0091ED75 /* UserRepository.swift */; };
+		95EDE8DD2E7E70A70091ED75 /* UserVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDE8DC2E7E70A40091ED75 /* UserVO.swift */; };
+		95EDE8DF2E7E90900091ED75 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDE8DE2E7E908B0091ED75 /* UserUseCase.swift */; };
 		9DBF2CB00F16FBC09602488A /* ChatDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F5EF085884AD8C9591CE5 /* ChatDetailVO.swift */; };
 		A0CEC5A2E5A76EBD987CE37D /* StepVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CFC331192C9FE77F3446A /* StepVO.swift */; };
 		B0B0382EF5DFDACDD3EB8A75 /* QuizUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */; };
@@ -71,6 +74,9 @@
 		956C4D8A2E77104500E32F93 /* DiaryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUseCase.swift; sourceTree = "<group>"; };
 		956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryRepository.swift; sourceTree = "<group>"; };
 		956C4D912E771DCB00E32F93 /* TokenValidationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenValidationUseCase.swift; sourceTree = "<group>"; };
+		95EDE8D82E7E6F6A0091ED75 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		95EDE8DC2E7E70A40091ED75 /* UserVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVO.swift; sourceTree = "<group>"; };
+		95EDE8DE2E7E908B0091ED75 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		9A2E30672E510822AAF38EAD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2CBEE7AC445460FAE28675 /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		A89402CD621AD4E2A5B16175 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 				F904C836B5CD2D4DA5EAE38D /* CourseUseCase.swift */,
 				6F4565F6A02AFBF3D9A0D41B /* QuizUseCase.swift */,
 				ABB8C62A6FE12783AD3819BE /* TokenUseCase.swift */,
+				95EDE8DE2E7E908B0091ED75 /* UserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 				FD08A7186FB9676854B7AEAC /* LoginVO.swift */,
 				24F9958F3DAC8013B440CEEA /* QuizVO.swift */,
 				798CFC331192C9FE77F3446A /* StepVO.swift */,
+				95EDE8DC2E7E70A40091ED75 /* UserVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -195,11 +203,12 @@
 		BC1A55AF7DC675AFEA6E7C12 /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
+				1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */,
 				CFB20675E9BA27548003EA55 /* ChatRepository.swift */,
 				956C4D8C2E7710B900E32F93 /* DiaryRepository.swift */,
-				DCA3E06ED2A8180A63919B6C /* CourseRepository.swift */,
+				95EDE8D82E7E6F6A0091ED75 /* UserRepository.swift */,
 				8A2AB67DE6AA50B3229C7A86 /* LoginRepository.swift */,
-				1BA1471CB01ECE73BAD3D595 /* QuizRepository.swift */,
 				B437170C7511425C025E4D08 /* SignRepository.swift */,
 				1A1F66123A81636A913985E6 /* TokenRepository.swift */,
 			);
@@ -279,10 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DAD609572D32F2BA3845AE /* String+Extension.swift in Sources */,
+				95EDE8DD2E7E70A70091ED75 /* UserVO.swift in Sources */,
 				16748FBAA3739FB31DEB293A /* UIImage+Extension.swift in Sources */,
 				92BD46EE48F6C63B6E43D069 /* UIView+Extension.swift in Sources */,
 				6D73D9043F7C3AA14AED7068 /* ChatRepository.swift in Sources */,
 				9532C7B02E7872A400B4BADE /* DiaryVO.swift in Sources */,
+				95EDE8DF2E7E90900091ED75 /* UserUseCase.swift in Sources */,
 				D510BC17C4583615CB60439E /* CourseRepository.swift in Sources */,
 				D7012CC494E56CD8CE58176F /* LoginRepository.swift in Sources */,
 				1782D2A1A7FB2BD6FFA1DFEA /* QuizRepository.swift in Sources */,
@@ -297,6 +308,7 @@
 				3E835D4F2E5F639557AC7C06 /* TokenUseCase.swift in Sources */,
 				956C4D8B2E77104800E32F93 /* DiaryUseCase.swift in Sources */,
 				9DBF2CB00F16FBC09602488A /* ChatDetailVO.swift in Sources */,
+				95EDE8D92E7E6F6E0091ED75 /* UserRepository.swift in Sources */,
 				72077A10B09B16423036D020 /* ChatRoomListVO.swift in Sources */,
 				6A879D6F3FB2FB826037933B /* ChatVO.swift in Sources */,
 				956C4D8D2E7710BC00E32F93 /* DiaryRepository.swift in Sources */,

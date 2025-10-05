@@ -30,21 +30,20 @@ public class DiaryViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        // 첫 진입 시에만 데이터 로드
+        let today = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: today)
+        let month = calendar.component(.month, from: today)
+        
+        // 첫 진입 시에만 오늘 날짜의 일기 데이터 로드
         if isFirstAppearance {
-            let today = Date()
-            let calendar = Calendar.current
-            let year = calendar.component(.year, from: today)
-            let month = calendar.component(.month, from: today)
-            
-            // 캘린더 데이터 로드
-            viewModel.getDiaryCalendar(year: year, month: month)
-            
             // 오늘 날짜의 일기 데이터 로드
             viewModel.getDiary(date: today)
-            
             isFirstAppearance = false
         }
+        
+        // 매번 캘린더 데이터 리로드 (일기 저장 후 돌아올 때 포함)
+        viewModel.getDiaryCalendar(year: year, month: month)
     }
 
     public override func viewDidLoad() {
@@ -163,6 +162,7 @@ public class DiaryViewController: BaseViewController {
     
     private func presentNewDiaryView() {
         let diaryAddViewController = DiaryAddViewController(diaryViewModel: viewModel)
+        diaryAddViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(diaryAddViewController, animated: true)
     }
     

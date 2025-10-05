@@ -9,6 +9,8 @@ import RxSwift
 
 public protocol QuizUseCase {
     func startStep(course: Int, step: Int) -> Single<QuizVO>
+    func patchStep(stepProgressId: Int) -> Single<DefaultVO>
+    func deleteStep(stepProgressId: Int) -> Single<DefaultVO>
 }
 
 public final class DefaultQuizUseCase: QuizUseCase {
@@ -20,5 +22,13 @@ public final class DefaultQuizUseCase: QuizUseCase {
     
     public func startStep(course: Int, step: Int) -> Single<QuizVO> {
         return repository.startStep(course: course, step: step)
+    }
+
+    public func patchStep(stepProgressId: Int) -> Single<DefaultVO> {
+        return repository.patchStep(stepProgressId: stepProgressId)
+    }
+
+    public func deleteStep(stepProgressId: Int) -> Single<DefaultVO> {
+        return repository.deleteStep(stepProgressId: stepProgressId)
     }
 }

@@ -90,8 +90,12 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
             return UICollectionViewCell()
         }
         let step = stepList[indexPath.item]
-        cell.quizTitleLabel.text = step.stepTitle
-        cell.quizSubtitleLabel.text = step.stepDescription
+        cell.configure(with: step)
+        
+        // 셀 재사용 시 이전 subscription 정리하고 버튼 이벤트 재설정
+        cell.disposeBag = DisposeBag()
+        cell.bindActions() // 버튼 이벤트 재설정
+        
         cell.onStartButtonTapped
             .subscribe(onNext: { [weak self] in
                 self?.onStartButtonTapped?(indexPath)

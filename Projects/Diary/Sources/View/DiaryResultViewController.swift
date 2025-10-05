@@ -10,7 +10,7 @@ import CommonUI
 import Domain
 
 public class DiaryResultViewController: BaseViewController {
-    let diaryResultView = DiaryResultView()
+    let diaryResultView = DiaryDetailView(isResult: true)
     let viewModel: DiaryViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: nil,
@@ -27,6 +27,16 @@ public class DiaryResultViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     public override func viewDidLoad() {
@@ -66,9 +76,7 @@ public class DiaryResultViewController: BaseViewController {
     }
 
     public func setupActions() {
-        // 기존 타겟들을 모두 제거
         navigationBar.rightButton.removeTarget(navigationBar, action: nil, for: .touchUpInside)
-        // 새로운 타겟 추가
         navigationBar.rightButton.addTarget(self, action: #selector(handleRightButtonTapped), for: .touchUpInside)
     }
 
@@ -91,26 +99,20 @@ public class DiaryResultViewController: BaseViewController {
 
     private func deleteDiaryAndExit() {
         viewModel.deleteDiaryDetail(diaryId: diaryData.diaryId)
-
-        // 모달 닫기
-        dismiss(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     private func bindEvents() {
-        // leftButton이 nil이므로 이벤트 바인딩 제거
-        // navigationBar.leftButton.rx.tap
-        //     .subscribe(onNext: { [weak self] in
-        //         self?.navigationController?.popViewController(animated: true)
-        //     })
-        //     .disposed(by: disposeBag)
-        
-        diaryResultView.onSaveButtonTapped = { [weak self] in
+        diaryResultView.onSaveButtonTapped.subscribe(onNext: { [weak self] in
             self?.handleSaveDiary()
-        }
+        }).disposed(by: disposeBag)
     }
     
     private func handleSaveDiary() {
-        self.navigationController?.popViewController(animated: true)
+        print("🔄 handleSaveDiary 호출됨")
+        print("🔄 navigationController: \(String(describing: navigationController))")
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     private func configureData() {

@@ -16,7 +16,7 @@ final class HomeQuizCell: UICollectionViewCell {
     var quizSubtitleLabel = UILabel()
     var startButton = UIButton()
 
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     let onStartButtonTapped = PublishSubject<Void>()
 
     override init(frame: CGRect) {
@@ -95,12 +95,35 @@ final class HomeQuizCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with course: CourseVO) {
-        quizTitleLabel.text = "처음 보는 사람과 인사하기"
-        quizSubtitleLabel.text = "인사와 대화의 첫걸음을 배워요"
+    func configure(with step: StepVO) {
+        quizTitleLabel.text = step.stepTitle
+        quizSubtitleLabel.text = step.stepDescription
+        
+        // stepStatus에 따라 버튼 텍스트 변경
+        let buttonTitle = step.stepStatus == "SOLVED" ? "완료" : "시작하기"
+        updateButtonTitle(buttonTitle)
+    }
+    
+    private func updateButtonTitle(_ title: String) {
+        var config = startButton.configuration ?? UIButton.Configuration.plain()
+        let attributedTitle = AttributedString(title, attributes: AttributeContainer([
+            .font: UIFont.systemFont(ofSize: 12, weight: .regular)
+        ]))
+        config.attributedTitle = attributedTitle
+        
+        if title == "완료" {
+            config.image = nil
+            config.baseBackgroundColor = CommonUIAssets.LMOrange4
+            config.baseForegroundColor = CommonUIAssets.LMGray1
+        } else {
+            config.image = CommonUIAssets.IconPlay
+            config.baseForegroundColor = CommonUIAssets.LMGray1
+        }
+        
+        startButton.configuration = config
     }
 
-    func bindActions() {
+    public func bindActions() {
         startButton.rx.tap
             .bind(to: onStartButtonTapped)
             .disposed(by: disposeBag)

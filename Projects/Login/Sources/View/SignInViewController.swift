@@ -38,6 +38,7 @@ public class SignInViewController: BaseViewController {
         super.viewDidLoad()
         bindActions()
         bindTransition()
+        setupTapGesture()
     }
 
     private func bindActions() {
@@ -74,6 +75,16 @@ public class SignInViewController: BaseViewController {
                 self?.onLoginSuccess?()
             }
         }
+    }
+    
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     public override func setupViewProperty() {

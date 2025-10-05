@@ -105,7 +105,7 @@ open class ChatView: UIView {
 
     public let sendButton = UIButton().then {
         $0.setImage(CommonUIAssets.IconSend, for: .normal)
-        $0.backgroundColor = CommonUIAssets.LMBlue2
+        $0.backgroundColor = CommonUIAssets.LMBlue
         $0.layer.cornerRadius = 22
         $0.isEnabled = false
     }
@@ -273,7 +273,7 @@ open class ChatView: UIView {
         
         let bubbleView = UIView().then {
             $0.layer.cornerRadius = 16
-            $0.backgroundColor = message.author == "HUMAN" ? CommonUIAssets.LMBlue2 : UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+            $0.backgroundColor = message.author == "HUMAN" ? CommonUIAssets.LMBlue : UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
         }
         
         let messageLabel = UILabel().then {

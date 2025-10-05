@@ -10,6 +10,9 @@ import RxSwift
 
 protocol HomeViewModelProtocol {
     func getCourses()
+    func startStep(course: Int, step: Int)
+    func patchStep(stepProgressId: Int)
+    func deleteStep(stepProgressId: Int)
 }
 
 public class HomeViewModel: HomeViewModelProtocol {
@@ -20,7 +23,9 @@ public class HomeViewModel: HomeViewModelProtocol {
     
     let stepListSubject = PublishSubject<[StepVO]>()
     let courseSubject = PublishSubject<CourseVO>()
+    let courseListSubject = PublishSubject<[CourseVO]>()
     let quizSubject = PublishSubject<QuizVO>()
+    let patchStepSuccessSubject = PublishSubject<Void>()
     
     public init(courseUseCase: CourseUseCase, tokenUseCase: TokenUseCase, quizUseCase: QuizUseCase) {
         self.courseUseCase = courseUseCase
@@ -33,6 +38,7 @@ public class HomeViewModel: HomeViewModelProtocol {
         courseUseCase.getCourses()
             .subscribe(onSuccess: { [weak self] response in
                 print("✅ 코스 정보: \(response)")
+                self?.courseListSubject.onNext(response.list)
                 if let firstCourse = response.list.first {
                     self?.stepListSubject.onNext(firstCourse.stepList)
                     self?.courseSubject.onNext(firstCourse)
@@ -43,12 +49,34 @@ public class HomeViewModel: HomeViewModelProtocol {
     }
     
     func startStep(course: Int, step: Int) {
+        print(course)
+        print(step)
+        print("ddddd")
         quizUseCase.startStep(course: course, step: step)
             .subscribe(onSuccess: { [weak self] quiz in
                 print("✅ 퀴즈 시작 성공: \(quiz)")
                 self?.quizSubject.onNext(quiz)
             }, onFailure: { error in
                 print("❌ 퀴즈 시작 실패: \(error)")
+            }).disposed(by: disposeBag)
+    }
+
+    func patchStep(stepProgressId: Int) {
+        quizUseCase.patchStep(stepProgressId: stepProgressId)
+            .subscribe(onSuccess: { [weak self] result in
+                print("✅ 퀴즈 완료 성공: \(result)")
+                self?.patchStepSuccessSubject.onNext(())
+            }, onFailure: { error in
+                print("❌ 퀴즈 완료 실패: \(error)")
+            }).disposed(by: disposeBag)
+    }
+
+    func deleteStep(stepProgressId: Int) {
+        quizUseCase.deleteStep(stepProgressId: stepProgressId)
+            .subscribe(onSuccess: { [weak self] result in
+                print("✅ 퀴즈 삭제 성공: \(result)")
+            }, onFailure: { error in
+                print("❌ 퀴즈 삭제 실패: \(error)")
             }).disposed(by: disposeBag)
     }
 }

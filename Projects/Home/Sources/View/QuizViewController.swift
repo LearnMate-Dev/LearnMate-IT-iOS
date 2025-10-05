@@ -12,9 +12,13 @@ import SnapKit
 import RxSwift
 
 public class QuizViewController: UIViewController {
+    let viewModel: HomeViewModel
+    private let disposeBag = DisposeBag()
+
     let navigationBar = DefaultNavigationBar(leftImage: CommonUIAssets.IconBack ?? nil,
                                              rightImage: nil,
-                                             title: nil)
+                                             title: nil,
+                                             isBack: false)
     let progressView = UIView().then {
         $0.backgroundColor = CommonUIAssets.LMOrange1
         $0.layer.cornerRadius = 3
@@ -40,12 +44,9 @@ public class QuizViewController: UIViewController {
     var quizData: QuizVO?
     var currentQuiz: QuizDetailVO?
 
-    public init(quizData: QuizVO) {
+    public init(homeViewModel: HomeViewModel, quizData: QuizVO) {
+        self.viewModel = homeViewModel
         self.quizData = quizData
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -64,6 +65,8 @@ public class QuizViewController: UIViewController {
         setupHierarchy()
         setupLayout()
         bindDatas()
+        bindEvents()
+        bindPatchStepSuccess()
         if let quizData = quizData {
             showSituation(index: 0)
         }
@@ -109,7 +112,7 @@ public class QuizViewController: UIViewController {
         
         scrollView.snp.makeConstraints {
             $0.top.equalTo(progressEntireView.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.horizontalEdges.bottom.equalToSuperview().inset(10)
         }
         
         quizStackView.snp.makeConstraints {
@@ -127,6 +130,47 @@ public class QuizViewController: UIViewController {
             navigationBar.setupViewProperty(title: "처음 보는 사람과 인사하기")
         }
     }
+    
+    func bindEvents() {
+        navigationBar.leftButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.showExitConfirmationAlert()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showExitConfirmationAlert() {
+        let lmAlert = LMAlert(title: "퀴즈를 중단하시겠습니까?\n진행 상황이 저장되지 않습니다.")
+        
+        lmAlert.setCancelAction {
+            // 취소 시 아무것도 하지 않음
+        }
+        
+        lmAlert.setConfirmAction { [weak self] in
+            self?.deleteStepAndExit()
+        }
+        
+        lmAlert.show(in: view)
+    }
+    
+    private func deleteStepAndExit() {
+        guard let quizData = quizData else { return }
+        
+        viewModel.deleteStep(stepProgressId: quizData.stepProgressId)
+        
+        // 네비게이션에서 뒤로가기
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func bindPatchStepSuccess() {
+        viewModel.patchStepSuccessSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                // patchStep 성공 시 네비게이션 뒤로 가기
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
 
     func showSituation(index: Int) {
         guard let quizData = quizData, index < quizData.quizList.count else {
@@ -140,6 +184,7 @@ public class QuizViewController: UIViewController {
         if !situationText.isEmpty {
             let situationView = QuizView(text: situationText, type: .situation)
             quizStackView.addArrangedSubview(situationView)
+            scrollToBottom()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.showQuestion(index: index)
@@ -158,6 +203,7 @@ public class QuizViewController: UIViewController {
         
         let questionView = QuizView(text: currentQuiz.quiz, type: .question)
         quizStackView.addArrangedSubview(questionView)
+        scrollToBottom()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let optionStack = UIStackView().then {
@@ -176,6 +222,7 @@ public class QuizViewController: UIViewController {
             self.quizStackView.addArrangedSubview(optionStack)
             self.currentQuestionIndex = index
             self.currentOptionStackView = optionStack
+            self.scrollToBottom()
         }
     }
     
@@ -200,6 +247,7 @@ public class QuizViewController: UIViewController {
             let feedbackText = currentQuiz.quizOptions[selectedIndex].description
             let feedback = AnswerView(text: feedbackText, type: .correct)
             quizStackView.addArrangedSubview(feedback)
+            scrollToBottom()
 
             updateProgress()
 
@@ -209,8 +257,10 @@ public class QuizViewController: UIViewController {
                 self.showSituation(index: nextIndex)
             }
         } else {
-            let feedback = AnswerView(text: "다시 한 번 생각해보세요.", type: .wrong)
+            let feedbackText = currentQuiz.quizOptions[selectedIndex].description
+            let feedback = AnswerView(text: feedbackText, type: .wrong)
             quizStackView.addArrangedSubview(feedback)
+            scrollToBottom()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 let currentQuiz = quizData.quizList[self.currentQuestionIndex]
@@ -229,6 +279,7 @@ public class QuizViewController: UIViewController {
 
                 self.quizStackView.addArrangedSubview(optionStack)
                 self.currentOptionStackView = optionStack
+                self.scrollToBottom()
             }
         }
     }
@@ -239,6 +290,12 @@ public class QuizViewController: UIViewController {
     
     func showQuizCompleteAlert() {
         let alertView = QuizCompleteAlertView()
+        alertView.onConfirmButtonTapped = { [weak self] in
+            // 퀴즈 완료 시 stepProgressId를 사용하여 patchStep 호출
+            if let quizData = self?.quizData {
+                self?.viewModel.patchStep(stepProgressId: quizData.stepProgressId)
+            }
+        }
         alertView.show(in: view)
     }
     
@@ -258,6 +315,18 @@ public class QuizViewController: UIViewController {
                 $0.width.equalTo(currentProgress)
             }
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func scrollToBottom() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let bottomOffset = CGPoint(
+                x: 0,
+                y: self.scrollView.contentSize.height - self.scrollView.bounds.height
+            )
+            if bottomOffset.y > 0 {
+                self.scrollView.setContentOffset(bottomOffset, animated: true)
+            }
         }
     }
 }

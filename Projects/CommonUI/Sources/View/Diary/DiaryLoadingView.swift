@@ -23,10 +23,19 @@ open class DiaryLoadingView: UIView {
     }
 
     private let subLabel = UILabel().then {
-        $0.text = "잠시만 기다려 주세요"
+        $0.text = "최대 15초 소요될 수 있습니다\n잠시만 기다려 주세요"
         $0.textColor = CommonUIAssets.LMGray3
         $0.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         $0.textAlignment = .center
+        $0.numberOfLines = 2
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.alignment = .center
+        $0.attributedText = NSAttributedString(
+            string: $0.text ?? "",
+            attributes: [.paragraphStyle: paragraphStyle]
+        )
     }
 
     public override init(frame: CGRect) {
@@ -55,7 +64,7 @@ open class DiaryLoadingView: UIView {
 
         subLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(mainLabel.snp.bottom).offset(8)
+            $0.top.equalTo(mainLabel.snp.bottom).offset(10)
         }
     }
 }

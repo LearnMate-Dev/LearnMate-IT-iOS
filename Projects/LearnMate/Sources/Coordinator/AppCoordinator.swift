@@ -13,7 +13,7 @@ import RxSwift
 import Domain
 
 protocol AppCoordinator: Coordinator {
-    // func showLoginFlow()
+    func showLoginFlow()
     func showTabbarFlow()
     func setTabBarCoordinator()
     func getChildCoordinator(_ type: CoordinatorType) -> Coordinator?
@@ -82,23 +82,36 @@ final class DefaultAppCoordinator: AppCoordinator{
             .disposed(by: disposeBag)
     }
     
-    private func showLoginFlow() {
-        let loginViewController = dependency.injector.resolve(LoginViewController.self)
-        loginViewController.onPresentLmLogin = { [weak self] in
-            guard let self else { return }
-            let signInViewController = self.dependency.injector.resolve(SignInViewController.self)
-            signInViewController.onPresentSignUp = { [weak self] in
+    func showLoginFlow() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            print("🔄 로그인 플로우 시작")
+            
+            let loginViewController = self.dependency.injector.resolve(LoginViewController.self)
+            loginViewController.onPresentLmLogin = { [weak self] in
                 guard let self else { return }
-                let signUpViewController = self.dependency.injector.resolve(SignUpViewController.self)
-                self.navigationController.pushViewController(signUpViewController, animated: true)
+                let signInViewController = self.dependency.injector.resolve(SignInViewController.self)
+                signInViewController.onPresentSignUp = { [weak self] in
+                    guard let self else { return }
+                    let signUpViewController = self.dependency.injector.resolve(SignUpViewController.self)
+                    self.navigationController.pushViewController(signUpViewController, animated: true)
+                }
+                signInViewController.onLoginSuccess = { [weak self] in
+                    guard let self else { return }
+                    self.showHomeAfterLogin()
+                }
+                self.navigationController.pushViewController(signInViewController, animated: true)
             }
-            signInViewController.onLoginSuccess = { [weak self] in
-                guard let self else { return }
-                self.showHomeAfterLogin()
-            }
-            self.navigationController.pushViewController(signInViewController, animated: true)
+            
+            // 네비게이션 바 숨기기 (로그인 화면에서 필요)
+            self.navigationController.setNavigationBarHidden(true, animated: false)
+            
+            // 애니메이션과 함께 로그인 화면 표시
+            self.navigationController.setViewControllers([loginViewController], animated: true)
+            
+            print("✅ 로그인 화면 표시 완료")
         }
-        self.navigationController.pushViewController(loginViewController, animated: true)
     }
 
     /// 탭바 컨트롤러 플로우
@@ -148,10 +161,13 @@ final class DefaultAppCoordinator: AppCoordinator{
 /// 자식 코디네이터가 종료되었을 때 실행할 메서드
 extension DefaultAppCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
+        print("🔄 coordinatorDidFinish 호출됨 - childCoordinator: \(Swift.type(of: childCoordinator))")
+        
         childCoordinators.removeAll { $0 === childCoordinator }
         
         // TabBarCoordinator가 종료되면 로그인 화면으로 이동
         if childCoordinator is TabBarCoordinator {
+            print("🔄 TabBarCoordinator 종료, 로그인 화면으로 이동")
             showLoginFlow()
         }
     }

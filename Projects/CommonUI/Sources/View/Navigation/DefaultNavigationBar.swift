@@ -16,7 +16,8 @@ public final class DefaultNavigationBar: UIView {
 
     public init(leftImage: UIImage?,
                 rightImage: UIImage?,
-                title: String?) {
+                title: String?,
+                isBack: Bool = true) {
         super.init(frame: .zero)
         setupUI()
         setupLayout()
@@ -25,7 +26,9 @@ public final class DefaultNavigationBar: UIView {
         rightButton.setImage(rightImage, for: .normal)
         titleLabel.text = title
 
-        leftButton.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+        if (isBack) {
+            leftButton.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+        }
         rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
     }
 

@@ -12,11 +12,11 @@ import RxSwift
 
 public class MyPageViewController: BaseViewController {
     let viewModel: MyPageViewModel
-    
-    let scrollView = UIScrollView()
-    let contentView = UIView()
     let myPageView = MyPageView()
-    
+    let navigationBar = DefaultNavigationBar(leftImage: nil,
+                                             rightImage: nil,
+                                             title: "마이페이지")
+
     public var onLogout: (() -> Void)?
     
     public init(myPageViewModel: MyPageViewModel) {
@@ -30,64 +30,112 @@ public class MyPageViewController: BaseViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = CommonUIAssets.LMOrange4
         bindActions()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 마이페이지 진입 시 사용자 정보 로드
+        viewModel.getUser()
     }
     
     public override func setupViewProperty() {
         view.backgroundColor = .systemBackground
-        
-        scrollView.do {
-            $0.showsVerticalScrollIndicator = false
-            $0.showsHorizontalScrollIndicator = false
-        }
     }
     
     public override func setupHierarchy() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(myPageView)
+        [navigationBar, myPageView]
+            .forEach { view.addSubview($0) }
     }
     
     public override func setupDelegate() {
     }
     
     public override func setupLayout() {
-        scrollView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.width.centerX.equalToSuperview()
         }
-        
-        contentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-            $0.width.equalToSuperview()
-        }
-        
+
         myPageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
     
     public override func setupBind() {
-        viewModel.onLogoutSuccess = { [weak self] in
-            self?.onLogout?()
-        }
-    }
-    
-    private func bindActions() {
-        myPageView.logoutButton.rx.tap
-            .bind { [weak self] in
-                self?.showLogoutAlert()
-            }
+        // User data binding
+        viewModel.userSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] user in
+                print("📱 사용자 정보 로드 성공: \(user)")
+                // 사용자 이름을 MyPageView에 업데이트
+                self?.myPageView.updateUserName(user.name)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.userErrorSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { error in
+                print("❌ 사용자 정보 로드 실패: \(error)")
+                // 에러 처리 로직 추가
+            })
+            .disposed(by: disposeBag)
+        
+        // Logout binding
+        viewModel.logoutSuccessSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("📱 로그아웃 성공")
+                // 토큰 지우기
+                self?.viewModel.clearTokens()
+                // 로그인 화면으로 이동
+                self?.onLogout?()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.logoutErrorSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { error in
+                print("❌ 로그아웃 실패: \(error)")
+                // 에러 처리 로직 추가
+            })
+            .disposed(by: disposeBag)
+        
+        // Delete user binding
+        viewModel.deleteUserSuccessSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("📱 회원탈퇴 성공")
+                // 토큰 지우기
+                self?.viewModel.clearTokens()
+                // 로그인 화면으로 이동
+                self?.onLogout?()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.deleteUserErrorSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { error in
+                print("❌ 회원탈퇴 실패: \(error)")
+                // 에러 처리 로직 추가
+            })
             .disposed(by: disposeBag)
     }
     
-    private func showLogoutAlert() {
-        let alert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
+    private func bindActions() {
+        myPageView.onGetUser = { [weak self] in
+            self?.viewModel.getUser()
+        }
         
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
-        alert.addAction(UIAlertAction(title: "로그아웃", style: .destructive) { [weak self] _ in
+        myPageView.onPostLogout = { [weak self] in
             self?.viewModel.logout()
-        })
+        }
         
-        present(alert, animated: true)
+        myPageView.onDeleteUser = { [weak self] in
+            self?.viewModel.deleteUser()
+        }
     }
+    
 }

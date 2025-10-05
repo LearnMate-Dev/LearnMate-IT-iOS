@@ -34,6 +34,7 @@ final class DefaultTabBarController: TabBarCoordinator {
     init(dependency: Dependency) {
         self.dependency = dependency
         self.navigationController = dependency.navigationController
+        self.finishDelegate = dependency.finishDelegate
     }
     
     /// 탭바 flow 시작
@@ -119,9 +120,24 @@ final class DefaultTabBarController: TabBarCoordinator {
     }
     
     private func handleLogout() {
-        // 모든 뷰 컨트롤러 제거하고 로그인 화면으로 이동
-        navigationController.viewControllers.removeAll()
-        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+        // 애니메이션과 함께 로그인 화면으로 전환
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            
+            print("🔄 로그아웃 처리 시작")
+            
+            // 네비게이션 바 숨기기 (로그인 화면에서 필요)
+            self.navigationController.setNavigationBarHidden(true, animated: false)
+            
+            // 모든 뷰 컨트롤러 제거
+            self.navigationController.viewControllers.removeAll()
+            
+            // 코디네이터 종료 알림
+            print("🔄 finishDelegate 호출 시도 - finishDelegate: \(self.finishDelegate != nil ? "존재" : "nil")")
+            self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+            
+            print("✅ 로그아웃 처리 완료")
+        }
     }
 }
 

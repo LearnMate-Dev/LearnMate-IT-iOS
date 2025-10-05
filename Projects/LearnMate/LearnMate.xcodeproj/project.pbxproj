@@ -17,6 +17,7 @@
 		53EE0AA2C503F809334F8412 /* Diary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7459B5071C1C3E12A6519672 /* Diary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EB1027699ED6A51784245ED /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */; };
 		94D749E4159727E7A20216D4 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF6CED28AB52ACEA2B7ED2A /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		95EDE8E12E7EA4090091ED75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95EDE8E02E7EA4090091ED75 /* Assets.xcassets */; };
 		9713AE7BE3A3D893CE4835B5 /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69B232119647519D26142C64 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9ED6C34369DCA2A469096622 /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7459B5071C1C3E12A6519672 /* Diary.framework */; };
 		A12C0E946F134ED9ED2BB84C /* DiaryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786F720EBD14634E77E3C1 /* DiaryAssembly.swift */; };
@@ -109,6 +110,7 @@
 		7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F58ED76FC4C0973305766F /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95EDE8E02E7EA4090091ED75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACFF0B3105009DD7646173E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		A4DC536F09A4A8284AA20CE7 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 		E290CD2FA6D313265F045E73 = {
 			isa = PBXGroup;
 			children = (
+				95EDE8E02E7EA4090091ED75 /* Assets.xcassets */,
 				B074F9F8E730729626040CA5 /* Project */,
 				ED0EE4EA4327EC4E4D07675E /* Products */,
 			);
@@ -329,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95EDE8E12E7EA4090091ED75 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4P6BZ8CR69;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -415,6 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 4P6BZ8CR69;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
