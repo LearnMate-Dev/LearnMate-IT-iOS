@@ -93,7 +93,7 @@ open class ChatDetailView: UIView {
         
         // 말풍선 배경
         let bubbleView = UIView().then {
-            $0.backgroundColor = chat.author == 0 ? UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) : CommonUIAssets.LMBlue2
+            $0.backgroundColor = chat.author == 0 ? UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) : CommonUIAssets.LMBlue
             $0.layer.cornerRadius = 16
         }
         

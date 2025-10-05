@@ -10,7 +10,7 @@ import CommonUI
 import Domain
 
 public class DiaryResultViewController: BaseViewController {
-    let diaryResultView = DiaryDetailView()
+    let diaryResultView = DiaryDetailView(isResult: true)
     let viewModel: DiaryViewModel
 
     let navigationBar = DefaultNavigationBar(leftImage: nil,
@@ -27,6 +27,16 @@ public class DiaryResultViewController: BaseViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     public override func viewDidLoad() {
@@ -89,14 +99,13 @@ public class DiaryResultViewController: BaseViewController {
 
     private func deleteDiaryAndExit() {
         viewModel.deleteDiaryDetail(diaryId: diaryData.diaryId)
-
-        dismiss(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     private func bindEvents() {
-        diaryResultView.onSaveButtonTapped = { [weak self] in
+        diaryResultView.onSaveButtonTapped.subscribe(onNext: { [weak self] in
             self?.handleSaveDiary()
-        }
+        }).disposed(by: disposeBag)
     }
     
     private func handleSaveDiary() {

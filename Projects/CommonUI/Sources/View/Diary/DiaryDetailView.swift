@@ -10,6 +10,7 @@ import SnapKit
 import Then
 import Domain
 import RxSwift
+import RxRelay
 
 open class DiaryDetailView: UIView {
 
@@ -137,7 +138,7 @@ open class DiaryDetailView: UIView {
     let disposeBag = DisposeBag()
 
     // MARK: Public Properties
-    public var onSaveButtonTapped: (() -> Void)?
+    public var onSaveButtonTapped = PublishRelay<Void>()
 
     public override init(frame: CGRect) {
         self.isResult = false
@@ -195,6 +196,9 @@ open class DiaryDetailView: UIView {
     }
 
     private func bindEvents() {
+        confirmButton.rx.tap
+            .bind(to: onSaveButtonTapped)
+            .disposed(by: disposeBag)
     }
 
     private func setupConstraints() {
