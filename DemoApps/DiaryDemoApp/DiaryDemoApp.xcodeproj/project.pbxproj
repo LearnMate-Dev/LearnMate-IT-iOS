@@ -11,16 +11,22 @@
 		051738536FB091A42BBC29D7 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50C8AC1FDDDA71B3AE5493C0 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C128817A988992A56BE71AA /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3517DBF9F61EFDF53798B0C4 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		13AE7B3476358F55C2F8D17E /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D6F1697026E57E1C7361C /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1557D8905491B0F3DE4993C7 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7F9B1C8735AE978A8D422CE4 /* RxSwift_RxCocoaRuntime.bundle */; };
 		1DFB1AC04FE03B446142D3EF /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE0CE73A1EE0955F435581A1 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2B4525BFC76D9D406CFA7910 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 24C44CF62239769F713F7F9E /* RxSwift_RxRelay.bundle */; };
+		2E8343CEA1A27DC8B427BD17 /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 8106E164EBD07235ECBD87BD /* RxSwift_RxCocoa.bundle */; };
 		506C16D1350233870F55FFE3 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06DD70F61C5395B8F6B86964 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5B7F5FC475A3F6201FE6F921 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E457C15546C84514482B908B /* Swinject.framework */; };
 		67E22C38722A4FF4E6A0DEEB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 850EE5C302A22B00A57EC370 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7796F66318906CF8B95EBA5E /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4D6F1697026E57E1C7361C /* Domain.framework */; };
 		93CEDA305765AC7E84E5B0C0 /* Diary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC570EB315B93C3F808A0E4D /* Diary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9895748F26B214F378DBE2B6 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3DA8A6B548AE66537F4485 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8C90F71557CBFA8AD2D1DBE /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 7F9B1C8735AE978A8D422CE4 /* RxSwift_RxCocoaRuntime.bundle */; };
 		B17AC6B68469D755710CA278 /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC570EB315B93C3F808A0E4D /* Diary.framework */; };
 		C215ED6674AEE217D52C5A5A /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 54088573D9B93BD8D1836345 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D96C9437144BD1420CD2CDE4 /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8106E164EBD07235ECBD87BD /* RxSwift_RxCocoa.bundle */; };
 		FB4E64F764D0C5A564102D01 /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E457C15546C84514482B908B /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFE8076577DF701135CD9BA3 /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 24C44CF62239769F713F7F9E /* RxSwift_RxRelay.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,15 +70,30 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E81E138AC19F2884FAAC56E6 /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				2E8343CEA1A27DC8B427BD17 /* RxSwift_RxCocoa.bundle in Dependencies */,
+				A8C90F71557CBFA8AD2D1DBE /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				2B4525BFC76D9D406CFA7910 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		06DD70F61C5395B8F6B86964 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA63AB4F705ACAEDD564255 /* DiaryDemoAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DiaryDemoAppTests-Info.plist"; sourceTree = "<group>"; };
+		24C44CF62239769F713F7F9E /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3517DBF9F61EFDF53798B0C4 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C8AC1FDDDA71B3AE5493C0 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54088573D9B93BD8D1836345 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4D6F1697026E57E1C7361C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9B1C8735AE978A8D422CE4 /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8106E164EBD07235ECBD87BD /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		850EE5C302A22B00A57EC370 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3DA8A6B548AE66537F4485 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23AD7257303DACAD08B449C /* DiaryDemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryDemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +162,9 @@
 				E7E91B3B22D8966C19A4BE50 /* DiaryDemoApp.app */,
 				A23AD7257303DACAD08B449C /* DiaryDemoAppTests.xctest */,
 				7D4D6F1697026E57E1C7361C /* Domain.framework */,
+				8106E164EBD07235ECBD87BD /* RxSwift_RxCocoa.bundle */,
+				7F9B1C8735AE978A8D422CE4 /* RxSwift_RxCocoaRuntime.bundle */,
+				24C44CF62239769F713F7F9E /* RxSwift_RxRelay.bundle */,
 				3517DBF9F61EFDF53798B0C4 /* RxSwift.framework */,
 				8E3DA8A6B548AE66537F4485 /* SnapKit.framework */,
 				E457C15546C84514482B908B /* Swinject.framework */,
@@ -188,6 +212,7 @@
 				B5CE515204FCC2E3B703FBDB /* Resources */,
 				A94C0C2BBFAFD31140BA8686 /* Frameworks */,
 				8A79A79E6011670399019A8C /* Embed Frameworks */,
+				E81E138AC19F2884FAAC56E6 /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -237,6 +262,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D96C9437144BD1420CD2CDE4 /* RxSwift_RxCocoa.bundle in Resources */,
+				1557D8905491B0F3DE4993C7 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				FFE8076577DF701135CD9BA3 /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

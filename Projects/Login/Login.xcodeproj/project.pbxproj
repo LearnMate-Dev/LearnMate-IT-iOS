@@ -9,16 +9,22 @@
 /* Begin PBXBuildFile section */
 		1C2FF4EC99DC8AFDA6474A54 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4530CC29B42C645D90C6417F /* SignUpViewController.swift */; };
 		250A492BA0E6132DCEBD7CE7 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9C214589834256AC9DD6AB /* Then.framework */; };
+		2CED992D499B6183B5C9B471 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 713EC902A494139BB8E5BCCD /* RxSwift_RxCocoaRuntime.bundle */; };
+		398996F321D102756DEB5DFF /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 7BECC4A7415894E2EACFA9CD /* RxSwift_RxCocoa.bundle */; };
 		4027F4EA82D89F9520C87D34 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159850B93C915DFB2D697BF2 /* LoginViewController.swift */; };
 		47A5B19D727E094AB3E609C2 /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D94347C029993F3A7163E0D /* SignUpCoordinator.swift */; };
 		58DB5E0A3D1E600D0B90C66D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D44C290B1A433AEF98F1870 /* Alamofire.framework */; };
+		5DB03997736B17AA830F8446 /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BECC4A7415894E2EACFA9CD /* RxSwift_RxCocoa.bundle */; };
 		6D45A5743268B6AB834A00C0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF3B7E565CEC77F3F96CE8E /* Domain.framework */; };
+		79871C92DBC1C8240B4AE369 /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2893E04FF4D6FD8180972 /* RxSwift_RxRelay.bundle */; };
 		92D7E2A0C6D4E3A6F57BAFB0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32E71FB3926A3A3118D0096 /* LoginViewModel.swift */; };
 		9543B5BD011752760C9E8D48 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3E03A11BBC654DEC110ECE /* Common.framework */; };
 		9CA5834F18EE0313B5DDD396 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD60F685267E861FDA1FC6 /* SignInViewController.swift */; };
 		A2DD99D036B33B4B67E19670 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 149968626029AF0A6483A522 /* RxSwift.framework */; };
 		A60EB3815F8DEA7C7B2A1E4D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */; };
+		ABF014B6A1D07007A1EAB5B5 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 713EC902A494139BB8E5BCCD /* RxSwift_RxCocoaRuntime.bundle */; };
 		B12493E0ECAB257C106608C4 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C804405C71F85DA84779A /* SignViewModel.swift */; };
+		CAD0943FA41B875B8BBF7F78 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 0CE2893E04FF4D6FD8180972 /* RxSwift_RxRelay.bundle */; };
 		D28E2FC4AE5F7ACDE801E66B /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F05C3948307A51BA730E85 /* SignInCoordinator.swift */; };
 		E603A7E7971D4E54E1F59146 /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C6E6787DFAF624F53D6F5B /* Login.framework */; };
 		F841FF334E1C6034EABAEDCB /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21D6E91FA13D3D7D7989E850 /* CommonUI.framework */; };
@@ -45,6 +51,18 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FFD6C8AE2771F41AEAFB31D /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				398996F321D102756DEB5DFF /* RxSwift_RxCocoa.bundle in Dependencies */,
+				ABF014B6A1D07007A1EAB5B5 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				CAD0943FA41B875B8BBF7F78 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		9117DA8C862D6E05999A97FA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CE2893E04FF4D6FD8180972 /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		149968626029AF0A6483A522 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		159850B93C915DFB2D697BF2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F122292170A9B08F370E93A /* Login-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Login-Info.plist"; sourceTree = "<group>"; };
@@ -67,7 +86,9 @@
 		4D94347C029993F3A7163E0D /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		5A3E03A11BBC654DEC110ECE /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF3B7E565CEC77F3F96CE8E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713EC902A494139BB8E5BCCD /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D21628961E74D99945474E /* LoginTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LoginTests-Info.plist"; sourceTree = "<group>"; };
+		7BECC4A7415894E2EACFA9CD /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D44C290B1A433AEF98F1870 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845C804405C71F85DA84779A /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		9A9C214589834256AC9DD6AB /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +152,9 @@
 				6CF3B7E565CEC77F3F96CE8E /* Domain.framework */,
 				28C6E6787DFAF624F53D6F5B /* Login.framework */,
 				A6D197429DF4204F655968BA /* LoginTests.xctest */,
+				7BECC4A7415894E2EACFA9CD /* RxSwift_RxCocoa.bundle */,
+				713EC902A494139BB8E5BCCD /* RxSwift_RxCocoaRuntime.bundle */,
+				0CE2893E04FF4D6FD8180972 /* RxSwift_RxRelay.bundle */,
 				149968626029AF0A6483A522 /* RxSwift.framework */,
 				A78DFB39E6F2ADF7C38CFA79 /* SnapKit.framework */,
 				9A9C214589834256AC9DD6AB /* Then.framework */,
@@ -203,6 +227,7 @@
 				3E3F6B6D3E768C3C582528F0 /* Resources */,
 				91FC9C906EABAEE7F3AF305C /* Frameworks */,
 				9117DA8C862D6E05999A97FA /* Embed Frameworks */,
+				8FFD6C8AE2771F41AEAFB31D /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -270,6 +295,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DB03997736B17AA830F8446 /* RxSwift_RxCocoa.bundle in Resources */,
+				2CED992D499B6183B5C9B471 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				79871C92DBC1C8240B4AE369 /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

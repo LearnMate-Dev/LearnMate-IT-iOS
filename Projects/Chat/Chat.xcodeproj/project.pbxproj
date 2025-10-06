@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080C736E5A6AB127531F27E8 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 539D57AE3ED1334F4A02624E /* RxSwift_RxRelay.bundle */; };
 		11E1631C9C29E4197C2782CB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E083003E4769EA2B259F4BE8 /* ChatViewController.swift */; };
 		11FB77FA2F86CE64816D448C /* ChatAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD38136DBF1DC16E4E5C1149 /* ChatAnalysisViewController.swift */; };
 		3B4198F882286B277F8A91E1 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E359E9093579B130E0EDD53 /* Then.framework */; };
+		7C5F74DDC3DE0433ED6E4E6B /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 539D57AE3ED1334F4A02624E /* RxSwift_RxRelay.bundle */; };
 		7F3F4DE30EE902DEABC6040E /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AAFFC509053CC99EAA3B277 /* ChatViewModel.swift */; };
 		9179FB9B1C2AEDCB7A3CFC7E /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588CFD307FD55B64676DA657 /* ChatCoordinator.swift */; };
 		91C973D65FBDD1ABF65A1A2A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F910F30DEBC80ABF5CC5A6F9 /* Domain.framework */; };
 		9D4DCAC5131580FCDFB46C37 /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F3020541ADB39BD0E8D703 /* ChatMainViewController.swift */; };
 		A1775C0ED2D81A830AFBC418 /* ChatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F4BAB810472885244650D /* ChatDetailViewController.swift */; };
+		AB50855E2F235AD0908EA6F4 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = EC175A6FA7DAEBE3C1E16E2B /* RxSwift_RxCocoaRuntime.bundle */; };
+		B2B167285458140FEBFF1D3A /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = C14BFB91277838F42D89F1A1 /* RxSwift_RxCocoa.bundle */; };
 		B6F14AC32696F30284073B2F /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE28C25EAD3F5DC9E76FFAC /* Chat.framework */; };
 		B89B886F288E5BDECC82BA50 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64BD6CA2A2FDA5A5D9C4A87D /* Common.framework */; };
+		D44CB3A385CD81A7DB72AF18 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC175A6FA7DAEBE3C1E16E2B /* RxSwift_RxCocoaRuntime.bundle */; };
 		E096380D552BAA6326ED8397 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB61D7206C15B58E35E2DEB /* CommonUI.framework */; };
 		E5B8FA727C6C42971E818CD4 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC90A71D97E9F538AACFD586 /* SnapKit.framework */; };
 		ED23A6EF1088344B6CDEA11A /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E05B48A08FE1A700DE3FEE63 /* RxSwift.framework */; };
+		F3D6D922D45284CCB1E0876E /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C14BFB91277838F42D89F1A1 /* RxSwift_RxCocoa.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +49,18 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9E7A1E6E4097717F89FAC5E6 /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				B2B167285458140FEBFF1D3A /* RxSwift_RxCocoa.bundle in Dependencies */,
+				AB50855E2F235AD0908EA6F4 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				080C736E5A6AB127531F27E8 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		FA35B64D2F98D3A591350C52 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,14 +79,17 @@
 		12F3020541ADB39BD0E8D703 /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
 		1C9D9ED19FA740929CF59EFD /* ChatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatTests-Info.plist"; sourceTree = "<group>"; };
 		1CB61D7206C15B58E35E2DEB /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		539D57AE3ED1334F4A02624E /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		588CFD307FD55B64676DA657 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		5AAFFC509053CC99EAA3B277 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		5E359E9093579B130E0EDD53 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BD6CA2A2FDA5A5D9C4A87D /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC90A71D97E9F538AACFD586 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14BFB91277838F42D89F1A1 /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8A6CF81DAC793585959F31D /* Chat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Chat-Info.plist"; sourceTree = "<group>"; };
 		E05B48A08FE1A700DE3FEE63 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E083003E4769EA2B259F4BE8 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EC175A6FA7DAEBE3C1E16E2B /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE28C25EAD3F5DC9E76FFAC /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F910F30DEBC80ABF5CC5A6F9 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD38136DBF1DC16E4E5C1149 /* ChatAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAnalysisViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +137,9 @@
 				64BD6CA2A2FDA5A5D9C4A87D /* Common.framework */,
 				1CB61D7206C15B58E35E2DEB /* CommonUI.framework */,
 				F910F30DEBC80ABF5CC5A6F9 /* Domain.framework */,
+				C14BFB91277838F42D89F1A1 /* RxSwift_RxCocoa.bundle */,
+				EC175A6FA7DAEBE3C1E16E2B /* RxSwift_RxCocoaRuntime.bundle */,
+				539D57AE3ED1334F4A02624E /* RxSwift_RxRelay.bundle */,
 				E05B48A08FE1A700DE3FEE63 /* RxSwift.framework */,
 				BC90A71D97E9F538AACFD586 /* SnapKit.framework */,
 				5E359E9093579B130E0EDD53 /* Then.framework */,
@@ -196,6 +220,7 @@
 				0F84A9387D23F154734313AF /* Resources */,
 				40DA9E438FAF016BB92A6A77 /* Frameworks */,
 				98990D6891C60DD8BCF876DA /* Embed Frameworks */,
+				9E7A1E6E4097717F89FAC5E6 /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -263,6 +288,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D6D922D45284CCB1E0876E /* RxSwift_RxCocoa.bundle in Resources */,
+				D44CB3A385CD81A7DB72AF18 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				7C5F74DDC3DE0433ED6E4E6B /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,24 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		00181A63BD5A4E32A1794E47 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328D6D1BA0FA2636FA0155B8 /* Domain.framework */; };
+		0A65BF9889D9938C24021C73 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = E03702194AC28A9FD32FF0FE /* RxSwift_RxCocoaRuntime.bundle */; };
+		494278B14A0FC3E6590FE772 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586EC72F494CD6E883BB4B8 /* DiaryDetailViewController.swift */; };
 		4E4C583D5CAC9D03C7EB7F42 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A3315666B7BD56F485B8A9 /* SnapKit.framework */; };
 		5FECAF90D2F533678E72BE33 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02C10B46B4182DF961CF26CC /* RxSwift.framework */; };
+		602F45527561CFB669799FA2 /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 9F761A1BCD096D9FC696976C /* RxSwift_RxCocoa.bundle */; };
+		81B33D6486E3275136120583 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = FF249EB3F981216FB08ABA37 /* RxSwift_RxRelay.bundle */; };
 		885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */; };
 		891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */; };
+		8CCD093DFC8FDDE112D252E0 /* DiaryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0937C2036F2399B84E2C5C7 /* DiaryResultViewController.swift */; };
 		94B961B5E2FDEBC84B982CCF /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2AAFED786D950F229E6BA2 /* Diary.framework */; };
-		9532C7B62E79C66E00B4BADE /* DiaryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */; };
-		95C68FAD2E7867F90017D28B /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */; };
-		95EDE8D32E7C55B00091ED75 /* DiaryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */; };
 		D2B984C26D53890B6DBB6050 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BEC8F153FC27AECC51B0518 /* CommonUI.framework */; };
 		D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */; };
 		D8F7B770E4A729F83E48FA58 /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C1E8068669524427E86AA /* DiaryTests.swift */; };
 		D95F10BE4FEEEF094BE37E04 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB32AAE1BAD4767CE6D9F22 /* Then.framework */; };
+		EFF94F365ED0A4CC96832F3F /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E03702194AC28A9FD32FF0FE /* RxSwift_RxCocoaRuntime.bundle */; };
 		F27D20B38412A2CC20E1D2ED /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D059F0C6958E2D203AB416 /* Common.framework */; };
+		F72BE7C9D71936AACD4B2277 /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FF249EB3F981216FB08ABA37 /* RxSwift_RxRelay.bundle */; };
+		F861EE9CFA5C9F3FC67FBC56 /* DiaryAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C75001A4BB9AA9933EAA521 /* DiaryAddViewController.swift */; };
+		FF849D431FE58CA661B3EBFB /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F761A1BCD096D9FC696976C /* RxSwift_RxCocoa.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		421C4957115487D9ED591766 /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				602F45527561CFB669799FA2 /* RxSwift_RxCocoa.bundle in Dependencies */,
+				0A65BF9889D9938C24021C73 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				81B33D6486E3275136120583 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		8C69C3DE941381F96081169B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,16 +82,19 @@
 		2BEC8F153FC27AECC51B0518 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		328D6D1BA0FA2636FA0155B8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C8A4CB2B8E262187DFF900 /* DiaryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCoordinator.swift; sourceTree = "<group>"; };
+		3C75001A4BB9AA9933EAA521 /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
 		474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB32AAE1BAD4767CE6D9F22 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2AAFED786D950F229E6BA2 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResultViewController.swift; sourceTree = "<group>"; };
-		95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAddViewController.swift; sourceTree = "<group>"; };
-		95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
+		9F761A1BCD096D9FC696976C /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		B586EC72F494CD6E883BB4B8 /* DiaryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryDetailViewController.swift; sourceTree = "<group>"; };
+		C0937C2036F2399B84E2C5C7 /* DiaryResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryResultViewController.swift; sourceTree = "<group>"; };
 		C13DC7064656FEAE0C95748F /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		E03702194AC28A9FD32FF0FE /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57A12A246065D220B5FF7D4 /* Diary-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Diary-Info.plist"; sourceTree = "<group>"; };
 		E9D059F0C6958E2D203AB416 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF249EB3F981216FB08ABA37 /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +177,10 @@
 		A3E9C9C2982E99C8AD377407 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				95EDE8D22E7C55AA0091ED75 /* DiaryDetailViewController.swift */,
+				3C75001A4BB9AA9933EAA521 /* DiaryAddViewController.swift */,
+				B586EC72F494CD6E883BB4B8 /* DiaryDetailViewController.swift */,
+				C0937C2036F2399B84E2C5C7 /* DiaryResultViewController.swift */,
 				C343285D2570E6982BB4E0F2 /* DiaryViewController.swift */,
-				95C68FAC2E7867F30017D28B /* DiaryAddViewController.swift */,
-				9532C7B52E79C66800B4BADE /* DiaryResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +201,9 @@
 				8C2AAFED786D950F229E6BA2 /* Diary.framework */,
 				474CB151776A3DCDA73ECBCF /* DiaryTests.xctest */,
 				328D6D1BA0FA2636FA0155B8 /* Domain.framework */,
+				9F761A1BCD096D9FC696976C /* RxSwift_RxCocoa.bundle */,
+				E03702194AC28A9FD32FF0FE /* RxSwift_RxCocoaRuntime.bundle */,
+				FF249EB3F981216FB08ABA37 /* RxSwift_RxRelay.bundle */,
 				02C10B46B4182DF961CF26CC /* RxSwift.framework */,
 				08A3315666B7BD56F485B8A9 /* SnapKit.framework */,
 				4DB32AAE1BAD4767CE6D9F22 /* Then.framework */,
@@ -207,6 +231,7 @@
 				EF9D790A8CD7811929A48750 /* Resources */,
 				74044ACF5F8F248DFDC87E54 /* Frameworks */,
 				CFEE997CDFDF1C63F9834482 /* Embed Frameworks */,
+				421C4957115487D9ED591766 /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -247,6 +272,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 21D1B3D84AAE7B6E00AA6ED5 /* Build configuration list for PBXProject "Diary" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -279,6 +306,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF849D431FE58CA661B3EBFB /* RxSwift_RxCocoa.bundle in Resources */,
+				EFF94F365ED0A4CC96832F3F /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				F72BE7C9D71936AACD4B2277 /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,11 +327,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9532C7B62E79C66E00B4BADE /* DiaryResultViewController.swift in Sources */,
-				95EDE8D32E7C55B00091ED75 /* DiaryDetailViewController.swift in Sources */,
 				885CDEFC2FEB10BFC254554E /* DiaryCoordinator.swift in Sources */,
+				F861EE9CFA5C9F3FC67FBC56 /* DiaryAddViewController.swift in Sources */,
+				494278B14A0FC3E6590FE772 /* DiaryDetailViewController.swift in Sources */,
+				8CCD093DFC8FDDE112D252E0 /* DiaryResultViewController.swift in Sources */,
 				891164E05D3D4DA36A21B781 /* DiaryViewController.swift in Sources */,
-				95C68FAD2E7867F90017D28B /* DiaryAddViewController.swift in Sources */,
 				D7AE472CEBD34DE939469DBE /* DiaryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,7 +368,13 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.DiaryTests;
 				PRODUCT_NAME = DiaryTests;
 				SDKROOT = iphoneos;
@@ -378,7 +414,13 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Diary;
 				PRODUCT_NAME = Diary;
 				SDKROOT = iphoneos;
@@ -386,7 +428,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -416,14 +461,23 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.DiaryTests;
 				PRODUCT_NAME = DiaryTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -457,7 +511,13 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.Diary;
 				PRODUCT_NAME = Diary;
 				SDKROOT = iphoneos;

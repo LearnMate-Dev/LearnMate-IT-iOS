@@ -3,28 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		05AB289424D929C36343D2F4 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		06D9B1E3EAB98F39B18A9073 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 2AF08E5B77E47043288AA7D6 /* RxSwift_RxRelay.bundle */; };
 		1078FC5AAE00358FF429974D /* Swinject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE77FC6A5C33846C3A0F4938 /* Swinject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		19018E396273C90C53D3C211 /* MyPage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12D8853AFAB2627F99580FEA /* MyPage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1CE04F4704E82CA3941109FE /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 669C3493E1AAB7F5F8D7488D /* Login.framework */; };
+		21A7912572BEAEA147C984C8 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 380FED7ECC7E6F0A06E9F8F7 /* RxSwift_RxCocoaRuntime.bundle */; };
 		3574816237AA3099A407294C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F59511B963866C713AAADAF5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3732FFCD30AA209C52C15E60 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E81ECDEE6E38BF519D239B /* Home.framework */; };
 		48CF06738721A6CAF309FBE7 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF6CED28AB52ACEA2B7ED2A /* Data.framework */; };
 		53EE0AA2C503F809334F8412 /* Diary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7459B5071C1C3E12A6519672 /* Diary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EB1027699ED6A51784245ED /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */; };
 		94D749E4159727E7A20216D4 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF6CED28AB52ACEA2B7ED2A /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		95EDE8E12E7EA4090091ED75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95EDE8E02E7EA4090091ED75 /* Assets.xcassets */; };
 		9713AE7BE3A3D893CE4835B5 /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69B232119647519D26142C64 /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9B765992712E2980E25157AB /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2AF08E5B77E47043288AA7D6 /* RxSwift_RxRelay.bundle */; };
 		9ED6C34369DCA2A469096622 /* Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7459B5071C1C3E12A6519672 /* Diary.framework */; };
 		A12C0E946F134ED9ED2BB84C /* DiaryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D786F720EBD14634E77E3C1 /* DiaryAssembly.swift */; };
 		A18DE5FF456CC8DA967405FE /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE77FC6A5C33846C3A0F4938 /* Swinject.framework */; };
 		A620BDBD74265A492E459F34 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CABF80B6D6BC7DECCE8094 /* Chat.framework */; };
 		A65BBAAA7C17D15060B4A3ED /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4DC536F09A4A8284AA20CE7 /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB09677584AC216795E68E9A /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 380FED7ECC7E6F0A06E9F8F7 /* RxSwift_RxCocoaRuntime.bundle */; };
 		BCCA91991B201B0D655660C3 /* Home.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06E81ECDEE6E38BF519D239B /* Home.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD85B2AE076CADB1F3BA1089 /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 7FA4CF63932EB8F052E582CE /* RxSwift_RxCocoa.bundle */; };
 		BE2FE27D7F7F556FEF30B5C5 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 626AE29E08BEF53B78AA9179 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C070F570C73BCFD00BECADB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F85A08B05BB1AAF8BE7B5C9A /* AppDelegate.swift */; };
 		C5677CA87D28CA76B645AD32 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 158A735408A879B5585083A0 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -38,6 +42,7 @@
 		ED0E51F24A0EDA5AD1A361D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50486214C077FA786A3BE37D /* SceneDelegate.swift */; };
 		F06C5A340BE044D908B6DC13 /* ChatAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39319B32F0C0DD673EA6D68 /* ChatAssembly.swift */; };
 		F2F95C80703161F830ADE231 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ACFF0B3105009DD7646173E /* Domain.framework */; };
+		F42CAFC3E0AD2D5D8F947284 /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FA4CF63932EB8F052E582CE /* RxSwift_RxCocoa.bundle */; };
 		F9BCEC256DA0276FA5FB0C0D /* Chat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42CABF80B6D6BC7DECCE8094 /* Chat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FA27270DA3AA0207B08DC78C /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F58ED76FC4C0973305766F /* DependencyInjector.swift */; };
 		FB6329BC50CF7672DBEF58F3 /* DomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAA29E105D3AB0BAD502401 /* DomainAssembly.swift */; };
@@ -55,6 +60,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2FB302460C2B91DFCA6B9DEF /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				BD85B2AE076CADB1F3BA1089 /* RxSwift_RxCocoa.bundle in Dependencies */,
+				AB09677584AC216795E68E9A /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				06D9B1E3EAB98F39B18A9073 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		881E2D70481E0A148D95B79E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,6 +116,8 @@
 		158A735408A879B5585083A0 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B287BCC12CA22DAF2F8DE5 /* DataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
 		1D786F720EBD14634E77E3C1 /* DiaryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryAssembly.swift; sourceTree = "<group>"; };
+		2AF08E5B77E47043288AA7D6 /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		380FED7ECC7E6F0A06E9F8F7 /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CABF80B6D6BC7DECCE8094 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4827AE49C7B9592C6AA4F708 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		50486214C077FA786A3BE37D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,9 +127,9 @@
 		7459B5071C1C3E12A6519672 /* Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75AF6F9390E20101F1F4BFB3 /* LearnMate-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "LearnMate-Info.plist"; sourceTree = "<group>"; };
 		7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FA4CF63932EB8F052E582CE /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F58ED76FC4C0973305766F /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearnMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		95EDE8E02E7EA4090091ED75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ACFF0B3105009DD7646173E /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
 		A4DC536F09A4A8284AA20CE7 /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +219,6 @@
 		E290CD2FA6D313265F045E73 = {
 			isa = PBXGroup;
 			children = (
-				95EDE8E02E7EA4090091ED75 /* Assets.xcassets */,
 				B074F9F8E730729626040CA5 /* Project */,
 				ED0EE4EA4327EC4E4D07675E /* Products */,
 			);
@@ -221,6 +239,9 @@
 				8A00D2BDD6B9A0B6E62CF3CC /* LearnMateTests.xctest */,
 				669C3493E1AAB7F5F8D7488D /* Login.framework */,
 				12D8853AFAB2627F99580FEA /* MyPage.framework */,
+				7FA4CF63932EB8F052E582CE /* RxSwift_RxCocoa.bundle */,
+				380FED7ECC7E6F0A06E9F8F7 /* RxSwift_RxCocoaRuntime.bundle */,
+				2AF08E5B77E47043288AA7D6 /* RxSwift_RxRelay.bundle */,
 				7C422FE2DDF9127C2F4B2DF0 /* RxSwift.framework */,
 				158A735408A879B5585083A0 /* SnapKit.framework */,
 				AE77FC6A5C33846C3A0F4938 /* Swinject.framework */,
@@ -232,13 +253,13 @@
 		FF553F19160719C6C483E8C6 /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				89F58ED76FC4C0973305766F /* DependencyInjector.swift */,
-				19B287BCC12CA22DAF2F8DE5 /* DataAssembly.swift */,
-				EEAA29E105D3AB0BAD502401 /* DomainAssembly.swift */,
-				B097E64BFDAE1FCC4E0AB423 /* LoginAssembly.swift */,
-				9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */,
 				F39319B32F0C0DD673EA6D68 /* ChatAssembly.swift */,
+				19B287BCC12CA22DAF2F8DE5 /* DataAssembly.swift */,
+				89F58ED76FC4C0973305766F /* DependencyInjector.swift */,
 				1D786F720EBD14634E77E3C1 /* DiaryAssembly.swift */,
+				EEAA29E105D3AB0BAD502401 /* DomainAssembly.swift */,
+				9AEA88AC00680DC27F375FB6 /* HomeAssembly.swift */,
+				B097E64BFDAE1FCC4E0AB423 /* LoginAssembly.swift */,
 				C25294FAE7464C63791082A4 /* MyPageAssembly.swift */,
 			);
 			path = DI;
@@ -255,6 +276,7 @@
 				DA9C9DE9254B7EA2D28C0472 /* Resources */,
 				F106665034201531C79592D6 /* Frameworks */,
 				91F58C3AFE70D668B3ABC3A6 /* Embed Frameworks */,
+				2FB302460C2B91DFCA6B9DEF /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -332,7 +354,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95EDE8E12E7EA4090091ED75 /* Assets.xcassets in Resources */,
+				F42CAFC3E0AD2D5D8F947284 /* RxSwift_RxCocoa.bundle in Resources */,
+				21A7912572BEAEA147C984C8 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				9B765992712E2980E25157AB /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +407,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4P6BZ8CR69;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,7 +414,6 @@
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Support/LearnMate-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,18 +423,23 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LearnMate;
 				PRODUCT_NAME = LearnMate;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -422,7 +449,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4P6BZ8CR69;
 				ENABLE_PREVIEWS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,7 +456,6 @@
 					"$(SRCROOT)/../../Tuist/.build/checkouts/RxSwift/Sources/RxCocoaRuntime/include",
 				);
 				INFOPLIST_FILE = "Support/LearnMate-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,19 +465,27 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LearnMate;
 				PRODUCT_NAME = LearnMate;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -536,14 +569,23 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LearnMateTests;
 				PRODUCT_NAME = LearnMateTests;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -574,7 +616,13 @@
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
 					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap -Xcc -fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap";
+				OTHER_SWIFT_FLAGS = (
+					"$(inherited)",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/checkouts/FSCalendar/FSCalendar/include/module.modulemap",
+					"-Xcc",
+					"-fmodule-map-file=$(SRCROOT)/../../Tuist/.build/tuist-derived/RxCocoaRuntime/RxCocoaRuntime.modulemap",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.tuist.LearnMateTests;
 				PRODUCT_NAME = LearnMateTests;
 				SDKROOT = iphoneos;

@@ -9,14 +9,20 @@
 /* Begin PBXBuildFile section */
 		2A443C4585161240125DD8C7 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F99D6F8F6ADC1D08F0F6ABB /* Domain.framework */; };
 		304B065A8DA2720317ACA30E /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CE8B83CE2222EF3C23EC04 /* MyPageViewController.swift */; };
+		55D8E8A185856574C6336FCC /* RxSwift_RxRelay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8D418A1B1DA695AA3C670909 /* RxSwift_RxRelay.bundle */; };
+		6ACC73655CCEBCF5E54C01AC /* RxSwift_RxCocoa.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 3FE66358AFD1674466CC2A8F /* RxSwift_RxCocoa.bundle */; };
+		82CCEBDA3817A15BECECE861 /* RxSwift_RxCocoaRuntime.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE1DF0DBB5A4ACEB2F4D3407 /* RxSwift_RxCocoaRuntime.bundle */; };
+		9B67BEE5202AB03C733AEECE /* RxSwift_RxCocoa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FE66358AFD1674466CC2A8F /* RxSwift_RxCocoa.bundle */; };
 		A945DE715F1DC2693CA02781 /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544912429A76CB35FEBE315 /* MyPageViewModel.swift */; };
 		AB1D465F12680E6BEF24E0A8 /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C1EF0F9A7761EB05E9EA21 /* MyPageCoordinator.swift */; };
+		B346D6F39E7BD436F1951576 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = DE1DF0DBB5A4ACEB2F4D3407 /* RxSwift_RxCocoaRuntime.bundle */; };
 		B5B8BB773CB5DD8793A02B9F /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2250E7E4991D615622146F7 /* Then.framework */; };
 		B62099510F3B1CDFB4F01E1C /* MyPage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593BC506F70D9100B69F8D7A /* MyPage.framework */; };
 		C84E1067099CEB0415B956AC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952C77C0D77B9A5A1F4AC653 /* SnapKit.framework */; };
 		CE62FD63351F77276ECA6751 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4C9D2130E70338E16F60DA /* CommonUI.framework */; };
 		D2A6390E4AF06E70FC2941FD /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F267C8BE555E7B87A525E /* SearchTests.swift */; };
 		DE5931B52954ABDC92176E76 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858C44573A8E09999B6B14E /* RxSwift.framework */; };
+		FBAA05F724C078C283C6FF00 /* RxSwift_RxRelay.bundle in Dependencies */ = {isa = PBXBuildFile; fileRef = 8D418A1B1DA695AA3C670909 /* RxSwift_RxRelay.bundle */; };
 		FF4FC5961E55CF694F6776C0 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BF7D4A21E2B6B1A4908B69 /* Common.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +47,18 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50A6F0D4FEAF785D4137B0F5 /* Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstSubfolderSpec = 16;
+			files = (
+				6ACC73655CCEBCF5E54C01AC /* RxSwift_RxCocoa.bundle in Dependencies */,
+				B346D6F39E7BD436F1951576 /* RxSwift_RxCocoaRuntime.bundle in Dependencies */,
+				FBAA05F724C078C283C6FF00 /* RxSwift_RxRelay.bundle in Dependencies */,
+			);
+			name = Dependencies;
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		E858832D26C52AD98C79A397 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,13 +76,16 @@
 		1858C44573A8E09999B6B14E /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19C1EF0F9A7761EB05E9EA21 /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
 		1F99D6F8F6ADC1D08F0F6ABB /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FE66358AFD1674466CC2A8F /* RxSwift_RxCocoa.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoa.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		593BC506F70D9100B69F8D7A /* MyPage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyPage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6544912429A76CB35FEBE315 /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		8D418A1B1DA695AA3C670909 /* RxSwift_RxRelay.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxRelay.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		9168A8789CFD60F91F2612BD /* MyPageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyPageTests-Info.plist"; sourceTree = "<group>"; };
 		952C77C0D77B9A5A1F4AC653 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7F267C8BE555E7B87A525E /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		C1BF7D4A21E2B6B1A4908B69 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD4C9D2130E70338E16F60DA /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1DF0DBB5A4ACEB2F4D3407 /* RxSwift_RxCocoaRuntime.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwift_RxCocoaRuntime.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2250E7E4991D615622146F7 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BD1A6433572FAE92C215F4 /* MyPage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MyPage-Info.plist"; sourceTree = "<group>"; };
 		F6CE8B83CE2222EF3C23EC04 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +174,9 @@
 				1F99D6F8F6ADC1D08F0F6ABB /* Domain.framework */,
 				593BC506F70D9100B69F8D7A /* MyPage.framework */,
 				17412FF769197BE5AA09DBFB /* MyPageTests.xctest */,
+				3FE66358AFD1674466CC2A8F /* RxSwift_RxCocoa.bundle */,
+				DE1DF0DBB5A4ACEB2F4D3407 /* RxSwift_RxCocoaRuntime.bundle */,
+				8D418A1B1DA695AA3C670909 /* RxSwift_RxRelay.bundle */,
 				1858C44573A8E09999B6B14E /* RxSwift.framework */,
 				952C77C0D77B9A5A1F4AC653 /* SnapKit.framework */,
 				E2250E7E4991D615622146F7 /* Then.framework */,
@@ -198,6 +222,7 @@
 				85AED01803020836BDBD7AA4 /* Resources */,
 				7136FA3780B8B19A33828764 /* Frameworks */,
 				E858832D26C52AD98C79A397 /* Embed Frameworks */,
+				50A6F0D4FEAF785D4137B0F5 /* Dependencies */,
 			);
 			buildRules = (
 			);
@@ -272,6 +297,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B67BEE5202AB03C733AEECE /* RxSwift_RxCocoa.bundle in Resources */,
+				82CCEBDA3817A15BECECE861 /* RxSwift_RxCocoaRuntime.bundle in Resources */,
+				55D8E8A185856574C6336FCC /* RxSwift_RxRelay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
