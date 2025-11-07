@@ -70,8 +70,7 @@ public class MyPageViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] user in
                 print("📱 사용자 정보 로드 성공: \(user)")
-                // 사용자 이름을 MyPageView에 업데이트
-                self?.myPageView.updateUserName(user.name)
+                self?.myPageView.updateUserName(user.name, user.userId)
             })
             .disposed(by: disposeBag)
         
@@ -79,7 +78,6 @@ public class MyPageViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { error in
                 print("❌ 사용자 정보 로드 실패: \(error)")
-                // 에러 처리 로직 추가
             })
             .disposed(by: disposeBag)
         
