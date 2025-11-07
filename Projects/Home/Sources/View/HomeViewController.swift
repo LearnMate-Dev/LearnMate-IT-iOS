@@ -97,6 +97,7 @@ public class HomeViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] course in
                 self?.currentCourse = course
+                self?.homeQuizView.bind(course: course)
             })
             .disposed(by: disposeBag)
     }
@@ -121,6 +122,7 @@ public class HomeViewController: BaseViewController {
         let currentCourse = homeProgressView.courseList[homeProgressView.currentCourseIndex]
         self.currentCourse = currentCourse
         homeQuizView.setQuizList(currentCourse.stepList)
+        homeQuizView.bind(course: currentCourse)
     }
     
     private func bindPatchStepSuccess() {
