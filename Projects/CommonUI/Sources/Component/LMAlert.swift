@@ -57,6 +57,8 @@ public class LMAlert: UIView {
     // MARK: - Properties
     private var cancelAction: (() -> Void)?
     private var confirmAction: (() -> Void)?
+    private var titleTopConstraint: Constraint?
+    private var buttonTopConstraint: Constraint?
     
     // MARK: - Initialization
     public init(title: String, cancelTitle: String = "아니요", confirmTitle: String = "네") {
@@ -102,7 +104,7 @@ public class LMAlert: UIView {
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(24)
+            self.titleTopConstraint = $0.top.equalToSuperview().inset(24).constraint
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.lessThanOrEqualTo(buttonStackView.snp.top).offset(-16)
         }
@@ -111,7 +113,7 @@ public class LMAlert: UIView {
             $0.bottom.equalToSuperview().inset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(44)
-            $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(16)
+            self.buttonTopConstraint = $0.top.greaterThanOrEqualTo(titleLabel.snp.bottom).offset(16).constraint
         }
     }
     
@@ -137,7 +139,10 @@ public class LMAlert: UIView {
         // cancelTitle이 비어있으면 취소 버튼 숨기기
         if cancelTitle.isEmpty {
             cancelButton.isHidden = true
+        } else {
+            cancelButton.isHidden = false
         }
+        updateSpacing(for: attributedString)
     }
     
     // MARK: - Actions
@@ -194,5 +199,41 @@ public class LMAlert: UIView {
             self.removeFromSuperview()
             completion()
         }
+    }
+
+    // MARK: - Layout Helpers
+    private func updateSpacing(for attributedString: NSAttributedString) {
+        let contentWidth: CGFloat = 280 - 40 // container width - horizontal inset
+        let lineCount = calculateLineCount(for: attributedString, maxWidth: contentWidth)
+        let spacing = spacingConfiguration(for: lineCount)
+        titleTopConstraint?.update(offset: spacing.topInset)
+        buttonTopConstraint?.update(offset: spacing.betweenSpacing)
+        layoutIfNeeded()
+    }
+    
+    private func spacingConfiguration(for lineCount: Int) -> (topInset: CGFloat, betweenSpacing: CGFloat) {
+        switch lineCount {
+        case ..<2:
+            return (32, 24)
+        case 2:
+            return (28, 20)
+        default:
+            return (24, 16)
+        }
+    }
+    
+    private func calculateLineCount(for attributedString: NSAttributedString, maxWidth: CGFloat) -> Int {
+        guard attributedString.length > 0 else { return 1 }
+        let boundingRect = attributedString.boundingRect(
+            with: CGSize(width: maxWidth, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil
+        )
+        let font = (attributedString.attribute(.font, at: 0, effectiveRange: nil) as? UIFont) ?? titleLabel.font ?? .systemFont(ofSize: 16)
+        let paragraphStyle = attributedString.attribute(.paragraphStyle, at: 0, effectiveRange: nil) as? NSParagraphStyle
+        let lineHeight = font.lineHeight + (paragraphStyle?.lineSpacing ?? 0)
+        if lineHeight == 0 { return 1 }
+        let rawCount = Int(ceil(boundingRect.height / lineHeight))
+        return max(1, rawCount)
     }
 }

@@ -8,6 +8,7 @@
 import Domain
 import RxSwift
 import RxRelay
+import Foundation
 
 protocol SignViewModelProtocol {
     func postSignIn(email: String, password: String)
@@ -26,7 +27,9 @@ public class SignViewModel: SignViewModelProtocol {
     public var onConfirmSuccess: (() -> Void)?
     public var onConfirmFailure: (() -> Void)?
     public var onSignInSuccess: (() -> Void)?
+    public var onSignInFailure: ((String) -> Void)?
     public var onSignUpSuccess: (() -> Void)?
+    public var onSignUpFailure: ((String) -> Void)?
     public let emailVerified = BehaviorRelay<Bool>(value: false)
 
     public init(signUseCase: SignUseCase, tokenRepository: TokenRepository) {
@@ -50,8 +53,11 @@ public class SignViewModel: SignViewModelProtocol {
                 }
 
                 self.onSignInSuccess?()
-            }, onFailure: { error in
-                print("로그인 실패: \(error)")
+            }, onFailure: { [weak self] error in
+                guard let self = self else { return }
+                let nsError = error as NSError
+                let message = nsError.userInfo[NSLocalizedDescriptionKey] as? String ?? error.localizedDescription
+                self.onSignInFailure?(message)
             })
             .disposed(by: disposeBag)
     }
@@ -90,7 +96,10 @@ public class SignViewModel: SignViewModelProtocol {
                 self.onSignUpSuccess?()
             }, onFailure: { [weak self] error in
                 guard let self = self else { return }
-                print("회원가입 실패: \(error)")
+                let nsError = error as NSError
+                let message = nsError.userInfo[NSLocalizedDescriptionKey] as? String ?? error.localizedDescription
+                print("here 1")
+                self.onSignUpFailure?(message)
             })
             .disposed(by: disposeBag)
     }

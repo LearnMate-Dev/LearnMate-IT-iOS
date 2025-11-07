@@ -8,6 +8,7 @@
 import Domain
 import RxSwift
 import Alamofire
+import Foundation
 
 public class DefaultSignRepository: SignRepository {
 
@@ -79,10 +80,28 @@ public class DefaultSignRepository: SignRepository {
                     print("✅ API 응답 성공: \(value)")
                     single(.success(value))
                 case .failure(let error):
-                    print("❌ API 응답 실패: \(error)")
-                    single(.failure(error))
+                    if
+                        let data = response.data,
+                        let apiError = try? JSONDecoder().decode(DefaultDTO.self, from: data)
+                    {
+                        let statusCode = response.response?.statusCode ?? -1
+                        let customError = NSError(
+                            domain: "APIError",
+                            code: statusCode,
+                            userInfo: [
+                                NSLocalizedDescriptionKey: apiError.message,
+                                "code": apiError.code
+                            ]
+                        )
+                        print("⚠️ API 응답 실패: \(apiError.message) (code: \(apiError.code))")
+                        single(.failure(customError))
+                    } else {
+                        print("❌ API 응답 실패: \(error)")
+                        single(.failure(error))
+                    }
                 }
             }
+
             return Disposables.create { request.cancel() }
         }
     }

@@ -75,6 +75,12 @@ public class SignInViewController: BaseViewController {
                 self?.onLoginSuccess?()
             }
         }
+
+        viewModel.onSignInFailure = { [weak self] message in
+            DispatchQueue.main.async {
+                self?.showFailureAlert(message: message)
+            }
+        }
     }
     
     private func setupTapGesture() {
@@ -109,5 +115,12 @@ public class SignInViewController: BaseViewController {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+    }
+
+    private func showFailureAlert(message: String) {
+        let alertView = LMAlert(title: message,
+                                cancelTitle: "",
+                                confirmTitle: "확인")
+        alertView.show(in: view)
     }
 }
