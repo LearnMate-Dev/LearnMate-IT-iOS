@@ -39,6 +39,7 @@ public class HomeViewController: BaseViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        updateGreeting()
     }
 
     public override func viewDidLoad() {
@@ -53,6 +54,12 @@ public class HomeViewController: BaseViewController {
         bindCourseList()
         bindQuiz()
         bindPatchStepSuccess()
+        updateGreeting()
+    }
+    
+    private func updateGreeting() {
+        let userName = UserDefaults.standard.string(forKey: "userName")
+        homeView.updateGreeting(name: userName)
     }
 
     private func bindActions() {

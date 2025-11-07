@@ -84,7 +84,6 @@ open class MyPageView: UIView {
     
     // MARK: - Public Methods
     public func updateUserName(_ name: String, _ id: Int) {
-        // "내 정보" 섹션의 두 번째 아이템(사용자 이름) 업데이트
         if sections.count > 0 && sections[0].items.count > 1 {
             var updatedItems = sections[0].items
             

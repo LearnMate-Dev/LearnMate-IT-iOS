@@ -26,6 +26,14 @@ open class HomeView: UIView {
 
     public func bind(course: CourseVO) {
     }
+    
+    public func updateGreeting(name: String?) {
+        if let name = name, !name.isEmpty {
+            titleLabel.text = "안녕하세요 \(name)님!"
+        } else {
+            titleLabel.text = "안녕하세요!"
+        }
+    }
 
     func initAttribute() {
         self.backgroundColor = .clear
