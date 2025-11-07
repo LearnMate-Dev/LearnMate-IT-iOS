@@ -13,7 +13,7 @@ import Then
 
 open class HomeView: UIView {
     let logoImageView = UIImageView()
-    var profileView = UIView()
+    var profileView = UIImageView()
     var titleLabelStackView = UIStackView()
     var titleLabel = UILabel()
     var subtitleLabel = UILabel()
@@ -31,8 +31,7 @@ open class HomeView: UIView {
         self.backgroundColor = .clear
 
         profileView = profileView.then {
-            $0.backgroundColor = CommonUIAssets.LMOrange3
-            $0.layer.cornerRadius = 28
+            $0.image = CommonUIAssets.IconProfile
         }
 
         titleLabelStackView = titleLabelStackView.then {
