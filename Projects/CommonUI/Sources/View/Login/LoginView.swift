@@ -14,9 +14,9 @@ import RxRelay
 
 open class LoginView: UIView {
     let logoLabel = UILabel().then {
-        $0.text = "경계선 지능인을 위한 케어 서비스,"
+        $0.text = "외국인 유학생을 위한 AI 한국어 학습 서비스,"
         $0.textColor = .black
-        $0.font = .systemFont(ofSize: 20, weight: .bold)
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
     }
 
     let logoView = UIImageView().then {

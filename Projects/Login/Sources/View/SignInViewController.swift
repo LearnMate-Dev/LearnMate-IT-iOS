@@ -46,7 +46,7 @@ public class SignInViewController: BaseViewController {
             .bind { [weak self] in
                 guard let self = self else { return }
 
-                let email = self.signInView.idTextField.currentText()
+                let email = self.signInView.emailTextField.currentText()
                 let password = self.signInView.passwordTextField.currentText()
 
                 self.postSignIn(email: email, password: password)

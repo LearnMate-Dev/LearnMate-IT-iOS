@@ -19,7 +19,7 @@ open class SignInView: UIView {
     }
 
     var textFieldStackView = UIStackView()
-    public var idTextField = LMTextField()
+    public var emailTextField = LMTextField()
     public var passwordTextField = LMTextField()
     var signInButton = LMButton(textColor: CommonUIAssets.LMBlack,
                                bgColor: CommonUIAssets.LMOrange1)
@@ -59,8 +59,8 @@ open class SignInView: UIView {
             $0.distribution = .fillEqually
         }
 
-        idTextField = idTextField.then {
-            $0.placeholder = "아이디를 입력하세요"
+        emailTextField = emailTextField.then {
+            $0.placeholder = "이메일을 입력하세요"
         }
 
         passwordTextField = passwordTextField.then {
@@ -92,7 +92,7 @@ open class SignInView: UIView {
         [logoView, textFieldStackView, signInButton, signUpButton]
             .forEach { addSubview($0) }
 
-        [idTextField, passwordTextField]
+        [emailTextField, passwordTextField]
             .forEach { textFieldStackView.addArrangedSubview($0) }
 
         logoView.snp.makeConstraints {

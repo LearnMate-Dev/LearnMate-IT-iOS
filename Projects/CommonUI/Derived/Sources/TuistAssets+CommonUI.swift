@@ -39,7 +39,7 @@ public enum CommonUIAsset: Sendable {
     public static let lmRed02 = CommonUIColors(name: "LMRed02")
   }
   public enum Images {
-    public static let add = CommonUIImages(name: "add")
+  public static let add = CommonUIImages(name: "add")
     public static let back = CommonUIImages(name: "back")
     public static let bubble = CommonUIImages(name: "bubble")
     public static let close = CommonUIImages(name: "close")
@@ -49,6 +49,7 @@ public enum CommonUIAsset: Sendable {
     public static let next2 = CommonUIImages(name: "next2")
     public static let play = CommonUIImages(name: "play")
     public static let previous = CommonUIImages(name: "previous")
+    public static let profile = CommonUIImages(name: "profile")
     public static let send = CommonUIImages(name: "send")
     public static let apple = CommonUIImages(name: "apple")
     public static let google = CommonUIImages(name: "google")
