@@ -64,10 +64,16 @@ public class SignUpViewController: BaseViewController {
                 self?.signUpView.confirmInputField.showWarning()
             }
         }
-        
+
         viewModel.onSignUpSuccess = { [weak self] in
             DispatchQueue.main.async {
                 self?.showSignUpSuccessModal()
+            }
+        }
+
+        viewModel.onSignUpFailure = { [weak self] message in
+            DispatchQueue.main.async {
+                self?.showFailureAlert(message: message)
             }
         }
     }
@@ -80,6 +86,7 @@ public class SignUpViewController: BaseViewController {
                 print("유효한 이메일: \(email)")
                 self.email = email
                 self.viewModel.postEmail(email: email)
+                self.signUpView.emailInputField.disableButton(buttonTitle: "전송중..")
                 self.signUpView.emailInputField.hideWarning()
             } else {
                 print("유효하지 않은 이메일: \(email)")
@@ -226,5 +233,12 @@ public class SignUpViewController: BaseViewController {
     
     private func navigateToSignIn() {
         navigationController?.popViewController(animated: true)
+    }
+
+    private func showFailureAlert(message: String) {
+        let alertView = LMAlert(title: message,
+                                cancelTitle: "",
+                                confirmTitle: "확인")
+        alertView.show(in: view)
     }
 }

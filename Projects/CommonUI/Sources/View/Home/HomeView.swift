@@ -13,7 +13,7 @@ import Then
 
 open class HomeView: UIView {
     let logoImageView = UIImageView()
-    var profileView = UIView()
+    var profileView = UIImageView()
     var titleLabelStackView = UIStackView()
     var titleLabel = UILabel()
     var subtitleLabel = UILabel()
@@ -26,13 +26,20 @@ open class HomeView: UIView {
 
     public func bind(course: CourseVO) {
     }
+    
+    public func updateGreeting(name: String?) {
+        if let name = name, !name.isEmpty {
+            titleLabel.text = "안녕하세요 \(name)님!"
+        } else {
+            titleLabel.text = "안녕하세요!"
+        }
+    }
 
     func initAttribute() {
         self.backgroundColor = .clear
 
         profileView = profileView.then {
-            $0.backgroundColor = CommonUIAssets.LMOrange3
-            $0.layer.cornerRadius = 28
+            $0.image = CommonUIAssets.IconProfile
         }
 
         titleLabelStackView = titleLabelStackView.then {

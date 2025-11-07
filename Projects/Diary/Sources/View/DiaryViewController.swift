@@ -58,6 +58,24 @@ public class DiaryViewController: BaseViewController {
         
         // 첫 진입 시 오늘 날짜로 초기 상태 설정
         setupInitialState()
+        
+        // 일기 저장 완료 Notification 구독
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleDiarySaved),
+            name: NSNotification.Name("DiarySaved"),
+            object: nil
+        )
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func handleDiarySaved() {
+        // 일기 저장 후 오늘 날짜의 일기 데이터 다시 호출
+        let today = Date()
+        viewModel.getDiary(date: today)
     }
 
     public override func setupViewProperty() {
@@ -235,27 +253,13 @@ public class DiaryViewController: BaseViewController {
         print("📱 diary.score: \(diary.spellingDto.score)")
         print("📱 diary.content: \(diary.spellingDto.revisedContent)")
 
-        // 선택된 날짜의 일기 데이터로 DiaryTodayView 업데이트
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
-        if let date = formatter.date(from: diary.createdAt) {
-            print("📱 Date 파싱 성공: \(date)")
-            diaryView.diaryTodayView.setDiaryTodayData(
-                date: date,
-                diaryId: diary.diaryId,
-                score: diary.spellingDto.score,
-                content: diary.spellingDto.revisedContent
-            )
-        } else {
-            print("📱 Date 파싱 실패, 문자열로 직접 설정")
-            // 날짜 파싱 실패 시 문자열로 직접 설정
-            diaryView.diaryTodayView.setDiaryTodayData(
-                date: diary.createdAt,
-                diaryId: diary.diaryId,
-                score: diary.spellingDto.score,
-                content: diary.spellingDto.revisedContent
-            )
-        }
+        // 선택된 날짜의 일기 데이터로 DiaryTodayView 업데이트 (String 버전 사용)
+        diaryView.diaryTodayView.setDiaryTodayData(
+            date: diary.createdAt,
+            diaryId: diary.diaryId,
+            score: diary.spellingDto.score,
+            content: diary.spellingDto.revisedContent
+        )
         
         // DiaryVO 데이터 설정 (탭 이벤트용)
         diaryView.diaryTodayView.setDiaryData(diary)

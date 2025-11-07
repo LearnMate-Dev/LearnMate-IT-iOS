@@ -126,7 +126,6 @@ open class HomeProgressView: UIView {
         self.layer.cornerRadius = 12
 
         courseLabel = courseLabel.then {
-            $0.text = "한국어 훈련 1단계"
             $0.textColor = CommonUIAssets.LMBlack
             $0.font = .systemFont(ofSize: 18, weight: .semibold)
         }

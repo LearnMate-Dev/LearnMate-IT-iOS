@@ -8,6 +8,7 @@
 import Domain
 import RxSwift
 import RxRelay
+import Foundation
 
 protocol SignViewModelProtocol {
     func postSignIn(email: String, password: String)
@@ -20,18 +21,22 @@ public class SignViewModel: SignViewModelProtocol {
     private let disposeBag = DisposeBag()
     private let signUseCase: SignUseCase
     private let tokenRepository: TokenRepository
+    private let userUseCase: UserUseCase
     public weak var signInViewCoordinator: SignInCoordinator?
     public weak var signUpViewCoordinator: SignUpCoordinator?
     public var onEmailSuccess: (() -> Void)?
     public var onConfirmSuccess: (() -> Void)?
     public var onConfirmFailure: (() -> Void)?
     public var onSignInSuccess: (() -> Void)?
+    public var onSignInFailure: ((String) -> Void)?
     public var onSignUpSuccess: (() -> Void)?
+    public var onSignUpFailure: ((String) -> Void)?
     public let emailVerified = BehaviorRelay<Bool>(value: false)
 
-    public init(signUseCase: SignUseCase, tokenRepository: TokenRepository) {
+    public init(signUseCase: SignUseCase, tokenRepository: TokenRepository, userUseCase: UserUseCase) {
         self.signUseCase = signUseCase
         self.tokenRepository = tokenRepository
+        self.userUseCase = userUseCase
     }
 
     func postSignIn(email: String, password: String) {
@@ -49,9 +54,23 @@ public class SignViewModel: SignViewModelProtocol {
                     print("🔄 리프레시 토큰 저장 완료: \(refreshToken)")
                 }
 
-                self.onSignInSuccess?()
-            }, onFailure: { error in
-                print("로그인 실패: \(error)")
+                // 로그인 성공 후 사용자 정보 가져오기
+                self.userUseCase.getUser()
+                    .subscribe(onSuccess: { user in
+                        UserDefaults.standard.set(user.name, forKey: "userName")
+                        print("✅ 사용자 이름 저장 완료: \(user.name)")
+                        self.onSignInSuccess?()
+                    }, onFailure: { error in
+                        print("❌ getUser 실패: \(error)")
+                        // getUser 실패해도 로그인 성공 처리
+                        self.onSignInSuccess?()
+                    })
+                    .disposed(by: self.disposeBag)
+            }, onFailure: { [weak self] error in
+                guard let self = self else { return }
+                let nsError = error as NSError
+                let message = nsError.userInfo[NSLocalizedDescriptionKey] as? String ?? error.localizedDescription
+                self.onSignInFailure?(message)
             })
             .disposed(by: disposeBag)
     }
@@ -90,7 +109,10 @@ public class SignViewModel: SignViewModelProtocol {
                 self.onSignUpSuccess?()
             }, onFailure: { [weak self] error in
                 guard let self = self else { return }
-                print("회원가입 실패: \(error)")
+                let nsError = error as NSError
+                let message = nsError.userInfo[NSLocalizedDescriptionKey] as? String ?? error.localizedDescription
+                print("here 1")
+                self.onSignUpFailure?(message)
             })
             .disposed(by: disposeBag)
     }

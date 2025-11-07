@@ -112,6 +112,9 @@ public class DiaryResultViewController: BaseViewController {
         print("🔄 handleSaveDiary 호출됨")
         print("🔄 navigationController: \(String(describing: navigationController))")
         
+        // 일기 저장 완료 Notification 발송
+        NotificationCenter.default.post(name: NSNotification.Name("DiarySaved"), object: nil)
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
 

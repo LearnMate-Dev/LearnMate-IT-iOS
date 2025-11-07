@@ -29,7 +29,8 @@ public struct LoginAssembly: Assembly {
         container.register(SignViewModel.self) { resolver in
             let useCase = resolver.resolve(SignUseCase.self)!
             let tokenRepository = resolver.resolve(TokenRepository.self)!
-            return SignViewModel(signUseCase: useCase, tokenRepository: tokenRepository)
+            let userUseCase = resolver.resolve(UserUseCase.self)!
+            return SignViewModel(signUseCase: useCase, tokenRepository: tokenRepository, userUseCase: userUseCase)
         }
         
         container.register(SignInViewController.self) { resolver in

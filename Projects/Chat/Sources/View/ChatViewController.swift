@@ -44,6 +44,7 @@ public class ChatViewController: BaseViewController {
         
         // 초기에 endButton 숨기기
         chatView.hideEndButton()
+        setupTapGesture()
     }
 
     public override func setupViewProperty() {
@@ -241,5 +242,15 @@ public class ChatViewController: BaseViewController {
         
         // 이전 화면으로 이동
         navigationController?.popViewController(animated: true)
+    }
+
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

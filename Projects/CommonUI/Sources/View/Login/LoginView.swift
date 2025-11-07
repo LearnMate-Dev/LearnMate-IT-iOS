@@ -99,7 +99,7 @@ open class LoginView: UIView {
         [logoLabel, logoView, loginButtonStackView]
             .forEach { self.addSubview($0) }
 
-        [lmLoginButton, googleLoginButton, appleLoginButton]
+        [lmLoginButton]
             .forEach { loginButtonStackView.addArrangedSubview($0)}
 
         logoLabel.snp.makeConstraints {
@@ -115,8 +115,8 @@ open class LoginView: UIView {
 
         loginButtonStackView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(205)
-            $0.bottom.equalToSuperview().inset(70)
+            $0.height.equalTo(55) // 205
+            $0.bottom.equalToSuperview().inset(85) // 70
         }
     }
 

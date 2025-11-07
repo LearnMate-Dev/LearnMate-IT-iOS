@@ -156,13 +156,19 @@ open class ChatView: UIView {
                 $0.center.equalToSuperview()
                 $0.leading.trailing.equalToSuperview().inset(16)
             }
+
+            // 탭 이벤트 설정
+            view.tag = index
+            view.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleRecommendTap(_:)))
+            view.addGestureRecognizer(tap)
         }
 
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
             $0.leading.equalToSuperview().inset(20)
         }
-        
+
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(20)
@@ -211,6 +217,18 @@ open class ChatView: UIView {
             $0.height.width.equalTo(44)
             $0.trailing.equalToSuperview().inset(20)
         }
+    }
+
+    @objc private func handleRecommendTap(_ gesture: UITapGestureRecognizer) {
+        guard let view = gesture.view else { return }
+        let index = view.tag
+        guard index >= 0 && index < recommendLabels.count else { return }
+        let text = recommendLabels[index].text ?? ""
+        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+
+        // 추천 섹션 숨기고 바로 전송 콜백 호출
+        hideRecommendSection()
+        onSendButtonTapped?(text)
     }
 
     // 추천 섹션 숨기기 메서드

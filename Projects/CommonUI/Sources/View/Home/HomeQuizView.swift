@@ -34,14 +34,13 @@ open class HomeQuizView: UIView, UICollectionViewDataSource, UICollectionViewDel
     }
 
     public func bind(course: CourseVO) {
-//        courseLabel.text = "\(course.courseLv ?? 1)단계 퀴즈"
+        courseLabel.text = "\(course.courseLv)단계 퀴즈"
     }
 
     func initAttribute() {
         self.backgroundColor = .clear
 
         courseLabel = courseLabel.then {
-            $0.text = "1단계 퀴즈"
             $0.textColor = CommonUIAssets.LMBlack
             $0.font = .systemFont(ofSize: 16, weight: .medium)
         }

@@ -56,23 +56,11 @@ open class DiaryView: UIView {
         bindEvents()
         calendarView.configureSubviews()
         calendarView.makeConstraints()
-        setupSampleEmotionData()
         updateMonthButtonTitle()
     }
 
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupSampleEmotionData() {
-        // 샘플 이모지 데이터 설정 (이미지와 동일하게)
-        let sampleEmotions: [Int: String] = [
-            1: "😢",  // 우는 얼굴
-            7: "😐",  // 무표정한 얼굴
-            12: "🥳", // 파티 모자
-            13: "😡"  // 화난 얼굴
-        ]
-        calendarView.setEmotionData(sampleEmotions)
     }
     
     // MARK: Configuration
@@ -108,11 +96,11 @@ open class DiaryView: UIView {
             $0.height.width.equalTo(monthLabel.snp.height)
         }
 
-        addButton.snp.makeConstraints {
-            $0.centerY.equalTo(monthLabel)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.height.width.equalTo(monthLabel.snp.height)
-        }
+//        addButton.snp.makeConstraints {
+//            $0.centerY.equalTo(monthLabel)
+//            $0.trailing.equalToSuperview().inset(20)
+//            $0.height.width.equalTo(monthLabel.snp.height)
+//        }
 
         calendarView.snp.makeConstraints {
             $0.top.equalTo(monthLabel.snp.bottom).offset(17)
@@ -121,7 +109,7 @@ open class DiaryView: UIView {
         }
 
         diaryTodayView.snp.makeConstraints {
-            $0.top.equalTo(calendarView.snp.bottom).offset(3)
+            $0.top.equalTo(calendarView.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
             $0.width.equalToSuperview().inset(20)
             $0.height.equalTo(141)

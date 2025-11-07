@@ -30,7 +30,7 @@ final class HomeQuizCell: UICollectionViewCell {
 
     private func initAttribute() {
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 12
+        contentView.layer.cornerRadius = 10
         contentView.layer.borderWidth = 2
         contentView.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
 
@@ -106,18 +106,38 @@ final class HomeQuizCell: UICollectionViewCell {
     
     private func updateButtonTitle(_ title: String) {
         var config = startButton.configuration ?? UIButton.Configuration.plain()
-        let attributedTitle = AttributedString(title, attributes: AttributeContainer([
-            .font: UIFont.systemFont(ofSize: 12, weight: .regular)
-        ]))
-        config.attributedTitle = attributedTitle
         
         if title == "완료" {
             config.image = nil
-            config.baseBackgroundColor = CommonUIAssets.LMOrange4
-            config.baseForegroundColor = CommonUIAssets.LMGray1
+            var background = UIBackgroundConfiguration.clear()
+            background.backgroundColor = CommonUIAssets.LMOrange3
+            background.cornerRadius = 10
+            config.background = background
+            let attributedTitle = AttributedString(title, attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 12, weight: .regular),
+                .foregroundColor: CommonUIAssets.LMGray3 ?? UIColor.black
+            ]))
+            config.attributedTitle = attributedTitle
+            config.baseForegroundColor = .white
+            startButton.layer.borderWidth = 0
+            startButton.layer.borderColor = UIColor.clear.cgColor
+            startButton.isEnabled = false
+            startButton.isUserInteractionEnabled = false
         } else {
             config.image = CommonUIAssets.IconPlay
-            config.baseForegroundColor = CommonUIAssets.LMGray1
+            var background = UIBackgroundConfiguration.clear()
+            background.cornerRadius = 10
+            config.background = background
+            let attributedTitle = AttributedString(title, attributes: AttributeContainer([
+                .font: UIFont.systemFont(ofSize: 12, weight: .regular),
+                .foregroundColor: CommonUIAssets.LMGray3 ?? .gray
+            ]))
+            config.attributedTitle = attributedTitle
+            config.baseForegroundColor = CommonUIAssets.LMGray3
+            startButton.layer.borderWidth = 1
+            startButton.layer.borderColor = CommonUIAssets.LMOrange1?.cgColor
+            startButton.isEnabled = true
+            startButton.isUserInteractionEnabled = true
         }
         
         startButton.configuration = config
