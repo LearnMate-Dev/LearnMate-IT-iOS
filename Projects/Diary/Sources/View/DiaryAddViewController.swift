@@ -48,6 +48,7 @@ public class DiaryAddViewController: BaseViewController {
         setupLayout()
         bindData()
         bindEvents()
+        setupTapGesture()
     }
     
     public override func setupViewProperty() {
@@ -169,5 +170,15 @@ public class DiaryAddViewController: BaseViewController {
             self.showAnalysisLoading()
             self.viewModel.postDiary(content: content)
         }
+    }
+
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
