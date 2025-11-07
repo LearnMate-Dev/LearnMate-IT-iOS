@@ -13,12 +13,6 @@ import Then
 import RxRelay
 
 open class LoginView: UIView {
-    let logoLabel = UILabel().then {
-        $0.text = "외국인 유학생을 위한 AI 한국어 학습 서비스,"
-        $0.textColor = .black
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
-    }
-
     let logoView = UIImageView().then {
         $0.image = CommonUIAssets.logo
         $0.contentMode = .scaleAspectFit
@@ -96,19 +90,14 @@ open class LoginView: UIView {
     }
 
     func initUI() {
-        [logoLabel, logoView, loginButtonStackView]
+        [logoView, loginButtonStackView]
             .forEach { self.addSubview($0) }
 
         [lmLoginButton]
             .forEach { loginButtonStackView.addArrangedSubview($0)}
 
-        logoLabel.snp.makeConstraints {
-            $0.bottom.equalTo(logoView.snp.top).offset(-15)
-            $0.leading.equalTo(logoView.snp.leading)
-        }
-
         logoView.snp.makeConstraints {
-            $0.height.equalTo(56)
+            $0.width.equalToSuperview().inset(40)
             $0.centerY.equalToSuperview().offset(-50)
             $0.centerX.equalToSuperview()
         }
