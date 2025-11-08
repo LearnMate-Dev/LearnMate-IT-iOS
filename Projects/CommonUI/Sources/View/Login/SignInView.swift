@@ -96,8 +96,9 @@ open class SignInView: UIView {
             .forEach { textFieldStackView.addArrangedSubview($0) }
 
         logoView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().inset(160)
+            $0.width.equalToSuperview().inset(40)
+            $0.centerX.equalToSuperview()
         }
 
         textFieldStackView.snp.makeConstraints {
