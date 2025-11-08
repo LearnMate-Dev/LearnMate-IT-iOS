@@ -96,26 +96,26 @@ open class SignInView: UIView {
             .forEach { textFieldStackView.addArrangedSubview($0) }
 
         logoView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(160)
             $0.width.equalToSuperview().inset(40)
+            $0.top.equalToSuperview().inset(90)
             $0.centerX.equalToSuperview()
         }
 
         textFieldStackView.snp.makeConstraints {
-            $0.top.equalTo(logoView.snp.bottom).offset(100)
+            $0.bottom.equalTo(signInButton.snp.top).offset(-33)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(130)
         }
 
         signInButton.snp.makeConstraints {
-            $0.top.equalTo(textFieldStackView.snp.bottom).offset(33)
+            $0.bottom.equalTo(signUpButton.snp.top).offset(-33)
             $0.centerX.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
 
         signUpButton.snp.makeConstraints {
-            $0.top.equalTo(signInButton.snp.bottom).offset(35)
+            $0.bottom.equalToSuperview().inset(70)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(27)
         }
