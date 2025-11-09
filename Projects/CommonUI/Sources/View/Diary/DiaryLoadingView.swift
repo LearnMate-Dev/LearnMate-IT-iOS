@@ -16,7 +16,7 @@ open class DiaryLoadingView: UIView {
     }
 
     private let mainLabel = UILabel().then {
-        $0.text = "사용자 대화를 분석 중입니다..."
+        $0.text = "사용자 일기를 분석 중입니다..."
         $0.textColor = CommonUIAssets.LMGray1
         $0.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         $0.textAlignment = .center
